@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/main_activity_content"
+    android:orientation="vertical"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:background="#ffffff">
+    <TextView
+        android:id="@+id/text_login_title"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="left"
+        android:gravity="left"
+        android:text="@string/login"
+        android:textColor="#ffffff"
+        android:textSize="15dp"
+        android:background="#ff437e9f"
+        android:textStyle="normal|bold|italic" />
+    <TextView
+        android:id="@+id/text_user_name"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="left"
+        android:gravity="left"
+        android:text="@string/user_name" />
+    <EditText
+        android:id="@+id/edit_text_user_name"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="left"
+        android:gravity="left" />
+    <TextView
+        android:id="@+id/text_password"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="left"
+        android:gravity="left"
+        android:text="@string/password" />
+    <EditText
+        android:id="@+id/edit_text_password"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="left"
+        android:gravity="left" />
+</LinearLayout>

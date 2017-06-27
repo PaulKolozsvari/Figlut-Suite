@@ -1,0 +1,28 @@
+Microsoft (R) Help Compiler
+HCRTF 4.03.0002
+Copyright (c) Microsoft Corp 1990 - 1995. All rights reserved.
+FiglutSuiteHelp.hpj
+    HC4008: Warning: 
+	Cannot find or load FTSRCH.DLL. Hall compression turned off.
+    HC4012: Warning: 
+	The full-text search index cannot be created because neither Phrase nor Hall compression has been selected.
+    HC3026: Warning: topic #24 of C:\Docs\BINARY~1\Figlut\DOCUME~1\HELPMA~1\FiglutSuiteHelp_tmphpj\FiglutSuiteHelp.rtf : 
+	The Topic ID "Samples" has already been defined in topic 20 in file C:\Docs\BINARY~1\Figlut\DOCUME~1\HELPMA~1\FiglutSuiteHelp_tmphpj\FiglutSuiteHelp.rtf.
+    HC3026: Warning: topic #23 of C:\Docs\BINARY~1\Figlut\DOCUME~1\HELPMA~1\FiglutSuiteHelp_tmphpj\FiglutSuiteHelp.rtf : 
+	The Topic ID "APIDocumentation" has already been defined in topic 19 in file C:\Docs\BINARY~1\Figlut\DOCUME~1\HELPMA~1\FiglutSuiteHelp_tmphpj\FiglutSuiteHelp.rtf.
+    HC3026: Warning: topic #22 of C:\Docs\BINARY~1\Figlut\DOCUME~1\HELPMA~1\FiglutSuiteHelp_tmphpj\FiglutSuiteHelp.rtf : 
+	The Topic ID "GettingStarted" has already been defined in topic 18 in file C:\Docs\BINARY~1\Figlut\DOCUME~1\HELPMA~1\FiglutSuiteHelp_tmphpj\FiglutSuiteHelp.rtf.
+    HC3026: Warning: topic #17 of C:\Docs\BINARY~1\Figlut\DOCUME~1\HELPMA~1\FiglutSuiteHelp_tmphpj\FiglutSuiteHelp.rtf : 
+	The Topic ID "Overview" has already been defined in topic 1 in file C:\Docs\BINARY~1\Figlut\DOCUME~1\HELPMA~1\FiglutSuiteHelp_tmphpj\FiglutSuiteHelp.rtf.
+    HC3026: Warning: topic #21 of C:\Docs\BINARY~1\Figlut\DOCUME~1\HELPMA~1\FiglutSuiteHelp_tmphpj\FiglutSuiteHelp.rtf : 
+	The Topic ID "Overview" has already been defined in topic 17 in file C:\Docs\BINARY~1\Figlut\DOCUME~1\HELPMA~1\FiglutSuiteHelp_tmphpj\FiglutSuiteHelp.rtf.
+26	Topics
+0	Jumps
+26	Keywords
+0	Bitmaps
+
+
+Created C:\Docs\BINARY~1\Figlut\DOCUME~1\HELPMA~1\FiglutSuiteHelp_tmphpj\FiglutSuiteHelp.hlp, 20,193 bytes
+Zeck compression decreased help file by 1,581 bytes.
+Compile time: 0 minutes, 0 seconds
+0 notes, 7 warnings

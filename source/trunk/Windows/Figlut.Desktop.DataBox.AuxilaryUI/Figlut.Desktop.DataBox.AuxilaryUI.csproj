@@ -1,0 +1,159 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{D7946CAC-076D-45FB-8AC9-ED029B4CBF20}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Figlut.Desktop.DataBox.AuxilaryUI</RootNamespace>
+    <AssemblyName>Figlut.Desktop.DataBox.AuxilaryUI</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.Linq" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="LoadDataBoxForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="LoadDataBoxForm.Designer.cs">
+      <DependentUpon>LoadDataBoxForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="LoadFiltersForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="LoadFiltersForm.Designer.cs">
+      <DependentUpon>LoadFiltersForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="LoginForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="LoginForm.Designer.cs">
+      <DependentUpon>LoginForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ManageFilterForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ManageFilterForm.Designer.cs">
+      <DependentUpon>ManageFilterForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SelectChildDataBoxForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SelectChildDataBoxForm.Designer.cs">
+      <DependentUpon>SelectChildDataBoxForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SelectParentDataBoxForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SelectParentDataBoxForm.Designer.cs">
+      <DependentUpon>SelectParentDataBoxForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SelectParentEntityForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SelectParentEntityForm.Designer.cs">
+      <DependentUpon>SelectParentEntityForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ViewChildrenEntitiesForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ViewChildrenEntitiesForm.Designer.cs">
+      <DependentUpon>ViewChildrenEntitiesForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ViewParentEntityForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ViewParentEntityForm.Designer.cs">
+      <DependentUpon>ViewParentEntityForm.cs</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="LoadDataBoxForm.resx">
+      <DependentUpon>LoadDataBoxForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LoadFiltersForm.resx">
+      <DependentUpon>LoadFiltersForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LoginForm.resx">
+      <DependentUpon>LoginForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ManageFilterForm.resx">
+      <DependentUpon>ManageFilterForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SelectChildDataBoxForm.resx">
+      <DependentUpon>SelectChildDataBoxForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SelectParentDataBoxForm.resx">
+      <DependentUpon>SelectParentDataBoxForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SelectParentEntityForm.resx">
+      <DependentUpon>SelectParentEntityForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ViewChildrenEntitiesForm.resx">
+      <DependentUpon>ViewChildrenEntitiesForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ViewParentEntityForm.resx">
+      <DependentUpon>ViewParentEntityForm.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Figlut.Desktop.BaseUI\Figlut.Desktop.BaseUI.csproj">
+      <Project>{dc7d62dc-9bad-44ed-831d-7ae7cbcfcca5}</Project>
+      <Name>Figlut.Desktop.BaseUI</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Figlut.Desktop.DataBox.Configuration.45\Figlut.Desktop.DataBox.Configuration.45.csproj">
+      <Project>{ea134c28-c6e3-4844-9515-40417fbf6a45}</Project>
+      <Name>Figlut.Desktop.DataBox.Configuration.45</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Figlut.Desktop.DataBox.Utilities\Figlut.Desktop.DataBox.Utilities.csproj">
+      <Project>{20d2d5e6-d1f9-49a1-b628-c2605ae1c1e8}</Project>
+      <Name>Figlut.Desktop.DataBox.Utilities</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Figlut.Server.Toolkit.45\Figlut.Server.Toolkit.45.csproj">
+      <Project>{a7c9a24d-e19b-42f5-a298-805a489334ef}</Project>
+      <Name>Figlut.Server.Toolkit.45</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

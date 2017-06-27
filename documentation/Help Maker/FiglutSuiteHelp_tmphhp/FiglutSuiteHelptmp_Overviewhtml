@@ -1,0 +1,71 @@
+<div align="justify"><font face="Arial" color="#010101" size="2"><span style=" font-size:10pt; font-family:Arial; color:#010101">With so many companies using up a large amount of time and resources developing data 
+capturing applications, it has become evident that the various applications being developed only 
+differ by their business logic i.e. the data the company is working with and the business rules 
+defining the relationships between the data e.g. </span></font></div>
+<div align="justify">&nbsp;&nbsp;</div>
+<ul style="margin-top: 0mm; margin-bottom: 0mm; list-style-type: disk; ">
+<li style="margin-left: -36pt; margin-right: 0pt; padding-left: 0pt; font-family: Symbol;  font-size: 10pt;  color: #010101;  ">
+<div align="justify"><font face="Arial" color="#010101" size="2"><span style=" font-size:10pt; font-family:Arial; color:#010101">PO (Purchase&nbsp; Order)</span></font></div>
+</li>
+<li style="margin-left: -36pt; margin-right: 0pt; padding-left: 0pt; font-family: Symbol;  font-size: 10pt;  color: #010101;  ">
+<div align="justify"><font face="Arial" color="#010101" size="2"><span style=" font-size:10pt; font-family:Arial; color:#010101">Invoices</span></font></div>
+</li>
+<li style="margin-left: -36pt; margin-right: 0pt; padding-left: 0pt; font-family: Symbol;  font-size: 10pt;  color: #010101;  ">
+<div align="justify"><font face="Arial" color="#010101" size="2"><span style=" font-size:10pt; font-family:Arial; color:#010101">PODs (Proof Of Deliverie), </span></font></div>
+</li>
+<li style="margin-left: -36pt; margin-right: 0pt; padding-left: 0pt; font-family: Symbol;  font-size: 10pt;  color: #010101;  ">
+<div align="justify"><font face="Arial" color="#010101" size="2"><span style=" font-size:10pt; font-family:Arial; color:#010101">GRV (Goods Received Voucher) </span></font></div>
+</li>
+<li style="margin-left: -36pt; margin-right: 0pt; padding-left: 0pt; font-family: Symbol;  font-size: 10pt;  color: #010101;  ">
+<div align="justify"><font face="Arial" color="#010101" size="2"><span style=" font-size:10pt; font-family:Arial; color:#010101">etc. </span></font></div>
+</li>
+</ul>
+<div align="justify"><font face="Arial" color="#010101" size="2"><span style=" font-size:10pt; font-family:Arial; color:#010101"><br />
+</span></font></div>
+<div align="justify"><font face="Arial" color="#010101" size="2"><span style=" font-size:10pt; font-family:Arial; color:#010101">The technical features/logic on the other hand mostly remain the same across every application. 
+For example, every data capturing system will require:</span></font></div>
+<div align="justify">&nbsp;&nbsp;</div>
+<ul style="margin-top: 0mm; margin-bottom: 0mm; list-style-type: disk; ">
+<li style="margin-left: -36pt; margin-right: 0pt; padding-left: 0pt; font-family: Symbol;  font-size: 10pt;  color: #010101;  ">
+<div align="justify"><font face="Arial" color="#010101" size="2"><span style=" font-size:10pt; font-family:Arial; color:#010101">Web service</span></font></div>
+</li>
+<li style="margin-left: -36pt; margin-right: 0pt; padding-left: 0pt; font-family: Symbol;  font-size: 10pt;  color: #010101;  ">
+<div align="justify"><font face="Arial" color="#010101" size="2"><span style=" font-size:10pt; font-family:Arial; color:#010101">Mobile client,</span></font></div>
+</li>
+<li style="margin-left: -36pt; margin-right: 0pt; padding-left: 0pt; font-family: Symbol;  font-size: 10pt;  color: #010101;  ">
+<div align="justify"><font face="Arial" color="#010101" size="2"><span style=" font-size:10pt; font-family:Arial; color:#010101">Web Site</span></font></div>
+</li>
+<li style="margin-left: -36pt; margin-right: 0pt; padding-left: 0pt; font-family: Symbol;  font-size: 10pt;  color: #010101;  ">
+<div align="justify"><font face="Arial" color="#010101" size="2"><span style=" font-size:10pt; font-family:Arial; color:#010101">Reports </span></font></div>
+</li>
+<li style="margin-left: -36pt; margin-right: 0pt; padding-left: 0pt; font-family: Symbol;  font-size: 10pt;  color: #010101;  ">
+<div align="justify"><font face="Arial" color="#010101" size="2"><span style=" font-size:10pt; font-family:Arial; color:#010101">Data Access Layer (accessing and modifying data in a database)</span></font></div>
+</li>
+<li style="margin-left: -36pt; margin-right: 0pt; padding-left: 0pt; font-family: Symbol;  font-size: 10pt;  color: #010101;  ">
+<div align="justify"><font face="Arial" color="#010101" size="2"><span style=" font-size:10pt; font-family:Arial; color:#010101">Data Transformation (i.e. XML to CSV, </span></font></div>
+</li>
+<li style="margin-left: -36pt; margin-right: 0pt; padding-left: 0pt; font-family: Symbol;  font-size: 10pt;  color: #010101;  ">
+<div align="justify"><font face="Arial" color="#010101" size="2"><span style=" font-size:10pt; font-family:Arial; color:#010101">etc.</span></font></div>
+</li>
+</ul>
+<div align="justify"><font face="Arial" color="#010101" size="2"><span style=" font-size:10pt; font-family:Arial; color:#010101"><br />
+</span></font></div>
+<div align="justify"><font face="Arial" color="#010101" size="2"><span style=" font-size:10pt; font-family:Arial; color:#010101">Due to the business requirements varying across every project, it results in customers purchasing 
+software developer hours as opposed to software products. Furthermore, this tight coupling of 
+business logic with technical logic often results in the technical logic being redeveloped for every 
+new project which not only results in a loss of time and resources but also inflates the 
+development costs of what are often just simple data capturing applications.</span></font></div>
+<div align="justify"><font face="Arial" color="#010101" size="2"><span style=" font-size:10pt; font-family:Arial; color:#010101"><br />
+</span></font></div>
+<div align="justify"><font face="Arial" color="#010101" size="2"><span style=" font-size:10pt; font-family:Arial; color:#010101">The problem can solved </span></font></div>
+<div align="justify"><font face="Arial" color="#010101" size="2"><span style=" font-size:10pt; font-family:Arial; color:#010101"><br />
+</span></font></div>
+<div align="justify"><font face="Arial" color="#010101" size="2"><span style=" font-size:10pt; font-family:Arial; color:#010101">Figlut Suite aims to solve to this problem by is a collection applications, utilities and developer 
+toolkits aimed at abstracting the technical features process of developing of data capturing 
+applications. The Figlut Suite provides:</span></font></div>
+<div align="justify">&nbsp;&nbsp;</div>
+<ol style="margin-top: 0mm; margin-bottom: 0mm; ">
+<li style="margin-left: -36pt; margin-right: 0pt; padding-left: 0pt; font-family: Arial;  font-size: 10pt;  color: #010101;  ">
+<div align="justify">&nbsp;&nbsp;</div>
+&nbsp;</li>
+</ol>

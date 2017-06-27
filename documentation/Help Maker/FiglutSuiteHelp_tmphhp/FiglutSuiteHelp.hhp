@@ -1,0 +1,61 @@
+[OPTIONS]
+Language=0x409 English (United States)
+Default Font=Arial,8,0
+TITLE=Figlut Suite Help
+Full-text search=Yes
+Display compile notes=YES
+Display compile progress=YES
+Compatibility=1.1
+Auto Index=Yes
+Default Window=Main
+Compiled file=FiglutSuiteHelp.chm
+Error Log file=FiglutSuiteHelp.log
+Contents file=FiglutSuiteHelp.hhc
+Index File=FiglutSuiteHelp.hhk
+Default Topic=figlut-suite-overview.html
+
+[FILES]
+figlut-suite-overview.html
+ContactUs.html
+Blog.html
+RESTOverview.html
+FiglutWebServiceOverview.html
+configuration-overview.html
+SettingsFile.html
+FiglutServerManager.html
+Database.html
+Service.html
+Logging.html
+QueryingData.html
+InsertingData.html
+UpdatingData.html
+DeletingData.html
+Overview.html
+GettingStarted.html
+APIDocumentation.html
+Samples.html
+Overview.html
+GettingStarted.html
+APIDocumentation.html
+Samples.html
+FAQ.html
+HowToBuy.html
+
+
+
+
+[WINDOWS]
+Main="Figlut Suite Help","FiglutSuiteHelp.hhc","FiglutSuiteHelp.hhk","figlut-suite-overview.html","figlut-suite-overview.html",,,,,0x61520,200,0x384e,[50,50,450,450],0x307e,,,,,,0
+Popup="Popup","FiglutSuiteHelp.hhc","FiglutSuiteHelp.hhk","figlut-suite-overview.html","figlut-suite-overview.html", ,,,,0x00061520,200, 0x0000384E,[50,50,450,450],0x307e,0x8,,,,,0
+
+
+[MAP]
+#include FiglutSuiteHelp.h
+
+
+
+[TEXT POPUPS]
+CSHelp.txt
+
+ 
+

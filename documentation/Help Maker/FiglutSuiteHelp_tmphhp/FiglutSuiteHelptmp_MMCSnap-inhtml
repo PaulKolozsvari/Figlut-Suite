@@ -1,0 +1,30 @@
+<div align="left"><font face="Arial" color="#010101" size="2"><span style=" font-size:10pt; font-family:Arial; color:#010101">The settings for the Figlut Web Service may also be edited via the Figlut Server Manager, which 
+is an MMC (Microsoft Management Console) snap-in. The Figlut Server Manager can accessed 
+in one of two ways:</span></font></div>
+<div align="left"><font face="Arial" color="#010101" size="2"><span style=" font-size:10pt; font-family:Arial; color:#010101"><br />
+</span></font></div>
+<div align="left">&nbsp;&nbsp;</div>
+<ol style="margin-top: 0mm; margin-bottom: 0mm; ">
+<li style="margin-left: -36pt; margin-right: 0pt; padding-left: 0pt; font-family: Arial;  font-size: 10pt;  color: #010101;  "><font face="Arial" color="#010101" size="2"><span style=" font-size:10pt; font-family:Arial; color:#010101">From the Windows Start menu </span></font>
+<ol style="margin-bottom: 0mm; ">
+<li style="margin-left: -54pt; margin-right: 0pt; padding-left: 0pt; font-family: Arial;  font-size: 10pt;  color: #010101;  "><font face="Arial" color="#010101" size="2"><span style=" font-size:10pt; font-family:Arial; color:#010101">Start -&gt; Programs -&gt; Figlut -&gt; Figlut Server Manager</span></font>
+</li>
+</ol>
+</li>
+<li style="margin-left: -36pt; margin-right: 0pt; padding-left: 0pt; font-family: Arial;  font-size: 10pt;  color: #010101;  "><font face="Arial" color="#010101" size="2"><span style=" font-size:10pt; font-family:Arial; color:#010101">Running MMC and adding the Figlut Server Manager Snap-in:</span></font>
+<ol style="margin-bottom: 0mm; ">
+<li style="margin-left: -54pt; margin-right: 0pt; padding-left: 0pt; font-family: Arial;  font-size: 10pt;  color: #010101;  "><font face="Arial" color="#010101" size="2"><span style=" font-size:10pt; font-family:Arial; color:#010101">From the Windows Run Dialog Box, type &quot;mmc&quot; and press enter, which should open up 
+the Microsoft Management Console (MMC)</span></font></li>
+<li style="margin-left: -54pt; margin-right: 0pt; padding-left: 0pt; font-family: Arial;  font-size: 10pt;  color: #010101;  "><font face="Arial" color="#010101" size="2"><span style=" font-size:10pt; font-family:Arial; color:#010101">Click File -&gt; Add/Remove Snap-in...</span></font></li>
+<li style="margin-left: -54pt; margin-right: 0pt; padding-left: 0pt; font-family: Arial;  font-size: 10pt;  color: #010101;  "><font face="Arial" color="#010101" size="2"><span style=" font-size:10pt; font-family:Arial; color:#010101">Select the Figlut Server Manager snap-in and click Add. Then click OK.</span></font></li>
+</ol>
+</li>
+</ol>
+<div align="left"><font face="Arial" color="#010101" size="2"><span style=" font-size:10pt; font-family:Arial; color:#010101"><br />
+</span></font></div>
+<div align="left"><img src="FiglutSuiteHelp1.PNG" border=0 alt="Figlut Server Manager"/></div>
+<div align="left"><font face="Arial" color="#010101" size="2"><span style=" font-size:10pt; font-family:Arial; color:#010101"><br />
+</span></font></div>
+<div align="left"><font face="Arial" color="#010101" size="2"><span style=" font-size:10pt; font-family:Arial; color:#010101"><br />
+</span></font></div>
+<div align="left">&nbsp;&nbsp;</div>

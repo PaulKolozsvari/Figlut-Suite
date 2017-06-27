@@ -1,0 +1,48 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FiglutDesktopDataBoxSettings xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <ShowMessageBoxOnException>true</ShowMessageBoxOnException>
+  <FiglutWebServiceBaseUrl>http://localhost:2983/Figlut</FiglutWebServiceBaseUrl>
+  <UseAuthentication>true</UseAuthentication>
+  <PromptForCredentials>false</PromptForCredentials>
+  <AuthenticationDomainName>PAULKOLOZSV4DD3</AuthenticationDomainName>
+  <AuthenticationUserName>Paul</AuthenticationUserName>
+  <AuthenticationPassword>27830529</AuthenticationPassword>
+  <FiglutWebServiceWebRequestTimeout>30000</FiglutWebServiceWebRequestTimeout>
+  <FiglutWebServiceTextResponseEncoding>UTF8</FiglutWebServiceTextResponseEncoding>
+  <FiglutWebServiceMessagingFormat>JSON</FiglutWebServiceMessagingFormat>
+  <FiglutWebServiceSchemaAcquisitionMessagingFormat>JSON</FiglutWebServiceSchemaAcquisitionMessagingFormat>
+  <AcquireFiglutWebServiceSchemaOnStartup>true</AcquireFiglutWebServiceSchemaOnStartup>
+  <!--<ApplicationTitle>Figlut DataBox</ApplicationTitle>-->
+  <ApplicationTitle>Spar One Stop Shop</ApplicationTitle>
+  <ApplicationVersion>1.0.0.0</ApplicationVersion>
+  <ThemeStartColor>White</ThemeStartColor>
+  <!--<ThemeEndColor>SteelBlue</ThemeEndColor>-->
+  <ThemeEndColor>DarkRed</ThemeEndColor>
+  <!--<DataBoxSelectRowColor>SteelBlue</DataBoxSelectRowColor>-->
+  <DataBoxSelectRowColor>DarkRed</DataBoxSelectRowColor>
+  <!--<SplashScreenImageFileName>FiglutSplashScreen.png</SplashScreenImageFileName>-->
+  <SplashScreenImageFileName>SPAR-LOGO_SMALL.jpg</SplashScreenImageFileName>
+  <!--<ApplicationBannerImageFileName>FiglutApplicationBanner.png</ApplicationBannerImageFileName>-->
+  <ApplicationBannerImageFileName>SPAR-LOGO_SMALL.jpg</ApplicationBannerImageFileName>
+  <StartFullScreen>true</StartFullScreen>
+  <ShapeColumnNames>true</ShapeColumnNames>
+  <HiddenTypeNames>
+    <string>System.Guid</string>
+    <string>System.Nullable`1[[System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]</string>
+    <string>System.Byte[]</string>
+  </HiddenTypeNames>
+  <EntityIdColumnName>ENTITY_ID_A2382C02EF06497A9BBFE4DB3C8290A8</EntityIdColumnName>
+  <HideEntityIdColumn>true</HideEntityIdColumn>
+  <UseExtensions>true</UseExtensions>
+  <ExtensionAssemblyName>OneStopShop.FiglutExtensions.dll</ExtensionAssemblyName>
+  <CrudInterceptorFullTypeName>OneStopShop.FiglutExtensions.DataBox.OssDataBoxCrudInterceptor</CrudInterceptorFullTypeName>
+  <MainMenuExtentionFullTypeName>OneStopShop.FiglutExtensions.DataBox.OssDataBoxMainMenuExtension</MainMenuExtentionFullTypeName>
+  <LogToFile>false</LogToFile>
+  <LogToWindowsEventLog>true</LogToWindowsEventLog>
+  <LogToConsole>false</LogToConsole>
+  <LogFileName>Figlut.Desktop.DataBox.Log.txt</LogFileName>
+  <EventSourceName>Figlut.Desktop.DataBox.Source</EventSourceName>
+  <EventLogName>Figlut.Desktop.DataBox.Log</EventLogName>
+  <LoggingLevel>Normal</LoggingLevel>
+
+</FiglutDesktopDataBoxSettings>

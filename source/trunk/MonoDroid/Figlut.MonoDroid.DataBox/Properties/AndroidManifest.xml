@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android" android:versionCode="1" android:versionName="1.0" package="Figlut.Android.DataBox">
+	<uses-sdk android:minSdkVersion="10" />
+	<activity android:windowSoftInputMode="stateHidden">
+	</activity>
+	<application android:label="Figlut Android DataBox" android:icon="@drawable/figlut_mobile_databox">
+	</application>
+	<uses-permission android:name="android.permission.WRITE_OWNER_DATA" />
+	<uses-permission android:name="android.permission.INTERNET" />
+	<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+</manifest>

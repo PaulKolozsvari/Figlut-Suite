@@ -1,0 +1,23 @@
+﻿<Properties>
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Figlut.MonoDroid.DataBox/linker.xml">
+    <Files>
+      <File FileName="Figlut.MonoDroid.DataBox.userprefs" Line="1" Column="1" />
+      <File FileName="Figlut.MonoDroid.DataBox/MainActivity.cs" Line="1" Column="1" />
+      <File FileName="Figlut.MonoDroid.DataBox.Utilities/FiglutDataBoxApplication.cs" Line="1" Column="1" />
+      <File FileName="Figlut.MonoDroid.DataBox/linker.xml" Line="6" Column="20" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore>
+      <Breakpoint file="/Users/paulk/Documents/binaryChefSvn/FiglutSuite/code/trunk/MonoDroid/Figlut.MonoDroid.DataBox/Figlut.MonoDroid.DataBox.Utilities/FiglutDataBoxApplication.cs" line="79" column="42" />
+      <Breakpoint file="/Users/paulk/Documents/binaryChefSvn/FiglutSuite/code/trunk/MonoDroid/Figlut.MonoDroid.DataBox/Figlut.MonoDroid.DataBox/MainActivity.cs" line="59" column="66" />
+      <Breakpoint file="/Users/paulk/Documents/binaryChefSvn/FiglutToolkits/code/trunk/MonoDroid/Figlut.MonoDroid.Toolkit/Utilities/Information.cs" line="46" column="1" />
+    </BreakpointStore>
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches>
+    <Watch file="../../../../../FiglutToolkits/code/trunk/MonoDroid/Figlut.MonoDroid.Toolkit/Web/Client/WebServiceClient.cs" line="245" offsetX="657" offsetY="3660" expression="uri" liveUpdate="False" />
+  </MonoDevelop.Ide.DebuggingService.PinnedWatches>
+  <MonoDevelop.Ide.ItemProperties.DataGridExampleAndroid MonoForAntroid.PreferredDevice="3.7in WVGA (Nexus One)" AndroidDeviceId-Debug="YT9108TD8B" />
+  <MonoDevelop.Ide.ItemProperties.Figlut.MonoDroid.DataBox AndroidDeviceId-Debug="YT9108TD8B" MonoForAntroid.PreferredDevice="3.7in WVGA (Nexus One)" AndroidDeviceId-Release="YT9108TD8B" />
+</Properties>

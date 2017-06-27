@@ -1,0 +1,125 @@
+﻿<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="3.5">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{4BBDF855-AC06-45F6-948D-29756791342C}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Figlut.Mobile.Toolkit.SARoad.WM</RootNamespace>
+    <AssemblyName>Figlut.Mobile.Toolkit.SARoad.WM</AssemblyName>
+    <ProjectTypeGuids>{4D628B5B-2FBC-4AA6-8C16-197242AEB884};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <PlatformFamilyName>PocketPC</PlatformFamilyName>
+    <PlatformID>b2c48bd2-963d-4549-9169-1fa021dce484</PlatformID>
+    <OSVersion>5.2</OSVersion>
+    <DeployDirSuffix>Psion.Mobile.Toolkit.SARoad.WM</DeployDirSuffix>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <NativePlatformName>Windows Mobile 6 Professional SDK</NativePlatformName>
+    <FormFactorID>
+    </FormFactorID>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE;$(PlatformFamilyName)</DefineConstants>
+    <NoStdLib>true</NoStdLib>
+    <NoConfig>true</NoConfig>
+    <ErrorReport>prompt</ErrorReport>
+    <FileAlignment>512</FileAlignment>
+    <WarningLevel>4</WarningLevel>
+    <GenerateSerializationAssemblies>Off</GenerateSerializationAssemblies>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE;$(PlatformFamilyName)</DefineConstants>
+    <NoStdLib>true</NoStdLib>
+    <NoConfig>true</NoConfig>
+    <ErrorReport>prompt</ErrorReport>
+    <FileAlignment>512</FileAlignment>
+    <WarningLevel>4</WarningLevel>
+    <GenerateSerializationAssemblies>Off</GenerateSerializationAssemblies>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="face.drivinglicensecard.rsa_cf20, Version=2.0.0.2, Culture=neutral, PublicKeyToken=117183f9fe3308d5, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\SDK\DriversLicenseDecoder\face.drivinglicensecard.rsa_cf20.dll</HintPath>
+    </Reference>
+    <Reference Include="mscorlib" />
+    <Reference Include="summus.wisdk_cf20, Version=1.0.0.0, Culture=neutral, PublicKeyToken=51a675e9677b3480, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\SDK\DriversLicenseDecoder\summus.wisdk_cf20.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Linq.Expressions, Version=8.1.269.14430, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\SDK\System.LINQ.Expressions\System.Linq.Expressions.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SADriverLicense.cs" />
+    <Compile Include="SADriverLicenseForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SADriverLicenseForm.Designer.cs">
+      <DependentUpon>SADriverLicenseForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SADriverLicensePhotoForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SADriverLicensePhotoForm.Designer.cs">
+      <DependentUpon>SADriverLicensePhotoForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SAVehicleLicense.cs" />
+    <Compile Include="SAVehicleLicenseForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SAVehicleLicenseForm.Designer.cs">
+      <DependentUpon>SAVehicleLicenseForm.cs</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="SADriverLicenseForm.resx">
+      <DependentUpon>SADriverLicenseForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SADriverLicensePhotoForm.resx">
+      <DependentUpon>SADriverLicensePhotoForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SAVehicleLicenseForm.resx">
+      <DependentUpon>SAVehicleLicenseForm.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Figlut.Mobile.Toolkit.WM\Figlut.Mobile.Toolkit.WM.csproj">
+      <Project>{45B9F12F-3984-4E8E-A6F7-C84D89CB9B0B}</Project>
+      <Name>Figlut.Mobile.Toolkit.WM</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CompactFramework.CSharp.targets" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}">
+        <HostingProcess disable="1" />
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

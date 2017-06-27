@@ -1,0 +1,451 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{A7C9A24D-E19B-42F5-A298-805A489334EF}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Figlut.Server.Toolkit</RootNamespace>
+    <AssemblyName>Figlut.Server.Toolkit45</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <OldToolsVersion>3.5</OldToolsVersion>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+    <DocumentationFile>bin\Debug\Figlut.Server.Toolkit45.XML</DocumentationFile>
+    <UseVSHostingProcess>true</UseVSHostingProcess>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+    <DocumentationFile>bin\Release\Figlut.Server.Toolkit45.xml</DocumentationFile>
+    <PlatformTarget>x86</PlatformTarget>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="antlr.runtime">
+      <HintPath>..\SDK\iCal.NET\Ical.Net.2.2.20\lib\net45\antlr.runtime.dll</HintPath>
+    </Reference>
+    <Reference Include="AspNetMMCExt" />
+    <Reference Include="DotRas, Version=1.3.4823.23274, Culture=neutral, PublicKeyToken=b378f04384b7892a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\SDK\DotRAS\NET40\WIN2K\DotRas.dll</HintPath>
+    </Reference>
+    <Reference Include="Ical.Net">
+      <HintPath>..\SDK\iCal.NET\Ical.Net.2.2.20\lib\net45\Ical.Net.dll</HintPath>
+    </Reference>
+    <Reference Include="Ical.Net.Collections">
+      <HintPath>..\SDK\iCal.NET\Ical.Net.2.2.20\lib\net45\Ical.Net.Collections.dll</HintPath>
+    </Reference>
+    <Reference Include="microsoft.managementconsole, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\Program Files\Reference Assemblies\Microsoft\mmc\v3.0\microsoft.managementconsole.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=7.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\SDK\Newtonsoft.Json.8.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="NodaTime">
+      <HintPath>..\SDK\iCal.NET\Ical.Net.2.2.20\lib\net45\NodaTime.dll</HintPath>
+    </Reference>
+    <Reference Include="Renci.SshNet">
+      <HintPath>..\SDK\SSH.NET\Renci.SshNet.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data.Linq">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.IO.Compression" />
+    <Reference Include="System.IO.Compression.FileSystem" />
+    <Reference Include="System.Net" />
+    <Reference Include="System.Runtime.Serialization">
+      <RequiredTargetFramework>3.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.ServiceModel">
+      <RequiredTargetFramework>3.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.ServiceModel.Web">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Transactions" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml.Linq">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data.DataSetExtensions">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Data\DB\DatabaseSchemaInfoType.cs" />
+    <Compile Include="Data\DB\DatabaseTableColumn.cs" />
+    <Compile Include="Data\DB\DatabaseTableForeignKeyColumns.cs" />
+    <Compile Include="Data\DB\DatabaseTableKeyColumns.cs" />
+    <Compile Include="Data\DB\LINQ\EntityContext.cs" />
+    <Compile Include="Data\DB\LINQ\Logging\ServerAction.cs" />
+    <Compile Include="Data\DB\LINQ\Logging\ServerError.cs" />
+    <Compile Include="Data\DB\LINQ\Logging\User.cs" />
+    <Compile Include="Data\DB\SQLServer\SqlCeDatabaseSchemaFile.cs" />
+    <Compile Include="Data\DB\SQLServer\SqlConnectionExtensions.cs" />
+    <Compile Include="Data\DB\Dbms.cs" />
+    <Compile Include="Data\DB\ForeignKeyInfo.cs" />
+    <Compile Include="Data\DB\SQLServer\SqlDatabaseTableBase.cs" />
+    <Compile Include="Data\DB\SQLServer\SqlDatabaseTableColumn.cs" />
+    <Compile Include="Data\DB\SQLServer\SqlTypeConverter.cs" />
+    <Compile Include="Data\EntityCacheBase.cs" />
+    <Compile Include="Data\EntityCacheUnique.cs" />
+    <Compile Include="Data\EntityReaderBase.cs" />
+    <Compile Include="Data\FiglutEntityCacheUnique.cs" />
+    <Compile Include="Data\iCalendar\ICalPublicHoliday.cs" />
+    <Compile Include="Data\iCalendar\ICalCalendar.cs" />
+    <Compile Include="Data\iCalendar\ICalPublicHolidayParser.cs" />
+    <Compile Include="Data\QueryRunners\ISqlQueryRunner.cs" />
+    <Compile Include="Data\ORM\OrmCodeGenerator.cs" />
+    <Compile Include="Data\ORM\OrmAssembly.cs" />
+    <Compile Include="Data\ORM\OrmAssemblySql.cs" />
+    <Compile Include="Data\ORM\OrmProperty.cs" />
+    <Compile Include="Data\ORM\OrmType.cs" />
+    <Compile Include="Data\CSV\CsvParser.cs" />
+    <Compile Include="Data\CSV\CsvStream.cs" />
+    <Compile Include="Data\CSV\CsvWriter.cs" />
+    <Compile Include="Data\DataHelper.cs" />
+    <Compile Include="Data\DataShaper.cs" />
+    <Compile Include="Data\DB\Database.cs" />
+    <Compile Include="Data\DB\DatabaseCache.cs" />
+    <Compile Include="Data\DB\DatabaseTable.cs" />
+    <Compile Include="Data\DB\LINQ\LinqFunnelChangeResult.cs" />
+    <Compile Include="Data\DB\LINQ\LinqFunnelContext.cs" />
+    <Compile Include="Data\DB\LINQ\LinqFunnelSettings.cs" />
+    <Compile Include="Data\DB\SQLServer\SqlDatabase.cs" />
+    <Compile Include="Data\DB\SQLServer\SqlDatabaseTable.cs" />
+    <Compile Include="Data\DB\SQLQuery\SqlQuery.cs" />
+    <Compile Include="Data\DB\SQLQuery\WhereClauseColumn.cs" />
+    <Compile Include="Data\DB\SQLQuery\WhereClauseComparisonOperator.cs" />
+    <Compile Include="Data\DB\SQLQuery\WhereClauseLogicalOperator.cs" />
+    <Compile Include="Data\EntityCache.cs" />
+    <Compile Include="Data\EntityOperation.cs" />
+    <Compile Include="Data\EntityReader.cs" />
+    <Compile Include="Data\QueryRunners\SqlQueryRunnerConfig.cs" />
+    <Compile Include="Data\QueryRunners\SqlQueryRunnerDispatcher.cs" />
+    <Compile Include="Data\QueryRunners\SqlQueryRunnerInput.cs" />
+    <Compile Include="Data\QueryRunners\SqlQueryRunnerOutput.cs" />
+    <Compile Include="Utilities\EagerTimer.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Utilities\Email.cs" />
+    <Compile Include="Utilities\FtpClient.cs" />
+    <Compile Include="Utilities\FtpHelper.cs" />
+    <Compile Include="Utilities\FtpTransferProgressResult.cs" />
+    <Compile Include="Utilities\ProcessHelper.cs" />
+    <Compile Include="Utilities\RAS\RasConnectionType.cs" />
+    <Compile Include="Utilities\RAS\RasEventDelegates.cs" />
+    <Compile Include="Utilities\RAS\RasConnectionManager.cs" />
+    <Compile Include="Utilities\SSHFtpClient.cs" />
+    <Compile Include="Utilities\SMS\SmsEventDelegates.cs" />
+    <Compile Include="Utilities\SMS\SmsGateway.cs" />
+    <Compile Include="Utilities\SMS\SmsInfo.cs" />
+    <Compile Include="Utilities\SMS\SmsReceivedEventArgs.cs" />
+    <Compile Include="Utilities\SMS\SmsReceivedInfo.cs" />
+    <Compile Include="Utilities\WindowsHelper.cs" />
+    <Compile Include="Web\Client\DataProgress\ServiceDataTransactionType.cs" />
+    <Compile Include="Web\Client\DataProgress\ServiceTransactionCompletedHandler.cs" />
+    <Compile Include="Web\Client\DataProgress\ServiceTransactionEventArgs.cs" />
+    <Compile Include="Extensions\DataBox\Events\Crud\AfterAddInputControlsArgs.cs" />
+    <Compile Include="Extensions\DataBox\Events\Crud\AfterCrudOperationArgs.cs" />
+    <Compile Include="Extensions\DataBox\Events\Crud\AfterGridRefreshArgs.cs" />
+    <Compile Include="Extensions\DataBox\Events\Crud\AfterRefreshFromServerArgs.cs" />
+    <Compile Include="Extensions\DataBox\DataBoxCrudInterceptor.cs" />
+    <Compile Include="Extensions\DataBox\Events\AfterDataBoxArgs.cs" />
+    <Compile Include="Extensions\DataBox\Events\Crud\AfterSaveArgs.cs" />
+    <Compile Include="Extensions\DataBox\Events\Crud\BeforeAddInputControlsArgs.cs" />
+    <Compile Include="Extensions\DataBox\Events\Crud\BeforeCrudOperationArgs.cs" />
+    <Compile Include="Extensions\DataBox\Events\BeforeDataBoxArgs.cs" />
+    <Compile Include="Extensions\DataBox\Events\Crud\BeforeGridRefreshArgs.cs" />
+    <Compile Include="Extensions\DataBox\Events\Crud\BeforeRefreshFromServerArgs.cs" />
+    <Compile Include="Extensions\DataBox\Events\Crud\BeforeSaveArgs.cs" />
+    <Compile Include="Extensions\DataBox\Events\Crud\CrudEventDelegates.cs" />
+    <Compile Include="Extensions\DataBox\Events\MainMenu\MainMenuEventDelegates.cs" />
+    <Compile Include="Extensions\DataBox\Events\MainMenu\MenuClickArgs.cs" />
+    <Compile Include="Extensions\DataBox\Managers\DataBoxManager.cs" />
+    <Compile Include="Extensions\DataBox\Managers\DataBoxPropertiesChangedArgs.cs" />
+    <Compile Include="Extensions\DataBox\Managers\DataBoxPropertiesEvents.cs" />
+    <Compile Include="Extensions\DataBox\Managers\IDataBox.cs" />
+    <Compile Include="Extensions\ExtensionManaged\ExtensionManagedEntity.cs" />
+    <Compile Include="Extensions\ExtensionManaged\ExtensionManagedEntityCache.cs" />
+    <Compile Include="Extensions\ExtensionManaged\ExtensionManagedEntityProperty.cs" />
+    <Compile Include="Extensions\DataBox\DataBoxMainMenuExtension.cs" />
+    <Compile Include="Extensions\ExtensionManaged\ExtensionManagedMenuItem.cs" />
+    <Compile Include="Extensions\ExtensionManaged\ExtensionManagedMainMenu.cs" />
+    <Compile Include="Extensions\WebService\Events\AfterWebServiceRequestArgs.cs" />
+    <Compile Include="Extensions\WebService\Events\BeforeWebServiceRequestArgs.cs" />
+    <Compile Include="Extensions\WebService\Events\Crud\AfterWebGetSqlTableArgs.cs" />
+    <Compile Include="Extensions\WebService\Events\Crud\AfterWebInvokeSqlArgs.cs" />
+    <Compile Include="Extensions\WebService\Events\Crud\AfterWebInvokeSqlTableArgs.cs" />
+    <Compile Include="Extensions\WebService\Events\Crud\BeforeWebInvokeSqlArgs.cs" />
+    <Compile Include="Extensions\WebService\Events\Crud\BeforeWebGetSqlTableArgs.cs" />
+    <Compile Include="Extensions\WebService\Events\Crud\BeforeWebInvokeSqlTableArgs.cs" />
+    <Compile Include="Extensions\WebService\Events\WebServiceRequestArgs.cs" />
+    <Compile Include="Extensions\WebService\Events\Crud\CrudEventDelegates.cs" />
+    <Compile Include="Extensions\WebService\Handlers\WebRequestToExtensionInput.cs" />
+    <Compile Include="Extensions\WebService\Handlers\WebRequestToExtensionHandler.cs" />
+    <Compile Include="Extensions\WebService\Handlers\WebRequestToExtensionHandlerCache.cs" />
+    <Compile Include="Extensions\WebService\Handlers\WebRequestToExtensionOutput.cs" />
+    <Compile Include="Extensions\WebService\WebServiceCrudInterceptor.cs" />
+    <Compile Include="Extensions\WebService\WebServiceExtension.cs" />
+    <Compile Include="Mmc\Forms\SettingsControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Mmc\Forms\SettingsControl.Designer.cs">
+      <DependentUpon>SettingsControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Mmc\Forms\SettingsFormView.cs" />
+    <Compile Include="Mmc\MmcScopeNodeFactory.cs" />
+    <Compile Include="Mmc\SettingEditors\EditBoolSettingControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Mmc\SettingEditors\EditBoolSettingControl.Designer.cs">
+      <DependentUpon>EditBoolSettingControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Mmc\SettingEditors\EditEnumSettingControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Mmc\SettingEditors\EditEnumSettingControl.Designer.cs">
+      <DependentUpon>EditEnumSettingControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Mmc\SettingEditors\EditLongSettingControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Mmc\SettingEditors\EditLongSettingControl.Designer.cs">
+      <DependentUpon>EditLongSettingControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Mmc\SettingEditors\EditSettingPage.cs" />
+    <Compile Include="Mmc\SettingEditors\EditTextSettingControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Mmc\SettingEditors\EditTextSettingControl.Designer.cs">
+      <DependentUpon>EditTextSettingControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Mmc\SettingEditors\IEditSetting.cs" />
+    <Compile Include="Mmc\SnapInAction.cs" />
+    <Compile Include="Mmc\SettingsCategoryInfo.cs" />
+    <Compile Include="Utilities\AssemblyReader.cs" />
+    <Compile Include="Utilities\FileSystemHelper.cs" />
+    <Compile Include="Utilities\Instantiator.cs" />
+    <Compile Include="Utilities\Serialization\CsvSerializer.cs" />
+    <Compile Include="Utilities\Serialization\SerializerHelper.cs" />
+    <Compile Include="Utilities\SettingsFile\SettingItem.cs" />
+    <Compile Include="Utilities\SettingsFile\SettingInfoAttribute.cs" />
+    <Compile Include="Utilities\StreamHelper.cs" />
+    <Compile Include="Utilities\TextEncodingType.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Utilities\Cab\CabBuilder.cs" />
+    <Compile Include="Utilities\Cab\CabInfo.cs" />
+    <Compile Include="Utilities\Cab\CabResourceInfo.cs" />
+    <Compile Include="Utilities\Encryptor.cs" />
+    <Compile Include="Utilities\GdiHelper.cs" />
+    <Compile Include="Utilities\ImageHandler.cs" />
+    <Compile Include="Data\DB\SQLServer\SqlTypeConversionInfo.cs" />
+    <Compile Include="Utilities\Serialization\ISerializer.cs" />
+    <Compile Include="Utilities\Logging\LoggingLevel.cs" />
+    <Compile Include="Utilities\Logging\LogMessage.cs" />
+    <Compile Include="Utilities\Logging\LogMessageType.cs" />
+    <Compile Include="Utilities\Serialization\JSerializer.cs" />
+    <Compile Include="Utilities\Serialization\SerializerType.cs" />
+    <Compile Include="Utilities\Serialization\XSerializer.cs" />
+    <Compile Include="Utilities\UserThrownException.cs" />
+    <Compile Include="Web\Client\CsvWebServiceClient.cs" />
+    <Compile Include="Web\Client\FiglutWebService\FiglutWebServiceClientWrapper.cs" />
+    <Compile Include="Web\Client\FiglutWebService\FiglutWebServiceFilterString.cs" />
+    <Compile Include="Web\Client\IMimeWebServiceClient.cs" />
+    <Compile Include="Web\Client\IP_API\query.cs" />
+    <Compile Include="Web\Client\JsonWebServiceClient.cs" />
+    <Compile Include="Web\Client\REST\FileTransferProgressResult.cs" />
+    <Compile Include="Web\Client\IP_API\IP_API_WebServiceClientXml.cs" />
+    <Compile Include="Web\Client\REST\RestWebServiceClient.cs" />
+    <Compile Include="Web\Client\XmlWebServiceClient.cs" />
+    <Compile Include="Web\MimeContentType.cs" />
+    <Compile Include="Web\Service\Inspector\ServiceMessageInspectorBehavior.cs" />
+    <Compile Include="Web\Service\REST\Events\RestServiceDeleteEntityEventArgs.cs" />
+    <Compile Include="Web\Service\REST\Events\RestServiceEventArgs.cs" />
+    <Compile Include="Web\Service\REST\Events\RestServiceGetEntitiesByFieldEventArgs.cs" />
+    <Compile Include="Web\Service\REST\Events\RestServiceGetEntitiesEventArgs.cs" />
+    <Compile Include="Web\Service\REST\Events\RestServiceGetEntityByIdEventArgs.cs" />
+    <Compile Include="Web\Service\REST\Events\RestServicePostEntityEventArgs.cs" />
+    <Compile Include="Web\Service\REST\Events\RestServicePutEntityEventArgs.cs" />
+    <Compile Include="Web\Service\FileUploadSessions.cs" />
+    <Compile Include="Web\Service\REST\IRestService.cs" />
+    <Compile Include="Web\Service\Inspector\ServiceMessageInspector.cs" />
+    <Compile Include="Web\Service\REST\RestService.cs" />
+    <Compile Include="Web\Service\REST\Events\RestServiceEventDelegates.cs" />
+    <Compile Include="Web\Service\ServiceException.cs" />
+    <Compile Include="Web\Service\ServiceFunctionResult.cs" />
+    <Compile Include="Web\Service\ServiceProcedureResult.cs" />
+    <Compile Include="Web\Service\ServiceResult.cs" />
+    <Compile Include="Web\Service\ServiceResultCode.cs" />
+    <Compile Include="Web\Client\SOAP\SoapClientMessageInspector.cs" />
+    <Compile Include="Web\Client\SOAP\SoapClientMessageInspectorBehavior.cs" />
+    <Compile Include="Web\Service\SOAP\SoapServerMessageInspectorBehavior.cs" />
+    <Compile Include="Web\Service\SOAP\SoapServerMessageInspector.cs" />
+    <Compile Include="Winforms\BorderlessForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Winforms\BorderlessForm.designer.cs">
+      <DependentUpon>BorderlessForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Winforms\CustomDataGridView.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Winforms\CustomDataGridView.designer.cs">
+      <DependentUpon>CustomDataGridView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Winforms\CustomListBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Winforms\CustomListBox.Designer.cs">
+      <DependentUpon>CustomListBox.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Winforms\CustomMainMenu.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Winforms\CustomMainMenu.designer.cs">
+      <DependentUpon>CustomMainMenu.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Winforms\CustomProfessionalColors.cs" />
+    <Compile Include="Winforms\CustomProgressBar.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Winforms\CustomProgressBar.Designer.cs">
+      <DependentUpon>CustomProgressBar.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Winforms\CustomTab.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Winforms\CustomTab.designer.cs">
+      <DependentUpon>CustomTab.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Winforms\CustomToolStrip.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Winforms\CustomToolStrip.designer.cs">
+      <DependentUpon>CustomToolStrip.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Winforms\CustomTreeView.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Winforms\CustomTreeView.Designer.cs">
+      <DependentUpon>CustomTreeView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Winforms\GradientButton.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Winforms\GradientButton.Designer.cs">
+      <DependentUpon>GradientButton.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Winforms\GradientLabel.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Winforms\GradientLabel.Designer.cs">
+      <DependentUpon>GradientLabel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Winforms\GradientPanel.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Winforms\GradientPanel.designer.cs">
+      <DependentUpon>GradientPanel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Utilities\EnumHelper.cs" />
+    <Compile Include="Utilities\ExceptionHandler.cs" />
+    <Compile Include="Utilities\Formula.cs" />
+    <Compile Include="Utilities\GOC.cs" />
+    <Compile Include="Utilities\Information.cs" />
+    <Compile Include="Utilities\Logging\LogError.cs" />
+    <Compile Include="Utilities\Logging\Logger.cs" />
+    <Compile Include="Utilities\SettingsFile\Settings.cs" />
+    <Compile Include="Utilities\SettingsFile\SettingsCache.cs" />
+    <Compile Include="Utilities\UIHelper.cs" />
+    <Compile Include="Utilities\Vertex.cs" />
+    <Compile Include="Utilities\WaitProcess.cs" />
+    <Compile Include="Web\Client\Funnel\FunnelServiceResult.cs" />
+    <Compile Include="Web\Client\Funnel\FunnelServiceResultCode.cs" />
+    <Compile Include="Web\Client\Funnel\FunnerlServiceResultHandler.cs" />
+    <Compile Include="Web\Client\HttpVerb.cs" />
+    <Compile Include="Web\Client\IWebService.cs" />
+    <Compile Include="Web\Client\WebServiceClient.cs" />
+    <Compile Include="Web\Client\WebServiceClientCache.cs" />
+    <Compile Include="Winforms\NumericTextBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Mmc\Forms\SettingsControl.resx">
+      <DependentUpon>SettingsControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Mmc\SettingEditors\EditBoolSettingControl.resx">
+      <DependentUpon>EditBoolSettingControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Mmc\SettingEditors\EditEnumSettingControl.resx">
+      <DependentUpon>EditEnumSettingControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Mmc\SettingEditors\EditLongSettingControl.resx">
+      <DependentUpon>EditLongSettingControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Mmc\SettingEditors\EditTextSettingControl.resx">
+      <DependentUpon>EditTextSettingControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Winforms\BorderlessForm.resx">
+      <DependentUpon>BorderlessForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Winforms\CustomDataGridView.resx">
+      <DependentUpon>CustomDataGridView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Winforms\CustomMainMenu.resx">
+      <DependentUpon>CustomMainMenu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Winforms\CustomTab.resx">
+      <DependentUpon>CustomTab.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Winforms\GradientPanel.resx">
+      <DependentUpon>GradientPanel.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Web\Client\IP_API\Sample-ip-api.com-ResponseXmlText.txt" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

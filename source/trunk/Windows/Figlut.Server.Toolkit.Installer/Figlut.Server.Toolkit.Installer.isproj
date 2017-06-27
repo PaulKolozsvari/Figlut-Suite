@@ -1,0 +1,44 @@
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="3.5">
+	<PropertyGroup>
+		<!-- Select a Product Configuration -->
+		<InstallShieldProductConfiguration>Express</InstallShieldProductConfiguration>
+		<!-- Select a Visual Studio Configuration / InstallShield Release -->
+		<Configuration>Debug</Configuration>
+		<InstallShieldRelease>$(Configuration)</InstallShieldRelease>
+	</PropertyGroup>
+	<ItemGroup>
+		<!-- The InstallShieldProject item selects the project to build -->
+		<InstallShieldProject Include="$(MSBuildProjectDirectory)\$(MSBuildProjectName).isl"/>
+		<!-- The InstallShieldReleaseFlags sets Release Flags -->
+		<!--<InstallShieldReleaseFlags Include=""/>-->
+		<!-- The InstallShieldMergeModulePath specifies what directories are
+		searched for Merge Modules -->
+		<!--<InstallShieldMergeModulePath Include=""/>-->
+	</ItemGroup>
+	<ItemGroup>
+		<!-- The ProjectReference items refer to any Visual Studio solutions you want to automatically probe for Project Output Groups.  -->
+	</ItemGroup>
+	<ItemGroup>
+		<!-- The TaggedOutputs items allow you to explicitly add extra files to output groups. Each item must include both Name and OutputGroup, as well as TargetPath metadata values. -->
+		<!--<TaggedOutputs Include="C:\My Test Exe.exe">
+			<Name>My Test Project</Name>
+			<OutputGroup>Primary output</OutputGroup>
+			<TargetPath>My Test Exe.exe</TargetPath>
+		</TaggedOutputs> -->
+	</ItemGroup>
+	<Import Project="$(MSBuildExtensionsPath32)\InstallShield\2012SpringLimited\InstallShield.targets"/>
+	<ItemGroup>
+		<ProjectReference Include="..\Figlut.Server.Toolkit.20\Figlut.Server.Toolkit.20.csproj">
+			<Name>Figlut.Server.Toolkit.20</Name>
+			<Project>{77B2F252-4034-49C8-A46F-606BE9FABB3E}</Project>
+		</ProjectReference>
+		<ProjectReference Include="..\Figlut.Server.Toolkit.35\Figlut.Server.Toolkit.35.csproj">
+			<Name>Figlut.Server.Toolkit.35</Name>
+			<Project>{2210F1C7-64CF-44A6-A8C9-A512E765EB63}</Project>
+		</ProjectReference>
+		<ProjectReference Include="..\Figlut.Server.Toolkit.45\Figlut.Server.Toolkit.45.csproj">
+			<Name>Figlut.Server.Toolkit.45</Name>
+			<Project>{A7C9A24D-E19B-42F5-A298-805A489334EF}</Project>
+		</ProjectReference>
+	</ItemGroup>
+</Project>

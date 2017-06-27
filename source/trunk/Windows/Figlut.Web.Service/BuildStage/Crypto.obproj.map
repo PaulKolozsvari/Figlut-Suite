@@ -1,0 +1,468 @@
+﻿<Mappings><Entry OldName="Figlut.Server.FiglutWebService.components" NewName="Figlut.Server.FiglutWebService.c49f51417b93d5bd69d7355eff4207046" />
+<Entry OldName="Figlut.Server.RestService.CONFIGURATION_MANAGER_INSTALLATION_DIRECTORY_REG_NAME" NewName="Figlut.Server.RestService.c7cde5173cd6df8687e7a079244ffa86e" />
+<Entry OldName="Figlut.Server.RestService.WEB_SERVICE_INSTALLATION_DIRECTORY_REG_NAME" NewName="Figlut.Server.RestService.c5221cdcd0c65e5549ced020a6e109f36" />
+<Entry OldName="Figlut.Server.RestService.DESKTOP_DATABOX_INSTALLATION_DIRECTORY_REG_NAME" NewName="Figlut.Server.RestService.c2611575a2d26fe22811fc52d18808f44" />
+<Entry OldName="Figlut.Server.RestService.SERVER_TOOLKIT_INSTALLATION_DIRECTORY_REG_NAME" NewName="Figlut.Server.RestService.c5d1d5d061ed505b00d99e1876d7e8cdd" />
+<Entry OldName="Figlut.Server.RestService.MOBILE_TOOLKIT_INSTALLATION_DIRECTRORY_REG_NAME" NewName="Figlut.Server.RestService.c4b45b434aa4585a32eb0d68d681ca7f3" />
+<Entry OldName="Figlut.Server.RestService._settings" NewName="Figlut.Server.RestService.cceab6462f954dc996c913c2287c9eb52" />
+<Entry OldName="Figlut.Server.Program.HELP_ARGUMENT" NewName="A.cb20b4e82365941cd84100c047d0d3b31.cae13547dbb9f9c687f9021e69e8a24a0" />
+<Entry OldName="Figlut.Server.Program.HELP_QUESTION_MARK_ARGUMENT" NewName="A.cb20b4e82365941cd84100c047d0d3b31.c0209938931b5d0d3898a136e92c8db3b" />
+<Entry OldName="Figlut.Server.Program.RESET_SETTINGS_ARGUMENT" NewName="A.cb20b4e82365941cd84100c047d0d3b31.ca4ca567f3e2996fed3b7c1d4ae8ebcda" />
+<Entry OldName="Figlut.Server.Program.TEST_MODE_ARGUMENT" NewName="A.cb20b4e82365941cd84100c047d0d3b31.c322975f85b9eac3f7645ea4b0dea5c99" />
+<Entry OldName="Figlut.Server.Program._displayHelp" NewName="A.cb20b4e82365941cd84100c047d0d3b31.c6be71a8d658776703b908f3a734e9313" />
+<Entry OldName="Figlut.Server.Program._resetSettings" NewName="A.cb20b4e82365941cd84100c047d0d3b31.c836289d2098dacb58d26d3a06bc4906c" />
+<Entry OldName="Figlut.Server.Program._testMode" NewName="A.cb20b4e82365941cd84100c047d0d3b31.c6eeeb869ef7b9e2ecc3dbf230a84b5d1" />
+<Entry OldName="Figlut.Server.ProjectInstaller.components" NewName="Figlut.Server.ProjectInstaller.c49f51417b93d5bd69d7355eff4207046" />
+<Entry OldName="Figlut.Server.ProjectInstaller.FiglutServiceProcessInstaller" NewName="Figlut.Server.ProjectInstaller.cec1521b42b6f5657bea88aae3482cf13" />
+<Entry OldName="Figlut.Server.ProjectInstaller.FiglutServiceInstaller" NewName="Figlut.Server.ProjectInstaller.c73103e43b7235e0662d7f68e8d294448" />
+<Entry OldName="Figlut.Server.User.&lt;UserId&gt;k__BackingField" NewName="Figlut.Server.User.ca271a27c3c9723270baaeaac3f8e9886" />
+<Entry OldName="Figlut.Server.User.&lt;UserName&gt;k__BackingField" NewName="Figlut.Server.User.c3f567090695feb990beff6edeb9f72da" />
+<Entry OldName="Figlut.Server.User.&lt;FirstName&gt;k__BackingField" NewName="Figlut.Server.User.c405be1cca1ffd7bffddc9b7c323f4207" />
+<Entry OldName="Figlut.Server.User.&lt;LastName&gt;k__BackingField" NewName="Figlut.Server.User.c2a10bc02a1cc47fa92f211bda564c78c" />
+<Entry OldName="Figlut.Server.User.&lt;Email&gt;k__BackingField" NewName="Figlut.Server.User.cc1a0d8baea11f3bdf071d8dc23b3cb5c" />
+<Entry OldName="Figlut.Server.User.&lt;Password&gt;k__BackingField" NewName="Figlut.Server.User.cfbac98eafb275ad790ed158c5eaf7dae" />
+<Entry OldName="Figlut.Server.User.&lt;DeviceId&gt;k__BackingField" NewName="Figlut.Server.User.c9d233918b81ca950ba6f217a6abff213" />
+<Entry OldName="Figlut.Server.User.&lt;DateCreated&gt;k__BackingField" NewName="Figlut.Server.User.c5bf44f0e589dd31ef807090ed724b6fe" />
+<Entry OldName="Figlut.Web.Service.Utilities.FiglutClientInfo.K" NewName="Figlut.Web.Service.Utilities.FiglutClientInfo.c3eceba81f3930ddb8d7583ff6157fbbc" />
+<Entry OldName="Figlut.Web.Service.Utilities.FiglutClientInfo.I" NewName="Figlut.Web.Service.Utilities.FiglutClientInfo.c48406d0e8150fce4ea098849fc650181" />
+<Entry OldName="Figlut.Web.Service.Utilities.FiglutClientInfo.PREFIX" NewName="Figlut.Web.Service.Utilities.FiglutClientInfo.c9fa63ca5dffb54716bf48036c0955f56" />
+<Entry OldName="Figlut.Web.Service.Utilities.FiglutClientManager.K" NewName="Figlut.Web.Service.Utilities.FiglutClientManager.c3eceba81f3930ddb8d7583ff6157fbbc" />
+<Entry OldName="Figlut.Web.Service.Utilities.FiglutClientManager.I" NewName="Figlut.Web.Service.Utilities.FiglutClientManager.c48406d0e8150fce4ea098849fc650181" />
+<Entry OldName="Figlut.Web.Service.Utilities.FiglutClientManager._instance" NewName="Figlut.Web.Service.Utilities.FiglutClientManager.cd04d24383935ed162c5ade1c954776b6" />
+<Entry OldName="Figlut.Web.Service.Utilities.FiglutClientManager.FIGLUT_DESKTOP_DATABOX_APPLICATION_ID" NewName="Figlut.Web.Service.Utilities.FiglutClientManager.c9e0223e1a2b3f099ac1633c67b77c711" />
+<Entry OldName="Figlut.Web.Service.Utilities.FiglutClientManager.FIGLUT_MOBILE_DATABOX_APPLICATION_ID" NewName="Figlut.Web.Service.Utilities.FiglutClientManager.c70108c994167ecb92bcb1a43bdad56c1" />
+<Entry OldName="Figlut.Web.Service.Utilities.FiglutClientManager.NON_FIGLUT_APPLICATION_ID" NewName="Figlut.Web.Service.Utilities.FiglutClientManager.c3074d48707f9b31f32a5256c1f53bea0" />
+<Entry OldName="Figlut.Web.Service.Utilities.FiglutClientManager._settings" NewName="Figlut.Web.Service.Utilities.FiglutClientManager.cceab6462f954dc996c913c2287c9eb52" />
+<Entry OldName="Figlut.Web.Service.Utilities.FiglutClientManager._figlutDesktopDataBoxClients" NewName="Figlut.Web.Service.Utilities.FiglutClientManager.c84a1d31b092b135304311381cf57ac8a" />
+<Entry OldName="Figlut.Web.Service.Utilities.FiglutClientManager._figlutMobileDataBoxClients" NewName="Figlut.Web.Service.Utilities.FiglutClientManager.c7f2edce35d291da4f1396f5b0621a02f" />
+<Entry OldName="Figlut.Web.Service.Utilities.FiglutClientManager._nonFiglutClients" NewName="Figlut.Web.Service.Utilities.FiglutClientManager.c66fcc59a5a56e7b0cb2f80aa6b3ba6c4" />
+<Entry OldName="Figlut.Web.Service.Utilities.FiglutClientManager._clientTrace" NewName="Figlut.Web.Service.Utilities.FiglutClientManager.cd51df99f7e9a2ec1a22223425c4319ae" />
+<Entry OldName="Figlut.Web.Service.Utilities.FiglutClientManager._encryptor" NewName="Figlut.Web.Service.Utilities.FiglutClientManager.cd68dfedaef2693a0d490e7f027d66e03" />
+<Entry OldName="Figlut.Web.Service.Utilities.FiglutClientManager._saveQueue" NewName="Figlut.Web.Service.Utilities.FiglutClientManager.cccbac86a597be1ed27f25a8853d83894" />
+<Entry OldName="Figlut.Web.Service.Utilities.FiglutClientManager._lock" NewName="Figlut.Web.Service.Utilities.FiglutClientManager.c8d4fe94769ae54e3f399bc94b76263ee" />
+<Entry OldName="Figlut.Web.Service.Utilities.FiglutClientManager.SaveFileInfo.&lt;FilePath&gt;k__BackingField" NewName="Figlut.Web.Service.Utilities.FiglutClientManager.c22dd6301ab03c431ff0d4250c12f023f.c24735816b22e73177a29884d07354add" />
+<Entry OldName="Figlut.Web.Service.Utilities.FiglutClientManager.SaveFileInfo.&lt;Contents&gt;k__BackingField" NewName="Figlut.Web.Service.Utilities.FiglutClientManager.c22dd6301ab03c431ff0d4250c12f023f.cc3eb4e20bacf707cb5acb818d0c4119e" />
+<Entry OldName="Figlut.Web.Service.Utilities.FiglutClientManager.SaveFileInfo.&lt;Saved&gt;k__BackingField" NewName="Figlut.Web.Service.Utilities.FiglutClientManager.c22dd6301ab03c431ff0d4250c12f023f.ca944529c8868901635c667d6308a6ad1" />
+<Entry OldName="Figlut.Web.Service.Utilities.FiglutWebServiceApplication._instance" NewName="Figlut.Web.Service.Utilities.FiglutWebServiceApplication.cd04d24383935ed162c5ade1c954776b6" />
+<Entry OldName="Figlut.Web.Service.Utilities.FiglutWebServiceApplication._extensionAssembly" NewName="Figlut.Web.Service.Utilities.FiglutWebServiceApplication.c1de65add668017c4d3d04c821370a7a3" />
+<Entry OldName="Figlut.Web.Service.Utilities.FiglutWebServiceApplication._crudInterceptor" NewName="Figlut.Web.Service.Utilities.FiglutWebServiceApplication.cd70ac6156e8cc6b06eed99b82742148e" />
+<Entry OldName="Figlut.Web.Service.Utilities.FiglutWebServiceApplication._extension" NewName="Figlut.Web.Service.Utilities.FiglutWebServiceApplication.c9c05d64e053721c6d4bdb5afa9909f5b" />
+<Entry OldName="Figlut.Web.Service.Configuration.FiglutWebServiceSettings._logToFile" NewName="Figlut.Web.Service.Configuration.FiglutWebServiceSettings.c6366fd59f7195c39b6a38a660f444b64" />
+<Entry OldName="Figlut.Web.Service.Configuration.FiglutWebServiceSettings._logToWindowsEventLog" NewName="Figlut.Web.Service.Configuration.FiglutWebServiceSettings.c6b44d1445ce676e4f031af3833ad8276" />
+<Entry OldName="Figlut.Web.Service.Configuration.FiglutWebServiceSettings._logToConsole" NewName="Figlut.Web.Service.Configuration.FiglutWebServiceSettings.c05eb8a5740b3d9e0ff5706c85fb7eb6d" />
+<Entry OldName="Figlut.Web.Service.Configuration.FiglutWebServiceSettings._logFileName" NewName="Figlut.Web.Service.Configuration.FiglutWebServiceSettings.cacd343b480cb88fcfcf2147bb5cda821" />
+<Entry OldName="Figlut.Web.Service.Configuration.FiglutWebServiceSettings._eventSourceName" NewName="Figlut.Web.Service.Configuration.FiglutWebServiceSettings.cb013a4f425edb59b67f3c6c9f2b620fa" />
+<Entry OldName="Figlut.Web.Service.Configuration.FiglutWebServiceSettings._eventLogName" NewName="Figlut.Web.Service.Configuration.FiglutWebServiceSettings.c6a35b1c9d1fb6d2c9a2d52d67395698b" />
+<Entry OldName="Figlut.Web.Service.Configuration.FiglutWebServiceSettings._loggingLevel" NewName="Figlut.Web.Service.Configuration.FiglutWebServiceSettings.c79c81d8a29f31cce4907f3f3bdecf9cb" />
+<Entry OldName="Figlut.Web.Service.Configuration.FiglutWebServiceSettings._dbms" NewName="Figlut.Web.Service.Configuration.FiglutWebServiceSettings.c9d9ba264c0abf4e6ba3e7ca9b6ce34d3" />
+<Entry OldName="Figlut.Web.Service.Configuration.FiglutWebServiceSettings._databaseConnectionString" NewName="Figlut.Web.Service.Configuration.FiglutWebServiceSettings.c80b0dd21502118df032f29c09925ae5f" />
+<Entry OldName="Figlut.Web.Service.Configuration.FiglutWebServiceSettings._databaseServerName" NewName="Figlut.Web.Service.Configuration.FiglutWebServiceSettings.ca53a1b7c5a9d0c715af02c8a768aaa0c" />
+<Entry OldName="Figlut.Web.Service.Configuration.FiglutWebServiceSettings._databaseName" NewName="Figlut.Web.Service.Configuration.FiglutWebServiceSettings.c0374d3f7292ad831fa41936edad6a375" />
+<Entry OldName="Figlut.Web.Service.Configuration.FiglutWebServiceSettings._databaseUserName" NewName="Figlut.Web.Service.Configuration.FiglutWebServiceSettings.c517bf86caac9780d3548e919141931a8" />
+<Entry OldName="Figlut.Web.Service.Configuration.FiglutWebServiceSettings._databaseUserPassword" NewName="Figlut.Web.Service.Configuration.FiglutWebServiceSettings.c55be3071675d1d0429ceff8671cab19a" />
+<Entry OldName="Figlut.Web.Service.Configuration.FiglutWebServiceSettings._saveOrmAssembly" NewName="Figlut.Web.Service.Configuration.FiglutWebServiceSettings.c0f1434b47b9f71484244de75a1cd14b4" />
+<Entry OldName="Figlut.Web.Service.Configuration.FiglutWebServiceSettings._ormAssemblyOutputDirectory" NewName="Figlut.Web.Service.Configuration.FiglutWebServiceSettings.c7d504772feea3180705e8fa0a364f7ad" />
+<Entry OldName="Figlut.Web.Service.Configuration.FiglutWebServiceSettings._queryRunnerAssemblyName" NewName="Figlut.Web.Service.Configuration.FiglutWebServiceSettings.c45f4ef60c7915bdcb6225537c6bb5169" />
+<Entry OldName="Figlut.Web.Service.Configuration.FiglutWebServiceSettings._sqlQueryRunnerFullTypeName" NewName="Figlut.Web.Service.Configuration.FiglutWebServiceSettings.c00aeabea7356c2921fce6ffd9eeeeba4" />
+<Entry OldName="Figlut.Web.Service.Configuration.FiglutWebServiceSettings._hostAddressSuffix" NewName="Figlut.Web.Service.Configuration.FiglutWebServiceSettings.cece0bca5d37ec514ee7e9a8697e55915" />
+<Entry OldName="Figlut.Web.Service.Configuration.FiglutWebServiceSettings._portNumber" NewName="Figlut.Web.Service.Configuration.FiglutWebServiceSettings.ce24de6247deb1916e0d0072ed90d7c58" />
+<Entry OldName="Figlut.Web.Service.Configuration.FiglutWebServiceSettings._useAuthentication" NewName="Figlut.Web.Service.Configuration.FiglutWebServiceSettings.cc51fe0cb8730c3e0412e040812d1e739" />
+<Entry OldName="Figlut.Web.Service.Configuration.FiglutWebServiceSettings._includeExceptionDetailInResponse" NewName="Figlut.Web.Service.Configuration.FiglutWebServiceSettings.c9c1edc6ac76b85e8dad436a52fe2533b" />
+<Entry OldName="Figlut.Web.Service.Configuration.FiglutWebServiceSettings._textResponseEncoding" NewName="Figlut.Web.Service.Configuration.FiglutWebServiceSettings.cf27f8b06c74ce5ec9f97e7ce39f30290" />
+<Entry OldName="Figlut.Web.Service.Configuration.FiglutWebServiceSettings._includeOrmTypeNamesInJsonResponse" NewName="Figlut.Web.Service.Configuration.FiglutWebServiceSettings.ccc3d05e0e74c2c26a78cf144d88851af" />
+<Entry OldName="Figlut.Web.Service.Configuration.FiglutWebServiceSettings._maxBufferPoolSize" NewName="Figlut.Web.Service.Configuration.FiglutWebServiceSettings.c5dcdb3f960a2b5385d7f08c1eba5113a" />
+<Entry OldName="Figlut.Web.Service.Configuration.FiglutWebServiceSettings._maxBufferSize" NewName="Figlut.Web.Service.Configuration.FiglutWebServiceSettings.c280e5232bb61fd168cc773350a67755b" />
+<Entry OldName="Figlut.Web.Service.Configuration.FiglutWebServiceSettings._maxReceivedMessageSize" NewName="Figlut.Web.Service.Configuration.FiglutWebServiceSettings.cf90a6924fbb35ddf7d102e8ce00eed0d" />
+<Entry OldName="Figlut.Web.Service.Configuration.FiglutWebServiceSettings._deleteClientDataWhenServiceStops" NewName="Figlut.Web.Service.Configuration.FiglutWebServiceSettings.c845e995d62e4e09ceb3cefaf5b27095c" />
+<Entry OldName="Figlut.Web.Service.Configuration.FiglutWebServiceSettings._enableClientTrace" NewName="Figlut.Web.Service.Configuration.FiglutWebServiceSettings.c7281a38bf209211addd1dc8c068d9b3e" />
+<Entry OldName="Figlut.Web.Service.Configuration.FiglutWebServiceSettings._useExtensions" NewName="Figlut.Web.Service.Configuration.FiglutWebServiceSettings.c9337b824e83d14b762a616f9348325f5" />
+<Entry OldName="Figlut.Web.Service.Configuration.FiglutWebServiceSettings._extensionAssemblyName" NewName="Figlut.Web.Service.Configuration.FiglutWebServiceSettings.c4ae79185fbe2ddba49ee2d7bc0a9d876" />
+<Entry OldName="Figlut.Web.Service.Configuration.FiglutWebServiceSettings._crudInterceptorFullTypeName" NewName="Figlut.Web.Service.Configuration.FiglutWebServiceSettings.c0c27bff590e69706638136203038bce1" />
+<Entry OldName="Figlut.Web.Service.Configuration.FiglutWebServiceSettings._extensionFullTypeName" NewName="Figlut.Web.Service.Configuration.FiglutWebServiceSettings.cf1f1a13de48c59659e4d6db8dabb1bfe" />
+<Entry OldName="Figlut.Web.Service.Configuration.FiglutWebServiceSettings._firstLoad" NewName="Figlut.Web.Service.Configuration.FiglutWebServiceSettings.c12f3a571e3e784555ed7cc72a8b5a3ca" />
+<Entry OldName="Figlut.Server.FiglutWebService.Start()" NewName="Figlut.Server.FiglutWebService.c9e7dfeabf6cae9f053386d45372235b4()" />
+<Entry OldName="Figlut.Server.FiglutWebService.Stop()" NewName="Figlut.Server.FiglutWebService.c77fb4227667003c7c769e50663fa7e0b()" />
+<Entry OldName="Figlut.Server.FiglutWebService.InitializeComponent()" NewName="Figlut.Server.FiglutWebService.cd6851bbde94b75df55e0b2d829f891ba()" />
+<Entry OldName="Figlut.Server.RestService.DeleteEntity(String tableName, String columnName, Stream inputStream, ISerializer inputSerializer, ISerializer outputSerializer)" NewName="Figlut.Server.RestService.cd7d77ceb7e7da9db90a5c86b222b26b2(String c956e64a4c0272fa9fd26a327eb64dcd2, String cb5e3515654f44c56d42b125b7c76b885, Stream c04426f751c9b4a39f54a8c818e2f82c2, ISerializer cb1bbdea271ff5f5bba0aa378a1526d8b, ISerializer cf7d886f58f59b85f978b6853e5f29876)" />
+<Entry OldName="Figlut.Server.RestService.GetAboutInfo()" NewName="Figlut.Server.RestService.c3bf0807fdd93ebc69f44df7874951a10()" />
+<Entry OldName="Figlut.Server.RestService.GetHttpVerb()" NewName="Figlut.Server.RestService.cb85357dc226ba72da855f1edc3efedcd()" />
+<Entry OldName="Figlut.Server.RestService.GetConfigurationManagerDirectory()" NewName="Figlut.Server.RestService.c45f1b07419ec32636ab95acbc5d62b98()" />
+<Entry OldName="Figlut.Server.RestService.GetConfigurationManagerFileName(String configManagerDirectory, String extensionSearchPattern)" NewName="Figlut.Server.RestService.c2d106e9dce62d54b0ea5e7cfee89d33c(String c2a6dbae1e053f49e90013daecfe1d174, String c3ad922a340a34c39b7123ca9015cd3ed)" />
+<Entry OldName="Figlut.Server.RestService.UpdateHttpStatusOnException(Exception ex)" NewName="Figlut.Server.RestService.cfcc9af31a69d6bf540173eb087d22d07(Exception ca040f608e0bf319edcb5259dad96714f)" />
+<Entry OldName="Figlut.Server.RestService.LogRequest()" NewName="Figlut.Server.RestService.cf4749fd2f15e7ed8006b9d873002a2df()" />
+<Entry OldName="Figlut.Server.RestService.LogResponse(String responseText)" NewName="Figlut.Server.RestService.c3e8327df10ee56de276ef88e3e124a33(String ca6b17ea9fd6bdd57a959cb8e554b818e)" />
+<Entry OldName="Figlut.Server.RestService.ValidateRequestMethod(HttpVerb verb)" NewName="Figlut.Server.RestService.c5bc9fed7e52d0d9d79a5a71c120c110d(HttpVerb cd3e6c2ec4fc992eb16aee9a3d97ac916)" />
+<Entry OldName="Figlut.Server.RestService.ValidateTable(DatabaseTable table, String tableName, String databaseName)" NewName="Figlut.Server.RestService.cd6c2b14d0931de195ee9898b2dc7cb45(DatabaseTable cdec26bfd70776e1c362bc3826532acc5, String c956e64a4c0272fa9fd26a327eb64dcd2, String ce80b3235f11c1c89fcdbd976fc9399bb)" />
+<Entry OldName="Figlut.Server.RestService.GetSerialisers(ISerializer&amp; inputSerializer, ISerializer&amp; outputSerializer)" NewName="Figlut.Server.RestService.cd5350cbe3b2202b0fe6f437429764db0(ISerializer&amp; cb1bbdea271ff5f5bba0aa378a1526d8b, ISerializer&amp; cf7d886f58f59b85f978b6853e5f29876)" />
+<Entry OldName="Figlut.Server.RestService.PostToExtension(String handlerName, String customParameters, Stream inputStream, ISerializer inputSerializer, ISerializer outputSerializer)" NewName="Figlut.Server.RestService.c6b4a47a9a363cf1890543355c0507f4d(String c736ca0e22c634be2f2237986ccc11897, String c2ceb1f2ee9f8ade892beaa40f32c20f3, Stream c04426f751c9b4a39f54a8c818e2f82c2, ISerializer cb1bbdea271ff5f5bba0aa378a1526d8b, ISerializer cf7d886f58f59b85f978b6853e5f29876)" />
+<Entry OldName="Figlut.Server.RestService.GetEntities(String tableName, String filters, ISerializer inputSerializer, ISerializer outputSerializer)" NewName="Figlut.Server.RestService.c1ac041ec63fb50d5746e9b1b600c0d7f(String c956e64a4c0272fa9fd26a327eb64dcd2, String cd7a60ca28b269f61484cc5e1d882be35, ISerializer cb1bbdea271ff5f5bba0aa378a1526d8b, ISerializer cf7d886f58f59b85f978b6853e5f29876)" />
+<Entry OldName="Figlut.Server.RestService.ParseFilterToWhereClauseColumns(String filters)" NewName="Figlut.Server.RestService.c290977a38eee3799b93e2282fca44fbb(String cd7a60ca28b269f61484cc5e1d882be35)" />
+<Entry OldName="Figlut.Server.RestService.GetDatabaseSchemaInfo(String databaseSchemaInfoType, String filters, ISerializer inputSerializer, ISerializer outputSerializer)" NewName="Figlut.Server.RestService.c5ae2462b634e2333e2e1e69015e43821(String c5e6c8348fc4fb0dbb0e7d894cbda617c, String cd7a60ca28b269f61484cc5e1d882be35, ISerializer cb1bbdea271ff5f5bba0aa378a1526d8b, ISerializer cf7d886f58f59b85f978b6853e5f29876)" />
+<Entry OldName="Figlut.Server.RestService.PostEntity(String tableName, Stream inputStream, ISerializer inputSerializer, ISerializer outputSerializer)" NewName="Figlut.Server.RestService.cb5892361f00a4fa12a06c9da1cc4f9ac(String c956e64a4c0272fa9fd26a327eb64dcd2, Stream c04426f751c9b4a39f54a8c818e2f82c2, ISerializer cb1bbdea271ff5f5bba0aa378a1526d8b, ISerializer cf7d886f58f59b85f978b6853e5f29876)" />
+<Entry OldName="Figlut.Server.RestService.PutEntity(String tableName, String columnName, Stream inputStream, ISerializer inputSerializer, ISerializer outputSerializer)" NewName="Figlut.Server.RestService.c02ea5c541b4447236399ea343e759815(String c956e64a4c0272fa9fd26a327eb64dcd2, String cb5e3515654f44c56d42b125b7c76b885, Stream c04426f751c9b4a39f54a8c818e2f82c2, ISerializer cb1bbdea271ff5f5bba0aa378a1526d8b, ISerializer cf7d886f58f59b85f978b6853e5f29876)" />
+<Entry OldName="Figlut.Server.RestService.ExecuteQuery(String typeName, Stream inputStream, ISerializer inputSerializer, ISerializer outputSerializer, String acceptContentType)" NewName="Figlut.Server.RestService.c5be03c8eb0c4c6f77069744bdcfdd9cb(String c5484d3fad61a6b25aaafeb9e389567a4, Stream c04426f751c9b4a39f54a8c818e2f82c2, ISerializer cb1bbdea271ff5f5bba0aa378a1526d8b, ISerializer cf7d886f58f59b85f978b6853e5f29876, String ce67acf74ed878fbbc58eb6cf3b255dfe)" />
+<Entry OldName="Figlut.Server.Program.ParseArguments(String[] args)" NewName="A.cb20b4e82365941cd84100c047d0d3b31.c4235600255c0a90201239065657a2023(String[] c1e5c66f3d9535a8d4cbbc5236b42b845)" />
+<Entry OldName="Figlut.Server.Program.DisplayHelp()" NewName="A.cb20b4e82365941cd84100c047d0d3b31.c3bfdd953cf82fe743d61471cf0817fbb()" />
+<Entry OldName="Figlut.Server.Program.ResetSettings()" NewName="A.cb20b4e82365941cd84100c047d0d3b31.c35f26112c02b94b000bd07715e08268c()" />
+<Entry OldName="Figlut.Server.Program.Main(String[] args)" NewName="A.cb20b4e82365941cd84100c047d0d3b31.c2d2a9b6dc2eb9c6eb2352f3e9aafda24(String[] c1e5c66f3d9535a8d4cbbc5236b42b845)" />
+<Entry OldName="Figlut.Server.ProjectInstaller.InitializeComponent()" NewName="Figlut.Server.ProjectInstaller.cd6851bbde94b75df55e0b2d829f891ba()" />
+<Entry OldName="Figlut.Web.Service.Utilities.FiglutClientInfo.ValidateClientInfo()" NewName="Figlut.Web.Service.Utilities.FiglutClientInfo.cf142b9c70b7faf576821fef0c3e87586()" />
+<Entry OldName="Figlut.Web.Service.Utilities.FiglutClientInfo.CreateFromHash(String s)" NewName="Figlut.Web.Service.Utilities.FiglutClientInfo.cf87a3aab57c4f2f69539d2e427d7465f(String ca295559894326960a2528ea71fd32ba4)" />
+<Entry OldName="Figlut.Web.Service.Utilities.FiglutClientInfo.GetHash()" NewName="Figlut.Web.Service.Utilities.FiglutClientInfo.c97d910d76216fc8d8d721342a802f2f4()" />
+<Entry OldName="Figlut.Web.Service.Utilities.FiglutClientManager.ProcessSaveQueue()" NewName="Figlut.Web.Service.Utilities.FiglutClientManager.ccca455824601c55b2da1566b4623cee3()" />
+<Entry OldName="Figlut.Web.Service.Utilities.FiglutClientManager.ManageClient(String userAgent, String requestUri)" NewName="Figlut.Web.Service.Utilities.FiglutClientManager.cbec439c339a1b02de61edd7478d3cc86(String c97034e15f1523d36606a82052588f180, String ce6497b4e714df347bde520495f8c7b69)" />
+<Entry OldName="Figlut.Web.Service.Utilities.FiglutClientManager.GetTraceFiglutClientInfo(FiglutClientInfo figlutClientInfo)" NewName="Figlut.Web.Service.Utilities.FiglutClientManager.ce3f0daa71281b81d775b62669ada5650(FiglutClientInfo ca9813e48cd8a4d6308d4a52d30a29b94)" />
+<Entry OldName="Figlut.Web.Service.Utilities.FiglutClientManager.Stop()" NewName="Figlut.Web.Service.Utilities.FiglutClientManager.c77fb4227667003c7c769e50663fa7e0b()" />
+<Entry OldName="Figlut.Web.Service.Utilities.FiglutClientManager.SaveFileInfo..ctor()" NewName="Figlut.Web.Service.Utilities.FiglutClientManager.c22dd6301ab03c431ff0d4250c12f023f..ctor()" />
+<Entry OldName="Figlut.Web.Service.Utilities.FiglutClientManager.SaveFileInfo.get_FilePath()" NewName="Figlut.Web.Service.Utilities.FiglutClientManager.c22dd6301ab03c431ff0d4250c12f023f.get_FilePath()" />
+<Entry OldName="Figlut.Web.Service.Utilities.FiglutClientManager.SaveFileInfo.set_FilePath(String value)" NewName="Figlut.Web.Service.Utilities.FiglutClientManager.c22dd6301ab03c431ff0d4250c12f023f.set_FilePath(String value)" />
+<Entry OldName="Figlut.Web.Service.Utilities.FiglutClientManager.SaveFileInfo.get_Contents()" NewName="Figlut.Web.Service.Utilities.FiglutClientManager.c22dd6301ab03c431ff0d4250c12f023f.get_Contents()" />
+<Entry OldName="Figlut.Web.Service.Utilities.FiglutClientManager.SaveFileInfo.set_Contents(String value)" NewName="Figlut.Web.Service.Utilities.FiglutClientManager.c22dd6301ab03c431ff0d4250c12f023f.set_Contents(String value)" />
+<Entry OldName="Figlut.Web.Service.Utilities.FiglutClientManager.SaveFileInfo.get_Saved()" NewName="Figlut.Web.Service.Utilities.FiglutClientManager.c22dd6301ab03c431ff0d4250c12f023f.get_Saved()" />
+<Entry OldName="Figlut.Web.Service.Utilities.FiglutClientManager.SaveFileInfo.set_Saved(Boolean value)" NewName="Figlut.Web.Service.Utilities.FiglutClientManager.c22dd6301ab03c431ff0d4250c12f023f.set_Saved(Boolean value)" />
+<Entry OldName="Figlut.Web.Service.Utilities.FiglutWebServiceApplication.Initialize(FiglutWebServiceSettings settings)" NewName="Figlut.Web.Service.Utilities.FiglutWebServiceApplication.c924adc0929784602587889154496c281(FiglutWebServiceSettings cb94f2a2face3c67d85d9181a4404115f)" />
+<Entry OldName="Figlut.Web.Service.Utilities.FiglutWebServiceApplication.InitializeDatabase(FiglutWebServiceSettings settings)" NewName="Figlut.Web.Service.Utilities.FiglutWebServiceApplication.ce7b8409f9c5af5f6f5dd732a0a04be8c(FiglutWebServiceSettings cb94f2a2face3c67d85d9181a4404115f)" />
+<Entry OldName="Figlut.Web.Service.Utilities.FiglutWebServiceApplication.InitializeServiceHost(FiglutWebServiceSettings settings)" NewName="Figlut.Web.Service.Utilities.FiglutWebServiceApplication.c79599312dd64a19efad98e40667c5fd0(FiglutWebServiceSettings cb94f2a2face3c67d85d9181a4404115f)" />
+<Entry OldName="Figlut.Web.Service.Utilities.FiglutWebServiceApplication.InitializeQueryRunnerAssembly(FiglutWebServiceSettings settings)" NewName="Figlut.Web.Service.Utilities.FiglutWebServiceApplication.c78b59a5ed77b75c5ad748deb4c738fbb(FiglutWebServiceSettings cb94f2a2face3c67d85d9181a4404115f)" />
+<Entry OldName="Figlut.Web.Service.Utilities.FiglutWebServiceApplication.LoadExtensions(FiglutWebServiceSettings settings)" NewName="Figlut.Web.Service.Utilities.FiglutWebServiceApplication.c2eb6de15ca4b30b1e82b31394fdeec33(FiglutWebServiceSettings cb94f2a2face3c67d85d9181a4404115f)" />
+<Entry OldName="Figlut.Web.Service.Configuration.FiglutWebServiceSettings.GenerateDatabaseConnectionString()" NewName="Figlut.Web.Service.Configuration.FiglutWebServiceSettings.c55085c625b756ddcb5d0aabe8ba625f1()" />
+<Entry OldName="Figlut.Server.Program" NewName="A.cb20b4e82365941cd84100c047d0d3b31" />
+<Entry OldName="Figlut.Web.Service.Utilities.FiglutClientManager+SaveFileInfo" NewName="Figlut.Web.Service.Utilities.FiglutClientManager+c22dd6301ab03c431ff0d4250c12f023f" />
+<Assembly Name="Figlut.QueryRunner"><Type Token="33554433" Name="&lt;Module&gt;" />
+<Method Token="100663297" Name="" Variables="" ParamCnt="0" />
+<Type Token="33554434" Name="Figlut.QueryRunner.SqlQueryRunner" />
+<Method Token="100663298" Name=".ctor" Variables="this;" ParamCnt="1" />
+<Method Token="100663299" Name="ExecuteQuery" Variables="this;input;V_0;V_1;V_2;V_3;V_4;V_5;V_6;V_7;V_8;V_9;V_10;" ParamCnt="2" />
+<Type Token="33554435" Name="A.AssemblyInfoAttribute" />
+<Method Token="100663300" Name="" Variables="this;str;" ParamCnt="2" />
+</Assembly><Assembly Name="Figlut.Web.Service"><Type Token="33554433" Name="&lt;Module&gt;" />
+<Method Token="100663297" Name="" Variables="" ParamCnt="0" />
+<Type Token="33554434" Name="Figlut.Server.FiglutWebService" />
+<Method Token="100663298" Name=".ctor" Variables="this;" ParamCnt="1" />
+<Method Token="100663299" Name="OnStart" Variables="this;args;V_0;" ParamCnt="2" />
+<Method Token="100663300" Name="OnStop" Variables="this;V_0;" ParamCnt="1" />
+<Method Token="100663301" Name="Start" Variables="V_0;" ParamCnt="0" />
+<Method Token="100663302" Name="Stop" Variables="V_0;V_1;V_2;" ParamCnt="0" />
+<Method Token="100663303" Name="Dispose" Variables="this;disposing;V_0;" ParamCnt="2" />
+<Method Token="100663304" Name="InitializeComponent" Variables="this;" ParamCnt="1" />
+<Field Token="67108865" Name="components" />
+<Type Token="33554436" Name="Figlut.Server.RestService" />
+<Method Token="100663306" Name=".ctor" Variables="this;" ParamCnt="1" />
+<Method Token="100663307" Name="DeleteEntityRoot" Variables="this;tableName;inputStream;V_0;V_1;V_2;V_3;" ParamCnt="3" />
+<Method Token="100663308" Name="DeleteEntityXml" Variables="this;tableName;inputStream;V_0;V_1;" ParamCnt="3" />
+<Method Token="100663309" Name="DeleteEntityJson" Variables="this;tableName;inputStream;V_0;V_1;" ParamCnt="3" />
+<Method Token="100663310" Name="DeleteEntityCsv" Variables="this;tableName;inputStream;V_0;V_1;" ParamCnt="3" />
+<Method Token="100663311" Name="DeleteEntityByColumnRoot" Variables="this;tableName;columnName;inputStream;V_0;V_1;V_2;V_3;" ParamCnt="4" />
+<Method Token="100663312" Name="DeleteEntityByColumnXml" Variables="this;tableName;columnName;inputStream;V_0;V_1;" ParamCnt="4" />
+<Method Token="100663313" Name="DeleteEntityByColumnJson" Variables="this;tableName;columnName;inputStream;V_0;V_1;" ParamCnt="4" />
+<Method Token="100663314" Name="DeleteEntityByColumnCsv" Variables="this;tableName;columnName;inputStream;V_0;V_1;" ParamCnt="4" />
+<Method Token="100663315" Name="DeleteEntity" Variables="this;tableName;columnName;inputStream;inputSerializer;outputSerializer;V_0;V_1;V_2;V_3;V_4;V_5;V_6;V_7;V_8;" ParamCnt="6" />
+<Method Token="100663316" Name="AllURIs" Variables="this;V_0;V_1;" ParamCnt="1" />
+<Method Token="100663317" Name="GetAboutInfo" Variables="this;V_0;V_1;V_2;V_3;V_4;V_5;V_6;V_7;V_8;V_9;V_10;V_11;V_12;V_13;V_14;V_15;V_16;" ParamCnt="1" />
+<Method Token="100663318" Name="GetHttpVerb" Variables="this;V_0;V_1;V_2;" ParamCnt="1" />
+<Method Token="100663319" Name="GetConfigurationManagerDirectory" Variables="this;V_0;V_1;V_2;V_3;" ParamCnt="1" />
+<Method Token="100663320" Name="GetConfigurationManagerFileName" Variables="this;configManagerDirectory;extensionSearchPattern;V_0;V_1;V_2;" ParamCnt="3" />
+<Method Token="100663321" Name="UpdateHttpStatusOnException" Variables="this;ex;V_0;V_1;V_2;" ParamCnt="2" />
+<Method Token="100663322" Name="LogRequest" Variables="this;V_0;V_1;V_2;" ParamCnt="1" />
+<Method Token="100663323" Name="LogResponse" Variables="this;responseText;V_0;" ParamCnt="2" />
+<Method Token="100663324" Name="ValidateRequestMethod" Variables="this;verb;V_0;" ParamCnt="2" />
+<Method Token="100663325" Name="ValidateTable" Variables="this;table;tableName;databaseName;V_0;" ParamCnt="4" />
+<Method Token="100663326" Name="GetSerialisers" Variables="this;inputSerializer;outputSerializer;V_0;V_1;V_2;" ParamCnt="3" />
+<Method Token="100663327" Name="GetStreamFromObjects" Variables="this;objects;dotNetType;serializer;V_0;V_1;V_2;V_3;V_4;" ParamCnt="4" />
+<Method Token="100663328" Name="PostToExtension" Variables="this;handlerName;inputStream;V_0;V_1;V_2;V_3;" ParamCnt="3" />
+<Method Token="100663329" Name="PostToExtensionWithCustomParameters" Variables="this;handlerName;customParameters;inputStream;V_0;V_1;V_2;V_3;" ParamCnt="4" />
+<Method Token="100663330" Name="PostToExtension" Variables="this;handlerName;customParameters;inputStream;inputSerializer;outputSerializer;V_0;V_1;V_2;V_3;V_4;" ParamCnt="6" />
+<Method Token="100663331" Name="GetEntitiesRoot" Variables="this;tableName;V_0;V_1;V_2;V_3;V_4;" ParamCnt="2" />
+<Method Token="100663332" Name="GetEntitiesXml" Variables="this;tableName;V_0;V_1;" ParamCnt="2" />
+<Method Token="100663333" Name="GetEntitiesJson" Variables="this;tableName;V_0;V_1;" ParamCnt="2" />
+<Method Token="100663334" Name="GetEntitiesCsv" Variables="this;tableName;V_0;V_1;" ParamCnt="2" />
+<Method Token="100663335" Name="GetEntitiesRootFilter" Variables="this;tableName;filters;V_0;V_1;V_2;V_3;" ParamCnt="3" />
+<Method Token="100663336" Name="GetEntitiesXmlFilter" Variables="this;tableName;filters;V_0;V_1;" ParamCnt="3" />
+<Method Token="100663337" Name="GetEntitiesJsonFilter" Variables="this;tableName;filters;V_0;V_1;" ParamCnt="3" />
+<Method Token="100663338" Name="GetEntitiesCsvFilter" Variables="this;tableName;filters;V_0;V_1;" ParamCnt="3" />
+<Method Token="100663339" Name="GetEntities" Variables="this;tableName;filters;inputSerializer;outputSerializer;V_0;V_1;V_2;V_3;V_4;V_5;V_6;V_7;V_8;" ParamCnt="5" />
+<Method Token="100663340" Name="ParseFilterToWhereClauseColumns" Variables="this;filters;V_0;V_1;V_2;V_3;V_4;V_5;V_6;V_7;V_8;V_9;V_10;V_11;V_12;" ParamCnt="2" />
+<Method Token="100663341" Name="GetDatabaseSchemaInfoRoot" Variables="this;databaseSchemaInfoType;V_0;V_1;V_2;V_3;" ParamCnt="2" />
+<Method Token="100663342" Name="GetDatabaseSchemaInfoXml" Variables="this;databaseSchemaInfoType;V_0;V_1;" ParamCnt="2" />
+<Method Token="100663343" Name="GetDatabaseSchemaInfoJson" Variables="this;databaseSchemaInfoType;V_0;V_1;" ParamCnt="2" />
+<Method Token="100663344" Name="GetDatabaseSchemaInfoCsv" Variables="this;databaseSchemaInfoType;V_0;V_1;" ParamCnt="2" />
+<Method Token="100663345" Name="GetDatabaseSchemaInfoRootFilter" Variables="this;databaseSchemaInfoType;filters;V_0;V_1;V_2;V_3;" ParamCnt="3" />
+<Method Token="100663346" Name="GetDatabaseSchemaInfoXmlFilter" Variables="this;databaseSchemaInfoType;filters;V_0;V_1;" ParamCnt="3" />
+<Method Token="100663347" Name="GetDatabaseSchemaInfoJsonFilter" Variables="this;databaseSchemaInfoType;filters;V_0;V_1;" ParamCnt="3" />
+<Method Token="100663348" Name="GetDatabaseSchemaInfoCsvFilter" Variables="this;databaseSchemaInfoType;filters;V_0;V_1;" ParamCnt="3" />
+<Method Token="100663349" Name="GetDatabaseSchemaInfo" Variables="this;databaseSchemaInfoType;filters;inputSerializer;outputSerializer;V_0;V_1;V_2;V_3;V_4;V_5;V_6;V_7;V_8;V_9;" ParamCnt="5" />
+<Method Token="100663350" Name="PostEntityRoot" Variables="this;tableName;inputStream;V_0;V_1;V_2;V_3;" ParamCnt="3" />
+<Method Token="100663351" Name="PostEntityXml" Variables="this;tableName;inputStream;V_0;V_1;" ParamCnt="3" />
+<Method Token="100663352" Name="PostEntityJson" Variables="this;tableName;inputStream;V_0;V_1;" ParamCnt="3" />
+<Method Token="100663353" Name="PostEntityCsv" Variables="this;tableName;inputStream;V_0;V_1;" ParamCnt="3" />
+<Method Token="100663354" Name="PostEntity" Variables="this;tableName;inputStream;inputSerializer;outputSerializer;V_0;V_1;V_2;V_3;V_4;V_5;V_6;V_7;V_8;" ParamCnt="5" />
+<Method Token="100663355" Name="PutEntityRoot" Variables="this;tableName;inputStream;V_0;V_1;V_2;V_3;" ParamCnt="3" />
+<Method Token="100663356" Name="PutEntityXml" Variables="this;tableName;inputStream;V_0;V_1;" ParamCnt="3" />
+<Method Token="100663357" Name="PutEntityJson" Variables="this;tableName;inputStream;V_0;V_1;" ParamCnt="3" />
+<Method Token="100663358" Name="PutEntityCsv" Variables="this;tableName;inputStream;V_0;V_1;" ParamCnt="3" />
+<Method Token="100663359" Name="PutEntityByColumnRoot" Variables="this;tableName;columnName;inputStream;V_0;V_1;V_2;V_3;" ParamCnt="4" />
+<Method Token="100663360" Name="PutEntityByColumnXml" Variables="this;tableName;columnName;inputStream;V_0;V_1;" ParamCnt="4" />
+<Method Token="100663361" Name="PutEntityByColumnJson" Variables="this;tableName;columnName;inputStream;V_0;V_1;" ParamCnt="4" />
+<Method Token="100663362" Name="PutEntityByColumnCsv" Variables="this;tableName;columnName;inputStream;V_0;V_1;" ParamCnt="4" />
+<Method Token="100663363" Name="PutEntity" Variables="this;tableName;columnName;inputStream;inputSerializer;outputSerializer;V_0;V_1;V_2;V_3;V_4;V_5;V_6;V_7;V_8;" ParamCnt="6" />
+<Method Token="100663364" Name="ExecuteSqlRootNoResults" Variables="this;inputStream;V_0;V_1;V_2;V_3;" ParamCnt="2" />
+<Method Token="100663365" Name="ExecuteSqlXmlNoResults" Variables="this;inputStream;V_0;V_1;" ParamCnt="2" />
+<Method Token="100663366" Name="ExecuteSqlJsonNoResults" Variables="this;inputStream;V_0;V_1;" ParamCnt="2" />
+<Method Token="100663367" Name="ExecuteSqlCsvNoResults" Variables="this;inputStream;V_0;V_1;" ParamCnt="2" />
+<Method Token="100663368" Name="ExecuteSqlRoot" Variables="this;typeName;inputStream;V_0;V_1;V_2;V_3;" ParamCnt="3" />
+<Method Token="100663369" Name="ExecuteSqlXml" Variables="this;typeName;inputStream;V_0;V_1;" ParamCnt="3" />
+<Method Token="100663370" Name="ExecuteSqlJson" Variables="this;typeName;inputStream;V_0;V_1;" ParamCnt="3" />
+<Method Token="100663371" Name="ExecuteSqlCsv" Variables="this;typeName;inputStream;V_0;V_1;" ParamCnt="3" />
+<Method Token="100663372" Name="ExecuteQuery" Variables="this;typeName;inputStream;inputSerializer;outputSerializer;acceptContentType;V_0;V_1;V_2;V_3;V_4;V_5;" ParamCnt="6" />
+<Field Token="67108866" Name="CONFIGURATION_MANAGER_INSTALLATION_DIRECTORY_REG_NAME" />
+<Field Token="67108867" Name="WEB_SERVICE_INSTALLATION_DIRECTORY_REG_NAME" />
+<Field Token="67108868" Name="DESKTOP_DATABOX_INSTALLATION_DIRECTORY_REG_NAME" />
+<Field Token="67108869" Name="SERVER_TOOLKIT_INSTALLATION_DIRECTORY_REG_NAME" />
+<Field Token="67108870" Name="MOBILE_TOOLKIT_INSTALLATION_DIRECTRORY_REG_NAME" />
+<Field Token="67108871" Name="_settings" />
+<Type Token="33554438" Name="Figlut.Server.Program" />
+<Method Token="100663379" Name="ParseArguments" Variables="args;V_0;V_1;V_2;V_3;V_4;V_5;V_6;" ParamCnt="1" />
+<Method Token="100663380" Name="DisplayHelp" Variables="" ParamCnt="0" />
+<Method Token="100663381" Name="ResetSettings" Variables="V_0;V_1;V_2;V_3;" ParamCnt="0" />
+<Method Token="100663382" Name="Main" Variables="args;V_0;V_1;V_2;" ParamCnt="1" />
+<Field Token="67108873" Name="HELP_ARGUMENT" />
+<Field Token="67108874" Name="HELP_QUESTION_MARK_ARGUMENT" />
+<Field Token="67108875" Name="RESET_SETTINGS_ARGUMENT" />
+<Field Token="67108876" Name="TEST_MODE_ARGUMENT" />
+<Field Token="67108877" Name="_displayHelp" />
+<Field Token="67108878" Name="_resetSettings" />
+<Field Token="67108879" Name="_testMode" />
+<Type Token="33554439" Name="Figlut.Server.ProjectInstaller" />
+<Method Token="100663383" Name=".ctor" Variables="this;" ParamCnt="1" />
+<Method Token="100663384" Name="OnBeforeInstall" Variables="this;savedState;V_0;" ParamCnt="2" />
+<Method Token="100663385" Name="OnAfterUninstall" Variables="this;savedState;V_0;" ParamCnt="2" />
+<Method Token="100663386" Name="Dispose" Variables="this;disposing;V_0;" ParamCnt="2" />
+<Method Token="100663387" Name="InitializeComponent" Variables="this;V_0;" ParamCnt="1" />
+<Field Token="67108880" Name="components" />
+<Field Token="67108881" Name="FiglutServiceProcessInstaller" />
+<Field Token="67108882" Name="FiglutServiceInstaller" />
+<Type Token="33554440" Name="Figlut.Server.User" />
+<Method Token="100663388" Name=".ctor" Variables="this;" ParamCnt="1" />
+<Method Token="100663389" Name="get_UserId" Variables="this;V_0;" ParamCnt="1" />
+<Method Token="100663390" Name="set_UserId" Variables="this;value;" ParamCnt="2" />
+<Method Token="100663391" Name="get_UserName" Variables="this;V_0;" ParamCnt="1" />
+<Method Token="100663392" Name="set_UserName" Variables="this;value;" ParamCnt="2" />
+<Method Token="100663393" Name="get_FirstName" Variables="this;V_0;" ParamCnt="1" />
+<Method Token="100663394" Name="set_FirstName" Variables="this;value;" ParamCnt="2" />
+<Method Token="100663395" Name="get_LastName" Variables="this;V_0;" ParamCnt="1" />
+<Method Token="100663396" Name="set_LastName" Variables="this;value;" ParamCnt="2" />
+<Method Token="100663397" Name="get_Email" Variables="this;V_0;" ParamCnt="1" />
+<Method Token="100663398" Name="set_Email" Variables="this;value;" ParamCnt="2" />
+<Method Token="100663399" Name="get_Password" Variables="this;V_0;" ParamCnt="1" />
+<Method Token="100663400" Name="set_Password" Variables="this;value;" ParamCnt="2" />
+<Method Token="100663401" Name="get_DeviceId" Variables="this;V_0;" ParamCnt="1" />
+<Method Token="100663402" Name="set_DeviceId" Variables="this;value;" ParamCnt="2" />
+<Method Token="100663403" Name="get_DateCreated" Variables="this;V_0;" ParamCnt="1" />
+<Method Token="100663404" Name="set_DateCreated" Variables="this;value;" ParamCnt="2" />
+<Field Token="67108883" Name="&lt;UserId&gt;k__BackingField" />
+<Field Token="67108884" Name="&lt;UserName&gt;k__BackingField" />
+<Field Token="67108885" Name="&lt;FirstName&gt;k__BackingField" />
+<Field Token="67108886" Name="&lt;LastName&gt;k__BackingField" />
+<Field Token="67108887" Name="&lt;Email&gt;k__BackingField" />
+<Field Token="67108888" Name="&lt;Password&gt;k__BackingField" />
+<Field Token="67108889" Name="&lt;DeviceId&gt;k__BackingField" />
+<Field Token="67108890" Name="&lt;DateCreated&gt;k__BackingField" />
+<Type Token="33554441" Name="Figlut.Web.Service.Utilities.AboutInfo" />
+<Method Token="100663405" Name=".ctor" Variables="this;" ParamCnt="1" />
+<Method Token="100663406" Name="get_AssemblyTitle" Variables="V_0;V_1;V_2;V_3;" ParamCnt="0" />
+<Method Token="100663407" Name="get_AssemblyVersion" Variables="V_0;" ParamCnt="0" />
+<Method Token="100663408" Name="get_AssemblyDescription" Variables="V_0;V_1;V_2;" ParamCnt="0" />
+<Method Token="100663409" Name="get_AssemblyProduct" Variables="V_0;V_1;V_2;" ParamCnt="0" />
+<Method Token="100663410" Name="get_AssemblyCopyright" Variables="V_0;V_1;V_2;" ParamCnt="0" />
+<Method Token="100663411" Name="get_AssemblyCompany" Variables="V_0;V_1;V_2;" ParamCnt="0" />
+<Type Token="33554442" Name="Figlut.Web.Service.Utilities.DefaultWebServiceCrudInterceptor" />
+<Method Token="100663412" Name=".ctor" Variables="this;" ParamCnt="1" />
+<Method Token="100663413" Name="AddExtensionManagedEntities" Variables="this;" ParamCnt="1" />
+<Method Token="100663414" Name="SubscribeToCrudEvents" Variables="this;" ParamCnt="1" />
+<Type Token="33554443" Name="Figlut.Web.Service.Utilities.FiglutClientInfo" />
+<Method Token="100663415" Name=".ctor" Variables="this;" ParamCnt="1" />
+<Method Token="100663416" Name=".ctor" Variables="this;applicationId;executableName;version;platform;clientId;" ParamCnt="6" />
+<Method Token="100663417" Name="get_ApplicationId" Variables="this;V_0;" ParamCnt="1" />
+<Method Token="100663418" Name="set_ApplicationId" Variables="this;value;" ParamCnt="2" />
+<Method Token="100663419" Name="get_ConnectionDate" Variables="this;V_0;" ParamCnt="1" />
+<Method Token="100663420" Name="set_ConnectionDate" Variables="this;value;" ParamCnt="2" />
+<Method Token="100663421" Name="get_RequestUri" Variables="this;V_0;" ParamCnt="1" />
+<Method Token="100663422" Name="set_RequestUri" Variables="this;value;" ParamCnt="2" />
+<Method Token="100663423" Name="get_ClientId" Variables="this;V_0;" ParamCnt="1" />
+<Method Token="100663424" Name="set_ClientId" Variables="this;value;" ParamCnt="2" />
+<Method Token="100663425" Name="get_ExecutableName" Variables="this;V_0;" ParamCnt="1" />
+<Method Token="100663426" Name="set_ExecutableName" Variables="this;value;" ParamCnt="2" />
+<Method Token="100663427" Name="get_Version" Variables="this;V_0;" ParamCnt="1" />
+<Method Token="100663428" Name="set_Version" Variables="this;value;" ParamCnt="2" />
+<Method Token="100663429" Name="get_Platform" Variables="this;V_0;" ParamCnt="1" />
+<Method Token="100663430" Name="set_Platform" Variables="this;value;" ParamCnt="2" />
+<Method Token="100663431" Name="ValidateClientInfo" Variables="this;V_0;V_1;V_2;" ParamCnt="1" />
+<Method Token="100663432" Name="CreateFromHash" Variables="s;V_0;V_1;" ParamCnt="1" />
+<Method Token="100663433" Name="GetHash" Variables="this;V_0;" ParamCnt="1" />
+<Field Token="67108891" Name="K" />
+<Field Token="67108892" Name="I" />
+<Field Token="67108893" Name="PREFIX" />
+<Field Token="67108894" Name="_applicationId" />
+<Field Token="67108895" Name="_connectionDate" />
+<Field Token="67108896" Name="_requestUri" />
+<Field Token="67108897" Name="_clientId" />
+<Field Token="67108898" Name="_executableName" />
+<Field Token="67108899" Name="_version" />
+<Field Token="67108900" Name="_platform" />
+<Type Token="33554444" Name="Figlut.Web.Service.Utilities.FiglutClientManager" />
+<Method Token="100663434" Name=".ctor" Variables="this;V_0;" ParamCnt="1" />
+<Method Token="100663435" Name="get_Instance" Variables="V_0;V_1;" ParamCnt="0" />
+<Method Token="100663436" Name="ProcessSaveQueue" Variables="this;V_0;V_1;V_2;V_3;V_4;V_5;V_6;" ParamCnt="1" />
+<Method Token="100663437" Name="ManageClient" Variables="this;userAgent;requestUri;V_0;V_1;V_2;V_3;V_4;V_5;V_6;V_7;V_8;V_9;V_10;V_11;V_12;V_13;" ParamCnt="3" />
+<Method Token="100663438" Name="GetTraceFiglutClientInfo" Variables="this;figlutClientInfo;V_0;V_1;" ParamCnt="2" />
+<Method Token="100663439" Name="Stop" Variables="this;V_0;" ParamCnt="1" />
+<Field Token="67108901" Name="K" />
+<Field Token="67108902" Name="I" />
+<Field Token="67108903" Name="_instance" />
+<Field Token="67108904" Name="FIGLUT_DESKTOP_DATABOX_APPLICATION_ID" />
+<Field Token="67108905" Name="FIGLUT_MOBILE_DATABOX_APPLICATION_ID" />
+<Field Token="67108906" Name="NON_FIGLUT_APPLICATION_ID" />
+<Field Token="67108907" Name="_settings" />
+<Field Token="67108908" Name="_figlutDesktopDataBoxClients" />
+<Field Token="67108909" Name="_figlutMobileDataBoxClients" />
+<Field Token="67108910" Name="_nonFiglutClients" />
+<Field Token="67108911" Name="_clientTrace" />
+<Field Token="67108912" Name="_encryptor" />
+<Field Token="67108913" Name="_saveQueue" />
+<Field Token="67108914" Name="_lock" />
+<Type Token="33554445" Name="Figlut.Web.Service.Utilities.FiglutClientManager/SaveFileInfo" />
+<Method Token="100663440" Name=".ctor" Variables="this;" ParamCnt="1" />
+<Method Token="100663441" Name="get_FilePath" Variables="this;V_0;" ParamCnt="1" />
+<Method Token="100663442" Name="set_FilePath" Variables="this;value;" ParamCnt="2" />
+<Method Token="100663443" Name="get_Contents" Variables="this;V_0;" ParamCnt="1" />
+<Method Token="100663444" Name="set_Contents" Variables="this;value;" ParamCnt="2" />
+<Method Token="100663445" Name="get_Saved" Variables="this;V_0;" ParamCnt="1" />
+<Method Token="100663446" Name="set_Saved" Variables="this;value;" ParamCnt="2" />
+<Field Token="67108915" Name="&lt;FilePath&gt;k__BackingField" />
+<Field Token="67108916" Name="&lt;Contents&gt;k__BackingField" />
+<Field Token="67108917" Name="&lt;Saved&gt;k__BackingField" />
+<Type Token="33554446" Name="Figlut.Web.Service.Utilities.FiglutWebServiceApplication" />
+<Method Token="100663447" Name=".ctor" Variables="this;" ParamCnt="1" />
+<Method Token="100663448" Name="get_Instance" Variables="V_0;V_1;" ParamCnt="0" />
+<Method Token="100663449" Name="get_ExtensionAssembly" Variables="this;V_0;" ParamCnt="1" />
+<Method Token="100663450" Name="get_CrudInterceptor" Variables="this;V_0;" ParamCnt="1" />
+<Method Token="100663451" Name="get_Extension" Variables="this;V_0;" ParamCnt="1" />
+<Method Token="100663452" Name="Initialize" Variables="this;settings;" ParamCnt="2" />
+<Method Token="100663453" Name="InitializeDatabase" Variables="this;settings;V_0;V_1;V_2;" ParamCnt="2" />
+<Method Token="100663454" Name="InitializeServiceHost" Variables="this;settings;V_0;V_1;V_2;V_3;V_4;V_5;" ParamCnt="2" />
+<Method Token="100663455" Name="InitializeQueryRunnerAssembly" Variables="this;settings;" ParamCnt="2" />
+<Method Token="100663456" Name="LoadExtensions" Variables="this;settings;V_0;V_1;V_2;V_3;" ParamCnt="2" />
+<Field Token="67108918" Name="_instance" />
+<Field Token="67108919" Name="_extensionAssembly" />
+<Field Token="67108920" Name="_crudInterceptor" />
+<Field Token="67108921" Name="_extension" />
+<Type Token="33554435" Name="A.AssemblyInfoAttribute" />
+<Method Token="100663305" Name="" Variables="this;str;" ParamCnt="2" />
+</Assembly><Assembly Name="Figlut.Web.Service.Configuration.45"><Type Token="33554433" Name="&lt;Module&gt;" />
+<Method Token="100663297" Name="" Variables="" ParamCnt="0" />
+<Type Token="33554434" Name="Figlut.Web.Service.Configuration.FiglutWebServiceSettings" />
+<Method Token="100663298" Name=".ctor" Variables="this;" ParamCnt="1" />
+<Method Token="100663299" Name=".ctor" Variables="this;filePath;" ParamCnt="2" />
+<Method Token="100663300" Name=".ctor" Variables="this;name;filePath;" ParamCnt="3" />
+<Method Token="100663301" Name="get_LogToFile" Variables="this;V_0;" ParamCnt="1" />
+<Method Token="100663302" Name="set_LogToFile" Variables="this;value;" ParamCnt="2" />
+<Method Token="100663303" Name="get_LogToWindowsEventLog" Variables="this;V_0;" ParamCnt="1" />
+<Method Token="100663304" Name="set_LogToWindowsEventLog" Variables="this;value;" ParamCnt="2" />
+<Method Token="100663305" Name="get_LogToConsole" Variables="this;V_0;" ParamCnt="1" />
+<Method Token="100663306" Name="set_LogToConsole" Variables="this;value;" ParamCnt="2" />
+<Method Token="100663307" Name="get_LogFileName" Variables="this;V_0;" ParamCnt="1" />
+<Method Token="100663308" Name="set_LogFileName" Variables="this;value;" ParamCnt="2" />
+<Method Token="100663309" Name="get_EventSourceName" Variables="this;V_0;" ParamCnt="1" />
+<Method Token="100663310" Name="set_EventSourceName" Variables="this;value;" ParamCnt="2" />
+<Method Token="100663311" Name="get_EventLogName" Variables="this;V_0;" ParamCnt="1" />
+<Method Token="100663312" Name="set_EventLogName" Variables="this;value;" ParamCnt="2" />
+<Method Token="100663313" Name="get_LoggingLevel" Variables="this;V_0;" ParamCnt="1" />
+<Method Token="100663314" Name="set_LoggingLevel" Variables="this;value;" ParamCnt="2" />
+<Method Token="100663315" Name="get_DBMS" Variables="this;V_0;" ParamCnt="1" />
+<Method Token="100663316" Name="set_DBMS" Variables="this;value;" ParamCnt="2" />
+<Method Token="100663317" Name="get_DatabaseServerName" Variables="this;V_0;" ParamCnt="1" />
+<Method Token="100663318" Name="set_DatabaseServerName" Variables="this;value;" ParamCnt="2" />
+<Method Token="100663319" Name="get_DatabaseName" Variables="this;V_0;" ParamCnt="1" />
+<Method Token="100663320" Name="set_DatabaseName" Variables="this;value;" ParamCnt="2" />
+<Method Token="100663321" Name="get_DatabaseUserName" Variables="this;V_0;" ParamCnt="1" />
+<Method Token="100663322" Name="set_DatabaseUserName" Variables="this;value;" ParamCnt="2" />
+<Method Token="100663323" Name="get_DatabaseUserPassword" Variables="this;V_0;" ParamCnt="1" />
+<Method Token="100663324" Name="set_DatabaseUserPassword" Variables="this;value;" ParamCnt="2" />
+<Method Token="100663325" Name="get_DatabaseConnectionString" Variables="this;V_0;" ParamCnt="1" />
+<Method Token="100663326" Name="set_DatabaseConnectionString" Variables="this;value;V_0;" ParamCnt="2" />
+<Method Token="100663327" Name="get_SaveOrmAssembly" Variables="this;V_0;" ParamCnt="1" />
+<Method Token="100663328" Name="set_SaveOrmAssembly" Variables="this;value;" ParamCnt="2" />
+<Method Token="100663329" Name="get_OrmAssemblyOutputDirectory" Variables="this;V_0;" ParamCnt="1" />
+<Method Token="100663330" Name="set_OrmAssemblyOutputDirectory" Variables="this;value;" ParamCnt="2" />
+<Method Token="100663331" Name="get_QueryRunnnerAssemblyName" Variables="this;V_0;" ParamCnt="1" />
+<Method Token="100663332" Name="set_QueryRunnnerAssemblyName" Variables="this;value;" ParamCnt="2" />
+<Method Token="100663333" Name="get_SqlQueryRunnerFullTypeName" Variables="this;V_0;" ParamCnt="1" />
+<Method Token="100663334" Name="set_SqlQueryRunnerFullTypeName" Variables="this;value;" ParamCnt="2" />
+<Method Token="100663335" Name="get_HostAddressSuffix" Variables="this;V_0;" ParamCnt="1" />
+<Method Token="100663336" Name="set_HostAddressSuffix" Variables="this;value;" ParamCnt="2" />
+<Method Token="100663337" Name="get_PortNumber" Variables="this;V_0;" ParamCnt="1" />
+<Method Token="100663338" Name="set_PortNumber" Variables="this;value;" ParamCnt="2" />
+<Method Token="100663339" Name="get_UseAuthentication" Variables="this;V_0;" ParamCnt="1" />
+<Method Token="100663340" Name="set_UseAuthentication" Variables="this;value;" ParamCnt="2" />
+<Method Token="100663341" Name="get_IncludeExceptionDetailInResponse" Variables="this;V_0;" ParamCnt="1" />
+<Method Token="100663342" Name="set_IncludeExceptionDetailInResponse" Variables="this;value;" ParamCnt="2" />
+<Method Token="100663343" Name="get_TextResponseEncoding" Variables="this;V_0;" ParamCnt="1" />
+<Method Token="100663344" Name="set_TextResponseEncoding" Variables="this;value;" ParamCnt="2" />
+<Method Token="100663345" Name="get_IncludeOrmTypeNamesInJsonResponse" Variables="this;V_0;" ParamCnt="1" />
+<Method Token="100663346" Name="set_IncludeOrmTypeNamesInJsonResponse" Variables="this;value;" ParamCnt="2" />
+<Method Token="100663347" Name="get_MaxBufferPoolSize" Variables="this;V_0;" ParamCnt="1" />
+<Method Token="100663348" Name="set_MaxBufferPoolSize" Variables="this;value;" ParamCnt="2" />
+<Method Token="100663349" Name="get_MaxBufferSize" Variables="this;V_0;" ParamCnt="1" />
+<Method Token="100663350" Name="set_MaxBufferSize" Variables="this;value;" ParamCnt="2" />
+<Method Token="100663351" Name="get_MaxReceivedMessageSize" Variables="this;V_0;" ParamCnt="1" />
+<Method Token="100663352" Name="set_MaxReceivedMessageSize" Variables="this;value;" ParamCnt="2" />
+<Method Token="100663353" Name="get_DeleteClientDataWhenServiceStops" Variables="this;V_0;" ParamCnt="1" />
+<Method Token="100663354" Name="set_DeleteClientDataWhenServiceStops" Variables="this;value;" ParamCnt="2" />
+<Method Token="100663355" Name="get_EnableClientTrace" Variables="this;V_0;" ParamCnt="1" />
+<Method Token="100663356" Name="set_EnableClientTrace" Variables="this;value;" ParamCnt="2" />
+<Method Token="100663357" Name="get_UseExtensions" Variables="this;V_0;" ParamCnt="1" />
+<Method Token="100663358" Name="set_UseExtensions" Variables="this;value;" ParamCnt="2" />
+<Method Token="100663359" Name="get_ExtensionAssemblyName" Variables="this;V_0;" ParamCnt="1" />
+<Method Token="100663360" Name="set_ExtensionAssemblyName" Variables="this;value;" ParamCnt="2" />
+<Method Token="100663361" Name="get_CrudInterceptorFullTypeName" Variables="this;V_0;" ParamCnt="1" />
+<Method Token="100663362" Name="set_CrudInterceptorFullTypeName" Variables="this;value;" ParamCnt="2" />
+<Method Token="100663363" Name="get_ExtensionFullTypeName" Variables="this;V_0;" ParamCnt="1" />
+<Method Token="100663364" Name="set_ExtensionFullTypeName" Variables="this;value;" ParamCnt="2" />
+<Method Token="100663365" Name="GenerateDatabaseConnectionString" Variables="this;V_0;V_1;" ParamCnt="1" />
+<Method Token="100663366" Name="RefreshFromFile" Variables="this;saveIfFileDoesNotExist;validateAllSettingValuesSet;" ParamCnt="3" />
+<Field Token="67108865" Name="_logToFile" />
+<Field Token="67108866" Name="_logToWindowsEventLog" />
+<Field Token="67108867" Name="_logToConsole" />
+<Field Token="67108868" Name="_logFileName" />
+<Field Token="67108869" Name="_eventSourceName" />
+<Field Token="67108870" Name="_eventLogName" />
+<Field Token="67108871" Name="_loggingLevel" />
+<Field Token="67108872" Name="_dbms" />
+<Field Token="67108873" Name="_databaseConnectionString" />
+<Field Token="67108874" Name="_databaseServerName" />
+<Field Token="67108875" Name="_databaseName" />
+<Field Token="67108876" Name="_databaseUserName" />
+<Field Token="67108877" Name="_databaseUserPassword" />
+<Field Token="67108878" Name="_saveOrmAssembly" />
+<Field Token="67108879" Name="_ormAssemblyOutputDirectory" />
+<Field Token="67108880" Name="_queryRunnerAssemblyName" />
+<Field Token="67108881" Name="_sqlQueryRunnerFullTypeName" />
+<Field Token="67108882" Name="_hostAddressSuffix" />
+<Field Token="67108883" Name="_portNumber" />
+<Field Token="67108884" Name="_useAuthentication" />
+<Field Token="67108885" Name="_includeExceptionDetailInResponse" />
+<Field Token="67108886" Name="_textResponseEncoding" />
+<Field Token="67108887" Name="_includeOrmTypeNamesInJsonResponse" />
+<Field Token="67108888" Name="_maxBufferPoolSize" />
+<Field Token="67108889" Name="_maxBufferSize" />
+<Field Token="67108890" Name="_maxReceivedMessageSize" />
+<Field Token="67108891" Name="_deleteClientDataWhenServiceStops" />
+<Field Token="67108892" Name="_enableClientTrace" />
+<Field Token="67108893" Name="_useExtensions" />
+<Field Token="67108894" Name="_extensionAssemblyName" />
+<Field Token="67108895" Name="_crudInterceptorFullTypeName" />
+<Field Token="67108896" Name="_extensionFullTypeName" />
+<Field Token="67108897" Name="_firstLoad" />
+<Type Token="33554435" Name="A.AssemblyInfoAttribute" />
+<Method Token="100663367" Name="" Variables="this;str;" ParamCnt="2" />
+</Assembly></Mappings>

@@ -1,0 +1,3 @@
+﻿"/dbserver|PAULKOLOZSV78C6\MSSQLSERVER2008" "/dbname|StockTaker" "/dbuser|sa" "/dbpassword|mypassword" "/outputdir|C:\temp"
+
+"/dbconnectionstring|Data Source=PAULKOLOZSV78C6\MSSQLSERVER2008;Initial Catalog=StockTaker;Integrated Security=True" "/outputdir|C:\temp"

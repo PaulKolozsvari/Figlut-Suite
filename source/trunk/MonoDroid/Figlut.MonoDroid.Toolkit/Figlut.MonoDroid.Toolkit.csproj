@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>10.0.0</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{87CA759D-C6A3-4A5D-A1A1-8497C6A5BE92}</ProjectGuid>
+    <ProjectTypeGuids>{EFBA0AD7-5A72-4C68-AF49-83D382785DCF};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <RootNamespace>Figlut.MonoDroid.Toolkit</RootNamespace>
+    <AndroidResgenFile>Resources\Resource.designer.cs</AndroidResgenFile>
+    <AndroidResgenClass>Resource</AndroidResgenClass>
+    <MonoAndroidResourcePrefix>Resources</MonoAndroidResourcePrefix>
+    <MonoAndroidAssetsPrefix>Assets</MonoAndroidAssetsPrefix>
+    <AndroidUseLatestPlatformSdk>True</AndroidUseLatestPlatformSdk>
+    <AssemblyName>Figlut.MonoDroid.Toolkit</AssemblyName>
+    <TargetFrameworkVersion>v4.3</TargetFrameworkVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug</OutputPath>
+    <DefineConstants>DEBUG;</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <AndroidLinkMode>None</AndroidLinkMode>
+    <ConsolePause>false</ConsolePause>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>full</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release</OutputPath>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <AndroidUseSharedRuntime>false</AndroidUseSharedRuntime>
+    <ConsolePause>false</ConsolePause>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Core" />
+    <Reference Include="Mono.Android" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.ServiceModel.Web" />
+    <Reference Include="System.Windows" />
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\SDK\Json50r8\Bin\Portable40\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Resources\Resource.designer.cs" />
+    <Compile Include="Utilities\Logging\LogError.cs" />
+    <Compile Include="Utilities\Logging\Logger.cs" />
+    <Compile Include="Utilities\Logging\LoggingLevel.cs" />
+    <Compile Include="Utilities\Logging\LogMessage.cs" />
+    <Compile Include="Utilities\Logging\LogMessageType.cs" />
+    <Compile Include="Utilities\SettingsFile\SettingInfoAttribute.cs" />
+    <Compile Include="Utilities\SettingsFile\SettingItem.cs" />
+    <Compile Include="Utilities\SettingsFile\Settings.cs" />
+    <Compile Include="Utilities\SettingsFile\SettingsCache.cs" />
+    <Compile Include="Utilities\Serialization\CsvSerializer.cs" />
+    <Compile Include="Utilities\Serialization\ISerializer.cs" />
+    <Compile Include="Utilities\Serialization\JSerializer.cs" />
+    <Compile Include="Utilities\Serialization\SerializerHelper.cs" />
+    <Compile Include="Utilities\Serialization\SerializerType.cs" />
+    <Compile Include="Utilities\Serialization\XSerializer.cs" />
+    <Compile Include="Data\CSV\CsvParser.cs" />
+    <Compile Include="Data\CSV\CsvStream.cs" />
+    <Compile Include="Data\CSV\CsvWriter.cs" />
+    <Compile Include="Data\DataHelper.cs" />
+    <Compile Include="Data\DataShaper.cs" />
+    <Compile Include="Data\DB\Database.cs" />
+    <Compile Include="Data\DB\DatabaseCache.cs" />
+    <Compile Include="Data\DB\DatabaseSchemaInfoType.cs" />
+    <Compile Include="Data\DB\DatabaseTable.cs" />
+    <Compile Include="Data\DB\DatabaseTableColumn.cs" />
+    <Compile Include="Data\DB\DatabaseTableForeignKeyColumns.cs" />
+    <Compile Include="Data\DB\DatabaseTableKeyColumns.cs" />
+    <Compile Include="Data\DB\Dbms.cs" />
+    <Compile Include="Data\DB\ForeignKeyInfo.cs" />
+    <Compile Include="Data\DB\SQLQuery\WhereClauseColumn.cs" />
+    <Compile Include="Data\DB\SQLQuery\WhereClauseComparisonOperator.cs" />
+    <Compile Include="Data\DB\SQLQuery\WhereClauseLogicalOperator.cs" />
+    <Compile Include="Data\DB\SQLServer\SqlDatabase.cs" />
+    <Compile Include="Data\DB\SQLServer\SqlDatabaseTable.cs" />
+    <Compile Include="Data\DB\SQLServer\SqlDatabaseTableBase.cs" />
+    <Compile Include="Data\DB\SQLServer\SqlDatabaseTableColumn.cs" />
+    <Compile Include="Data\DB\SQLServer\SqlTypeConversionInfo.cs" />
+    <Compile Include="Data\DB\SQLServer\SqlTypeConverter.cs" />
+    <Compile Include="Data\EntityCache.cs" />
+    <Compile Include="Data\EntityCacheBase.cs" />
+    <Compile Include="Data\EntityCacheUnique.cs" />
+    <Compile Include="Data\EntityOperation.cs" />
+    <Compile Include="Data\EntityReader.cs" />
+    <Compile Include="Data\EntityReaderBase.cs" />
+    <Compile Include="Data\FiglutEntityCacheUnique.cs" />
+    <Compile Include="Data\ORM\OrmAssembly.cs" />
+    <Compile Include="Data\ORM\OrmAssemblySql.cs" />
+    <Compile Include="Data\ORM\OrmCodeGenerator.cs" />
+    <Compile Include="Data\ORM\OrmProperty.cs" />
+    <Compile Include="Data\ORM\OrmType.cs" />
+    <Compile Include="Web\Client\CsvWebServiceClient.cs" />
+    <Compile Include="Web\Client\DataProgress\ServiceDataTransactionType.cs" />
+    <Compile Include="Web\Client\DataProgress\ServiceTransactionCompletedHandler.cs" />
+    <Compile Include="Web\Client\DataProgress\ServiceTransactionEventArgs.cs" />
+    <Compile Include="Web\Client\FiglutWebService\FiglutWebServiceClientWrapper.cs" />
+    <Compile Include="Web\Client\FiglutWebService\FiglutWebServiceFilterString.cs" />
+    <Compile Include="Web\Client\Funnel\FunnelServiceResult.cs" />
+    <Compile Include="Web\Client\Funnel\FunnelServiceResultCode.cs" />
+    <Compile Include="Web\Client\HttpVerb.cs" />
+    <Compile Include="Web\Client\IMimeWebServiceClient.cs" />
+    <Compile Include="Web\Client\IWebService.cs" />
+    <Compile Include="Web\Client\JsonWebServiceClient.cs" />
+    <Compile Include="Web\Client\REST\RestWebServiceClient.cs" />
+    <Compile Include="Web\Client\WebServiceClient.cs" />
+    <Compile Include="Web\Client\WebServiceClientCache.cs" />
+    <Compile Include="Web\Client\XmlWebServiceClient.cs" />
+    <Compile Include="Web\MimeContentType.cs" />
+    <Compile Include="Web\Service\ServiceException.cs" />
+    <Compile Include="Web\Service\ServiceFunctionResult.cs" />
+    <Compile Include="Web\Service\ServiceProcedureResult.cs" />
+    <Compile Include="Web\Service\ServiceResult.cs" />
+    <Compile Include="Web\Service\ServiceResultCode.cs" />
+    <Compile Include="Web\Client\Funnel\FunnelServiceResultHandler.cs" />
+    <Compile Include="Utilities\SettingsFile\SettingsCategoryInfo.cs" />
+    <Compile Include="Utilities\AssemblyReader.cs" />
+    <Compile Include="Utilities\Encryptor.cs" />
+    <Compile Include="Utilities\EnumHelper.cs" />
+    <Compile Include="Utilities\ExceptionHandler.cs" />
+    <Compile Include="Utilities\FileSystemHelper.cs" />
+    <Compile Include="Utilities\Formula.cs" />
+    <Compile Include="Utilities\GOC.cs" />
+    <Compile Include="Utilities\ImageHandler.cs" />
+    <Compile Include="Utilities\Instantiator.cs" />
+    <Compile Include="Utilities\StreamHelper.cs" />
+    <Compile Include="Utilities\TextEncodingType.cs" />
+    <Compile Include="Utilities\UIHelper.cs" />
+    <Compile Include="Utilities\UserThrownException.cs" />
+    <Compile Include="Utilities\Vertex.cs" />
+    <Compile Include="Utilities\WaitProcess.cs" />
+    <Compile Include="Utilities\Information.cs" />
+    <Compile Include="Utilities\Serialization\DataTableConverter.cs" />
+    <Compile Include="Data\DB\SQLServer\SqlDatabaseSchemaFile.cs" />
+    <Compile Include="ColorName.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\AboutResources.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\values\Strings.xml" />
+  </ItemGroup>
+  <Import Project="$(MSBuildExtensionsPath)\Novell\Novell.MonoDroid.CSharp.targets" />
+  <ItemGroup>
+    <Folder Include="Utilities\" />
+  </ItemGroup>
+</Project>

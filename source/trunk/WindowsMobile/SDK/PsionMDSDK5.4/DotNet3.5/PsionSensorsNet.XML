@@ -1,0 +1,638 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>PsionSensorsNet</name>
+    </assembly>
+    <members>
+        <member name="T:PsionTeklogix.Sensors.Accelerometer">
+            <summary>
+            Instances of this class provide access to the accelerometer.
+            You may use this class to register a callback function which
+            will be passed accelerometer data at periodic intervals.
+            </summary>
+        </member>
+        <member name="M:PsionTeklogix.Sensors.Accelerometer.Callback(System.IntPtr,System.IntPtr)">
+            <summary>
+            Internal callback function registered with 'C' layer.  This callback
+            marshals the data and call the C# event.
+            </summary>
+            <param name="data">A pointer to a 'C' data structure</param>
+            <param name="userData">Not Used</param>
+        </member>
+        <member name="M:PsionTeklogix.Sensors.Accelerometer.#ctor">
+            <summary>
+            Constructor. Provides access to the accelerometer object.
+            </summary>
+            <remarks> 
+            Will throw an exception if hardware is not supported.
+            </remarks>
+        </member>
+        <member name="M:PsionTeklogix.Sensors.Accelerometer.Finalize">
+            <summary>
+            Finalize. This destructor will run only if the Dispose method
+            does not get called.
+            </summary>
+        </member>
+        <member name="M:PsionTeklogix.Sensors.Accelerometer.Dispose">
+            <summary>
+            Implementation for IDisposable interface
+            </summary>
+        </member>
+        <member name="M:PsionTeklogix.Sensors.Accelerometer.Dispose(System.Boolean)">
+            <summary>
+            Dispose(bool disposing) executes in two distinct scenarios.
+            If disposing equals true, the method has been called directly
+            or indirectly by a user's code. Managed and unmanaged resources
+            can be disposed.
+            If disposing equals false, the method has been called by the
+            runtime from inside the finalizer and you should not reference
+            other objects. Only unmanaged resources can be disposed.
+            </summary>
+            <param name="disposing">true if called from user code</param>
+        </member>
+        <member name="M:PsionTeklogix.Sensors.Accelerometer.ReadAcceleration">
+            <summary>
+            This function can be used get a single data reading.  If you
+            need multiple data readings then you should register a callback
+            function instead.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:PsionTeklogix.Sensors.Accelerometer.ConvertToScreenAxes(PsionTeklogix.Sensors.Accelerometer.Acceleration@)">
+            <summary>
+            Converts axes from absolute coordinates (a
+            fixed system regardless of how the device is being held) to screen
+            coordinates (used in the windowing system, and can change if the screen is
+            rotated). For example, if the screen is changed from portrait to landscape
+            mode, values reported by the sensor remain the same, but the application
+            window now has different X and Y axes to work with when painting its
+            content. An application can call this routine to convert from the sensor's
+            absolute axes into the windowing system's current axes.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="E:PsionTeklogix.Sensors.Accelerometer.AccelerometerEvent">
+            <summary>
+            Accelerometer data event.
+            </summary>
+            <remarks>
+            Data arrives very fast. Don't try to updated the screen on every event.
+            </remarks>
+        </member>
+        <member name="T:PsionTeklogix.Sensors.Accelerometer.Acceleration">
+            <summary>
+            Instances of this object hold the accelerometer data.
+            Lying flat on a desk, z should be 1 and x and y should be zero.
+            Sitting upright (i.e. in a dock), x should be 1 and y and z should be zero.
+            Lying on edge with the keyboard to the right, y should be 1 and x and z 
+            should be zero.
+            </summary>
+        </member>
+        <member name="F:PsionTeklogix.Sensors.Accelerometer.Acceleration.reserved">
+            <summary>reserved</summary>
+        </member>
+        <member name="F:PsionTeklogix.Sensors.Accelerometer.Acceleration.tickCountMs">
+            <summary>
+            System tick count when reading was taken
+            </summary>
+        </member>
+        <member name="F:PsionTeklogix.Sensors.Accelerometer.Acceleration.x">
+            <summary>
+            acceleration in the x direction. Measured in Gs. i.e. gravity = 1G
+            </summary>
+        </member>
+        <member name="F:PsionTeklogix.Sensors.Accelerometer.Acceleration.y">
+            <summary>
+            acceleration in the y direction.
+            </summary>
+        </member>
+        <member name="F:PsionTeklogix.Sensors.Accelerometer.Acceleration.z">
+            <summary>
+            acceleration in the z direction.
+            </summary>
+        </member>
+        <member name="T:PsionTeklogix.Sensors.Accelerometer.AccelerometerEventArgs">
+            <summary>
+            This class defines acceleration event data.
+            </summary>
+        </member>
+        <member name="F:PsionTeklogix.Sensors.Accelerometer.AccelerometerEventArgs.data">
+            <summary>
+            Acceleration data
+            </summary>
+        </member>
+        <member name="T:PsionTeklogix.Sensors.Accelerometer.AccelerometerHandler">
+            <summary>
+            Delegate for acceleration data handling
+            </summary>
+            <param name="sender">object that sent the event</param>
+            <param name="eventData">accelerometer data</param>
+        </member>
+        <member name="T:PsionTeklogix.Sensors.LightSensor">
+            <summary>
+            Instances of this class provide access to the LightSensor.
+            You may use this class to register a callback function which
+            will be passed LightSensor data at periodic intervals.
+            </summary>
+        </member>
+        <member name="M:PsionTeklogix.Sensors.LightSensor.Callback(System.IntPtr,System.IntPtr)">
+            <summary>
+            Internal callback function registered with 'C' layer.  This callback
+            marshals the data and call the C# event.
+            </summary>
+            <param name="data">A pointer to a 'C' data structure</param>
+            <param name="userData">Not Used</param>
+        </member>
+        <member name="M:PsionTeklogix.Sensors.LightSensor.#ctor">
+            <summary>
+            Constructor. Provides access to the LightSensor object.
+            </summary>
+            <remarks> 
+            Will throw an exception if hardware is not supported.
+            </remarks>
+        </member>
+        <member name="M:PsionTeklogix.Sensors.LightSensor.Finalize">
+            <summary>
+            Finalize. This destructor will run only if the Dispose method
+            does not get called.
+            </summary>
+        </member>
+        <member name="M:PsionTeklogix.Sensors.LightSensor.Dispose">
+            <summary>
+            Implementation for IDisposable interface
+            </summary>
+        </member>
+        <member name="M:PsionTeklogix.Sensors.LightSensor.Dispose(System.Boolean)">
+            <summary>
+            Dispose(bool disposing) executes in two distinct scenarios.
+            If disposing equals true, the method has been called directly
+            or indirectly by a user's code. Managed and unmanaged resources
+            can be disposed.
+            If disposing equals false, the method has been called by the
+            runtime from inside the finalizer and you should not reference
+            other objects. Only unmanaged resources can be disposed.
+            </summary>
+            <param name="disposing">true if called from user code</param>
+        </member>
+        <member name="M:PsionTeklogix.Sensors.LightSensor.ReadLightLevel">
+            <summary>
+            This function can be used get a single data reading.  If you
+            need multiple data readings then you should register a callback
+            function instead.
+            </summary>
+            <remarks> 
+            Will throw an exception if unable to read light level.
+            </remarks>
+            <returns></returns>
+        </member>
+        <member name="E:PsionTeklogix.Sensors.LightSensor.LightSensorEvent">
+            <summary>
+            LightSensor data event.
+            </summary>
+        </member>
+        <member name="T:PsionTeklogix.Sensors.LightSensor.LightLevel">
+            <summary>
+            Instances of this object hold the LightSensor data.
+            </summary>
+        </member>
+        <member name="F:PsionTeklogix.Sensors.LightSensor.LightLevel.reserved">
+            <summary>reserved</summary>
+        </member>
+        <member name="F:PsionTeklogix.Sensors.LightSensor.LightLevel.tickCountMs">
+            <summary>
+            System tick count when reading was taken
+            </summary>
+        </member>
+        <member name="F:PsionTeklogix.Sensors.LightSensor.LightLevel.lux">
+            <summary>
+            Light level
+            </summary>
+        </member>
+        <member name="T:PsionTeklogix.Sensors.LightSensor.LightSensorEventArgs">
+            <summary>
+            This class defines light level change event data.
+            </summary>
+        </member>
+        <member name="F:PsionTeklogix.Sensors.LightSensor.LightSensorEventArgs.data">
+            <summary>
+            Light Sensor data
+            </summary>
+        </member>
+        <member name="T:PsionTeklogix.Sensors.LightSensor.LightSensorHandler">
+            <summary>
+            Delegate for LightLevel data handling
+            </summary>
+            <param name="sender">object that sent the event</param>
+            <param name="eventData">LightSensor data</param>
+        </member>
+        <member name="T:PsionTeklogix.Sensors.ProximitySensor">
+            <summary>
+            Instances of this class provide access to the ProximitySensor.
+            You may use this class to register a callback function which
+            will be passed ProximitySensor data at periodic intervals.
+            </summary>
+        </member>
+        <member name="M:PsionTeklogix.Sensors.ProximitySensor.Callback(System.IntPtr,System.IntPtr)">
+            <summary>
+            Internal callback function registered with 'C' layer.  This callback
+            marshals the data and call the C# event.
+            </summary>
+            <param name="data">A pointer to a 'C' data structure</param>
+            <param name="userData">Not Used</param>
+        </member>
+        <member name="M:PsionTeklogix.Sensors.ProximitySensor.#ctor">
+            <summary>
+            Constructor. Provides access to the ProximitySensor object.
+            </summary>
+            <remarks> 
+            Will throw an exception if hardware is not supported.
+            </remarks>
+        </member>
+        <member name="M:PsionTeklogix.Sensors.ProximitySensor.Finalize">
+            <summary>
+            Finalize. This destructor will run only if the Dispose method
+            does not get called.
+            </summary>
+        </member>
+        <member name="M:PsionTeklogix.Sensors.ProximitySensor.Dispose">
+            <summary>
+            Implementation for IDisposable interface
+            </summary>
+        </member>
+        <member name="M:PsionTeklogix.Sensors.ProximitySensor.Dispose(System.Boolean)">
+            <summary>
+            Dispose(bool disposing) executes in two distinct scenarios.
+            If disposing equals true, the method has been called directly
+            or indirectly by a user's code. Managed and unmanaged resources
+            can be disposed.
+            If disposing equals false, the method has been called by the
+            runtime from inside the finalizer and you should not reference
+            other objects. Only unmanaged resources can be disposed.
+            </summary>
+            <param name="disposing">true if called from user code</param>
+        </member>
+        <member name="M:PsionTeklogix.Sensors.ProximitySensor.ReadProximity">
+            <summary>
+            This function can be used get a single data reading.  If you
+            need multiple data readings then you should register a callback
+            function instead.
+            </summary>
+            <remarks> 
+            Will throw an exception if unable to read proximity.
+            </remarks>
+            <returns></returns>
+        </member>
+        <member name="E:PsionTeklogix.Sensors.ProximitySensor.ProximitySensorEvent">
+            <summary>
+            ProximitySensor data event.
+            </summary>
+        </member>
+        <member name="T:PsionTeklogix.Sensors.ProximitySensor.Proximity">
+            <summary>
+            Instances of this object hold the ProximitySensor data.
+            </summary>
+        </member>
+        <member name="F:PsionTeklogix.Sensors.ProximitySensor.Proximity.reserved">
+            <summary>reserved</summary>
+        </member>
+        <member name="F:PsionTeklogix.Sensors.ProximitySensor.Proximity.tickCountMs">
+            <summary>
+            System tick count when reading was taken
+            </summary>
+        </member>
+        <member name="F:PsionTeklogix.Sensors.ProximitySensor.Proximity.near">
+            <summary>Sensed distance to the device.
+            true means near, and false means far.
+            </summary>
+        </member>
+        <member name="T:PsionTeklogix.Sensors.ProximitySensor.ProximitySensorEventArgs">
+            <summary>
+            This class defines proximity change event data.
+            </summary>
+        </member>
+        <member name="F:PsionTeklogix.Sensors.ProximitySensor.ProximitySensorEventArgs.data">
+            <summary>
+            Proximity Sensor data
+            </summary>
+        </member>
+        <member name="T:PsionTeklogix.Sensors.ProximitySensor.ProximitySensorHandler">
+            <summary>
+            Delegate for Proximity data handling
+            </summary>
+            <param name="sender">object that sent the event</param>
+            <param name="eventData">ProximitySensor data</param>
+        </member>
+        <member name="T:PsionTeklogix.Sensors.DeviceOrientation">
+            <summary>
+            Instances of this class provide access to the device's orientation information.
+            You may use this class to register a callback function which
+            will be passed orientation data at periodic intervals.
+            </summary>
+        </member>
+        <member name="M:PsionTeklogix.Sensors.DeviceOrientation.Callback(System.IntPtr,System.IntPtr)">
+            <summary>
+            Internal callback function registered with 'C' layer.  This callback
+            marshals the data and call the C# event.
+            </summary>
+            <param name="data">A pointer to a 'C' data structure</param>
+            <param name="userData">Not Used</param>
+        </member>
+        <member name="M:PsionTeklogix.Sensors.DeviceOrientation.#ctor">
+            <summary>
+            Constructor. Provides access to the device orientation object.
+            </summary>
+            <remarks> 
+            Will throw an exception if hardware is not supported.
+            </remarks>
+        </member>
+        <member name="M:PsionTeklogix.Sensors.DeviceOrientation.Finalize">
+            <summary>
+            Finalize. This destructor will run only if the Dispose method
+            does not get called.
+            </summary>
+        </member>
+        <member name="M:PsionTeklogix.Sensors.DeviceOrientation.Dispose">
+            <summary>
+            Implementation for IDisposable interface
+            </summary>
+        </member>
+        <member name="M:PsionTeklogix.Sensors.DeviceOrientation.Dispose(System.Boolean)">
+            <summary>
+            Dispose(bool disposing) executes in two distinct scenarios.
+            If disposing equals true, the method has been called directly
+            or indirectly by a user's code. Managed and unmanaged resources
+            can be disposed.
+            If disposing equals false, the method has been called by the
+            runtime from inside the finalizer and you should not reference
+            other objects. Only unmanaged resources can be disposed.
+            </summary>
+            <param name="disposing">true if called from user code</param>
+        </member>
+        <member name="M:PsionTeklogix.Sensors.DeviceOrientation.ReadOrientation">
+            <summary>
+            This function can be used get a single data reading.  If you
+            need multiple data readings then you should register a callback
+            function instead.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:PsionTeklogix.Sensors.DeviceOrientation.ConvertToScreenAxes(PsionTeklogix.Sensors.DeviceOrientation.OrientationData@)">
+            <summary>Converts heading, pitch, and roll from absolute coordinates
+            (a fixed system regardless of how the device is being held) to screen
+            coordinates (used in the windowing system, and can change if the screen is
+            rotated). For example, if the screen is changed from portrait to landscape
+            mode, values reported by the sensor remain the same, but the application
+            window now has different X and Y axes to work with when painting its
+            content. An application can call this routine to convert from the sensor's
+            absolute axes into the windowing system's current axes. Value units remain
+            the same, but the heading may change by a multiple of 90° and the pitch and
+            roll values may be swapped, and may change sign.
+            </summary>
+            <param name="data">the orientation data to be converted</param>
+            <returns>The converted data</returns>
+        </member>
+        <member name="M:PsionTeklogix.Sensors.DeviceOrientation.LaunchMagnetometerRecalibration">
+            <summary>
+            Launches the process for recalibrating the magnetometer,
+            something that must be done occasionally in order to get accurate heading
+            reports. Recalibration requires the user to tilt and rotate the device.
+            When reported heading accuracy is NeedsCalibration,
+            this is the routine to call to perform that calibration.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="E:PsionTeklogix.Sensors.DeviceOrientation.DeviceOrientationEvent">
+            <summary>
+            Device orientation data event.
+            </summary>
+            <remarks>
+            Data arrives very fast. Don't try to updated the screen on every event.
+            </remarks>
+        </member>
+        <member name="T:PsionTeklogix.Sensors.DeviceOrientation.OrientationData">
+            <summary>
+            Instances of this object hold the device orientation data.
+            </summary>
+        </member>
+        <member name="F:PsionTeklogix.Sensors.DeviceOrientation.OrientationData.reserved">
+            <summary>reserved</summary>
+        </member>
+        <member name="F:PsionTeklogix.Sensors.DeviceOrientation.OrientationData.tickCountMs">
+            <summary>
+            System tick count when reading was taken
+            </summary>
+        </member>
+        <member name="F:PsionTeklogix.Sensors.DeviceOrientation.OrientationData.headingDegrees">
+            <summary>
+            Direction pointed to by a line drawn parallel to the screen,
+            from its bottom to its top (in the default screen orientation), as
+            best as it can be determined. 0=North, 90=East, 180=South, 270=West.
+            If the AdjustForLocation property is true and the current location is
+            known (for example from GPS), the heading will be relative to the
+            geographic north pole. Otherwise it is relative to the magnetic north
+            pole. Please note the difference between device heading (which way the
+            device is pointing, reported here) and device course (which way the
+            device is moving, reported by the GPS).
+            </summary>
+        </member>
+        <member name="F:PsionTeklogix.Sensors.DeviceOrientation.OrientationData.locationAdjusted">
+            <summary>
+            magnetic north (0) vs geographic north (1). 
+            </summary>
+        </member>
+        <member name="F:PsionTeklogix.Sensors.DeviceOrientation.OrientationData.headingAccuracy">
+            <summary>
+            Accuracy of orientation information.  Not supported yet. (as of 7515 release 1)
+            </summary>
+        </member>
+        <member name="F:PsionTeklogix.Sensors.DeviceOrientation.OrientationData.pitchDegrees">
+            <summary>
+            Pitch of the device. Zero indicates no pitch, as if sitting
+            flat on a level surface, screen side up. Positive values indicate
+            upward tilt, with the far end of the device higher, and the near end
+            lower. Range -180 to +179.
+            </summary>
+        </member>
+        <member name="F:PsionTeklogix.Sensors.DeviceOrientation.OrientationData.rollDegrees">
+            <summary>
+            Roll of the device. Zero indicates no roll, as if sitting
+            flat on a level surface, screen side up. Positive values indicate
+            clockwise tilt, with the right side of the device lower, and the left
+            side higher. Range -180 to +179.
+            </summary>
+        </member>
+        <member name="T:PsionTeklogix.Sensors.DeviceOrientation.HeadingAccuracy">
+            <summary>
+            Heading accuracy indication.
+            </summary>
+        </member>
+        <member name="F:PsionTeklogix.Sensors.DeviceOrientation.HeadingAccuracy.High">
+            <summary>High</summary>
+        </member>
+        <member name="F:PsionTeklogix.Sensors.DeviceOrientation.HeadingAccuracy.Medium">
+            <summary>Medium</summary>
+        </member>
+        <member name="F:PsionTeklogix.Sensors.DeviceOrientation.HeadingAccuracy.Low">
+            <summary>Low</summary>
+        </member>
+        <member name="F:PsionTeklogix.Sensors.DeviceOrientation.HeadingAccuracy.NeedsCalibration">
+            <summary>Compass needs to be calibrated</summary>
+        </member>
+        <member name="F:PsionTeklogix.Sensors.DeviceOrientation.HeadingAccuracy.Unavailable">
+            <summary>No heading data available ( Device may not have a compass )</summary>
+        </member>
+        <member name="T:PsionTeklogix.Sensors.DeviceOrientation.DeviceOrientationEventArgs">
+            <summary>
+            This class defines acceleration event data.
+            </summary>
+        </member>
+        <member name="F:PsionTeklogix.Sensors.DeviceOrientation.DeviceOrientationEventArgs.data">
+            <summary>
+            Orientation data
+            </summary>
+        </member>
+        <member name="T:PsionTeklogix.Sensors.DeviceOrientation.DeviceOrientationHandler">
+            <summary>
+            Delegate for orientation data handling
+            </summary>
+            <param name="sender">object that sent the event</param>
+            <param name="eventData">orientation data</param>
+        </member>
+        <member name="M:PsionTeklogix.Runtime.InteropServices.Marshalling.BasicTypeArrayToArrayList(System.Byte[],System.Int32)">
+            <summary>
+            Convert an unmanaged array of basic types (int, char, etc) to an array list.
+            </summary>
+            <remarks> I only needed to convert "normal" ints.  If you need to support other
+            types you will have to add them yourself.
+            This is similar to ByteToArrayList, but works for basic types such as int.
+            </remarks>
+            <param name="buffer">A byte array containing the data</param>
+            <param name="itemSize">size of each item in the byte array</param>
+            <returns>An arraylist of items</returns>
+        </member>
+        <member name="T:PsionTeklogix.Sensors.Gyroscope">
+            <summary>
+            Instances of this class provide access to the gyroscope, a sensor device
+            providing readings of how the device is being physically rotated.
+            You may use this class to register a callback function which
+            will be passed gyroscope data at periodic intervals.
+            </summary>
+        </member>
+        <member name="M:PsionTeklogix.Sensors.Gyroscope.Callback(System.IntPtr,System.IntPtr)">
+            <summary>
+            Internal callback function registered with 'C' layer.  This callback
+            marshals the data and call the C# event.
+            </summary>
+            <param name="data">A pointer to a 'C' data structure</param>
+            <param name="userData">Not Used</param>
+        </member>
+        <member name="M:PsionTeklogix.Sensors.Gyroscope.#ctor">
+            <summary>
+            Constructor. Provides access to the gyroscope object.
+            </summary>
+            <remarks> 
+            Will throw an exception if hardware is not supported.
+            </remarks>
+        </member>
+        <member name="M:PsionTeklogix.Sensors.Gyroscope.Finalize">
+            <summary>
+            Finalize. This destructor will run only if the Dispose method
+            does not get called.
+            </summary>
+        </member>
+        <member name="M:PsionTeklogix.Sensors.Gyroscope.Dispose">
+            <summary>
+            Implementation for IDisposable interface
+            </summary>
+        </member>
+        <member name="M:PsionTeklogix.Sensors.Gyroscope.Dispose(System.Boolean)">
+            <summary>
+            Dispose(bool disposing) executes in two distinct scenarios.
+            If disposing equals true, the method has been called directly
+            or indirectly by a user's code. Managed and unmanaged resources
+            can be disposed.
+            If disposing equals false, the method has been called by the
+            runtime from inside the finalizer and you should not reference
+            other objects. Only unmanaged resources can be disposed.
+            </summary>
+            <param name="disposing">true if called from user code</param>
+        </member>
+        <member name="M:PsionTeklogix.Sensors.Gyroscope.ReadData">
+            <summary>
+            This function can be used get a single data reading.  If you
+            need multiple data readings then you should register a callback
+            function instead.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:PsionTeklogix.Sensors.Gyroscope.ConvertToScreenAxes(PsionTeklogix.Sensors.Gyroscope.AngularVelocity@)">
+            <summary>Converts X and Y values from absolute coordinates (a fixed system
+            regardless of how the device is being held) to screen coordinates (used in
+            the windowing system, and can change if the screen is rotated). For
+            example, if the screen is changed from portrait to landscape mode, values
+            reported by the sensor remain the same, but the application window now has
+            different X and Y axes to work with when painting its content. An
+            application can call this routine to convert from the sensor's absolute
+            axes into the windowing system's current axes. Value units remain the
+            same, but X and Y values may be swapped, and may change sign.</summary>
+        </member>
+        <member name="E:PsionTeklogix.Sensors.Gyroscope.GyroscopeEvent">
+            <summary>
+            Gyroscope data event.
+            </summary>
+            <remarks>
+            Data arrives very fast. Don't try to updated the screen on every event.
+            </remarks>
+        </member>
+        <member name="T:PsionTeklogix.Sensors.Gyroscope.AngularVelocity">
+            <summary>Angular velocity of the device, which indicates how the device is
+            rotating. The three axes are the same as used in the device orientation
+            and accelerometer, with X and Y axes parallel to the screen, X towards the
+            right and Y towards the top (in the default screen orientation), and the Z
+            axis perpendicular to the screen towards the viewer. Rotation directions
+            follow the right-hand rule: With your right thumb pointing from the origin
+            along the axis in the positive direction, the remaining fingers when
+            curled point in the positive rotation direction.</summary>
+        </member>
+        <member name="F:PsionTeklogix.Sensors.Gyroscope.AngularVelocity.reserved">
+            <summary>reserved</summary>
+        </member>
+        <member name="F:PsionTeklogix.Sensors.Gyroscope.AngularVelocity.tickCountMs">
+            <summary>
+            System tick count when reading was taken
+            </summary>
+        </member>
+        <member name="F:PsionTeklogix.Sensors.Gyroscope.AngularVelocity.x">
+            <summary>Angular velocity around the X-axis in degrees per second.
+            Positive values indicate increasing pitch, with the top of the screen
+            moving up and towards the user.</summary>
+        </member>
+        <member name="F:PsionTeklogix.Sensors.Gyroscope.AngularVelocity.y">
+            <summary>Angular velocity around the Y-axis in degrees per second.
+            Positive values indicate increasing roll, with the left side of the
+            device moving up and towards the right.</summary>
+        </member>
+        <member name="F:PsionTeklogix.Sensors.Gyroscope.AngularVelocity.z">
+            <summary>Angular velocity around the Z-axis in degrees per second.
+            Positive values indicate counter-clockwise rotation of the screen.
+            </summary>
+        </member>
+        <member name="T:PsionTeklogix.Sensors.Gyroscope.GyroscopeEventArgs">
+            <summary>
+            This class defines gyroscope event data.
+            </summary>
+        </member>
+        <member name="F:PsionTeklogix.Sensors.Gyroscope.GyroscopeEventArgs.data">
+            <summary>
+            AngularVelocity data
+            </summary>
+        </member>
+        <member name="T:PsionTeklogix.Sensors.Gyroscope.GyroscopeHandler">
+            <summary>
+            Delegate for gyroscope data handling
+            </summary>
+            <param name="sender">object that sent the event</param>
+            <param name="eventData">gyroscope data</param>
+        </member>
+    </members>
+</doc>

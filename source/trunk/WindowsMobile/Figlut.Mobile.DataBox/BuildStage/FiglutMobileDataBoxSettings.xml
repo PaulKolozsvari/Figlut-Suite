@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FiglutMobileDataBoxSettings xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <ShowMessageBoxOnException>true</ShowMessageBoxOnException>
+  <FiglutWebServiceBaseUrl>http://host:2983/Figlut/</FiglutWebServiceBaseUrl>
+  <UseAuthentication>false</UseAuthentication>
+  <PromptForCredentials>false</PromptForCredentials>
+  <AuthenticationDomainName></AuthenticationDomainName>
+  <AuthenticationUserName></AuthenticationUserName>
+  <AuthenticationPassword></AuthenticationPassword>
+  <FiglutWebServiceWebRequestTimeout>30000</FiglutWebServiceWebRequestTimeout>
+  <FiglutWebServiceTextResponseEncoding>UTF8</FiglutWebServiceTextResponseEncoding>
+  <FiglutWebServiceMessagingFormat>JSON</FiglutWebServiceMessagingFormat>
+  <FiglutWebServiceSchemaAcquisitionMessagingFormat>JSON</FiglutWebServiceSchemaAcquisitionMessagingFormat>
+  <OfflineMode>false</OfflineMode>
+  <ApplicationTitle>Figlut Mobile DataBox</ApplicationTitle>
+  <ApplicationVersion>1.1.0.0</ApplicationVersion>
+  <ThemeColor>SteelBlue</ThemeColor>
+  <DataBoxSelectRowColor>SteelBlue</DataBoxSelectRowColor>
+  <ApplicationBannerImageFileName>FiglutApplicationBanner.png</ApplicationBannerImageFileName>
+  <ShapeColumnNames>false</ShapeColumnNames>
+  <HiddenTypeNames>
+    <string>System.Guid</string>
+    <string>System.Nullable`1[[System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]</string>
+    <string>System.Byte[]</string>
+  </HiddenTypeNames>
+  <EntityIdColumnName>ENTITY_ID_A2382C02EF06497A9BBFE4DB3C8290A8</EntityIdColumnName>
+  <HideEntityIdColumn>true</HideEntityIdColumn>
+  <MainMenuVisible>false</MainMenuVisible>
+  <DataBoxColumnWidth>175</DataBoxColumnWidth>
+  <DatabaseSchemaFileName>FiglutDatabaseSchema.xml</DatabaseSchemaFileName>
+  <UseExtensions>false</UseExtensions>
+  <ExtensionAssemblyName>FiglutExtensions.dll</ExtensionAssemblyName>
+  <CrudInterceptorFullTypeName>FiglutExtensions.DataBox.OssDataBoxCrudInterceptor</CrudInterceptorFullTypeName>
+  <MainMenuExtentionFullTypeName>FiglutExtensions.DataBox.OssDataBoxMainMenuExtension</MainMenuExtentionFullTypeName>
+  <LogToFile>true</LogToFile>
+  <LogToWindowsEventLog>true</LogToWindowsEventLog>
+  <LogFileName>Figlut.Mobile.DataBox.Log.txt</LogFileName>
+  <EventSourceName>Figlut.Mobile.DataBox.Source</EventSourceName>
+  <EventLogName>Figlut.Mobile.DataBox.Log</EventLogName>
+  <LoggingLevel>Maximum</LoggingLevel>
+</FiglutMobileDataBoxSettings>

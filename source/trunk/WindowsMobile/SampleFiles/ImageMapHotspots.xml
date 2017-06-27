@@ -1,0 +1,76 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ArrayOfHotspot xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Hotspot xsi:type="PolygonHotspot">
+    <Key>Polygon</Key>
+    <Tag xsi:type="xsd:string">You clicked the polygon.</Tag>
+    <EnableHotspotHighlight>true</EnableHotspotHighlight>
+    <HotspotComplete>true</HotspotComplete>
+    <Highlighted>true</Highlighted>
+    <Vertices>
+      <Vertex>
+        <X>194</X>
+        <Y>82</Y>
+      </Vertex>
+      <Vertex>
+        <X>203</X>
+        <Y>81</Y>
+      </Vertex>
+      <Vertex>
+        <X>310</X>
+        <Y>81</Y>
+      </Vertex>
+      <Vertex>
+        <X>321</X>
+        <Y>89</Y>
+      </Vertex>
+      <Vertex>
+        <X>329</X>
+        <Y>158</Y>
+      </Vertex>
+      <Vertex>
+        <X>186</X>
+        <Y>161</Y>
+      </Vertex>
+    </Vertices>
+  </Hotspot>
+  <Hotspot xsi:type="CircleHotspot">
+    <Key>Right front wheel.</Key>
+    <EnableHotspotHighlight>true</EnableHotspotHighlight>
+    <HotspotComplete>true</HotspotComplete>
+    <Highlighted>true</Highlighted>
+    <CenterVertex>
+      <X>401</X>
+      <Y>130</Y>
+    </CenterVertex>
+    <Radius>28</Radius>
+  </Hotspot>
+  <Hotspot xsi:type="RectangleHotspot">
+    <Key>Roof</Key>
+    <EnableHotspotHighlight>true</EnableHotspotHighlight>
+    <HotspotComplete>true</HotspotComplete>
+    <Highlighted>true</Highlighted>
+    <TopLeftVertex>
+      <X>197</X>
+      <Y>197</Y>
+    </TopLeftVertex>
+    <BottomRightVertex>
+      <X>311</X>
+      <Y>327</Y>
+    </BottomRightVertex>
+  </Hotspot>
+  <Hotspot xsi:type="RectangleHotspot">
+    <Key>Options</Key>
+    <Tag xsi:type="xsd:string">Provide a menu for this hotspot.</Tag>
+    <EnableHotspotHighlight>false</EnableHotspotHighlight>
+    <HotspotComplete>true</HotspotComplete>
+    <Highlighted>true</Highlighted>
+    <TopLeftVertex>
+      <X>24</X>
+      <Y>465</Y>
+    </TopLeftVertex>
+    <BottomRightVertex>
+      <X>60</X>
+      <Y>491</Y>
+    </BottomRightVertex>
+  </Hotspot>
+</ArrayOfHotspot>

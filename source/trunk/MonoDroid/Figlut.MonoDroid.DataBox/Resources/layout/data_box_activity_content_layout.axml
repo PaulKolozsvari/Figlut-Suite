@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/data_box_content"
+    android:orientation="vertical"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content">
+    <TextView
+        android:id="@+id/text_data_box_title"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="left"
+        android:gravity="left"
+        android:text="@string/data_box"
+        android:textColor="#ffffff"
+        android:textSize="15dp"
+        android:background="#ff437e9f"
+        android:textStyle="normal|bold|italic" />
+    <LinearLayout
+        android:id="@+id/header_layout"
+        android:orientation="horizontal"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:background="#ff437e9f"
+        android:gravity="right">
+        <TextView
+            android:id="@+id/text_primary_value_header"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right"
+            android:gravity="center"
+            android:text="@string/primary_column"
+            android:textColor="#ffffff"
+            android:textSize="10dp"
+            android:background="#ff437e9f"
+            android:textStyle="normal|bold|italic" />
+        <TextView
+            android:id="@+id/text_secondary_value_header"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right"
+            android:gravity="center"
+            android:textColor="#ffffff"
+            android:background="#ff437e9f"
+            android:textSize="10dp"
+            android:paddingLeft="5dp" />
+    </LinearLayout>
+    <ListView
+        android:id="@+id/list_data_box"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent" />
+</LinearLayout>

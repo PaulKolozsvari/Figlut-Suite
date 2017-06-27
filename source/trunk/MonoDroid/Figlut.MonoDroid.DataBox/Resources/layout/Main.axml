@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent">
+    <View
+        android:id="@+id/border_bottom"
+        android:layout_width="fill_parent"
+        android:layout_height="20dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="false"
+        android:layout_alignParentBottom="true"
+        android:background="#ff437e9f" />
+    <View
+        android:id="@+id/border_left"
+        android:layout_width="20dp"
+        android:layout_height="fill_parent"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="false"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentBottom="true"
+        android:background="#ff437e9f" />
+    <View
+        android:id="@+id/border_right"
+        android:layout_width="20dp"
+        android:layout_height="fill_parent"
+        android:layout_alignParentLeft="false"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentBottom="true"
+        android:background="#ff437e9f" />
+    <LinearLayout
+        android:id="@+id/layout_content"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_toRightOf="@id/border_left"
+        android:layout_toLeftOf="@id/border_right"
+        android:gravity="center">
+        <ImageView
+            android:id="@+id/image_logo"
+            android:layout_width="fill_parent"
+            android:layout_height="100dp"
+            android:background="@drawable/figlut_logo"
+            android:contentDescription="@string/app_name"
+            android:layout_gravity="center"
+            android:scaleType="fitCenter" />
+        <ViewStub
+            android:id="@+id/content_stub"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:inflatedId="@+id/content"
+            android:layout="@layout/main_menu_content" />
+    </LinearLayout>
+</RelativeLayout>

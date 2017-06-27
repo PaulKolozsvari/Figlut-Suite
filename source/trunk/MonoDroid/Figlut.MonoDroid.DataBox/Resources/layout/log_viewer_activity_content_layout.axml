@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/log_viewer_content"
+    android:orientation="vertical"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent">
+    <TextView
+        android:id="@+id/text_log_viewer_title"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="left"
+        android:gravity="left"
+        android:text="@string/log_viewer"
+        android:textColor="#ffffff"
+        android:textSize="15dp"
+        android:background="#ff437e9f"
+        android:textStyle="normal|bold|italic" />
+    <ScrollView
+        android:id="@+id/scroll_log_viewer"
+        android:layout_height="fill_parent"
+        android:layout_width="fill_parent">
+        <TextView
+            android:id="@+id/text_log_viewer"
+            android:layout_height="fill_parent"
+            android:layout_width="fill_parent" />
+    </ScrollView>
+</LinearLayout>

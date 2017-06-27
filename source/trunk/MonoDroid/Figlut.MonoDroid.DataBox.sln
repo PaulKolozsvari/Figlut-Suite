@@ -1,0 +1,44 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Figlut.MonoDroid.DataBox", "Figlut.MonoDroid.DataBox\Figlut.MonoDroid.DataBox.csproj", "{14C0318C-E7BF-462A-ABBE-DACB65B2F7BB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataGridExampleAndroid", "AndroidDataGridExample-master\DataGridExampleAndroid\DataGridExampleAndroid.csproj", "{82F04C1E-2F0D-4396-ADC3-BC9EADEE8E7E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Figlut.MonoDroid.DataBox.Utilities", "Figlut.MonoDroid.DataBox.Utilities\Figlut.MonoDroid.DataBox.Utilities.csproj", "{81E71D24-2753-47EF-BB15-EA32AF07496B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Figlut.MonoDroid.DataBox.Configuration", "Figlut.MonoDroid.DataBox.Configuration\Figlut.MonoDroid.DataBox.Configuration.csproj", "{4BDC35D5-6B50-41BB-A24B-D80545C83550}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Figlut.MonoDroid.Toolkit", "Figlut.MonoDroid.Toolkit\Figlut.MonoDroid.Toolkit.csproj", "{87CA759D-C6A3-4A5D-A1A1-8497C6A5BE92}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{14C0318C-E7BF-462A-ABBE-DACB65B2F7BB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{14C0318C-E7BF-462A-ABBE-DACB65B2F7BB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{14C0318C-E7BF-462A-ABBE-DACB65B2F7BB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{14C0318C-E7BF-462A-ABBE-DACB65B2F7BB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4BDC35D5-6B50-41BB-A24B-D80545C83550}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4BDC35D5-6B50-41BB-A24B-D80545C83550}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4BDC35D5-6B50-41BB-A24B-D80545C83550}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4BDC35D5-6B50-41BB-A24B-D80545C83550}.Release|Any CPU.Build.0 = Release|Any CPU
+		{81E71D24-2753-47EF-BB15-EA32AF07496B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{81E71D24-2753-47EF-BB15-EA32AF07496B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{81E71D24-2753-47EF-BB15-EA32AF07496B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{81E71D24-2753-47EF-BB15-EA32AF07496B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{82F04C1E-2F0D-4396-ADC3-BC9EADEE8E7E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{82F04C1E-2F0D-4396-ADC3-BC9EADEE8E7E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{82F04C1E-2F0D-4396-ADC3-BC9EADEE8E7E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{82F04C1E-2F0D-4396-ADC3-BC9EADEE8E7E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{87CA759D-C6A3-4A5D-A1A1-8497C6A5BE92}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{87CA759D-C6A3-4A5D-A1A1-8497C6A5BE92}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{87CA759D-C6A3-4A5D-A1A1-8497C6A5BE92}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{87CA759D-C6A3-4A5D-A1A1-8497C6A5BE92}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(MonoDevelopProperties) = preSolution
+		StartupItem = Figlut.MonoDroid.DataBox\Figlut.MonoDroid.DataBox.csproj
+	EndGlobalSection
+EndGlobal

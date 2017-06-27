@@ -1,0 +1,218 @@
+﻿<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="3.5">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{79C9B2D1-6095-48BD-A4E9-BE1D11699623}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Figlut.Mobile.DataBox.UI</RootNamespace>
+    <AssemblyName>Figlut.Mobile.DataBox.UI</AssemblyName>
+    <ProjectTypeGuids>{4D628B5B-2FBC-4AA6-8C16-197242AEB884};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <PlatformFamilyName>PocketPC</PlatformFamilyName>
+    <PlatformID>b2c48bd2-963d-4549-9169-1fa021dce484</PlatformID>
+    <OSVersion>5.2</OSVersion>
+    <DeployDirSuffix>Figlut.Mobile.DataBox.UI</DeployDirSuffix>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <NativePlatformName>Windows Mobile 6 Professional SDK</NativePlatformName>
+    <FormFactorID>
+    </FormFactorID>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE;$(PlatformFamilyName)</DefineConstants>
+    <NoStdLib>true</NoStdLib>
+    <NoConfig>true</NoConfig>
+    <ErrorReport>prompt</ErrorReport>
+    <FileAlignment>512</FileAlignment>
+    <WarningLevel>4</WarningLevel>
+    <GenerateSerializationAssemblies>Off</GenerateSerializationAssemblies>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE;$(PlatformFamilyName)</DefineConstants>
+    <NoStdLib>true</NoStdLib>
+    <NoConfig>true</NoConfig>
+    <ErrorReport>prompt</ErrorReport>
+    <FileAlignment>512</FileAlignment>
+    <WarningLevel>4</WarningLevel>
+    <GenerateSerializationAssemblies>Off</GenerateSerializationAssemblies>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.WindowsCE.Forms" />
+    <Reference Include="mscorlib" />
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Linq.Expressions, Version=8.1.269.14430, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\SDK\System.LINQ.Expressions\System.Linq.Expressions.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="DataBoxForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DataBoxForm.Designer.cs">
+      <DependentUpon>DataBoxForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SelectChildDataBoxForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SelectChildDataBoxForm.Designer.cs">
+      <DependentUpon>SelectChildDataBoxForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SelectParentEntityForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SelectParentEntityForm.Designer.cs">
+      <DependentUpon>SelectParentEntityForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SelectParentDataBoxForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SelectParentDataBoxForm.Designer.cs">
+      <DependentUpon>SelectParentDataBoxForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ViewChildrenEntitiesForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ViewChildrenEntitiesForm.Designer.cs">
+      <DependentUpon>ViewChildrenEntitiesForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Utilities\FiglutClientInfo.cs" />
+    <Compile Include="LoadDataBoxForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="LoadDataBoxForm.Designer.cs">
+      <DependentUpon>LoadDataBoxForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="LoginForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="LoginForm.Designer.cs">
+      <DependentUpon>LoginForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MainMenuForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MainMenuForm.Designer.cs">
+      <DependentUpon>MainMenuForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ManageEntityForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ManageEntityForm.Designer.cs">
+      <DependentUpon>ManageEntityForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SplashForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SplashForm.designer.cs">
+      <DependentUpon>SplashForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ViewParentEntityForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ViewParentEntityForm.Designer.cs">
+      <DependentUpon>ViewParentEntityForm.cs</DependentUpon>
+    </Compile>
+    <Service Include="{94E38DFF-614B-4cbd-B67C-F211BB35CE8B}" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\EmitCF\EmitCF.csproj">
+      <Project>{F7455BBE-B7B3-46A1-86CB-282B6091235F}</Project>
+      <Name>EmitCF</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Figlut.Mobile.Configuration.Manager.Utilities\Figlut.Mobile.Configuration.Manager.Utilities.csproj">
+      <Project>{B09F8DFE-7DCD-46D9-B2EE-DEB751EED53E}</Project>
+      <Name>Figlut.Mobile.Configuration.Manager.Utilities</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Figlut.Mobile.DataBox.Configuration.35\Figlut.Mobile.DataBox.Configuration.35.csproj">
+      <Project>{2DF361EE-A989-4D1B-9028-7AE9C824AFDC}</Project>
+      <Name>Figlut.Mobile.DataBox.Configuration.35</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Figlut.Mobile.DataBox.UI.Base\Figlut.Mobile.DataBox.UI.Base.csproj">
+      <Project>{D71816C6-CACB-4DCE-A6EF-0B90F8435D43}</Project>
+      <Name>Figlut.Mobile.DataBox.UI.Base</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Figlut.Mobile.DataBox.Utilities\Figlut.Mobile.DataBox.Utilities.csproj">
+      <Project>{3AE8F7A6-99D9-4A59-98B4-7C830823C72E}</Project>
+      <Name>Figlut.Mobile.DataBox.Utilities</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Figlut.Mobile.Toolkit.WM\Figlut.Mobile.Toolkit.WM.csproj">
+      <Project>{45B9F12F-3984-4E8E-A6F7-C84D89CB9B0B}</Project>
+      <Name>Figlut.Mobile.Toolkit.WM</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Mono.CecilCF\Mono.CecilCF.csproj">
+      <Project>{19361E9F-E1F2-4780-A710-D11B8CB741D0}</Project>
+      <Name>Mono.CecilCF</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Newtonsoft.Json\Newtonsoft.Json.Compact.csproj">
+      <Project>{256AA604-F61B-4B6D-8D51-C8E6AB11E435}</Project>
+      <Name>Newtonsoft.Json.Compact</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="DataBoxForm.resx">
+      <DependentUpon>DataBoxForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SelectChildDataBoxForm.resx">
+      <DependentUpon>SelectChildDataBoxForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LoadDataBoxForm.resx">
+      <DependentUpon>LoadDataBoxForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SelectParentEntityForm.resx">
+      <DependentUpon>SelectParentEntityForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SelectParentDataBoxForm.resx">
+      <DependentUpon>SelectParentDataBoxForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LoginForm.resx">
+      <DependentUpon>LoginForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MainMenuForm.resx">
+      <DependentUpon>MainMenuForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ManageEntityForm.resx">
+      <DependentUpon>ManageEntityForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ViewChildrenEntitiesForm.resx">
+      <DependentUpon>ViewChildrenEntitiesForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SplashForm.resx">
+      <DependentUpon>SplashForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ViewParentEntityForm.resx">
+      <DependentUpon>ViewParentEntityForm.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CompactFramework.CSharp.targets" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}">
+        <HostingProcess disable="1" />
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

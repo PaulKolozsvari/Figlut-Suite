@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    android:name="data_box_main_menu">
+    <item
+        android:id="@+id/menu_item_add"
+        android:title="@string/add" />
+    <item
+        android:id="@+id/menu_item_refresh"
+        android:title="@string/refresh" />
+    <item
+        android:id="@+id/menu_item_save"
+        android:title="@string/save" />
+</menu>

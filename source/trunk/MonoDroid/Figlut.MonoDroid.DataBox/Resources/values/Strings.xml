@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<string name="hello">Hello World, Click Me!</string>
+	<string name="app_name">Figlut Android DataBox</string>
+	<string name="configuration_manager">Configuration Manager</string>
+	<string name="mobile_data_box">Mobile DataBox</string>
+	<string name="reinitialize">Reinitialize</string>
+	<string name="web_service">Web Service</string>
+	<string name="web_service_settings_description">Configure connection to web service</string>
+	<string name="data_box">DataBox</string>
+	<string name="data_box_settings_description">Configure DataBox application</string>
+	<string name="logging">Logging</string>
+	<string name="logging_settings_description">Configure logging settings</string>
+	<string name="exit">Exit</string>
+	<string name="log_viewer">Log Viewer</string>
+	<string name="primary_column">Primary Column</string>
+	<string name="secondary_column">Secondary Column</string>
+	<string name="data_boxes">DataBoxes</string>
+	<string name="manage_entity">Manage Entity</string>
+	<string name="set">Set</string>
+	<string name="cancel">Cancel</string>
+	<string name="apply">Apply</string>
+	<string name="add">Add</string>
+	<string name="delete">Delete</string>
+	<string name="refresh">Refresh</string>
+	<string name="save">Save</string>
+	<string name="setting_name">Setting Name</string>
+	<string name="setting_value">Value</string>
+	<string name="reset_settings">Reset Settings</string>
+	<string name="clear">Clear</string>
+	<string name="user_name">User Name</string>
+	<string name="password">Password</string>
+	<string name="login">Login</string>
+</resources>

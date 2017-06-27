@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FiglutReModemSettings xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <ShowMessageBoxOnException>false</ShowMessageBoxOnException>
+  <ModemSerialPortName>COM17</ModemSerialPortName>
+  <ModemSerialPortBaudRate>2400</ModemSerialPortBaudRate>
+  <ModemSerialPortParity>None</ModemSerialPortParity>
+  <ModemSerialPortDatabits>8</ModemSerialPortDatabits>
+  <ModemSerialPortStopBits>One</ModemSerialPortStopBits>
+  <ModemSerialPortHandshake>RequestToSend</ModemSerialPortHandshake>
+  <ModemSerialPortDtrEnable>true</ModemSerialPortDtrEnable>
+  <ModemSerialPortRtsEnable>true</ModemSerialPortRtsEnable>
+  <IgnoreTimeZoneOnSmsDateReceived>true</IgnoreTimeZoneOnSmsDateReceived>
+  <LogAllSmsReceived>true</LogAllSmsReceived>
+  <LogAllSmsSent>true</LogAllSmsSent>
+  <LogModemSerialPortCommunication>true</LogModemSerialPortCommunication>
+  <DefaultDialupConnectionName>Dial-up Connection</DefaultDialupConnectionName>
+  <DefaultDialupConnectionUserName />
+  <DefaultDialupConnectionPassword />
+  <DialupConnectionAttemptTimeout>60000</DialupConnectionAttemptTimeout>
+  <LogAllDialupStateChangedEvents>true</LogAllDialupStateChangedEvents>
+  <RunCmdAfterDial>iexplore</RunCmdAfterDial>
+  <LogToFile>false</LogToFile>
+  <LogToWindowsEventLog>true</LogToWindowsEventLog>
+  <LogToConsole>true</LogToConsole>
+  <LogFileName>Figlut.ReModem.Log.txt</LogFileName>
+  <EventSourceName>Figlut.ReModem.Source</EventSourceName>
+  <EventLogName>Figlut.ReModem.Log</EventLogName>
+  <LoggingLevel>Normal</LoggingLevel>
+</FiglutReModemSettings>

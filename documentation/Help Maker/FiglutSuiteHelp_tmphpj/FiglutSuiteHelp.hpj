@@ -1,0 +1,56 @@
+; This file is maintained by HCW. Do not modify this file directly.
+; Created by HelpMaker 7.4.4.0
+
+[OPTIONS]
+HCW=0
+TITLE=Figlut Suite Help
+CONTENTS=Overview
+COPYRIGHT=Copyright © 2013 by ... Binary Chef
+REPORT=YES
+FTS=1
+COMPRESS=12 Hall Zeck
+LCID=0x409 0x6 0x00 English (United States)
+ERRORLOG=C:\Docs\BINARY~1\Figlut\DOCUME~1\HELPMA~1\FiglutSuiteHelp_tmphpj\FiglutSuiteHelp.log
+BMROOT=C:\Docs\BINARY~1\Figlut\DOCUME~1\HELPMA~1\FIGLUT~2\
+
+HLP=C:\Docs\BINARY~1\Figlut\DOCUME~1\HELPMA~1\FiglutSuiteHelp_tmphpj\FiglutSuiteHelp.hlp
+CNT=C:\Docs\BINARY~1\Figlut\DOCUME~1\HELPMA~1\FiglutSuiteHelp_tmphpj\FiglutSuiteHelp.cnt
+
+[FILES]
+C:\Docs\BINARY~1\Figlut\DOCUME~1\HELPMA~1\FiglutSuiteHelp_tmphpj\FiglutSuiteHelp.rtf
+
+[WINDOWS]
+Main="Main",(,,,),19972,(255,252,234),(192,192,192),f3
+Popup="Popup",(,,,),19972,(255,252,234),(192,192,192),f3
+
+[MAP]
+Overview = 30
+Prerequisites = 40
+ContactUs = 60
+Blog = 70
+AboutBinaryChef = 80
+RESTOverview = 110
+FiglutWebServiceOverview = 120
+SettingsFile = 140
+MMCSnap-in = 150
+Database = 170
+Service = 180
+Logging = 190
+QueryingData = 210
+InsertingData = 220
+UpdatingData = 230
+DeletingData = 240
+Overview = 260
+GettingStarted = 270
+APIDocumentation = 280
+Samples = 290
+Overview = 310
+GettingStarted = 320
+APIDocumentation = 330
+Samples = 340
+FAQ = 350
+HowToBuy = 360
+
+
+[OPTIONS]
+DEFFONT=Arial,12,0

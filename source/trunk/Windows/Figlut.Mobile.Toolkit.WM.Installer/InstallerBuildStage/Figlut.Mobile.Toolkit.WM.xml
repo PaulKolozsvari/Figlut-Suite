@@ -1,0 +1,1555 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Figlut.Mobile.Toolkit.WM</name>
+    </assembly>
+    <members>
+        <member name="T:Figlut.Mobile.Toolkit.Tools.ColorPickerForm">
+            <summary>
+            A form that displays a list of all the system colors which the user can choose from.
+            If the ShowDialog() method of this form returns a dialog of OK, the SelectedColor
+            property will have been set to the color that the user selected.
+            </summary>
+        </member>
+        <member name="F:Figlut.Mobile.Toolkit.Tools.ColorPickerForm.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:Figlut.Mobile.Toolkit.Tools.ColorPickerForm.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:Figlut.Mobile.Toolkit.Tools.ColorPickerForm.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="M:Figlut.Mobile.Toolkit.Tools.ColorPickerForm.#ctor(System.Drawing.Image,System.Windows.Forms.PictureBoxSizeMode)">
+            <summary>
+            A form that displays a list of all the system colors which the user can choose from.
+            If the ShowDialog() method of this form returns a dialog of OK, the SelectedColor
+            property will have been set to the color that the user selected.
+            </summary>
+            <param name="logo">The image logo to display at the top of the form.</param>
+            <param name="sizemode">The size mode of the picture on which the logo will be displayed.</param>
+        </member>
+        <member name="P:Figlut.Mobile.Toolkit.Tools.ColorPickerForm.SelectedColor">
+            <summary>
+            The color selected by the user. This property will only be set by this form 
+            once the user has selected a color and the form has closed with a dialog result of OK.
+            </summary>
+        </member>
+        <member name="P:Figlut.Mobile.Toolkit.Tools.ColorPickerForm.Logo">
+            <summary>
+            The image logo to display at the top of the form.
+            </summary>
+        </member>
+        <member name="T:Figlut.Mobile.Toolkit.Tools.CameraHelper">
+            <summary>
+            A helper class that uses the Windows Mobile CameraCaptureDialog to take pictures.
+            http://breathingtech.com/2011/working-with-camera-on-windows-mobile-applications-net-compact-framework/
+            </summary>
+        </member>
+        <member name="M:Figlut.Mobile.Toolkit.Tools.CameraHelper.CameraCapture(System.Boolean,System.Windows.Forms.Form,System.String,System.Drawing.Image@,System.Byte[]@)">
+            <summary>
+            Uses a Windows Mobile CameraCaptureDialog to take a picture or video.
+            Returns true if the picture was taken successfully, otherwise false
+            if the user cancelled out of the dialog.
+            </summary>
+            <param name="video">Whether or not to capture video instead of pictures.</param>
+            <param name="owner">The form that should own the CameraCaptureDialog. Would typically be the form form from which this method is being called.</param>
+            <param name="title">The title to be shown on the CameraCaptureDialog.</param>
+            <param name="result">The image result after a picture has been taken will be placed into this parameter.</param>
+            <param name="resultData">The binary data of the image result after a picture has been taken will be placed into this parameter.</param>
+            <returns></returns>
+        </member>
+        <member name="T:Figlut.Mobile.Toolkit.Tools.IM.RectangleHotspot">
+            <summary>
+            A hotspot the shape of a rectangle that can be added to an Image Map control.
+            </summary>
+        </member>
+        <member name="T:Figlut.Mobile.Toolkit.Tools.IM.Hotspot">
+            <summary>
+            An abstract class to be implemented by for specific hotspot shapes e.g. circle, rectangle etc.,
+            which can then be added on an Image Map control.
+            </summary>
+        </member>
+        <member name="M:Figlut.Mobile.Toolkit.Tools.IM.Hotspot.#ctor">
+            <summary>
+            Creates a new hotspot.
+            </summary>
+        </member>
+        <member name="M:Figlut.Mobile.Toolkit.Tools.IM.Hotspot.#ctor(System.String,System.Boolean,System.Boolean)">
+            <summary>
+            Creates a new hotspot.
+            </summary>
+            <param name="key">A unique key that will be used by the Image Map control to store the hotspot in a hotspot cache.</param>
+            <param name="enableHotspotHighlight">If set false the hotspot will not be highlighted even of the Image Map control is set to highlight hotspots.</param>
+            <param name="hotspotComplete">Sets the flag on the hotspot whether or no it is in the creation state i.e. if hotspot is complete it is not in the creation state.</param>
+        </member>
+        <member name="M:Figlut.Mobile.Toolkit.Tools.IM.Hotspot.IsPointVisible(Figlut.Mobile.Toolkit.Utilities.Vertex)">
+            <summary>
+            Determines if a supplied vertex is located inside the hotspot.
+            </summary>
+            <param name="vertex">The vertex to test for e.g. where the user clicked on the Image Map control.</param>
+            <returns>Returns true if the vertex is inside the hotspot.</returns>
+        </member>
+        <member name="M:Figlut.Mobile.Toolkit.Tools.IM.Hotspot.HighlightHotspot(System.Drawing.Graphics,System.Drawing.Brush)">
+            <summary>
+            Colors in the hotspot with the provided brush on the provided graphics.
+            </summary>
+            <param name="graphics">The graphics to color in on.</param>
+            <param name="brush">Brush to use to color in.</param>
+        </member>
+        <member name="M:Figlut.Mobile.Toolkit.Tools.IM.Hotspot.CancelHotspot">
+            <summary>
+            Cancels the creation of the hotspot by clearing the captured vertices.
+            </summary>
+            <returns>Returns the status string to be displayed on a status bar i.e. what the next step for the user is.</returns>
+        </member>
+        <member name="M:Figlut.Mobile.Toolkit.Tools.IM.Hotspot.BeginHotspot">
+            <summary>
+            Begins the creation of a hotspot. Sets the the hotspot in a state to accept new vertices to be added.
+            </summary>
+            <returns>Returns the status string to be displayed on a status bar i.e. what the next step for the user is.</returns>
+        </member>
+        <member name="M:Figlut.Mobile.Toolkit.Tools.IM.Hotspot.AddHotspotVertex(Figlut.Mobile.Toolkit.Utilities.Vertex)">
+            <summary>
+            Adds the vertex to this hotspot that should be in the creation state.
+            </summary>
+            <param name="vertex">The new vertex to be added to the hotspot.</param>
+            <returns>Returns the status string to be displayed on a status bar i.e. what the next step for the user is.</returns>
+        </member>
+        <member name="M:Figlut.Mobile.Toolkit.Tools.IM.Hotspot.AddHotspotVertex(Figlut.Mobile.Toolkit.Utilities.Vertex,System.Drawing.Graphics,System.Drawing.Pen)">
+            <summary>
+            Adds the vertex to this hotspot that should be in the creation state.
+            Call BeginHotspot to ensure hotspot is in the creation state. If the graphics object is not null
+            the outline of the the hotspot will also be drawn on the provided graphics with the
+            provided pen.
+            </summary>
+            <param name="vertex">The new vertex to be added to the hotspot.</param>
+            <param name="graphics">The graphics to draw the outline on.</param>
+            <param name="pen">The pen to use for drawing the outline.</param>
+            <returns>Returns the status string to be displayed on a status bar i.e. what the next step for the user is.</returns>
+        </member>
+        <member name="M:Figlut.Mobile.Toolkit.Tools.IM.Hotspot.EndHotspot">
+            <summary>
+            Checks that all the necessary vertices have been added
+            and then ends the creation of the hotspot by setting the HotspotComplet flag to true.
+            May not add more vertices after calling this method.
+            </summary>
+            <returns>Returns the status string to be displayed on a status bar i.e. what the next step for the user is.</returns>
+        </member>
+        <member name="M:Figlut.Mobile.Toolkit.Tools.IM.Hotspot.EndHotspot(System.Drawing.Graphics,System.Drawing.Brush)">
+            <summary>
+            Checks that all the necessary vertices have been added
+            and then ends the creation of the hotspot by setting the HotspotComplet flag to true.
+            May not add more vertices after calling this method.
+            Implementation should color in the hotspot if the supplied graphics is not null with the supplied brush.
+            </summary>
+            <param name="graphics">The brush to you use to color in.</param>
+            <param name="brush">The brush to you use to color in.</param>
+            <returns>Returns the status string to be displayed on a status bar i.e. what the next step for the user is.</returns>
+        </member>
+        <member name="M:Figlut.Mobile.Toolkit.Tools.IM.Hotspot.RefreshIncompleteHotspotOutline(System.Drawing.Graphics,System.Drawing.Pen)">
+            <summary>
+            Refreshes the outline of this hotspot. Implementation should do nothing if the supplied graphics is null.
+            </summary>
+            <param name="graphics">The graphics to use to draw on.</param>
+            <param name="pen">The pen to use to draw the outline.</param>
+        </member>
+        <member name="P:Figlut.Mobile.Toolkit.Tools.IM.Hotspot.Key">
+            <summary>
+            A unique key that will be used by the Image Map control to store the hotspot in 
+            a hotspot cache and identify it.
+            </summary>
+        </member>
+        <member name="P:Figlut.Mobile.Toolkit.Tools.IM.Hotspot.Tag">
+            <summary>
+            Any object you'd like stored linked to this hotspot.
+            </summary>
+        </member>
+        <member name="P:Figlut.Mobile.Toolkit.Tools.IM.Hotspot.EnableHotspotHighlight">
+            <summary>
+            If set false the hotspot will not be highlighted even of the Image Map control is set to highlight hotspots.
+            </summary>
+        </member>
+        <member name="P:Figlut.Mobile.Toolkit.Tools.IM.Hotspot.HotspotComplete">
+            <summary>
+            Whether or not the hotspot is in the creation state.
+            i.e. if hotspot is complete it is not in the creation state.
+            </summary>
+        </member>
+        <member name="P:Figlut.Mobile.Toolkit.Tools.IM.Hotspot.Highlighted">
+            <summary>
+            A flag used by the Image Map control to flag a hotspot that should highlighted i.e. colored in.
+            </summary>
+        </member>
+        <member name="M:Figlut.Mobile.Toolkit.Tools.IM.RectangleHotspot.#ctor">
+            <summary>
+            Creates a new rectangle hotspot.
+            </summary>
+        </member>
+        <member name="M:Figlut.Mobile.Toolkit.Tools.IM.RectangleHotspot.#ctor(System.String,System.Boolean,Figlut.Mobile.Toolkit.Utilities.Vertex,Figlut.Mobile.Toolkit.Utilities.Vertex)">
+            <summary>
+            Creates a new rectangle hotspot.
+            </summary>
+            <param name="key">A unique key that will be used by the Image Map control to store the hotspot in a hotspot cache.</param>
+            <param name="enableHotspotHighlight">If set false the hotspot will not be highlighted even of the Image Map control is set to highlight hotspots.</param>
+            <param name="topLeftVertex">The vertex of the top left hand corner of the rectangle.</param>
+            <param name="bottomRightVertex">The vertex of the bottom right hand corner of the rectangle.</param>
+        </member>
+        <member name="M:Figlut.Mobile.Toolkit.Tools.IM.RectangleHotspot.RefreshRectangle">
+            <summary>
+            Refreshes the rectangle object from the already captured top left and bottom right vertices.
+            Throws an exception if the two vertices have not been already been supplied.
+            </summary>
+        </member>
+        <member name="M:Figlut.Mobile.Toolkit.Tools.IM.RectangleHotspot.IsPointVisible(Figlut.Mobile.Toolkit.Utilities.Vertex)">
+            <summary>
+            Determines whether a given vertex is inside given the rectangle.
+            </summary>
+            <param name="vertex">The vertex to test for e.g. where the user clicked on the Image Map control.</param>
+            <returns>Returns true if the vertex is inside the rectangle.</returns>
+        </member>
+        <member name="M:Figlut.Mobile.Toolkit.Tools.IM.RectangleHotspot.HighlightHotspot(System.Drawing.Graphics,System.Drawing.Brush)">
+            <summary>
+            Colors in the rectangle with the provided brush on the provided graphics.
+            </summary>
+            <param name="graphics">The graphics to color in on.</param>
+            <param name="brush">Brush to use to color in.</param>
+        </member>
+        <member name="M:Figlut.Mobile.Toolkit.Tools.IM.RectangleHotspot.CancelHotspot">
+            <summary>
+            Cancels the creation of the rectangle hotspot by clearing the captured vertices.
+            </summary>
+            <returns>Returns the status string to be displayed on a status bar i.e. what the next step for the user is.</returns>
+        </member>
+        <member name="M:Figlut.Mobile.Toolkit.Tools.IM.RectangleHotspot.BeginHotspot">
+            <summary>
+            Begins the creation of a rectangle hotspot. Sets the the hotspot in a state to accept new vertices to be added.
+            </summary>
+            <returns>Returns the status string to be displayed on a status bar i.e. what the next step for the user is.</returns>
+        </member>
+        <member name="M:Figlut.Mobile.Toolkit.Tools.IM.RectangleHotspot.AddHotspotVertex(Figlut.Mobile.Toolkit.Utilities.Vertex)">
+            <summary>
+            Adds the vertex to this rectangle hotspot that should be in the creation state.
+            Call BeginHotspot to ensure hotspot is in the creation state.
+            </summary>
+            <param name="vertex">The new vertex to be added to the hotspot.</param>
+            <returns>Returns the status string to be displayed on a status bar i.e. what the next step for the user is.</returns>
+        </member>
+        <member name="M:Figlut.Mobile.Toolkit.Tools.IM.RectangleHotspot.AddHotspotVertex(Figlut.Mobile.Toolkit.Utilities.Vertex,System.Drawing.Graphics,System.Drawing.Pen)">
+            <summary>
+            Adds the vertex to this rectangle hotspot that should be in the creation state.
+            Call BeginHotspot to ensure hotspot is in the creation state. If the graphics object is not null
+            the outline of the the hotspot will also be drawn on the provided graphics with the
+            provided pen.
+            </summary>
+            <param name="vertex">The new vertex to be added to the hotspot.</param>
+            <param name="graphics">The graphics to draw the outline on.</param>
+            <param name="pen">The pen to use for drawing the outline.</param>
+            <returns>Returns the status string to be displayed on a status bar i.e. what the next step for the user is.</returns>
+        </member>
+        <member name="M:Figlut.Mobile.Toolkit.Tools.IM.RectangleHotspot.EndHotspot">
+            <summary>
+            Checks that both the top left and bottom right vertices have been added
+            and then ends the creation of the hotspot by setting the Hotspot Complete flag to true.
+            May not add more vertices after calling this method.
+            </summary>
+            <returns>Returns the status string to be displayed on a status bar i.e. what the next step for the user is.</returns>
+        </member>
+        <member name="M:Figlut.Mobile.Toolkit.Tools.IM.RectangleHotspot.EndHotspot(System.Drawing.Graphics,System.Drawing.Brush)">
+            <summary>
+            Checks that both the top left and bottom right vertices have been added
+            and then ends the creation of the hotspot by setting the Hotspot Complete flag to true.
+            May not add more vertices after calling this method. 
+            Colors in the rectangle if the supplied graphics is not null with the supplied brush.
+            </summary>
+            <param name="graphics">The graphics to color in on.</param>
+            <param name="brush">The brush to you use to color in.</param>
+            <returns>Returns the status string to be displayed on a status bar i.e. what the next step for the user is.</returns>
+        </member>
+        <member name="M:Figlut.Mobile.Toolkit.Tools.IM.RectangleHotspot.RefreshIncompleteHotspotOutline(System.Drawing.Graphics,System.Drawing.Pen)">
+            <summary>
+            Refreshes the outline of this rectangle. Does nothing if the supplied graphics is null.
+            </summary>
+            <param name="graphics">The graphics to use to draw on.</param>
+            <param name="pen">The pen to use to draw the outline.</param>
+        </member>
+        <member name="P:Figlut.Mobile.Toolkit.Tools.IM.RectangleHotspot.TopLeftVertex">
+            <summary>
+            The vertex of the top left hand corner of the rectangle.
+            </summary>
+        </member>
+        <member name="P:Figlut.Mobile.Toolkit.Tools.IM.RectangleHotspot.BottomRightVertex">
+            <summary>
+            The vertex of the bottom right hand corner of the rectangle.
+            </summary>
+        </member>
+        <member name="T:Figlut.Mobile.Toolkit.Tools.IM.ImageMap">
+            <summary>
+            A Windows Forms control that can used on a form to add and maintain an Image Map i.e.
+            similar to how an image map works in HTML.
+            </summary>
+        </member>
+        <member name="F:Figlut.Mobile.Toolkit.Tools.IM.ImageMap.components">
+            <summary> 
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:Figlut.Mobile.Toolkit.Tools.IM.ImageMap.InitializeComponent">
+            <summary> 
+            Required method for Designer support - do not modify 
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="M:Figlut.Mobile.Toolkit.Tools.IM.ImageMap.#ctor">
+            <summary>
+            A Windows Forms control that can used on a form to add and maintain an Image Map i.e.
+            similar to how an image map works in HTML.
+            </summary>
+        </member>
+        <member name="M:Figlut.Mobile.Toolkit.Tools.IM.ImageMap.AddHotspot(Figlut.Mobile.Toolkit.Tools.IM.Hotspot)">
+            <summary>
+            Add a hotspot to the ImageMap.
+            </summary>
+            <param name="hotspot">The hotspot to add.</param>
+        </member>
+        <member name="M:Figlut.Mobile.Toolkit.Tools.IM.ImageMap.DeleteHotspot(System.String)">
+            <summary>
+            Deletes the hotspot with the specified key and then it refreshes the hotspot highlights.
+            If a hotspot with the specified key does not exist an exception is thrown.
+            </summary>
+            <param name="key">The key of the hotspot to be deleted.</param>
+        </member>
+        <member name="M:Figlut.Mobile.Toolkit.Tools.IM.ImageMap.DeleteHotspotsWithoutTags(System.Collections.Generic.List{Figlut.Mobile.Toolkit.Tools.IM.Hotspot})">
+            <summary>
+            Deletes all the hotspots from the cache that don't have any tags attached to them
+            and then it refreshes the hotspot highlights. Does not delete any hotspots with
+            keys that are listed in the hotspotsToKeep.
+            </summary>
+        </member>
+        <member name="M:Figlut.Mobile.Toolkit.Tools.IM.ImageMap.GetHotspot(System.String)">
+            <summary>
+            Returns the hotspot from the cache with the specified key.
+            Otherwise returns null.
+            </summary>
+            <param name="key">The key of the hotspot in cache.</param>
+            <returns>The hotspot with the specified key or null if it doesn't exist.</returns>
+        </member>
+        <member name="M:Figlut.Mobile.Toolkit.Tools.IM.ImageMap.GetActiveHotspot">
+            <summary>
+            Gets the currently active hotspot. If there is currently no hotspot active
+            (the user clicked outside of any hotspot) then null is returned.
+            </summary>
+            <returns>the last hotspot the user activated.</returns>
+        </member>
+        <member name="M:Figlut.Mobile.Toolkit.Tools.IM.ImageMap.SetActiveHotspotAtPoint(Figlut.Mobile.Toolkit.Utilities.Vertex)">
+            <summary>
+            A hotspot that contains the given vertex is made as the active hotspot.
+            If the given vertex is not located inside any of the hotspots the active
+            hotspot is set to null.
+            </summary>
+            <param name="vertex">The vertex to check which hotspot it is located in.</param>
+            <returns>Returns the hotspot where the vertex is located in, otherwise returns null.</returns>
+        </member>
+        <member name="M:Figlut.Mobile.Toolkit.Tools.IM.ImageMap.SetStatus(System.String)">
+            <summary>
+            Sets the status of the status bar that is assigned to this Image Map control.
+            If there is not status bar this method does nothing.
+            </summary>
+            <param name="status">The status string to assign to the status bar.</param>
+        </member>
+        <member name="M:Figlut.Mobile.Toolkit.Tools.IM.ImageMap.SetStatus(System.String,Figlut.Mobile.Toolkit.Utilities.Vertex)">
+            <summary>
+            Sets the status of the status bar that is assigned to this Image Map control
+            as well as displays the mouse co position and image reset count if this Image
+            Map control is configured to do so i.e. display these fields.
+            If there is not status bar this method does nothing.
+            </summary>
+            <param name="status">The status string to assign to the status bar.</param>
+            <param name="mousePosition">The position (Vertex) of the mouse.</param>
+        </member>
+        <member name="M:Figlut.Mobile.Toolkit.Tools.IM.ImageMap.ClearHotspotHighlights(System.Boolean,System.Boolean)">
+            <summary>
+            Invalidates the image thereby clearing the drawn hotspot highlights and can also
+            clear the flags on all the highlights that are flagged to be highlighted.
+            Additional may only invalidate/reset the image only it is required i.e. if the image has
+            changed because a highlight has become active or has been deactivated. The parameter
+            forceImageReset controls this behaviour.
+            </summary>
+            <param name="forceImageReset">Disregards whether the image indeed needs to be invalidated/reset and forces the reset to occur anyway.</param>
+            <param name="resetHotspotHighlightFlags">Clears the Highlighted flag on all hotspots to ensure they are not highlighted again until they get activated again by the user.</param>
+        </member>
+        <member name="M:Figlut.Mobile.Toolkit.Tools.IM.ImageMap.ClearHotspotHighlights">
+            <summary>
+            Invalidates the image thereby clearing the drawn hotspot highlights.
+            An image reset image reset is forced and all hotspot Highlighted flags are cleared.
+            </summary>
+        </member>
+        <member name="M:Figlut.Mobile.Toolkit.Tools.IM.ImageMap.RefreshHotspotHighlights">
+            <summary>
+            Clears the hotspot highlights on the image (i.e. invalidates the image) without
+            clearing the hotspots' Highlighted flags. Then rehighlights all the hotspots
+            that should be highlighted unless the SingleHotspotHighlight property on this
+            control is set to true, in which case only the currently activated hotspot
+            will be highlighted. This method does nothing if the EnableHotspotHighlights
+            property is not set to true on this control
+            </summary>
+        </member>
+        <member name="M:Figlut.Mobile.Toolkit.Tools.IM.ImageMap.HotspotKeyExists(System.String)">
+            <summary>
+            Determines whether a hotspot with a provided key has already been added to this control.
+            </summary>
+            <param name="key">The hotspot key to look against the hotspots in this control.</param>
+            <returns>Returns true if a hotspot has already been added to this control with a key matching the given key.</returns>
+        </member>
+        <member name="M:Figlut.Mobile.Toolkit.Tools.IM.ImageMap.CancelHotspot">
+            <summary>
+            Cancels the creation of a new hotspot on this control.
+            </summary>
+        </member>
+        <member name="M:Figlut.Mobile.Toolkit.Tools.IM.ImageMap.BeginHotspot(Figlut.Mobile.Toolkit.Tools.IM.Hotspot)">
+            <summary>
+            Begins the creation of a new hotspot to be later added to this control.
+            N.B. This method does not add the given hotspot to the existing hotspots
+            on this control, but merely initiates the creation of this given hotspot i.e.
+            sets the given hotspot into a creation state thereby allowing for vertices
+            to be added to it. While the given hotspot is in the creation state it is
+            set as the active hotspot for this control.
+            </summary>
+            <param name="hotspot">The hotspot to set in the creation state to allow vertices to be added to it. This hotspot will also be set as the active hotspot for this control.</param>
+        </member>
+        <member name="M:Figlut.Mobile.Toolkit.Tools.IM.ImageMap.AddHotspotVertex(Figlut.Mobile.Toolkit.Utilities.Vertex)">
+            <summary>
+            Adds the given vertex to the hotspot if the active hotspot and this control is in the creation state.
+            Otherwise throws an exception. This method is called by this control on a MouseUp event.
+            </summary>
+            <param name="mousePostion">The vertex to add to the active hotspot that should be in the creation state.</param>
+        </member>
+        <member name="M:Figlut.Mobile.Toolkit.Tools.IM.ImageMap.MouseMoveSetActiveHotspot(Figlut.Mobile.Toolkit.Utilities.Vertex)">
+            <summary>
+            Determines what the active hotspot is at the given mousePosition vertex, 
+            sets the status and refreshes the hotspot highlights for the control.
+            </summary>
+            <param name="mousePosition"></param>
+        </member>
+        <member name="M:Figlut.Mobile.Toolkit.Tools.IM.ImageMap.EndHotspot">
+            <summary>
+            Ends the active hotspot that should be in the creation state when this method is called.
+            Otherwise throws an exception. After the active hotspot has been ended (completed) this
+            method also adds the hotspot to hotspots cache of this control.
+            </summary>
+        </member>
+        <member name="M:Figlut.Mobile.Toolkit.Tools.IM.ImageMap.ClearHotspots">
+            <summary>
+            Clears all the hotspots that have neen added to this control.
+            If these hotspots have not been exported to file they will be lost.
+            </summary>
+        </member>
+        <member name="M:Figlut.Mobile.Toolkit.Tools.IM.ImageMap.ExportHotspots(System.String,System.Type[])">
+            <summary>
+            Exports all the hotspots that have been added to this control to
+            an XML file. All the types of hotspots that have been added need 
+            to be included in order for all the hotspots to be serialized to XML successfully.
+            </summary>
+            <param name="filePath">The file path to the XML file to where the hotspots will be exported to.</param>
+            <param name="hotspotDerivedTypes">The hotspot types that have been added to this control e.g. RectangleHotspot/CircleHotspot etc.</param>
+        </member>
+        <member name="M:Figlut.Mobile.Toolkit.Tools.IM.ImageMap.ImportHotspots(System.String,System.Type[])">
+            <summary>
+            Imports hotspots from an XML file into this control. Existing hotspot are overwritten with the new ones.
+            All the types (e.g. RectangleHotspot/CircleHotspot etc.) 
+            of hotspots that are in the XML file need to be specified in order
+            for all the hotspots to be deserialized from XML successfully.
+            </summary>
+            <param name="filePath">The file path to the XML file from where the hotspots should be imported from.</param>
+            <param name="hotspotDerivedTypes">The hotspot types that exist in the XML file to be imported e.g. RectangleHotspot/CircleHotspot etc.</param>
+        </member>
+        <member name="M:Figlut.Mobile.Toolkit.Tools.IM.ImageMap.Dispose(System.Boolean)">
+            <summary> 
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="E:Figlut.Mobile.Toolkit.Tools.IM.ImageMap.OnHotspotClick">
+            <summary>
+            An event that gets fired when a hotspot is clicked on the Image Control.
+            Provides the hotspot as well as the mouse position.
+            </summary>
+        </member>
+        <member name="E:Figlut.Mobile.Toolkit.Tools.IM.ImageMap.OnMousePositionChanged">
+            <summary>
+            An event that gets fired when the position of the mouse changes i.e. MouseMove when
+            the user clicks and drags across the Image Map control.
+            Provides the mouse position too.
+            </summary>
+        </member>
+        <member name="P:Figlut.Mobile.Toolkit.Tools.IM.ImageMap.StatusBar">
+            <summary>
+            Gets or sets the status bar to which the Image Map control should update the status to.
+            If not status bar is available just won't be written i.e. this property is not mandatory.
+            </summary>
+        </member>
+        <member name="P:Figlut.Mobile.Toolkit.Tools.IM.ImageMap.Image">
+            <summary>
+            The background image that should be displayed. The hotspots will drawn, highlighted etc.
+            onto this image.
+            </summary>
+        </member>
+        <member name="P:Figlut.Mobile.Toolkit.Tools.IM.ImageMap.ShowMousePositionInStatus">
+            <summary>
+            Indicates whether the mouse position should written to the status bar when it moves
+            or is released (MouseUp) from the Image Map control.
+            </summary>
+        </member>
+        <member name="P:Figlut.Mobile.Toolkit.Tools.IM.ImageMap.EnableHotspotHighlight">
+            <summary>
+            Indicates whether hotspots should be highlighted i.e. colored in.
+            </summary>
+        </member>
+        <member name="P:Figlut.Mobile.Toolkit.Tools.IM.ImageMap.HotspotColor">
+            <summary>
+            The color used to highlight/color in the hotspots.
+            </summary>
+        </member>
+        <member name="P:Figlut.Mobile.Toolkit.Tools.IM.ImageMap.EnableHotspotHighlightOnMouseMove">
+            <summary>
+            Indicates whether hotspots should be highlighted when the user clicks
+            and drags the mouse over the highlights i.e. MouseMove.
+            </summary>
+        </member>
+        <member name="P:Figlut.Mobile.Toolkit.Tools.IM.ImageMap.SingleHotspotHighlight">
+            <summary>
+            Indicates whether only a single hotspot should be highlighted/colored at a time (the last activated hotspot)
+            or whether multiple hotspots should be allowed to be highlighted until the highlights are cleared.
+            </summary>
+        </member>
+        <member name="P:Figlut.Mobile.Toolkit.Tools.IM.ImageMap.ImageResetCount">
+            <summary>
+            The amount of times the image on the Image Map control was reset i.e. invalidated.
+            This happens everytime the image changes e.g. when a hotspot is activated/deactivated.
+            </summary>
+        </member>
+        <member name="P:Figlut.Mobile.Toolkit.Tools.IM.ImageMap.ShowImageResetCountInStatus">
+            <summary>
+            Indicates whether the Image Reset Count should be displayed writen to the status bar
+            when the mouse moves (gets dragged) on the Image Map control or is released (MouseUp).
+            </summary>
+        </member>
+        <member name="T:Figlut.Mobile.Toolkit.Web.MimeContentType">
+            <summary>
+            MIME Content Types: http://webdesign.about.com/od/multimedia/a/mime-types-by-content-type.htm
+            Application Content Types: http://www.iana.org/assignments/media-types/application/index.html
+            </summary>
+        </member>
+        <member name="T:Figlut.Mobile.Toolkit.Utilities.UIHelper">
+            <summary>
+            A helper class for displaying message boxes.
+            </summary>
+        </member>
+        <member name="M:Figlut.Mobile.Toolkit.Utilities.UIHelper.DisplayException(System.Exception)">
+            <summary>
+            Displays a message box containing the message of the provided Exception
+            as well as the message of the inner exception if it exists.
+            </summary>
+            <param name="ex">The exception whose message will be displayed.</param>
+        </member>
+        <member name="M:Figlut.Mobile.Toolkit.Utilities.UIHelper.DisplayError(System.String)">
+            <summary>
+            Displays an error message box with the given error message.
+            </summary>
+            <param name="errorMessage">The error message to be displayed.</param>
+        </member>
+        <member name="M:Figlut.Mobile.Toolkit.Utilities.UIHelper.DisplayInformation(System.String)">
+            <summary>
+            Displays an information message box with the given info message.
+            </summary>
+            <param name="infoMessage">The information message to be displayed.</param>
+        </member>
+        <member name="M:Figlut.Mobile.Toolkit.Utilities.UIHelper.DisplayWarning(System.String)">
+            <summary>
+            Displays a warning message box with the given warning message.
+            </summary>
+            <param name="warningMessage">The warning message to be displayed.</param>
+        </member>
+        <member name="M:Figlut.Mobile.Toolkit.Utilities.UIHelper.AskQuestion(System.String)">
+            <summary>
+            Displays question message box containing the question message and then
+            returns a Dialog result of either Yes or No based on the user's selection/response.
+            </summary>
+            <param name="question">The question message to be displayed to the user.</param>
+            <returns>Returns either a Yes or No response based on the user's selection/response.</returns>
+        </member>
+        <member name="M:Figlut.Mobile.Toolkit.Utilities.UIHelper.GetSelectedGridRowCellValue``1(System.Windows.Forms.DataGrid,System.Int32)">
+            <summary>
+            Gets the cell value of a specific column in the currently selected row of a DataGrid.
+            </summary>
+            <param name="grid"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Figlut.Mobile.Toolkit.Utilities.Information">
+            <summary>
+            A helper class helps in retrieving system information.
+            </summary>
+        </member>
+        <member name="M:Figlut.Mobile.Toolkit.Utilities.Information.GetDeviceUniqueID(System.Byte[],System.Int32,System.Int32,System.Byte[],System.UInt32@)">
+            <summary>
+            http://msdn.microsoft.com/en-us/library/ms893522.aspx
+            </summary>
+            <param name="appdata">[in] Application-provided data, which is hashed with the device identifier.
+            As long as the application provides the same data as this input, the same hash 
+            will always be returned on the same device, even if the device is re-flashed and/
+            or cold-booted. This application data must have a minimum length of 8 bytes and 
+            should be unique to the application.</param>
+            
+            <param name="cbApplictionData">[in] Length of the application data, pbApplicationData.
+            This parameter must be at least 8 bytes or the function call will fail.</param>
+            
+            <param name="dwDeviceIDVersion">[in] Version number of the algorithm used to calculate 
+            the device identifier returned from GetDeviceUniqueID. Currently, the only defined 
+            version number is 1. This parameter must use this value or the function call will fail.</param>
+            
+            <param name="deviceIDOuput">[out] Application-provided output buffer for the device identifier. 
+            This buffer should be at least equal to GETDEVICEUNIQUEID_VI_OUTPUT (20 bytes). If the provided 
+            buffer is smaller than the complete hash, the hash will be truncated and only the bytes that fit 
+            will be copied into the output buffer. If the buffer is not large enough, GetDeviceUniqueID 
+            truncates the output data to fit the buffer, and then returns HRESULT_FROM_WIN32(ERROR_INSUFFICIENT_BUFFER).</param>
+            
+            <param name="pcbDeviceIDOutput">[in, out] Specifies the length of the device identifier. The input parameter 
+            is the length of the application-supplied buffer. The output parameter is the number of bytes written 
+            into the output buffer. If this pointer is equal to NULL, the call to GetDeviceUniqueID will fail.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Figlut.Mobile.Toolkit.Utilities.Information.GetFiglutDeviceId">
+            <summary>
+            Gets the Figlut Device Id
+            </summary>
+            <returns>The Figlut device ID</returns>
+        </member>
+        <member name="M:Figlut.Mobile.Toolkit.Utilities.Information.GetExecutingDirectory">
+            <summary>
+            Gets the executing directory of the current application.
+            </summary>
+        </member>
+        <member name="M:Figlut.Mobile.Toolkit.Utilities.Information.GetSystemColors">
+            <summary>
+            Returns a dictionary of all the system colors with their names as the keys
+            to the dictionary.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:Figlut.Mobile.Toolkit.Peripherals.Scanning.DeviceScanner">
+            <summary>
+            An abstract class that can be implemented for each OEM (Orginal Equipment Manufacturer)
+            based on the the OEM SDK e.g. FiglutDeviceScanner. The user (developer) that needs to interact
+            with the scanner hardware only needs to interact with an instance of this class i.e. DeviceScanner
+            therefore not allowing OEM SDK specific code to be mixed with any business logic. An instance
+            of this class DeviceScanner should be set in inside the Peripheral singleton class.
+            </summary>
+        </member>
+        <member name="M:Figlut.Mobile.Toolkit.Peripherals.Scanning.DeviceScanner.#ctor">
+            <summary>
+            An abstract class that can be implemented for each OEM (Orginal Equipment Manufacturer)
+            based on the the OEM SDK e.g. FiglutDeviceScanner. The user (developer) that needs to interact
+            with the scanner hardware only needs to interact with an instance of this class i.e. DeviceScanner
+            therefore not allowing OEM SDK specific code to be mixed with any business logic. An instance
+            of this class DeviceScanner should be set in inside the Peripheral singleton class.
+            </summary>
+        </member>
+        <member name="M:Figlut.Mobile.Toolkit.Peripherals.Scanning.DeviceScanner.#ctor(System.Object)">
+            <summary>
+            An abstract class that can be implemented for each OEM (Orginal Equipment Manufacturer)
+            based on the the OEM SDK e.g. FiglutDeviceScanner. The user (developer) that needs to interact
+            with the scanner hardware only needs to interact with an instance of this class i.e. DeviceScanner
+            therefore not allowing OEM SDK specific code to be mixed with any business logic. An instance
+            of this class DeviceScanner should be set in inside the Peripheral singleton class.
+            </summary>
+            <param name="manufacturerBaseScanner">The OEM specific scanner object acquired from the OEM SDK e.g. FiglutTeklogix.Barcode.Scanner.</param>
+        </member>
+        <member name="F:Figlut.Mobile.Toolkit.Peripherals.Scanning.DeviceScanner._manufacturerBaseScanner">
+            <summary>
+            The OEM specific scanner object acquired from the OEM SDK e.g. FiglutTeklogix.Barcode.Scanner
+            </summary>
+        </member>
+        <member name="M:Figlut.Mobile.Toolkit.Peripherals.Scanning.DeviceScanner.Enable">
+            <summary>
+            Enables the scanner.
+            </summary>
+        </member>
+        <member name="M:Figlut.Mobile.Toolkit.Peripherals.Scanning.DeviceScanner.Disable">
+            <summary>
+            Disables the scanner.
+            </summary>
+        </member>
+        <member name="M:Figlut.Mobile.Toolkit.Peripherals.Scanning.DeviceScanner.FireOnScanEvent(Figlut.Mobile.Toolkit.Peripherals.Scanning.DeviceScanEventArgs)">
+            <summary>
+            Call this method from a derived class implenting the OEM specific SDK
+            in order to fire the OnScan event which users should be subscribing to.
+            </summary>
+            <param name="e"></param>
+        </member>
+        <member name="M:Figlut.Mobile.Toolkit.Peripherals.Scanning.DeviceScanner.Dispose">
+            <summary>
+            Cleans up the OEM specific scanner i.e. Manufacturer Based Scanner object.
+            </summary>
+        </member>
+        <member name="P:Figlut.Mobile.Toolkit.Peripherals.Scanning.DeviceScanner.ManufacturerBaseScanner">
+            <summary>
+            The OEM specific scanner object acquired from the OEM SDK e.g. FiglutTeklogix.Barcode.Scanner
+            This value should be set in the constructor of this class.
+            </summary>
+        </member>
+        <member name="E:Figlut.Mobile.Toolkit.Peripherals.Scanning.DeviceScanner.OnScan">
+            <summary>
+            An event fired when scannner scans a barcode.
+            </summary>
+        </member>
+        <member name="P:Figlut.Mobile.Toolkit.Peripherals.Scanning.DeviceScanEventArgs.BarcodeText">
+            <summary>
+            The text representation of the barcode that was scanned.
+            </summary>
+        </member>
+        <member name="P:Figlut.Mobile.Toolkit.Peripherals.Scanning.DeviceScanEventArgs.RawData">
+            <summary>
+            The bytes of the barcode that was scanned.
+            </summary>
+        </member>
+        <member name="P:Figlut.Mobile.Toolkit.Peripherals.Scanning.DeviceScanEventArgs.Symbology">
+            <summary>
+            The symbology of the scanned barcode.
+            </summary>
+        </member>
+        <member name="T:Figlut.Mobile.Toolkit.Peripherals.Peripheral">
+            <summary>
+            A singleton class for storing peripheral objects for the lifetime
+            of an application.
+            </summary>
+        </member>
+        <member name="P:Figlut.Mobile.Toolkit.Peripherals.Peripheral.Instance">
+            <summary>
+            Gets the one and only instance of the Peripheral class for storing peripheral 
+            objects for the lifetime of an application.
+            </summary>
+        </member>
+        <member name="P:Figlut.Mobile.Toolkit.Peripherals.Peripheral.Scanner">
+            <summary>
+            Get or set the OEM specific scanner object implementing the generic 
+            abstract DeviceScanner class.
+            </summary>
+        </member>
+        <member name="T:Figlut.Mobile.Toolkit.Peripherals.Scanning.PsionDeviceScanner">
+            <summary>
+            A Figlut specific scanner wrapper class implementing the the generic DeviceScanner
+            abstract class. An instance of this class should be stored in the Peripheral 
+            singleton class.
+            </summary>
+        </member>
+        <member name="M:Figlut.Mobile.Toolkit.Peripherals.Scanning.PsionDeviceScanner.#ctor(System.Boolean)">
+            <summary>
+            A Figlut specific scanner wrapper class implementing the the generic DeviceScanner
+            abstract class. An instance of this class should be stored in the Peripheral 
+            singleton class.
+            </summary>
+            <param name="enabled">Whether the scanner should be enabled or disabled.</param>
+        </member>
+        <member name="M:Figlut.Mobile.Toolkit.Peripherals.Scanning.PsionDeviceScanner.Enable">
+            <summary>
+            Enables the Figlut scanner.
+            </summary>
+        </member>
+        <member name="M:Figlut.Mobile.Toolkit.Peripherals.Scanning.PsionDeviceScanner.Disable">
+            <summary>
+            Dsiables the Figlut scanner.
+            </summary>
+        </member>
+        <member name="M:Figlut.Mobile.Toolkit.Peripherals.Scanning.PsionDeviceScanner.Dispose">
+            <summary>
+            Cleans up the OEM specific scanner i.e. Manufacturer Base Scanner object.
+            </summary>
+        </member>
+        <member name="M:Figlut.Mobile.Toolkit.Data.EntityCacheUnique.NotifyEntityUpdated(System.Guid,System.Object)">
+            <summary>
+            Adds the specified entity to collection of updated entities to be used when saving to the server.
+            </summary>
+            <param name="entityId">The ID of the entity that was updated.</param>
+            <param name="e">The entity that was update.</param>
+        </member>
+        <member name="F:Figlut.Mobile.Toolkit.Data.DB.SyncService.SyncForm.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:Figlut.Mobile.Toolkit.Data.DB.SyncService.SyncForm.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:Figlut.Mobile.Toolkit.Data.DB.SyncService.SyncForm.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="T:Figlut.Mobile.Toolkit.Utilities.Logging.Logger">
+            <summary>
+            A helper class that can be used to messages to a
+            log file and Windows EventLog that will be written in the assembly's executing directory.
+            </summary>
+        </member>
+        <member name="F:Figlut.Mobile.Toolkit.Utilities.Logging.Logger.DEFAULT_LOG_FILE_NAME">
+            <summary>
+            The log file name where all errors and info etc. will be logged to in the same
+            directory as the executing assembly.
+            </summary>
+        </member>
+        <member name="T:Figlut.Mobile.Toolkit.Tools.SignatureForm">
+            <summary>
+            A form that allows a user capture a signature. The CapturedSignatureImage and CapturedSignatureImageData
+            properties will only be set if the user captures a the signature and thereby causing the form to close
+            with a dialog result of OK.
+            </summary>
+        </member>
+        <member name="F:Figlut.Mobile.Toolkit.Tools.SignatureForm.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:Figlut.Mobile.Toolkit.Tools.SignatureForm.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="M:Figlut.Mobile.Toolkit.Tools.SignatureForm.#ctor">
+            <summary>
+            A form that allows a user to capture a signature. The CapturedSignatureImage and CapturedSignatureImageData
+            propertie will only be set if the user captures a the signature and thereby causing the form to close
+            with a dialog result of OK.
+            </summary>
+        </member>
+        <member name="M:Figlut.Mobile.Toolkit.Tools.SignatureForm.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:Figlut.Mobile.Toolkit.Tools.SignatureForm.Clear">
+            <summary>
+            Clears the image containing the signature thereby allowing the user to recapture
+            the image.
+            </summary>
+        </member>
+        <member name="M:Figlut.Mobile.Toolkit.Tools.SignatureForm.Reset">
+            <summary>
+            Resets the X and Y co-ordinates/points.
+            </summary>
+        </member>
+        <member name="M:Figlut.Mobile.Toolkit.Tools.SignatureForm.Save(System.String,System.Drawing.Graphics,System.Drawing.Rectangle)">
+            <summary>
+            Saves the image to a file.
+            Passing a null or empty filename will bypass the saving to tne file and only update this form's result properties.
+            </summary>
+            <param name="filename"></param>
+            <param name="gx"></param>
+            <param name="rect"></param>
+        </member>
+        <member name="P:Figlut.Mobile.Toolkit.Tools.SignatureForm.CapturedSignatureImage">
+            <summary>
+            The image containing the signature that was captured. This property will only be 
+            set if the user captures a the signature and thereby causing the form to close
+            with a dialog result of OK.
+            </summary>
+        </member>
+        <member name="P:Figlut.Mobile.Toolkit.Tools.SignatureForm.CapturedSignatureImageData">
+            <summary>
+            The binary data of the image containing the signature that was captured. This property will only be 
+            set if the user captures a the signature and thereby causing the form to close
+            with a dialog result of OK.
+            </summary>
+        </member>
+        <member name="M:Figlut.Mobile.Toolkit.Data.EntityReader.GetPropertyNamesByType(System.Type,System.Collections.Generic.List{System.Type},System.Boolean)">
+            <summary>
+            Gets a the names of properties of the specified entity type whose types match are in the specified list of propertyTypes.
+            </summary>
+            <param name="entityType">The type of the property to reflect against.</param>
+            <param name="propertyTypes">The types of which the properties of the entity should be.</param>
+            <returns></returns>
+        </member>
+        <member name="T:Figlut.Mobile.Toolkit.Data.DB.SQLQuery.WhereClauseLogicalOperator">
+            <summary>
+            http://msdn.microsoft.com/en-us/library/ms173290(v=sql.90).aspx
+            </summary>
+        </member>
+        <member name="M:Figlut.Mobile.Toolkit.Utilities.EnumHelper.GetEnumValues(System.Type)">
+            <summary>
+            Gets an array of enums from a given enum.
+            </summary>
+            <param name="enumType">The enum type to check.</param>
+            <returns>Returns an array of enums from a given enum.</returns>
+        </member>
+        <member name="T:Figlut.Mobile.Toolkit.Utilities.Logging.LogError">
+            <summary>
+            A class to hold an exception and the date/time it occured. To be used when logging.
+            </summary>
+        </member>
+        <member name="T:Figlut.Mobile.Toolkit.Utilities.Logging.LogMessage">
+            <summary>
+            A class to hold some a message and the date/time. To be used when logging.
+            </summary>
+        </member>
+        <member name="P:Figlut.Mobile.Toolkit.Utilities.Logging.LogMessage.Message">
+            <summary>
+            The message to log.
+            </summary>
+        </member>
+        <member name="P:Figlut.Mobile.Toolkit.Utilities.Logging.LogMessage.Date">
+            <summary>
+            The date/time to record in the log when logging this LogInfo.
+            </summary>
+        </member>
+        <member name="T:Figlut.Mobile.Toolkit.Tools.IM.HotspotsCache">
+            <summary>
+            A wrapper class for holding a dictionary of hotspots.
+            All hotspots are indexed according to their keys.
+            </summary>
+        </member>
+        <member name="M:Figlut.Mobile.Toolkit.Tools.IM.HotspotsCache.#ctor">
+            <summary>
+            A wrapper class for holding a dictionary of hotspots.
+            All hotspots are indexed according to their keys.
+            </summary>
+        </member>
+        <member name="M:Figlut.Mobile.Toolkit.Tools.IM.HotspotsCache.Add(Figlut.Mobile.Toolkit.Tools.IM.Hotspot)">
+            <summary>
+            Adds a hotspot to this cache. 
+            If a hotspot with the same key has already been added, an exception will be thrown.
+            </summary>
+            <param name="hotspot">The hotspot to add.</param>
+        </member>
+        <member name="M:Figlut.Mobile.Toolkit.Tools.IM.HotspotsCache.Exists(System.String)">
+            <summary>
+            Determines whether a hotspot with the provided key already exists in this cache.
+            </summary>
+            <param name="key">The hotspot key to search this cache by.</param>
+            <returns>Returns true if a hotspot with a key matching the provided key exists.</returns>
+        </member>
+        <member name="M:Figlut.Mobile.Toolkit.Tools.IM.HotspotsCache.Delete(System.String)">
+            <summary>
+            Removes a hotspot from this cache that has a key matching the provided key.
+            If a hotspot with the same key does not exist in this cache, an exception will be thrown.
+            </summary>
+            <param name="key"></param>
+        </member>
+        <member name="M:Figlut.Mobile.Toolkit.Tools.IM.HotspotsCache.Export(System.String,System.Type[])">
+            <summary>
+            Exports all the hotspots that have been added to this cache to
+            an XML file. All the types of hotspots that have been added need 
+            to be included in order for all the hotspots to be serialized to XML successfully.
+            </summary>
+            <param name="filePath">The file path to the XML file to where the hotspots will be exported to.</param>
+            <param name="hotspotDerivedTypes">The hotspot types that have been added to this cache e.g. RectangleHotspot/CircleHotspot etc.</param>
+        </member>
+        <member name="M:Figlut.Mobile.Toolkit.Tools.IM.HotspotsCache.Import(System.String,System.Type[])">
+            <summary>
+            Imports hotspots from an XML file into this cache. Existing hotspot are overwritten with the new ones. 
+            All the types (e.g. RectangleHotspot/CircleHotspot etc.) 
+            of hotspots that are in the XML file need to be specified in order
+            for all the hotspots to be deserialized from XML successfully.
+            </summary>
+            <param name="filePath">The file path to the XML file from where the hotspots should be imported from.</param>
+            <param name="hotspotDerivedTypes">The hotspot types that exist in the XML file to be imported e.g. RectangleHotspot/CircleHotspot etc.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Figlut.Mobile.Toolkit.Tools.IM.HotspotsCache.Clear">
+            <summary>
+            Clears this cache of all the hotspots it holds. Any hotspots that have not
+            already been exported to file will be lost.
+            </summary>
+        </member>
+        <member name="M:Figlut.Mobile.Toolkit.Tools.IM.HotspotsCache.GetEnumerator">
+            <summary>
+            Gets an enumerator for the hotspots in this cache.
+            </summary>
+            <returns>Returns an enumerator for the hotspots in this cache.</returns>
+        </member>
+        <member name="M:Figlut.Mobile.Toolkit.Tools.IM.HotspotsCache.System#Collections#IEnumerable#GetEnumerator">
+            <summary>
+            Gets an enumerator for the hotspots in this cache.
+            </summary>
+            <returns>Returns an enumerator for the hotspots in this cache.</returns>
+        </member>
+        <member name="P:Figlut.Mobile.Toolkit.Tools.IM.HotspotsCache.Item(System.String)">
+            <summary>
+            Attempts to get a hotspot with the provided key.
+            If one does not exist it returns null.
+            </summary>
+            <param name="key"></param>
+            <returns></returns>
+        </member>
+        <member name="F:Figlut.Mobile.Toolkit.Data.DB.SQLQuery.ComparisonOperator.EQUALS">
+            <summary>
+            =
+            </summary>
+        </member>
+        <member name="F:Figlut.Mobile.Toolkit.Data.DB.SQLQuery.ComparisonOperator.GREATER_THAN">
+            <summary>
+            >
+            </summary>
+        </member>
+        <!-- Badly formed XML comment ignored for member "F:Figlut.Mobile.Toolkit.Data.DB.SQLQuery.ComparisonOperator.LESS_THAN" -->
+        <member name="F:Figlut.Mobile.Toolkit.Data.DB.SQLQuery.ComparisonOperator.GREATER_THAN_OR_EQUAL_TO">
+            <summary>
+            >=
+            </summary>
+        </member>
+        <!-- Badly formed XML comment ignored for member "F:Figlut.Mobile.Toolkit.Data.DB.SQLQuery.ComparisonOperator.LESS_THAN_OR_EQUAL_TO" -->
+        <!-- Badly formed XML comment ignored for member "F:Figlut.Mobile.Toolkit.Data.DB.SQLQuery.ComparisonOperator.NOT_EQUAL_TO_ANGLE_BRACKETS" -->
+        <member name="F:Figlut.Mobile.Toolkit.Data.DB.SQLQuery.ComparisonOperator.NOT_EQUAL_TO">
+            <summary>
+            !=
+            </summary>
+        </member>
+        <!-- Badly formed XML comment ignored for member "F:Figlut.Mobile.Toolkit.Data.DB.SQLQuery.ComparisonOperator.NOT_LESS_THAN" -->
+        <member name="F:Figlut.Mobile.Toolkit.Data.DB.SQLQuery.ComparisonOperator.NOT_GREATER_THAN">
+            <summary>
+            !>
+            </summary>
+        </member>
+        <member name="F:Figlut.Mobile.Toolkit.Data.DB.SQLQuery.ComparisonOperator.IS">
+            <summary>
+            IS
+            </summary>
+        </member>
+        <member name="F:Figlut.Mobile.Toolkit.Data.DB.SQLQuery.ComparisonOperator.IS_NOT">
+            <summary>
+            IS NOT
+            </summary>
+        </member>
+        <member name="T:Figlut.Mobile.Toolkit.Data.DB.SQLQuery.WhereClauseComparisonOperator">
+            <summary>
+            http://msdn.microsoft.com/en-us/library/ms173290(v=sql.90).aspx
+            </summary>
+        </member>
+        <member name="T:Figlut.Mobile.Toolkit.Tools.IM.PolygonHotspot">
+            <summary>
+            A hotspot the shape of a polygon (multiple vertices) that can be added to an Image Map control.
+            </summary>
+        </member>
+        <member name="M:Figlut.Mobile.Toolkit.Tools.IM.PolygonHotspot.#ctor">
+            <summary>
+            Creates a new polygon hotspot.
+            </summary>
+        </member>
+        <member name="M:Figlut.Mobile.Toolkit.Tools.IM.PolygonHotspot.#ctor(System.String,System.Boolean,System.Collections.Generic.List{Figlut.Mobile.Toolkit.Utilities.Vertex})">
+            <summary>
+            Creates a new polygon hotspot.
+            </summary>
+            <param name="key">A unique key that will be used by the Image Map control to store the hotspot in a hotspot cache.</param>
+            <param name="enableHotspotHighlight">If set false the hotspot will not be highlighted even of the Image Map control is set to highlight hotspots.</param>
+            <param name="vertices">A list of polygon vertices.</param>
+        </member>
+        <member name="M:Figlut.Mobile.Toolkit.Tools.IM.PolygonHotspot.IsPointVisible(Figlut.Mobile.Toolkit.Utilities.Vertex)">
+            <summary>
+            Determines if a supplied vertex is located inside this polygon.
+            </summary>
+            <param name="_vertex">The vertex to test for e.g. where the user clicked on the Image Map control.</param>
+            <returns>Returns true if the vertex is inside the polygon.</returns>
+        </member>
+        <member name="M:Figlut.Mobile.Toolkit.Tools.IM.PolygonHotspot.HighlightHotspot(System.Drawing.Graphics,System.Drawing.Brush)">
+            <summary>
+            Colors in the polygon with the provided brush on the provided graphics.
+            </summary>
+            <param name="graphics">The graphics to color in with.</param>
+            <param name="brush">Brush to use to color in.</param>
+        </member>
+        <member name="M:Figlut.Mobile.Toolkit.Tools.IM.PolygonHotspot.CancelHotspot">
+            <summary>
+            Cancels the creation of the polygon hotspot by clearing the captured vertices.
+            </summary>
+            <returns>Returns the status string to be displayed on a status bar i.e. what the next step for the user is.</returns>
+        </member>
+        <member name="M:Figlut.Mobile.Toolkit.Tools.IM.PolygonHotspot.BeginHotspot">
+            <summary>
+            Begins the creation of a polygon hotspot. Sets the the hotspot in a state to accept new vertices to be added.
+            </summary>
+            <returns>Returns the status string to be displayed on a status bar i.e. what the next step for the user is.</returns>
+        </member>
+        <member name="M:Figlut.Mobile.Toolkit.Tools.IM.PolygonHotspot.AddHotspotVertex(Figlut.Mobile.Toolkit.Utilities.Vertex)">
+            <summary>
+            Adds the vertex to this polygon hotspot that should be in the creation state.
+            Call BeginHotspot to ensure hotspot is in the creation state.
+            </summary>
+            <param name="vertex">The new vertex to be added to the hotspot.</param>
+            <returns>Returns the status string to be displayed on a status bar i.e. what the next step for the user is.</returns>
+        </member>
+        <member name="M:Figlut.Mobile.Toolkit.Tools.IM.PolygonHotspot.AddHotspotVertex(Figlut.Mobile.Toolkit.Utilities.Vertex,System.Drawing.Graphics,System.Drawing.Pen)">
+            <summary>
+            Adds the vertex to this polygon hotspot that should be in the creation state.
+            Call BeginHotspot to ensure hotspot is in the creation state. If the graphics object is not null
+            the outline of the the hotspot will also be drawn on the provided graphics with the
+            provided pen.
+            </summary>
+            <param name="vertex">The new vertex to be added to the hotspot.</param>
+            <param name="graphics">The graphics to draw the outline on.</param>
+            <param name="pen">The pen to use for drawing the outline.</param>
+            <returns>Returns the status string to be displayed on a status bar i.e. what the next step for the user is.</returns>
+        </member>
+        <member name="M:Figlut.Mobile.Toolkit.Tools.IM.PolygonHotspot.EndHotspot">
+            <summary>
+            Checks that at least three vertices have been added to the polygon
+            and then ends the creation of the hotspot by setting the Hotspot Complete flag to true.
+            May not add more vertices after calling this method.
+            </summary>
+            <returns>Returns the status string to be displayed on a status bar i.e. what the next step for the user is.</returns>
+        </member>
+        <member name="M:Figlut.Mobile.Toolkit.Tools.IM.PolygonHotspot.EndHotspot(System.Drawing.Graphics,System.Drawing.Brush)">
+            <summary>
+            Checks that at least three vertices have been added to the polygon
+            and then ends the creation of the hotspot by setting the Hotspot Complete flag to true.
+            May not add more vertices after calling this method.
+            Colors in the polygon if the supplied graphics is not null with the supplied brush.
+            </summary>
+            <param name="graphics">The graphics to color in on.</param>
+            <param name="brush">The brush to you use to color in.</param>
+            <returns>Returns the status string to be displayed on a status bar i.e. what the next step for the user is.</returns>
+        </member>
+        <member name="M:Figlut.Mobile.Toolkit.Tools.IM.PolygonHotspot.RefreshIncompleteHotspotOutline(System.Drawing.Graphics,System.Drawing.Pen)">
+            <summary>
+            Refreshes the outline of this polygon. Does nothing if the supplied graphics is null.
+            </summary>
+            <param name="graphics">The graphics to use to draw on.</param>
+            <param name="pen">The pen to use to draw the outline.</param>
+        </member>
+        <member name="P:Figlut.Mobile.Toolkit.Tools.IM.PolygonHotspot.Vertices">
+            <summary>
+            The list of vertices making up the polygon.
+            </summary>
+        </member>
+        <member name="T:Figlut.Mobile.Toolkit.Web.Client.WebServiceClient">
+            <summary>
+            A wrapper class for performing web requests/calls calls to a service (or any other web resource).
+            </summary>
+        </member>
+        <member name="M:Figlut.Mobile.Toolkit.Web.Client.WebServiceClient.#ctor">
+            <summary>
+            A wrapper class for performing web requests/calls calls to a service (or any other web resource).
+            </summary>
+        </member>
+        <member name="M:Figlut.Mobile.Toolkit.Web.Client.WebServiceClient.#ctor(System.String)">
+            <summary>
+            A wrapper class for performing web requests/calls calls to a service (or any other web resource).
+            </summary>
+            <param name="webServiceBaseUrl">The base URL to be used for web requests e.g. http://www.mydomains.com/api</param>
+        </member>
+        <member name="M:Figlut.Mobile.Toolkit.Web.Client.WebServiceClient.#ctor(System.String,System.String)">
+            <summary>
+            A wrapper class for performing web requests/calls calls to a service (or any other web resource).
+            </summary>
+            <param name="name">The name of the web service to used to identify it in perhaps an entity cache.</param>
+            <param name="webServiceBaseUrl">The base URL to be used for web requests e.g. http://www.mydomains.com/api</param>
+        </member>
+        <member name="M:Figlut.Mobile.Toolkit.Web.Client.WebServiceClient.ConnectionTest(System.Int32)">
+            <summary>
+            Performs a GET operation to the server at the base URL to determine if it can reach the server.
+            If a WebException is thrown and its status is connection failure or if the inner exception is a socket exception 
+            then the exception is thrown i.e. could not connect to server. Otherwise the WebException is swallowed e.g. a 404 
+            (page not found) WebException could have be thrown, but it still indicates that the web server is online.
+            </summary>
+            <param name="timeout">The timeout of the web request</param>
+        </member>
+        <member name="M:Figlut.Mobile.Toolkit.Web.Client.WebServiceClient.ConnectionTest(System.String@,System.Int32)">
+            <summary>
+            Performs a GET operation to the server at the base URL to determine if it can reach the server
+            If a WebException is thrown and its status is connection failure or if the inner exception is a socket exception 
+            then the exception is thrown i.e. could not connect to server. Otherwise the WebException is swallowed e.g. a 404 
+            (page not found) WebException could have be thrown, but it still indicates that the web server is online.
+            It also returns the text output from the web request.
+            </summary>
+            <param name="textOutput">The text output from the web request will be placed in this output parameter.</param>
+            <param name="timeout">The timeout of the web request</param>
+        </member>
+        <member name="M:Figlut.Mobile.Toolkit.Web.Client.WebServiceClient.ConnectionTest(System.String,System.Int32)">
+            <summary>
+            Performs a GET operation to the server at the query string appended to the base URL to
+            determine if it can reach the server.
+            If a WebException is thrown and its status is connection failure or if the inner exception is a socket exception 
+            then the exception is thrown i.e. could not connect to server. Otherwise the WebException is swallowed e.g. a 404 
+            (page not found) WebException could have be thrown, but it still indicates that the web server is online.
+            It also returns the text output from the web request.
+            </summary>
+            <param name="queryString">The string to append to the base url making up the complete URL where the web request will be made to.</param>
+            <param name="timeout">The timeout of the web request</param>
+        </member>
+        <member name="M:Figlut.Mobile.Toolkit.Web.Client.WebServiceClient.ConnectionTest(System.String,System.String@,System.Int32)">
+            <summary>
+            Performs a GET operation to the server at the query string appended to the base URL to
+            determine if it can reach the server.
+            If a WebException is thrown and its status is connection failure or if the inner exception is a socket exception 
+            then the exception is thrown i.e. could not connect to server. Otherwise the WebException is swallowed e.g. a 404 
+            (page not found) WebException could have be thrown, but it still indicates that the web server is online.
+            </summary>
+            <param name="queryString">The string to append to the base url making up the complete URL where the web request will be made to.</param>
+            <param name="textOutput">The text output from the web request will be placed in this output parameter.</param>
+            <param name="timeout">The timeout of the web request</param>
+        </member>
+        <member name="M:Figlut.Mobile.Toolkit.Web.Client.WebServiceClient.CallService(System.String,System.String,Figlut.Mobile.Toolkit.Web.Client.HttpVerb,System.String,System.Int32,System.String)">
+            <summary>
+            Performs a web request to a URL made of the query string appended to the base URL
+            and applying the given HTTP verb. If requestPostString to be posted is not null 
+            it will be included in the web request to the service. It then returns the text it
+            receives from the web service.
+            </summary>
+            <param name="queryString">The string that will be appended to the end of the Web Service Base URL.</param>
+            <param name="requestPostString">The text to be posted to the service.</param>
+            <param name="verb">The HTTP verb to be applied to the web request.</param>
+            <param name="setContentType">Whether the Content Type to the wb request should be set to the next parameter i.e. contentType</param>
+            <param name="contentType">The type of content for the web request.</param>
+            <param name="timeout">The timeout of the web request</param>
+            <returns></returns>
+        </member>
+        <member name="P:Figlut.Mobile.Toolkit.Web.Client.WebServiceClient.Name">
+            <summary>
+            The name of the web service to used to identify it in perhaps an entity cache.
+            </summary>
+        </member>
+        <member name="P:Figlut.Mobile.Toolkit.Web.Client.WebServiceClient.WebServiceBaseUrl">
+            <summary>
+            The base URL to be used for web requests e.g. http://www.mydomains.com/api
+            </summary>
+        </member>
+        <member name="P:Figlut.Mobile.Toolkit.Web.Client.WebServiceClient.NetworkCredential">
+            <summary>
+            The network credential (domain, user name, password) to use if using basic authentication to authenticate against a web service."
+            Setting this property will cause the web request made to the service to attempt to auhenticate, otherwise if this property is null, no authentication will be applied to the web request.
+            </summary>
+        </member>
+        <member name="T:Figlut.Mobile.Toolkit.Utilities.WaitProcess">
+            <summary>
+            A helper class for displaying a wait cursor.
+            On this creation of an object of this WaiCursor class the current cursor will be set to a wait cursor.
+            On calling Dispose on this object, the current cursor will set back to its default.
+            This class should be used in a using clause e.g.
+            
+            using(WaitCursor w = new WaitCursor())
+            {
+                //Some code that will take some time to execute.
+            }
+            </summary>
+        </member>
+        <member name="M:Figlut.Mobile.Toolkit.Utilities.WaitProcess.#ctor">
+            <summary>
+            A helper class for displaying a wait cursor.
+            On this calling this constructor the current cursor will be set to a wait cursor.
+            On calling Dispose on this object, the current cursor will set back to its default.
+            </summary>
+        </member>
+        <member name="M:Figlut.Mobile.Toolkit.Utilities.WaitProcess.Dispose">
+            <summary>
+            The current cursor will set back to a default cursor.
+            </summary>
+        </member>
+        <member name="M:Figlut.Mobile.Toolkit.Utilities.Serialization.XSerializer.SerializeToFile(System.Object,System.String)">
+            <summary>
+            Serializes an object to an XML file. No extra/derived types will be provided
+            to the underlying serializer.
+            </summary>
+            <param name="obj">The object to serialized.</param>
+            <param name="filename">The the file path of the XML file to which object will be serialized to.</param>
+        </member>
+        <member name="M:Figlut.Mobile.Toolkit.Utilities.Serialization.XSerializer.SerializeToFile(System.Object,System.Type[],System.String)">
+            <summary>
+            Serializes an object to an XML file. All derived types should be included in the call
+            for serialization to complete succcessfully.
+            </summary>
+            <param name="obj">The object to serialized.</param>
+            <param name="extraTypes">The derived types to be provided to the underlying serializer.</param>
+            <param name="filename">The the file path of the XML file to which object will be serialized to.</param>
+        </member>
+        <member name="T:Figlut.Mobile.Toolkit.Utilities.Vertex">
+            <summary>
+            A helper class containing an X and Y co-ordinate. This class can used
+            instead of a .NET Point if one wants to ensure that a set of 
+            co-ordinates will be serialized/deserialized successfully.
+            </summary>
+        </member>
+        <member name="M:Figlut.Mobile.Toolkit.Utilities.Vertex.ToPoint">
+            <summary>
+            Creates a .NET Point object based on this Vertex's
+            X and Y co-ordinates.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="P:Figlut.Mobile.Toolkit.Utilities.Vertex.X">
+            <summary>
+            The X co-ordinate of the Vertex.
+            </summary>
+        </member>
+        <member name="P:Figlut.Mobile.Toolkit.Utilities.Vertex.Y">
+            <summary>
+            The Y co-ordinate of the Vertex.
+            </summary>
+        </member>
+        <member name="T:Figlut.Mobile.Toolkit.Web.Client.JsonWebServiceClient">
+            <summary>
+            A wrapper class for performing web service calls to a JSON Rest based web service.
+            </summary>
+        </member>
+        <member name="M:Figlut.Mobile.Toolkit.Web.Client.JsonWebServiceClient.#ctor">
+            <summary>
+            A wrapper class for performing web service calls to a JSON Rest based web service.
+            </summary>
+        </member>
+        <member name="M:Figlut.Mobile.Toolkit.Web.Client.JsonWebServiceClient.#ctor(System.String)">
+            <summary>
+            A wrapper class for performing web service calls to a JSON Rest based web service.
+            </summary>
+            <param name="webServiceBaseUrl">The base URL for the REST web service e.g. http://www.mydomains.com/api</param>
+        </member>
+        <!-- Badly formed XML comment ignored for member "M:Figlut.Mobile.Toolkit.Web.Client.JsonWebServiceClient.CallService``1(System.String,System.Object,Figlut.Mobile.Toolkit.Web.Client.HttpVerb,System.Int32)" -->
+        <!-- Badly formed XML comment ignored for member "M:Figlut.Mobile.Toolkit.Web.Client.JsonWebServiceClient.CallService``1(System.String,System.Object,Figlut.Mobile.Toolkit.Web.Client.HttpVerb,System.String@,System.Boolean,System.Int32)" -->
+        <member name="T:Figlut.Mobile.Toolkit.Web.Client.HttpVerb">
+            <summary>
+            The method/verb of the web request made to the web service.
+            Normally corresponds to typical CRUD (Create/Read/Update/Delete) operations
+            although you should not assume that it directly corresponds to SQL operations i.e. 
+            it depends on how the web service was implementated to interpret the verb.
+            </summary>
+        </member>
+        <member name="F:Figlut.Mobile.Toolkit.Web.Client.HttpVerb.GET">
+            <summary>
+            A get request. Normally used to query data through the web service.
+            </summary>
+        </member>
+        <member name="F:Figlut.Mobile.Toolkit.Web.Client.HttpVerb.POST">
+            <summary>
+            A post request. Normally used the update data through the web service.
+            However, PUT and POST are normally interchangeable depending on the
+            web service implementation.
+            </summary>
+        </member>
+        <member name="F:Figlut.Mobile.Toolkit.Web.Client.HttpVerb.PUT">
+            <summary>
+            A put request. Normally used to update data through the web service.
+            However, PUT and POST are normally interchangeable depending on the
+            web service implementation.
+            </summary>
+        </member>
+        <member name="F:Figlut.Mobile.Toolkit.Web.Client.HttpVerb.DELETE">
+            <summary>
+            A delete request. Normally used to create data through the web service.
+            </summary>
+        </member>
+        <member name="F:Figlut.Mobile.Toolkit.Web.Client.HttpVerb.HEAD">
+            <summary>
+            A head request.
+            </summary>
+        </member>
+        <member name="F:Figlut.Mobile.Toolkit.Web.Client.HttpVerb.OPTIONS">
+            <summary>
+            An options request.
+            </summary>
+        </member>
+        <member name="T:Figlut.Mobile.Toolkit.Utilities.ExceptionHandler">
+            <summary>
+            A helper class for handling exceptions i.e. logging and displaying them.
+            </summary>
+        </member>
+        <member name="M:Figlut.Mobile.Toolkit.Utilities.ExceptionHandler.HandleException(System.Exception,System.Boolean,System.Boolean)">
+            <summary>
+            Handles an exption by logging and/or displaying it.
+            </summary>
+            <param name="exception">The exception to handle.</param>
+            <param name="log">Whether or not to use the Logger to log the exception to a log file.</param>
+            <param name="display">Whether or not to display the exception mesage and its inner exception message if one exists.</param>
+        </member>
+        <member name="T:Figlut.Mobile.Toolkit.Tools.IM.CircleHotspot">
+            <summary>
+            A hotspot the shape of a circle that can be added to an Image Map control.
+            </summary>
+        </member>
+        <member name="M:Figlut.Mobile.Toolkit.Tools.IM.CircleHotspot.#ctor">
+            <summary>
+            Creates a new circle hotspot.
+            </summary>
+        </member>
+        <member name="M:Figlut.Mobile.Toolkit.Tools.IM.CircleHotspot.#ctor(System.String,System.Boolean,Figlut.Mobile.Toolkit.Utilities.Vertex,System.Int32)">
+            <summary>
+            Creates a new circle hotspot.
+            </summary>
+            <param name="key">A unique key that will be used by the Image Map control to store the hotspot in a hotspot cache.</param>
+            <param name="enableHotspotHighlight">If set false the hotspot will not be highlighted even of the Image Map control is set to highlight hotspots.</param>
+            <param name="centerVertex">The center vertex of the circle.</param>
+            <param name="radius">The radius of the circle.</param>
+        </member>
+        <member name="M:Figlut.Mobile.Toolkit.Tools.IM.CircleHotspot.IsPointVisible(Figlut.Mobile.Toolkit.Utilities.Vertex)">
+            <summary>
+            Determines if a supplied vertex is located inside this circle.
+            </summary>
+            <param name="vertex">The vertex to test for e.g. where the user clicked on the Image Map control.</param>
+            <returns>Returns true if the vertex is inside the circle.</returns>
+        </member>
+        <member name="M:Figlut.Mobile.Toolkit.Tools.IM.CircleHotspot.HighlightHotspot(System.Drawing.Graphics,System.Drawing.Brush)">
+            <summary>
+            Colors in the circle with the provided brush on the provided graphics.
+            </summary>
+            <param name="graphics">The graphics to color in on.</param>
+            <param name="brush">Brush to use to color in.</param>
+        </member>
+        <member name="M:Figlut.Mobile.Toolkit.Tools.IM.CircleHotspot.CancelHotspot">
+            <summary>
+            Cancels the creation of the circle hotspot by clearing the captured vertices.
+            </summary>
+            <returns>Returns the status string to be displayed on a status bar i.e. what the next step for the user is.</returns>
+        </member>
+        <member name="M:Figlut.Mobile.Toolkit.Tools.IM.CircleHotspot.BeginHotspot">
+            <summary>
+            Begins the creation of a circle hotspot. Sets the the hotspot in a state to accept new vertices to be added.
+            </summary>
+            <returns>Returns the status string to be displayed on a status bar i.e. what the next step for the user is.</returns>
+        </member>
+        <member name="M:Figlut.Mobile.Toolkit.Tools.IM.CircleHotspot.AddHotspotVertex(Figlut.Mobile.Toolkit.Utilities.Vertex)">
+            <summary>
+            Adds the vertex to this circle hotspot that should be in the creation state.
+            Call BeginHotspot to ensure hotspot is in the creation state.
+            </summary>
+            <param name="vertex">The new vertex to be added to the hotspot.</param>
+            <returns>Returns the status string to be displayed on a status bar i.e. what the next step for the user is.</returns>
+        </member>
+        <member name="M:Figlut.Mobile.Toolkit.Tools.IM.CircleHotspot.AddHotspotVertex(Figlut.Mobile.Toolkit.Utilities.Vertex,System.Drawing.Graphics,System.Drawing.Pen)">
+            <summary>
+            Adds the vertex to this circle hotspot that should be in the creation state.
+            Call BeginHotspot to ensure hotspot is in the creation state. If the graphics object is not null
+            the outline of the the hotspot will also be drawn on the provided graphics with the
+            provided pen.
+            </summary>
+            <param name="vertex">The new vertex to be added to the hotspot.</param>
+            <param name="graphics">The graphics to draw the outline on.</param>
+            <param name="pen">The pen to use for drawing the outline.</param>
+            <returns>Returns the status string to be displayed on a status bar i.e. what the next step for the user is.</returns>
+        </member>
+        <member name="M:Figlut.Mobile.Toolkit.Tools.IM.CircleHotspot.EndHotspot">
+            <summary>
+            Checks that both the center and edge of the circle vertices have been added
+            and then ends the creation of the hotspot by setting the Hotspot Complete flag to true.
+            May not add more vertices after calling this method.
+            </summary>
+            <returns>Returns the status string to be displayed on a status bar i.e. what the next step for the user is.</returns>
+        </member>
+        <member name="M:Figlut.Mobile.Toolkit.Tools.IM.CircleHotspot.EndHotspot(System.Drawing.Graphics,System.Drawing.Brush)">
+            <summary>
+            Checks that both the center and edge of the circle vertices have been added
+            and then ends the creation of the hotspot by setting the Hotspot Complete flag to true.
+            May not add more vertices after calling this method. 
+            Colors in the circle if the supplied graphics is not null with the supplied brush.
+            </summary>
+            <param name="graphics">The graphics to color in on.</param>
+            <param name="brush">The brush to you use to color in.</param>
+            <returns>Returns the status string to be displayed on a status bar i.e. what the next step for the user is.</returns>
+        </member>
+        <member name="M:Figlut.Mobile.Toolkit.Tools.IM.CircleHotspot.RefreshIncompleteHotspotOutline(System.Drawing.Graphics,System.Drawing.Pen)">
+            <summary>
+            Refreshes the outline of this circle. Does nothing if the supplied graphics is null.
+            </summary>
+            <param name="graphics">The graphics to use to draw on.</param>
+            <param name="pen">The pen to use to draw the outline.</param>
+        </member>
+        <member name="P:Figlut.Mobile.Toolkit.Tools.IM.CircleHotspot.CenterVertex">
+            <summary>
+            The center vertex of th circle.
+            </summary>
+        </member>
+        <member name="P:Figlut.Mobile.Toolkit.Tools.IM.CircleHotspot.Radius">
+            <summary>
+            The radius of the circle.
+            </summary>
+        </member>
+        <member name="T:Figlut.Mobile.Toolkit.Utilities.Formula">
+            <summary>
+            A helper class containing geometry and other maths methods.
+            </summary>
+        </member>
+        <member name="M:Figlut.Mobile.Toolkit.Utilities.Formula.GetRectangleFromVertices(Figlut.Mobile.Toolkit.Utilities.Vertex,Figlut.Mobile.Toolkit.Utilities.Vertex)">
+            <summary>
+            Creates a rectangle given the top left and bottom right vertices.
+            </summary>
+            <param name="topLeftVertex">The vertex of the top left hand corner of the rectangle.</param>
+            <param name="bottomRightVertex">The vertex of the bottom right hand corner of the rectangle.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Figlut.Mobile.Toolkit.Utilities.Formula.GetPolygonArea(System.Collections.Generic.List{Figlut.Mobile.Toolkit.Utilities.Vertex})">
+            <summary>
+            Calculates the area of any irregular polygon given its vertices.
+            http://www.mathopenref.com/coordpolygonarea2.html
+            </summary>
+            <param name="vertices">The list of vertices of the polygon.</param>
+            <returns>Returns the area of the polygon.</returns>
+        </member>
+        <member name="M:Figlut.Mobile.Toolkit.Utilities.Formula.GetTriangleArea(Figlut.Mobile.Toolkit.Utilities.Vertex,Figlut.Mobile.Toolkit.Utilities.Vertex,Figlut.Mobile.Toolkit.Utilities.Vertex)">
+            <summary>
+            Calculates the area of any triangle given it's three vertices.
+            http://www.mathopenref.com/coordtrianglearea.html
+            </summary>
+            <returns>Returns the area of the triangle.</returns>
+        </member>
+        <member name="M:Figlut.Mobile.Toolkit.Utilities.Formula.GetRadius(Figlut.Mobile.Toolkit.Utilities.Vertex,Figlut.Mobile.Toolkit.Utilities.Vertex)">
+            <summary>
+            Determines the distance from the center of a circle to the given vertex.
+            It basically gets the distance between two points.
+            </summary>
+            <param name="vertex"></param>
+            <param name="centerVertex"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Figlut.Mobile.Toolkit.Utilities.Formula.IsVertexInsideCircle(Figlut.Mobile.Toolkit.Utilities.Vertex,Figlut.Mobile.Toolkit.Utilities.Vertex,System.Int32)">
+            <summary>
+            Determines if a supplied vertex is located inside this circle.
+            </summary>
+            <param name="vertex">The vertex to test for e.g. where the user clicked on the Image Map control.</param>
+            <param name="centerVertex">The vertex marking the center of the circle.</param>
+            <param name="circleRadius">The radius of the circle.</param>
+            <returns>Returns true if the vertex is located inside circle.</returns>
+        </member>
+        <member name="M:Figlut.Mobile.Toolkit.Utilities.Formula.IsVertexInsideNonConvexPolygon(Figlut.Mobile.Toolkit.Utilities.Vertex,System.Collections.Generic.List{Figlut.Mobile.Toolkit.Utilities.Vertex})">
+            <summary>
+            Determines whether a given vertex is inside a convex polygon made up of the provided vertices.
+            http://www.mathopenref.com/polygonconvex.html
+            This method is not accurate for concave polygons.
+            </summary>
+            <param name="vertex">The vertex to test for e.g. where the user clicked on the Image Map control.</param>
+            <param name="polygonVertices">The vertices of the making up the polygon.</param>
+            <returns>Returns true if the vertix is inside the polygon.</returns>
+        </member>
+        <member name="M:Figlut.Mobile.Toolkit.Utilities.Formula.IsVertexInsideConcavePolygon(Figlut.Mobile.Toolkit.Utilities.Vertex,System.Collections.Generic.List{Figlut.Mobile.Toolkit.Utilities.Vertex})">
+            <summary>
+            Determines whether a given vertex is inside a concave polygon made up of the provided vertices.
+            http://alienryderflex.com/polygon/
+            http://www.mathopenref.com/polygonconcave.html
+            </summary>
+            <param name="vertex">The vertex to test for e.g. where the user clicked on the Image Map control.</param>
+            <param name="polygonVertices">The vertices of the making up the polygon.</param>
+            <returns>Returns true if the vertix is inside the polygon.</returns>
+        </member>
+        <member name="M:Figlut.Mobile.Toolkit.Utilities.Formula.IsVertexInsideRectangle(Figlut.Mobile.Toolkit.Utilities.Vertex,System.Drawing.Rectangle)">
+            <summary>
+            Determines whether a given vertex is inside given a rectangle.
+            </summary>
+            <param name="vertex">The vertex to test for e.g. where the user clicked on the Image Map control.</param>
+            <param name="rectangle">The rectangle to check against i.e. if the vertex is located inside of it.</param>
+            <returns>Returns true if the vertex is inside the rectangle.</returns>
+        </member>
+        <member name="M:Figlut.Mobile.Toolkit.Utilities.WmConfig.SaveUserAgent(System.String,System.Collections.Generic.List{System.String})">
+            <summary>
+            Understanding User Agent Strings : http://msdn.microsoft.com/en-us/library/ms537503(v=vs.85).aspx
+            </summary>
+            <param name="userAgentValue"></param>
+            <param name="tokens"></param>
+        </member>
+    </members>
+</doc>

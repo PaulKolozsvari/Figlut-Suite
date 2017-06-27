@@ -1,0 +1,14 @@
+<div align="left"><font face="Arial" color="#010101" size="2"><span style=" font-size:10pt; font-family:Arial; color:#010101">The following settings can be configured under the <b>Service</b> category:</span></font></div>
+<div align="left">&nbsp;&nbsp;</div>
+<ul style="margin-top: 0mm; margin-bottom: 0mm; list-style-type: disk; ">
+<li style="margin-left: -36pt; margin-right: 0pt; padding-left: 0pt; font-family: Wingdings;  font-size: 10pt;  color: #010101;  "><font face="Arial" size="2"><span style=" font-size:10pt; font-family:Arial; color:#000000"><b>Host Address Suffix</b></span></font><font face="Arial" color="#010101" size="2"><span style=" font-size:10pt; font-family:Arial; color:#010101"> 
+: The suffix to append to the URI on which the Figlut Server will be 
+accessed i.e. http://localhost:{port_number}/{suffix} e.g. http://localhost:8889/Figlut.</span></font></li>
+<li style="margin-left: -36pt; margin-right: 0pt; padding-left: 0pt; font-family: Wingdings;  font-size: 10pt;  color: #010101;  "><font face="Arial" color="#010101" size="2"><span style=" font-size:10pt; font-family:Arial; color:#010101"><b>Port Number</b> : The port number on which the Figlut Server should listen for requests from 
+clients i.e. http://localhost:{port_number}/{suffix} e.g. http://localhost:8889/Figlut.</span></font></li>
+<li style="margin-left: -36pt; margin-right: 0pt; padding-left: 0pt; font-family: Wingdings;  font-size: 10pt;  color: #010101;  "><font face="Arial" color="#010101" size="2"><span style=" font-size:10pt; font-family:Arial; color:#010101"><b>Text Response Encoding</b> : Encoding to used on the text response from the service.</span></font></li>
+<li style="margin-left: -36pt; margin-right: 0pt; padding-left: 0pt; font-family: Wingdings;  font-size: 10pt;  color: #010101;  "><font face="Arial" color="#010101" size="2"><span style=" font-size:10pt; font-family:Arial; color:#010101"><b>Include ORM Type Names in JSON Response</b> : Whether or not to include in the JSON 
+response the names of the <b>.NET</b> generated <b>ORM</b> (</span></font><a href="+http://en.wikipedia.org/wiki/Object-relational_mapping"><font face="Arial" size="2"><span style=" font-size:10pt; font-family:Arial; color:#000000">Object Relational Mapping</span></font></a><font face="Arial" color="#010101" size="2"><span style=" font-size:10pt; font-family:Arial; color:#010101">) 
+types 
+representing each table in the database.</span></font></li>
+</ul>

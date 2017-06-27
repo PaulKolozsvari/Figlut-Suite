@@ -1,0 +1,3 @@
+﻿*	Debug why it's throwing an exception when I set the primary key of a table to be an integer i.e. when downloading the schema.
+*	Test why it's throwing an exception when I use an integer column in a table i.e. when I try to add a record on the device.
+*	Add ability to change the theme color, logo and application title and version on the device.

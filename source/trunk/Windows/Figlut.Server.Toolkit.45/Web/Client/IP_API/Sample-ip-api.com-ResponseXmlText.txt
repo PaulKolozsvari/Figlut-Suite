@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<query>
+	<status><![CDATA[success]]></status>
+	<country><![CDATA[South Africa]]></country>
+	<countryCode><![CDATA[ZA]]></countryCode>
+	<region><![CDATA[GT]]></region>
+	<regionName><![CDATA[Gauteng]]></regionName>
+	<city><![CDATA[Johannesburg]]></city>
+	<zip><![CDATA[2000]]></zip>
+	<lat><![CDATA[-26.2309]]></lat>
+	<lon><![CDATA[28.0583]]></lon>
+	<timezone><![CDATA[Africa/Johannesburg]]></timezone>
+	<isp><![CDATA[Afrihost-Brevis Computer Services (SA)(Pty) Ltd]]></isp>
+	<org><![CDATA[Afrihost]]></org>
+	<as><![CDATA[AS37611 Afrihost]]></as>
+	<query><![CDATA[197.242.157.9]]></query>
+</query>

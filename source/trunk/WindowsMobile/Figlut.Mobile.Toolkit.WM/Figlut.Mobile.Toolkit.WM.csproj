@@ -1,0 +1,307 @@
+﻿<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="3.5">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{45B9F12F-3984-4E8E-A6F7-C84D89CB9B0B}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Figlut.Mobile.Toolkit.WM</RootNamespace>
+    <AssemblyName>Figlut.Mobile.Toolkit.WM</AssemblyName>
+    <ProjectTypeGuids>{4D628B5B-2FBC-4AA6-8C16-197242AEB884};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <PlatformFamilyName>PocketPC</PlatformFamilyName>
+    <PlatformID>b2c48bd2-963d-4549-9169-1fa021dce484</PlatformID>
+    <OSVersion>5.2</OSVersion>
+    <DeployDirSuffix>Psion.Mobile.Toolkit.WM</DeployDirSuffix>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <NativePlatformName>Windows Mobile 6 Professional SDK</NativePlatformName>
+    <FormFactorID>
+    </FormFactorID>
+    <SignAssembly>false</SignAssembly>
+    <AssemblyOriginatorKeyFile>
+    </AssemblyOriginatorKeyFile>
+    <DelaySign>false</DelaySign>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE;$(PlatformFamilyName)</DefineConstants>
+    <NoStdLib>true</NoStdLib>
+    <NoConfig>true</NoConfig>
+    <ErrorReport>prompt</ErrorReport>
+    <FileAlignment>512</FileAlignment>
+    <WarningLevel>4</WarningLevel>
+    <GenerateSerializationAssemblies>Off</GenerateSerializationAssemblies>
+    <DocumentationFile>bin\Debug\Figlut.Mobile.Toolkit.WM.xml</DocumentationFile>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE;$(PlatformFamilyName)</DefineConstants>
+    <NoStdLib>true</NoStdLib>
+    <NoConfig>true</NoConfig>
+    <ErrorReport>prompt</ErrorReport>
+    <FileAlignment>512</FileAlignment>
+    <WarningLevel>4</WarningLevel>
+    <GenerateSerializationAssemblies>Off</GenerateSerializationAssemblies>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.Synchronization.Data, Version=1.0.6000.0, Culture=neutral, PublicKeyToken=3be235df1c8d2ad3, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\SDK\Microsoft.Synchronization.Services\Microsoft.Synchronization.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Synchronization.Data.SqlServerCe, Version=3.5.6000.0, Culture=neutral, PublicKeyToken=3be235df1c8d2ad3, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\SDK\Microsoft.Synchronization.Services\Microsoft.Synchronization.Data.SqlServerCe.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.WindowsMobile, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Microsoft.WindowsMobile.Forms, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Microsoft.WindowsMobile.Status, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="mscorlib" />
+    <Reference Include="OpenNETCF, Version=2.3.0.39, Culture=neutral, PublicKeyToken=e60dbea84bb431b7, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\SDK\OpenNETCF\OpenNETCF.dll</HintPath>
+    </Reference>
+    <Reference Include="PsionTeklogixNet, Version=5.4.18939.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\SDK\PsionMDSDK5.4\DotNet3.5\PsionTeklogixNet.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.SqlServerCe, Version=3.5.0.0, Culture=neutral, PublicKeyToken=3be235df1c8d2ad3, processorArchitecture=MSIL" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Linq.Expressions, Version=8.1.269.14430, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\SDK\System.LINQ.Expressions\System.Linq.Expressions.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Data\CSV\CsvParser.cs" />
+    <Compile Include="Data\CSV\CsvStream.cs" />
+    <Compile Include="Data\CSV\CsvWriter.cs" />
+    <Compile Include="Data\DB\DatabaseTableForeignKeyColumns.cs" />
+    <Compile Include="Data\DB\ForeignKeyInfo.cs" />
+    <Compile Include="Data\DB\SQLCE\SqlCeDatabaseSchemaFile.cs" />
+    <Compile Include="Data\DataHelper.cs" />
+    <Compile Include="Data\DataShaper.cs" />
+    <Compile Include="Data\DB\DatabaseSchemaInfoType.cs" />
+    <Compile Include="Data\DB\DatabaseTableKeyColumns.cs" />
+    <Compile Include="Data\DB\MobileDatabaseTable.cs" />
+    <Compile Include="Data\DB\MobileDatabaseTableColumn.cs" />
+    <Compile Include="Data\DB\SQLCE\SqlCeDatabase.cs" />
+    <Compile Include="Data\DB\SQLCE\SqlCeDatabaseTable.cs" />
+    <Compile Include="Data\DB\SQLCE\SqlCeDatabaseTableBase.cs" />
+    <Compile Include="Data\DB\SQLCE\SqlCeDatabaseTableColumn.cs" />
+    <Compile Include="Data\DB\SQLCE\SqlTypeConversionInfo.cs" />
+    <Compile Include="Data\DB\SQLCE\SqlTypeConverter.cs" />
+    <Compile Include="Data\DB\SQLQuery\SqlQuery.cs" />
+    <Compile Include="Data\DB\SQLQuery\WhereClauseComparisonOperator.cs" />
+    <Compile Include="Data\DB\SQLQuery\WhereClauseLogicalOperator.cs" />
+    <Compile Include="Data\DB\MobileDatabaseCache.cs" />
+    <Compile Include="Data\DB\MobileDatabaseTableCache.cs" />
+    <Compile Include="Data\DB\SQLQuery\WhereClauseColumn.cs" />
+    <Compile Include="Data\DB\SyncService\SyncConfig.cs" />
+    <Compile Include="Data\DB\SyncService\SyncEventArgs.cs" />
+    <Compile Include="Data\DB\SyncService\SyncForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Data\DB\SyncService\SyncForm.Designer.cs">
+      <DependentUpon>SyncForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Data\DB\SyncService\SyncFormConfig.cs" />
+    <Compile Include="Data\DB\SyncService\SyncResult.cs" />
+    <Compile Include="Data\DB\SyncService\SyncSessionProgressEventArgs.cs" />
+    <Compile Include="Data\DB\SyncService\SyncSessionStateChangedEventArgs.cs" />
+    <Compile Include="Data\EntityCacheBase.cs" />
+    <Compile Include="Data\EntityCacheUnique.cs" />
+    <Compile Include="Data\EntityReader.cs" />
+    <Compile Include="Data\EntityCache.cs" />
+    <Compile Include="Data\EntityOperation.cs" />
+    <Compile Include="Data\DB\MobileDatabase.cs" />
+    <Compile Include="Data\DB\SyncService\SyncInitializationConfig.cs" />
+    <Compile Include="Data\EntityReaderBase.cs" />
+    <Compile Include="Data\FiglutEntityCacheUnique.cs" />
+    <Compile Include="Data\ORM\OrmAssembly.cs" />
+    <Compile Include="Data\ORM\OrmAssemblySql.cs" />
+    <Compile Include="Data\ORM\OrmCodeGenerator.cs" />
+    <Compile Include="Data\ORM\OrmProperty.cs" />
+    <Compile Include="Data\ORM\OrmType.cs" />
+    <Compile Include="Extensions\DataBox\DataBoxCrudInterceptor.cs" />
+    <Compile Include="Extensions\DataBox\DataBoxMainMenuExtension.cs" />
+    <Compile Include="Extensions\DataBox\Events\AfterDataBoxArgs.cs" />
+    <Compile Include="Extensions\DataBox\Events\BeforeDataBoxArgs.cs" />
+    <Compile Include="Extensions\DataBox\Events\Crud\AfterAddInputControlsArgs.cs" />
+    <Compile Include="Extensions\DataBox\Events\Crud\AfterCrudOperationArgs.cs" />
+    <Compile Include="Extensions\DataBox\Events\Crud\AfterGridRefreshArgs.cs" />
+    <Compile Include="Extensions\DataBox\Events\Crud\AfterRefreshFromServerArgs.cs" />
+    <Compile Include="Extensions\DataBox\Events\Crud\AfterSaveArgs.cs" />
+    <Compile Include="Extensions\DataBox\Events\Crud\BeforeAddInputControlsArgs.cs" />
+    <Compile Include="Extensions\DataBox\Events\Crud\BeforeCrudOperationArgs.cs" />
+    <Compile Include="Extensions\DataBox\Events\Crud\BeforeGridRefreshArgs.cs" />
+    <Compile Include="Extensions\DataBox\Events\Crud\BeforeRefreshFromServerArgs.cs" />
+    <Compile Include="Extensions\DataBox\Events\Crud\BeforeSaveArgs.cs" />
+    <Compile Include="Extensions\DataBox\Events\Crud\CrudEventDelegates.cs" />
+    <Compile Include="Extensions\DataBox\Events\MainMenu\MainMenuEventDelegates.cs" />
+    <Compile Include="Extensions\DataBox\Events\MainMenu\MenuClickArgs.cs" />
+    <Compile Include="Extensions\DataBox\Managers\DataBoxManager.cs" />
+    <Compile Include="Extensions\DataBox\Managers\DataBoxPropertiesChangedArgs.cs" />
+    <Compile Include="Extensions\DataBox\Managers\DataBoxPropertiesEvents.cs" />
+    <Compile Include="Extensions\DataBox\Managers\IDataBox.cs" />
+    <Compile Include="Extensions\ExtensionManaged\ExtensionManagedEntity.cs" />
+    <Compile Include="Extensions\ExtensionManaged\ExtensionManagedEntityCache.cs" />
+    <Compile Include="Extensions\ExtensionManaged\ExtensionManagedEntityProperty.cs" />
+    <Compile Include="Extensions\ExtensionManaged\ExtensionManagedMainMenu.cs" />
+    <Compile Include="Extensions\ExtensionManaged\ExtensionManagedMenuItem.cs" />
+    <Compile Include="Utilities\SettingsFile\SettingsCategoryInfo.cs" />
+    <Compile Include="Peripherals\Peripheral.cs" />
+    <Compile Include="Peripherals\Scanning\DeviceScanEventArgs.cs" />
+    <Compile Include="Peripherals\Scanning\DeviceScanEventHandlers.cs" />
+    <Compile Include="Peripherals\Scanning\DeviceScanner.cs" />
+    <Compile Include="Peripherals\Scanning\PsionDeviceScanner.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Tools\CameraHelper.cs" />
+    <Compile Include="Tools\IM\CircleHotspot.cs" />
+    <Compile Include="Tools\ColorPickerForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Tools\ColorPickerForm.Designer.cs">
+      <DependentUpon>ColorPickerForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Tools\IM\Hotspot.cs" />
+    <Compile Include="Tools\IM\HotspotsCache.cs" />
+    <Compile Include="Tools\IM\ImageMap.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Tools\IM\ImageMap.Designer.cs">
+      <DependentUpon>ImageMap.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Tools\IM\PolygonHotspot.cs" />
+    <Compile Include="Tools\IM\RectangleHotspot.cs" />
+    <Compile Include="Tools\NumericTextBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Tools\SignatureForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Tools\SignatureForm.designer.cs">
+      <DependentUpon>SignatureForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Utilities\AssemblyReader.cs" />
+    <Compile Include="Utilities\Encryptor.cs" />
+    <Compile Include="Utilities\FileSystemHelper.cs" />
+    <Compile Include="Utilities\GOC.cs" />
+    <Compile Include="Utilities\Instantiator.cs" />
+    <Compile Include="Utilities\Logging\LogError.cs" />
+    <Compile Include="Utilities\Logging\Logger.cs" />
+    <Compile Include="Utilities\Logging\LoggingLevel.cs" />
+    <Compile Include="Utilities\Logging\LogMessage.cs" />
+    <Compile Include="Utilities\Logging\LogMessageType.cs" />
+    <Compile Include="Utilities\Serialization\CsvSerializer.cs" />
+    <Compile Include="Utilities\Serialization\ISerializer.cs" />
+    <Compile Include="Utilities\Serialization\JSerializer.cs" />
+    <Compile Include="Utilities\Serialization\SerializerHelper.cs" />
+    <Compile Include="Utilities\Serialization\SerializerType.cs" />
+    <Compile Include="Utilities\Serialization\XSerializer.cs" />
+    <Compile Include="Utilities\SettingsFile\SettingInfoAttribute.cs" />
+    <Compile Include="Utilities\SettingsFile\SettingItem.cs" />
+    <Compile Include="Utilities\SettingsFile\Settings.cs" />
+    <Compile Include="Utilities\SettingsFile\SettingsCache.cs" />
+    <Compile Include="Utilities\SettingsFile\SettingsCategoryAttribute.cs" />
+    <Compile Include="Utilities\StreamHelper.cs" />
+    <Compile Include="Utilities\TextEncodingType.cs" />
+    <Compile Include="Utilities\UserThrownException.cs" />
+    <Compile Include="Utilities\WmConfig.cs" />
+    <Compile Include="Web\Client\CsvWebServiceClient.cs" />
+    <Compile Include="Web\Client\DataProgress\ServiceDataTransactionType.cs" />
+    <Compile Include="Web\Client\DataProgress\ServiceTransactionCompletedHandler.cs" />
+    <Compile Include="Web\Client\DataProgress\ServiceTransactionEventArgs.cs" />
+    <Compile Include="Web\Client\FiglutWebService\FiglutWebServiceClientWrapper.cs" />
+    <Compile Include="Web\Client\FiglutWebService\FiglutWebServiceFilterString.cs" />
+    <Compile Include="Web\Client\Funnel\FunnelServiceResult.cs" />
+    <Compile Include="Web\Client\Funnel\FunnelServiceResultCode.cs" />
+    <Compile Include="Web\Client\Funnel\FunnerlServiceResultHandler.cs" />
+    <Compile Include="Web\Client\IMimeWebServiceClient.cs" />
+    <Compile Include="Web\Client\REST\RestWebServiceClient.cs" />
+    <Compile Include="Web\Client\WebServiceClientCache.cs" />
+    <Compile Include="Web\Client\HttpVerb.cs" />
+    <Compile Include="Web\Client\IWebService.cs" />
+    <Compile Include="Web\Client\JsonWebServiceClient.cs" />
+    <Compile Include="Utilities\Vertex.cs" />
+    <Compile Include="Utilities\EnumHelper.cs" />
+    <Compile Include="Utilities\ExceptionHandler.cs" />
+    <Compile Include="Utilities\Formula.cs" />
+    <Compile Include="Utilities\Information.cs" />
+    <Compile Include="Utilities\UIHelper.cs" />
+    <Compile Include="Utilities\WaitProcess.cs" />
+    <Compile Include="Web\Client\WebServiceClient.cs" />
+    <Compile Include="Web\Client\XmlWebServiceClient.cs" />
+    <Compile Include="Web\MimeContentType.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Data\DB\SyncService\SyncForm.resx">
+      <DependentUpon>SyncForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Tools\ColorPickerForm.resx">
+      <DependentUpon>ColorPickerForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Tools\IM\ImageMap.resx">
+      <DependentUpon>ImageMap.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Tools\SignatureForm.resx">
+      <DependentUpon>SignatureForm.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\EmitCF\EmitCF.csproj">
+      <Project>{F7455BBE-B7B3-46A1-86CB-282B6091235F}</Project>
+      <Name>EmitCF</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Mono.CecilCF\Mono.CecilCF.csproj">
+      <Project>{19361E9F-E1F2-4780-A710-D11B8CB741D0}</Project>
+      <Name>Mono.CecilCF</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Newtonsoft.Json\Newtonsoft.Json.Compact.csproj">
+      <Project>{256AA604-F61B-4B6D-8D51-C8E6AB11E435}</Project>
+      <Name>Newtonsoft.Json.Compact</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Mmc\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CompactFramework.CSharp.targets" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}">
+        <HostingProcess disable="1" />
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+  <PropertyGroup>
+    <PostBuildEvent>
+    </PostBuildEvent>
+  </PropertyGroup>
+</Project>

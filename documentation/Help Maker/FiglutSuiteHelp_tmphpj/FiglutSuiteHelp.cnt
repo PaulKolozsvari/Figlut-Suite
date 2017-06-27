@@ -1,0 +1,38 @@
+:Base FiglutSuiteHelp.hlp
+1 Figlut Suite
+2 Introduction
+3 Overview=Overview>Main
+3 Prerequisites=Prerequisites>Main
+3 Support
+4 Contact Us=ContactUs>Main
+4 Blog=Blog>Main
+3 About Binary Chef=AboutBinaryChef>Main
+2 Figlut Web Service
+3 Overview
+4 REST Overview=RESTOverview>Main
+4 Figlut Web Service Overview=FiglutWebServiceOverview>Main
+3 Configuration
+4 Settings File=SettingsFile>Main
+4 MMC Snap-in=MMCSnap-in>Main
+4 Settings
+5 Database=Database>Main
+5 Service=Service>Main
+5 Logging=Logging>Main
+3 Usage
+4 Querying Data=QueryingData>Main
+4 Inserting Data=InsertingData>Main
+4 Updating Data=UpdatingData>Main
+4 Deleting Data=DeletingData>Main
+2 Figlut Server Toolkit
+3 Overview=Overview>Main
+3 Getting Started=GettingStarted>Main
+3 API Documentation=APIDocumentation>Main
+3 Samples=Samples>Main
+2 Figlut Mobile Toolkit - for Windows Mobile / CE
+3 Overview=Overview>Main
+3 Getting Started=GettingStarted>Main
+3 API Documentation=APIDocumentation>Main
+3 Samples=Samples>Main
+2 FAQ=FAQ>Main
+2 How To Buy=HowToBuy>Main
+

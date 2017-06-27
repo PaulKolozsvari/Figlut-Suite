@@ -1,0 +1,4 @@
+﻿call "$(DevEnvDir)\..\..\VC\bin\vcvars32.bat"
+call "$(DevEnvDir)\..\..\VC\bin\editbin.exe" /NXCOMPAT:NO "$(TargetPath)"
+copy $(TargetPath) C:\Docs\Figlut\code\trunk\FiglutSuiteVS2012\Figlut.Desktop.DataBox\bin\Debug\$(TargetFileName)
+copy $(TargetPath) C:\Docs\Figlut\code\trunk\FiglutSuiteVS2012\Figlut.Web.Service\bin\Debug\$(TargetFileName)

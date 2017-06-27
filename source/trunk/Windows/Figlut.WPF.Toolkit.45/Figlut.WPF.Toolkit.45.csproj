@@ -1,0 +1,198 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{7713F29C-B4CC-465F-B419-7BEF546FEE06}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Figlut.WPF.Toolkit._45</RootNamespace>
+    <AssemblyName>Figlut.WPF.Toolkit.45</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="DotRas">
+      <HintPath>..\SDK\DotRAS\NET40\WIN2K\DotRas.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\SDK\Newtonsoft.Json.8.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.Linq" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.ServiceModel.Web" />
+    <Reference Include="System.Transactions" />
+    <Reference Include="System.Xaml" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Reference Include="WindowsBase" />
+    <Reference Include="WPFToolkit.Extended">
+      <HintPath>..\SDK\WPFExtendedToolkit\WPFToolkit.Extended.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Data\CSV\CsvParser.cs" />
+    <Compile Include="Data\CSV\CsvStream.cs" />
+    <Compile Include="Data\CSV\CsvWriter.cs" />
+    <Compile Include="Data\DataHelper.cs" />
+    <Compile Include="Data\DataShaper.cs" />
+    <Compile Include="Data\DB\Database.cs" />
+    <Compile Include="Data\DB\DatabaseCache.cs" />
+    <Compile Include="Data\DB\DatabaseSchemaInfoType.cs" />
+    <Compile Include="Data\DB\DatabaseTable.cs" />
+    <Compile Include="Data\DB\DatabaseTableColumn.cs" />
+    <Compile Include="Data\DB\DatabaseTableForeignKeyColumns.cs" />
+    <Compile Include="Data\DB\DatabaseTableKeyColumns.cs" />
+    <Compile Include="Data\DB\Dbms.cs" />
+    <Compile Include="Data\DB\ForeignKeyInfo.cs" />
+    <Compile Include="Data\DB\LINQ\EntityContext.cs" />
+    <Compile Include="Data\DB\LINQ\LinqFunnelChangeResult.cs" />
+    <Compile Include="Data\DB\LINQ\LinqFunnelContext.cs" />
+    <Compile Include="Data\DB\LINQ\LinqFunnelSettings.cs" />
+    <Compile Include="Data\DB\LINQ\Logging\ServerAction.cs" />
+    <Compile Include="Data\DB\LINQ\Logging\ServerError.cs" />
+    <Compile Include="Data\DB\LINQ\Logging\User.cs" />
+    <Compile Include="Data\DB\SQLQuery\SqlQuery.cs" />
+    <Compile Include="Data\DB\SQLQuery\WhereClauseColumn.cs" />
+    <Compile Include="Data\DB\SQLQuery\WhereClauseComparisonOperator.cs" />
+    <Compile Include="Data\DB\SQLQuery\WhereClauseLogicalOperator.cs" />
+    <Compile Include="Data\DB\SQLServer\SqlCeDatabaseSchemaFile.cs" />
+    <Compile Include="Data\DB\SQLServer\SqlConnectionExtensions.cs" />
+    <Compile Include="Data\DB\SQLServer\SqlDatabase.cs" />
+    <Compile Include="Data\DB\SQLServer\SqlDatabaseTable.cs" />
+    <Compile Include="Data\DB\SQLServer\SqlDatabaseTableBase.cs" />
+    <Compile Include="Data\DB\SQLServer\SqlDatabaseTableColumn.cs" />
+    <Compile Include="Data\DB\SQLServer\SqlTypeConversionInfo.cs" />
+    <Compile Include="Data\DB\SQLServer\SqlTypeConverter.cs" />
+    <Compile Include="Data\EntityCache.cs" />
+    <Compile Include="Data\EntityCacheBase.cs" />
+    <Compile Include="Data\EntityCacheUnique.cs" />
+    <Compile Include="Data\EntityOperation.cs" />
+    <Compile Include="Data\EntityReader.cs" />
+    <Compile Include="Data\EntityReaderBase.cs" />
+    <Compile Include="Data\FiglutEntityCacheUnique.cs" />
+    <Compile Include="Data\ORM\OrmAssembly.cs" />
+    <Compile Include="Data\ORM\OrmAssemblySql.cs" />
+    <Compile Include="Data\ORM\OrmCodeGenerator.cs" />
+    <Compile Include="Data\ORM\OrmProperty.cs" />
+    <Compile Include="Data\ORM\OrmType.cs" />
+    <Compile Include="Data\QueryRunners\ISqlQueryRunner.cs" />
+    <Compile Include="Data\QueryRunners\SqlQueryRunnerConfig.cs" />
+    <Compile Include="Data\QueryRunners\SqlQueryRunnerDispatcher.cs" />
+    <Compile Include="Data\QueryRunners\SqlQueryRunnerInput.cs" />
+    <Compile Include="Data\QueryRunners\SqlQueryRunnerOutput.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Utilities\AssemblyReader.cs" />
+    <Compile Include="Utilities\Audio\AudioManager.cs" />
+    <Compile Include="Utilities\Audio\PlaybackState.cs" />
+    <Compile Include="Utilities\Cab\CabBuilder.cs" />
+    <Compile Include="Utilities\Cab\CabInfo.cs" />
+    <Compile Include="Utilities\Cab\CabResourceInfo.cs" />
+    <Compile Include="Utilities\Encryptor.cs" />
+    <Compile Include="Utilities\EnumHelper.cs" />
+    <Compile Include="Utilities\ExceptionHandler.cs" />
+    <Compile Include="Utilities\FileSystemHelper.cs" />
+    <Compile Include="Utilities\Formula.cs" />
+    <Compile Include="Utilities\GdiHelper.cs" />
+    <Compile Include="Utilities\GOC.cs" />
+    <Compile Include="Utilities\ImageHandler.cs" />
+    <Compile Include="Utilities\Information.cs" />
+    <Compile Include="Utilities\Instantiator.cs" />
+    <Compile Include="Utilities\Logging\LogError.cs" />
+    <Compile Include="Utilities\Logging\Logger.cs" />
+    <Compile Include="Utilities\Logging\LoggingLevel.cs" />
+    <Compile Include="Utilities\Logging\LogMessage.cs" />
+    <Compile Include="Utilities\Logging\LogMessageType.cs" />
+    <Compile Include="Utilities\RAS\RasConnectionManager.cs" />
+    <Compile Include="Utilities\RAS\RasConnectionType.cs" />
+    <Compile Include="Utilities\RAS\RasEventDelegates.cs" />
+    <Compile Include="Utilities\Serialization\CsvSerializer.cs" />
+    <Compile Include="Utilities\Serialization\ISerializer.cs" />
+    <Compile Include="Utilities\Serialization\JSerializer.cs" />
+    <Compile Include="Utilities\Serialization\SerializerHelper.cs" />
+    <Compile Include="Utilities\Serialization\SerializerType.cs" />
+    <Compile Include="Utilities\Serialization\XSerializer.cs" />
+    <Compile Include="Utilities\SettingsFile\SettingInfoAttribute.cs" />
+    <Compile Include="Utilities\SettingsFile\SettingItem.cs" />
+    <Compile Include="Utilities\SettingsFile\Settings.cs" />
+    <Compile Include="Utilities\SettingsFile\SettingsCache.cs" />
+    <Compile Include="Utilities\SettingsFile\SettingsCategoryInfo.cs" />
+    <Compile Include="Utilities\SMS\SmsEventDelegates.cs" />
+    <Compile Include="Utilities\SMS\SmsGateway.cs" />
+    <Compile Include="Utilities\SMS\SmsInfo.cs" />
+    <Compile Include="Utilities\SMS\SmsReceivedEventArgs.cs" />
+    <Compile Include="Utilities\SMS\SmsReceivedInfo.cs" />
+    <Compile Include="Utilities\StreamHelper.cs" />
+    <Compile Include="Utilities\TextEncodingType.cs" />
+    <Compile Include="Utilities\UIHelper.cs" />
+    <Compile Include="Utilities\UserThrownException.cs" />
+    <Compile Include="Utilities\Vertex.cs" />
+    <Compile Include="Utilities\WaitProcess.cs" />
+    <Compile Include="Web\Client\CsvWebServiceClient.cs" />
+    <Compile Include="Web\Client\DataProgress\ServiceDataTransactionType.cs" />
+    <Compile Include="Web\Client\DataProgress\ServiceTransactionCompletedHandler.cs" />
+    <Compile Include="Web\Client\DataProgress\ServiceTransactionEventArgs.cs" />
+    <Compile Include="Web\Client\FiglutWebService\FiglutWebServiceClientWrapper.cs" />
+    <Compile Include="Web\Client\FiglutWebService\FiglutWebServiceFilterString.cs" />
+    <Compile Include="Web\Client\Funnel\FunnelServiceResult.cs" />
+    <Compile Include="Web\Client\Funnel\FunnelServiceResultCode.cs" />
+    <Compile Include="Web\Client\Funnel\FunnerlServiceResultHandler.cs" />
+    <Compile Include="Web\Client\HttpVerb.cs" />
+    <Compile Include="Web\Client\IMimeWebServiceClient.cs" />
+    <Compile Include="Web\Client\IWebService.cs" />
+    <Compile Include="Web\Client\JsonWebServiceClient.cs" />
+    <Compile Include="Web\Client\REST\RestWebServiceClient.cs" />
+    <Compile Include="Web\Client\WebServiceClient.cs" />
+    <Compile Include="Web\Client\WebServiceClientCache.cs" />
+    <Compile Include="Web\Client\XmlWebServiceClient.cs" />
+    <Compile Include="Web\MimeContentType.cs" />
+    <Compile Include="Web\Service\REST\Events\RestServiceDeleteEntityEventArgs.cs" />
+    <Compile Include="Web\Service\REST\Events\RestServiceEventArgs.cs" />
+    <Compile Include="Web\Service\REST\Events\RestServiceEventDelegates.cs" />
+    <Compile Include="Web\Service\REST\Events\RestServiceGetEntitiesByFieldEventArgs.cs" />
+    <Compile Include="Web\Service\REST\Events\RestServiceGetEntitiesEventArgs.cs" />
+    <Compile Include="Web\Service\REST\Events\RestServiceGetEntityByIdEventArgs.cs" />
+    <Compile Include="Web\Service\REST\Events\RestServicePutEntityEventArgs.cs" />
+    <Compile Include="Web\Service\REST\IRestService.cs" />
+    <Compile Include="Web\Service\REST\RestService.cs" />
+    <Compile Include="Web\Service\ServiceException.cs" />
+    <Compile Include="Web\Service\ServiceFunctionResult.cs" />
+    <Compile Include="Web\Service\ServiceProcedureResult.cs" />
+    <Compile Include="Web\Service\ServiceResult.cs" />
+    <Compile Include="Web\Service\ServiceResultCode.cs" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

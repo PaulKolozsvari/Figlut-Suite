@@ -1,0 +1,3059 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>PtxSdkWwanNet</name>
+    </assembly>
+    <members>
+        <member name="T:PsionTeklogix.WWAN.SetBandInternal">
+            <summary>
+            structure used in SetEnabledBandsNative. Must be in sync with the PInvoke
+            layer
+            </summary>
+        </member>
+        <member name="T:PsionTeklogix.WWAN.WWAN_SMS_DCS">
+            <summary>
+             The Data Coding Scheme flags.
+            </summary>
+        </member>
+        <member name="F:PsionTeklogix.WWAN.WWAN_SMS_DCS.DEFAULT">
+            <summary>Message is in the default encoding scheme.</summary>
+        </member>
+        <member name="F:PsionTeklogix.WWAN.WWAN_SMS_DCS.GSM_7BIT">
+            <summary>Message is 7-bit ASCII (GSM).</summary>
+        </member>
+        <member name="F:PsionTeklogix.WWAN.WWAN_SMS_DCS.ASCII_8BIT">
+            <summary>Message is 8-bit ASCII.</summary>
+        </member>
+        <member name="F:PsionTeklogix.WWAN.WWAN_SMS_DCS.UNICODE_16BIT">
+            <summary>Message is Unicode.</summary>
+        </member>
+        <member name="F:PsionTeklogix.WWAN.WWAN_SMS_DCS.BINARY_8BIT">
+            <summary>Binary data.</summary>
+        </member>
+        <member name="F:PsionTeklogix.WWAN.WWAN_SMS_DCS.GSM_PDU">
+            <summary>Binary PDU data for GSM.</summary>
+        </member>
+        <member name="T:PsionTeklogix.WWAN.WWAN_SMS_MAILBOX">
+            <summary>
+             Mailbox flags.
+            </summary>
+        </member>
+        <member name="F:PsionTeklogix.WWAN.WWAN_SMS_MAILBOX.WRITABLE">
+            <summary>Messages can be written to this mailbox (via WWAN_SMS_SEND_REQUEST).</summary>
+        </member>
+        <member name="F:PsionTeklogix.WWAN.WWAN_SMS_MAILBOX.SIM">
+            <summary>This mailbox is stored on the SIM.</summary>
+        </member>
+        <member name="F:PsionTeklogix.WWAN.WWAN_SMS_MAILBOX.MODEM">
+            <summary>This mailbox is stored in the modem.</summary>
+        </member>
+        <member name="T:PsionTeklogix.WWAN.WWAN_SMS_MAILBOX_CAPS">
+            <summary>
+             Class the defines the SMS mailbox capabilities.
+            </summary>
+        </member>
+        <member name="F:PsionTeklogix.WWAN.WWAN_SMS_MAILBOX_CAPS.MailboxCaps">
+            <summary>Mailbox flags.</summary>
+        </member>
+        <member name="F:PsionTeklogix.WWAN.WWAN_SMS_MAILBOX_CAPS.CurrentMessages">
+            <summary>Number of messages present.</summary>
+        </member>
+        <member name="F:PsionTeklogix.WWAN.WWAN_SMS_MAILBOX_CAPS.MaxMessages">
+            <summary>Maximum number of messages that can be stored.</summary>
+        </member>
+        <member name="T:PsionTeklogix.WWAN.WWAN_SMS_CAPS">
+            <summary>
+             The SMS capabilities of the modem.
+            </summary>
+        </member>
+        <member name="F:PsionTeklogix.WWAN.WWAN_SMS_CAPS.SupportedDcs">
+            <summary>Bitmask of supported DCSs.</summary>
+        </member>
+        <member name="P:PsionTeklogix.WWAN.WWAN_SMS_CAPS.MailBoxes">
+            <summary>Array of mailbox information.</summary>
+        </member>
+        <member name="T:PsionTeklogix.WWAN.WWAN_SMS_LOCATION">
+            <summary>
+             Used to define the location of an SMS message.
+            </summary>
+        </member>
+        <member name="F:PsionTeklogix.WWAN.WWAN_SMS_LOCATION.MailboxIndex">
+            <summary> 0...MailboxCount-1 (WWAN_SMS_CAPS) </summary>
+        </member>
+        <member name="F:PsionTeklogix.WWAN.WWAN_SMS_LOCATION.MessageIndex">
+            <summary> 0...MaxMessages-1 (WWAN_MAILBOX_CAPS) </summary>
+        </member>
+        <member name="T:PsionTeklogix.WWAN.WWAN_SMS_TIMESTAMP">
+            <summary>
+             Message timestamp.
+            </summary>
+        </member>
+        <member name="F:PsionTeklogix.WWAN.WWAN_SMS_TIMESTAMP.Year">
+            <summary>Year the message was received.</summary>
+        </member>
+        <member name="F:PsionTeklogix.WWAN.WWAN_SMS_TIMESTAMP.Month">
+            <summary>Month the message was received.</summary>
+        </member>
+        <member name="F:PsionTeklogix.WWAN.WWAN_SMS_TIMESTAMP.Day">
+            <summary>Day the message was received.</summary>
+        </member>
+        <member name="F:PsionTeklogix.WWAN.WWAN_SMS_TIMESTAMP.Hour">
+            <summary>Hour the message was received.</summary>
+        </member>
+        <member name="F:PsionTeklogix.WWAN.WWAN_SMS_TIMESTAMP.Minute">
+            <summary>Minute the message was received.</summary>
+        </member>
+        <member name="F:PsionTeklogix.WWAN.WWAN_SMS_TIMESTAMP.Second">
+            <summary>Second the message was received.</summary>
+        </member>
+        <member name="F:PsionTeklogix.WWAN.WWAN_SMS_TIMESTAMP.TimeZone">
+            <summary> Offset towards GMT in minutes (including sign)</summary>
+            <remarks> The most significant bit is the sign (1 = negative value).</remarks>
+        </member>
+        <member name="T:PsionTeklogix.WWAN.WWAN_SMS_PRIORITY">
+            <summary>
+             The message priority.
+            </summary>
+        </member>
+        <member name="F:PsionTeklogix.WWAN.WWAN_SMS_PRIORITY.WwanSmsPriorityNormal">
+            <summary>Normal message priority.</summary>
+        </member>
+        <member name="F:PsionTeklogix.WWAN.WWAN_SMS_PRIORITY.WwanSmsPriorityInteractive">
+            <summary>Interactive message priority.</summary>
+        </member>
+        <member name="F:PsionTeklogix.WWAN.WWAN_SMS_PRIORITY.WwanSmsPriorityUrgent">
+            <summary>High message priority.</summary>
+        </member>
+        <member name="F:PsionTeklogix.WWAN.WWAN_SMS_PRIORITY.WwanSmsPriorityEmergency">
+            <summary>Emergency priority.</summary>
+        </member>
+        <member name="T:PsionTeklogix.WWAN.WWAN_SMS_READ_REQUEST">
+             <summary>
+              Class used to read an SMS message.
+             </summary>
+             <remarks>
+             <p>On Data Coding Scheme (DCS) conversions when reading messages:</p>
+            
+             <p>A text mode application (i.e. an application handling human-readable messages) should
+             set RequestDcs to WWAN_SMS_DCS_UNICODE_16BIT. All text coding schemes (7-bit Default
+             Alphabet and 16-bit Unicode for GSM, 8-bit ASCII for CDMA) are then returned converted
+             to Unicode, messages in other coding schemes produce the result code
+             WwanSmsResultDcsNoConversion.</p>
+            
+             <p>A machine-to-machine communication application should set RequestDcs to 
+             WWAN_SMS_DCS_BINARY_8BIT. Messages in an 8-bit data coding scheme are then returned
+             unchanged, messages in text coding schemes produce the result code
+             WwanSmsResultDcsNoConversion.</p>
+            
+             <p>An application wanting to read all messages regardless of the data coding scheme
+             should set RequestDcs to WWAN_SMS_DCS_DEFAULT. All text coding schemes (7-bit Default
+             Alphabet and 16-bit Unicode for GSM, 8-bit ASCII for CDMA) are then returned converted
+             to Unicode, messages in an 8-bit data coding scheme are then returned unchanged. For
+             GSM only, certain system messages (PDUs other than SMS-DELIVER and SMS-SUBMIT) are
+             returned with all message headers and without any decoding. The application has to
+             evaluate ReadDcs in order to determine the encoding of the returned message
+             (WWAN_SMS_DCS_UNICODE_16BIT, WWAN_SMS_DCS_BINARY_8BIT, or WWAN_SMS_DCS_GSM_PDU).</p>
+            
+             <p>For GSM only, an application that wants to use features that are not supported by the
+             driver can set RequestDcs to WWAN_SMS_DCS_GSM_PDU and all messages are returned with
+             all message headers and without any decoding. For CDMA modems this setting will
+             produce the result code WwanSmsResultDcsNoConversion for all messages.</p>
+             </remarks>
+        </member>
+        <member name="F:PsionTeklogix.WWAN.WWAN_SMS_READ_REQUEST.Location">
+            <summary></summary>
+        </member>
+        <member name="F:PsionTeklogix.WWAN.WWAN_SMS_READ_REQUEST.RequestDcs">
+            <summary></summary>
+        </member>
+        <member name="T:PsionTeklogix.WWAN.WWAN_SMS_MSG_FLAGS">
+            <summary>
+             Message flags for received messages.
+            </summary>
+        </member>
+        <member name="F:PsionTeklogix.WWAN.WWAN_SMS_MSG_FLAGS.RECEIVED">
+            <summary>Set for a received message; reset for a stored message.</summary>
+        </member>
+        <member name="F:PsionTeklogix.WWAN.WWAN_SMS_MSG_FLAGS.PROCESSED">
+            <summary>Set if a received message has been read or sent.</summary>
+        </member>
+        <member name="F:PsionTeklogix.WWAN.WWAN_SMS_MSG_FLAGS.ADDR_VALID">
+            <summary>Set if the address field contains valid data.</summary>
+        </member>
+        <member name="F:PsionTeklogix.WWAN.WWAN_SMS_MSG_FLAGS.TIME_VALID">
+            <summary>Set if the timestamp field contains valid data.</summary>
+        </member>
+        <member name="T:PsionTeklogix.WWAN.WWAN_SMS_READ_RESULT">
+            <summary>
+             Class used to report message data and related information.
+            </summary>
+        </member>
+        <member name="F:PsionTeklogix.WWAN.WWAN_SMS_READ_RESULT.Location">
+            <summary>The message location.</summary>
+        </member>
+        <member name="F:PsionTeklogix.WWAN.WWAN_SMS_READ_RESULT.ReadDcs">
+            <summary>Message encoding flags.</summary>
+        </member>
+        <member name="F:PsionTeklogix.WWAN.WWAN_SMS_READ_RESULT.Timestamp">
+            <summary>When the message was sent/received.</summary>
+        </member>
+        <member name="F:PsionTeklogix.WWAN.WWAN_SMS_READ_RESULT.Address">
+            <summary>If WWAN_SMS_MSG_FLAG_RECEIVED is set then this is the sender's 
+            address ("From:"), otherwise it is the destination address ("To:").</summary>
+        </member>
+        <member name="F:PsionTeklogix.WWAN.WWAN_SMS_READ_RESULT.MsgFlags">
+            <summary>The message flags.</summary>
+        </member>
+        <member name="F:PsionTeklogix.WWAN.WWAN_SMS_READ_RESULT.Priority">
+            <summary>The message priority.</summary>
+        </member>
+        <member name="P:PsionTeklogix.WWAN.WWAN_SMS_READ_RESULT.MessageData">
+            <summary>The message data in binary.</summary>
+        </member>
+        <member name="P:PsionTeklogix.WWAN.WWAN_SMS_READ_RESULT.MessageText">
+            <summary>The message data as text (check DCS flags first).</summary>
+        </member>
+        <member name="T:PsionTeklogix.WWAN.WWAN_SMS_SEND_FLAGS">
+            <summary>
+             Flags used when sending messages.
+            </summary>
+        </member>
+        <member name="F:PsionTeklogix.WWAN.WWAN_SMS_SEND_FLAGS.STORE">
+            <summary>Store the message in a mailbox before sending it.</summary>
+        </member>
+        <member name="F:PsionTeklogix.WWAN.WWAN_SMS_SEND_FLAGS.ALLOW_ESC">
+            <summary>For the GSM 7-bit alphabet allow the use of escaped characters</summary>
+        </member>
+        <member name="F:PsionTeklogix.WWAN.WWAN_SMS_SEND_FLAGS.ALPHA_ADR">
+            <summary>For GSM encode the address in alphanumeric format.</summary>
+        </member>
+        <member name="F:PsionTeklogix.WWAN.WWAN_SMS_SEND_FLAGS.CHECK_LEN">
+            <summary>Do not quietly truncate messages, reject messages that are too long.</summary>
+        </member>
+        <member name="T:PsionTeklogix.WWAN.WWAN_SMS_SEND_REQUEST">
+             <summary>
+              Class used to send an SMS message.
+             </summary>
+             <remarks>
+             <p>On Data Coding Scheme (DCS) conversions when sending messages:</p>
+            
+             <p>A text mode application (i.e. an application handling human-readable messages) 
+             should set SendDcs to WWAN_SMS_DCS_DEFAULT. The message buffer in this case must 
+             contain Unicode characters. For GSM, if the message contains only ISO Latin 1 
+             characters, Greek characters, or the Euro symbol then the message is sent in the 
+             GSM 7-bit alphabet. Otherwise it is sent unmodified as Unicode. For CDMA, the 
+             message is sent as 8-bit ASCII. An application that needs complete control over 
+             the transmission encoding could set SendDcs to WWAN_SMS_DCS_GSM_7BIT, WWAN_SMS_DCS_ASCII_8BIT, 
+             or WWAN_SMS_DCS_UNICODE_16BIT. Note that when SendDcs is set to WWAN_SMS_DCS_GSM_7BIT then
+             all characters that can not be converted to the GSM 7-bit default alphabet are dropped.
+             Note further that if WWAN_SMS_SEND_FLAG_ALLOW_ESC is set and a message is converted to
+             the GSM 7-bit default alphabet then the character set is extended to include the Euro
+             symbol as well as '{', '}', '[', ']', '\', '~', '^', and page break. However, each of
+             the additional Unicode character is encoded as two 7-bit characters and the maximum
+             number of characters in a messsage is thus reduced.</p>
+            
+             <p>A machine-to-machine communication application should set SendDcs to
+             WWAN_SMS_DCS_BINARY_8BIT. The message buffer in this case must contain bytes which are
+             transmitted unchanged.</p>
+            
+             <p>For GSM only, an application that wants to use features that are not supported by the
+             driver can set SendDcs to WWAN_SMS_DCS_GSM_PDU. The message buffer in case must
+             contain a GSM SMS PDU preceeded by the SMS centre address.</p>
+             </remarks>
+        </member>
+        <member name="F:PsionTeklogix.WWAN.WWAN_SMS_SEND_REQUEST.Location">
+            <summary>Ignored if WWAN_SMS_SEND_FLAG_STORE is not set; only MailboxIndex is 
+            used otherwise (MessageIndex is chosen automatically)</summary>
+        </member>
+        <member name="F:PsionTeklogix.WWAN.WWAN_SMS_SEND_REQUEST.Priority">
+            <summary>Ignored for GSM, network-dependent for CDMA.</summary>
+        </member>
+        <member name="F:PsionTeklogix.WWAN.WWAN_SMS_SEND_REQUEST.SendDcs">
+            <summary>Data Coding Scheme.</summary>
+        </member>
+        <member name="F:PsionTeklogix.WWAN.WWAN_SMS_SEND_REQUEST.Address">
+            <summary>Destination address.</summary>
+        </member>
+        <member name="F:PsionTeklogix.WWAN.WWAN_SMS_SEND_REQUEST.SendFlags">
+            <summary>Flags used to control how the message is sent.</summary>
+        </member>
+        <member name="F:PsionTeklogix.WWAN.WWAN_SMS_SEND_REQUEST.message">
+            message to send
+        </member>
+        <member name="P:PsionTeklogix.WWAN.WWAN_SMS_SEND_REQUEST.MessageText">
+            <summary>
+             The message text to send.
+            </summary>
+        </member>
+        <member name="P:PsionTeklogix.WWAN.WWAN_SMS_SEND_REQUEST.MessageData">
+            <summary>
+             The message data to send.
+            </summary>
+        </member>
+        <member name="T:PsionTeklogix.WWAN.WWAN_SMS_CFG_FLAGS">
+            <summary>
+             SMS configuration flags.
+            </summary>
+        </member>
+        <member name="F:PsionTeklogix.WWAN.WWAN_SMS_CFG_FLAGS.TPRD">
+            <summary>Set TP-Reject-Duplicates.</summary>
+        </member>
+        <member name="F:PsionTeklogix.WWAN.WWAN_SMS_CFG_FLAGS.TPRP">
+            <summary>Set TP-Reply-Path.</summary>
+        </member>
+        <member name="F:PsionTeklogix.WWAN.WWAN_SMS_CFG_FLAGS.TPSRR">
+            <summary>Set TP-Status-Report-Request.</summary>
+        </member>
+        <member name="F:PsionTeklogix.WWAN.WWAN_SMS_CFG_FLAGS.VP_VALID">
+            <summary>The validity period is valid.</summary>
+        </member>
+        <member name="T:PsionTeklogix.WWAN.WWAN_SMS_CONFIG">
+            <summary>
+             Contains SMS configuration information.
+            </summary>
+        </member>
+        <member name="F:PsionTeklogix.WWAN.WWAN_SMS_CONFIG.SmscAddress">
+            <summary>SMS Address.</summary>
+        </member>
+        <member name="F:PsionTeklogix.WWAN.WWAN_SMS_CONFIG.ConfigFlags">
+            <summary>SMS Configuration flags.</summary>
+        </member>
+        <member name="F:PsionTeklogix.WWAN.WWAN_SMS_CONFIG.ValiditySeconds">
+            <summary>Validity period in seconds. Only valid if the appropriate configuration
+            flag is valid.</summary>
+        </member>
+        <member name="F:PsionTeklogix.WWAN.WWAN_SMS_CONFIG.EncodedPid">
+            <summary></summary>
+        </member>
+        <member name="F:PsionTeklogix.WWAN.WWAN_SMS_CONFIG.EncodedDcs">
+            <summary></summary>
+        </member>
+        <member name="T:PsionTeklogix.WWAN.AccessFlags">
+            <summary>
+             Flags used to control access to various WWAN operations.
+            </summary>
+            <remarks>
+             Some WWAN operations performed by an application could conflict with similar
+            operations performed by the WWAN user interface (WWANUI). In order to
+            prevent these operations from causing problems, an application is normally
+            prevented from performing them. If an application needs to perform one of these
+            operations, for example changing the PIN, it must first request access to the
+            operation. Doing so will prevent the WWAN UI from performing the disabled
+            operation, or reacting to the operation being performed by another application.
+            </remarks>
+        </member>
+        <member name="F:PsionTeklogix.WWAN.AccessFlags.EnableSetPin">
+            <summary>Controls access to the set PIN operation.</summary>
+        </member>
+        <member name="F:PsionTeklogix.WWAN.AccessFlags.EnableSetRegisterState">
+            <summary>Controls access to the set register state operation.</summary>
+        </member>
+        <member name="F:PsionTeklogix.WWAN.AccessFlags.EnableSetProvisionedContexts">
+            <summary>Controls access to the set provisioned contexts operation.</summary>
+        </member>
+        <member name="F:PsionTeklogix.WWAN.AccessFlags.SuppressCallNotifications">
+            <summary>Suppressed the indication of incoming voice calls (ring) by WWANUI (rev.
+             1.10047 or later) </summary>
+        </member>
+        <member name="T:PsionTeklogix.WWAN.FrequencyBandFlags">
+            <summary>
+             Flags used to represent frequency bands of the WWAN radio
+            </summary>    
+        </member>
+        <member name="F:PsionTeklogix.WWAN.FrequencyBandFlags.WWAN_BAND_GSM_850">
+            <summary>
+            frequency band for GSM 850
+            </summary>
+        </member>
+        <member name="F:PsionTeklogix.WWAN.FrequencyBandFlags.WWAN_BAND_GSM_900">
+            <summary>
+            frequency band for GSM 900
+            </summary>
+        </member>
+        <member name="F:PsionTeklogix.WWAN.FrequencyBandFlags.WWAN_BAND_GSM_1800">
+            <summary>
+            frequency band for GSM 1800
+            </summary>
+        </member>
+        <member name="F:PsionTeklogix.WWAN.FrequencyBandFlags.WWAN_BAND_GSM_1900">
+            <summary>
+            frequency band for GSM 1900
+            </summary>
+        </member>
+        <member name="F:PsionTeklogix.WWAN.FrequencyBandFlags.WWAN_BAND_UMTS_850">
+            <summary>
+            frequency band for UMTS 850
+            </summary>
+        </member>
+        <member name="F:PsionTeklogix.WWAN.FrequencyBandFlags.WWAN_BAND_UMTS_1900">
+            <summary>
+            frequency band for UMTS 1900
+            </summary>
+        </member>
+        <member name="F:PsionTeklogix.WWAN.FrequencyBandFlags.WWAN_BAND_UMTS_2100">
+            <summary>
+            frequency band for UMTS 2100
+            </summary>
+        </member>
+        <member name="F:PsionTeklogix.WWAN.FrequencyBandFlags.WWAN_BAND_UMTS_900">
+            <summary>
+            frequency band for UMTS 900
+            </summary>
+        </member>
+        <member name="F:PsionTeklogix.WWAN.FrequencyBandFlags.WWAN_BAND_UMTS_AWS">
+            <summary>
+            frequency band for UMTS AWS
+            </summary>
+        </member>
+        <member name="T:PsionTeklogix.WWAN.IndicationsListener">
+             <summary>
+               The IndicationsListener class defines the interface to be implemented
+             by applications that require notification when indications are generated by
+             the NDIS driver.
+             </summary>
+             <remarks>
+             In order to receive indications, an application must:
+            
+             <ol>
+             <li> Implement the IndicationsListener interface.</li>
+             <li> Register itself with the WirelessWAN class using the SetIndicationsListener
+                method.</li>
+             <li> Enable indications using the SetIndicationsState method.</li>
+             </ol>
+             <p>An application can temporarily disable indications by calling the method
+             WirelessWAN::SetIndicationsState, with the parameter set to false.</p>
+            
+             <p>An application must disable indications before terminating by calling the
+             method WirelessWAN::SetIndicationsState, with the parameter set to false.</p>
+             </remarks>
+        </member>
+        <member name="M:PsionTeklogix.WWAN.IndicationsListener.OnReadyState(PsionTeklogix.WWAN.WWAN_READY_STATE)">
+             <summary>
+              This indication is generated when the ready state of the driver changes.
+             </summary>
+             <remarks>
+             <p>Barring a catastrophic failure, ready state indications should only be
+             received at start-up and shutdown. Note that the start-up timing depends on the
+             type of modem.</p>
+             </remarks>
+            
+             <param name="ReadyState"> The ready state information. </param>
+            
+        </member>
+        <member name="M:PsionTeklogix.WWAN.IndicationsListener.OnSignalState(PsionTeklogix.WWAN.WWAN_SIGNAL_STATE)">
+             <summary>
+              This indication is generated when the RSSI (received signal strength
+             indicaton) changes. A signal strength indication will be sent when the
+             measured signal strength travels outside the configured threshold.
+             </summary>
+            
+             <param name="SignalState"> The signal state information.</param>
+            
+        </member>
+        <member name="M:PsionTeklogix.WWAN.IndicationsListener.OnPinState(PsionTeklogix.WWAN.WWAN_PIN_STATE)">
+             <summary>
+             This indication is generated when the PIN state changes. Indications may
+             occur at start-up and during the course of operation.
+             </summary>
+            
+             <param name="PinState"> The current PIN state settings.</param>
+        </member>
+        <member name="M:PsionTeklogix.WWAN.IndicationsListener.OnRegisterState(PsionTeklogix.WWAN.WWAN_REGISTRATION)">
+             <summary>
+             This indication is generated when the registration state changes.
+             </summary>
+            
+             <param name="Registration"> The current register state settings. </param>
+            
+        </member>
+        <member name="M:PsionTeklogix.WWAN.IndicationsListener.OnPacketService(PsionTeklogix.WWAN.WWAN_PACKET_SERVICE)">
+             <summary>
+             This indication is generated when a packet service setting changes.
+             </summary>
+            
+             <param name="PacketService"> The packet service settings. </param>
+            
+        </member>
+        <member name="M:PsionTeklogix.WWAN.IndicationsListener.OnNewSmsMessage(PsionTeklogix.WWAN.WWAN_SMS_LOCATION)">
+             <summary>
+             This indication is generated when a new SMS message is received.
+             </summary>
+            
+             <param name="SmsLocation"> The SMS message and mailbox indicies. </param>
+            
+        </member>
+        <member name="M:PsionTeklogix.WWAN.IndicationsListener.OnStatusWanLineUp">
+            <summary>
+             This indication is generated when a packet data connection is established
+            via RAS (e.g. by pressing the "Connect Data" button on the Wireless
+            WAN control panel).
+            </summary>
+        </member>
+        <member name="M:PsionTeklogix.WWAN.IndicationsListener.OnStatusWanLineDown">
+            <summary>
+             This indication is generated when a packet data connection is dropped
+            via RAS (e.g. by pressing the "Disconnect" button on the Wireless
+            WAN control panel).
+            </summary>
+        </member>
+        <member name="M:PsionTeklogix.WWAN.IndicationsListener.OnStatusClosingIndicated">
+            <summary>
+             This indication is sent when the driver is about to terminate. There will
+            be no further indications following this indication.
+            </summary>
+        </member>
+        <member name="T:PsionTeklogix.WWAN.WirelessWAN">
+             <summary>
+               This class is used to perform all Wireless Wide Area Networking-
+             related operations.
+             </summary>
+             <remarks>
+             <p>The WirelessWAN class is used to perform all Wireless Wide Area
+             Networking-related operations and activities, including:
+            
+              * Registering to receive indications
+              * Getting the capabilities of the installed WWAN modem
+              * Getting the WWAN driver version (major and minor)
+              * Getting the operational state of the device (ready state, PIN state,
+                   and registration state)
+              * Listing all available networks
+              * Changing, enabling, disabling, or submitting the PIN.
+              * Setting provisioned contexts
+              * Changing the signal strength settings (interval and threshold)
+              * Reading SMS messages
+              * Deleting SMS messages
+              * Getting the SMS capabilities of the modem
+              * Sending SMS messages
+              * Setting the SMS configuration
+              * Retrieving the SMS configuration
+             </p>
+            
+             <p>When an application calls a WirelessWAN method, it should first check the
+             return code of the function - this value determines whether or not the
+             request was successfully issued to the driver. If the method returned
+             successfully, the application should then check the resultCode member of
+             the WWanRequestParameters structure to determine the results of the operation.</p>
+             </remarks>
+        </member>
+        <member name="M:PsionTeklogix.WWAN.WirelessWAN.Initialize">
+             <summary>
+              Initializes the WirelessWAN API.
+             </summary>
+             <remarks>
+              The Initialize method initializes the WirelessWAN API for use by
+             applications. This method must be called before any other API methods have
+             been called.
+             </remarks>
+            
+             <returns>
+              * WwanRequest.DriverNotRunning   - If the WWAN driver is not running.
+              * WwanRequest.Failure            - If the API did not initialize properly.
+              * WwanRequest.Success            - If the API initialized successfully.
+             </returns>
+        </member>
+        <member name="M:PsionTeklogix.WWAN.WirelessWAN.Shutdown">
+             <summary>
+               Shuts down the WirelessWAN API.
+             </summary>
+             <remarks>
+              This method must be called before the application exits.
+             </remarks>
+            
+             <returns>
+              * WwanRequest.Success            - If the API was successfully shutdown.
+             </returns>
+        </member>
+        <member name="M:PsionTeklogix.WWAN.WirelessWAN.GetCurrentAccessFlags(PsionTeklogix.WWAN.AccessFlags@)">
+             <summary>
+              Returns the current set of flags representing the restricted SMS
+              operations currently reserved for use by applications.
+             </summary>
+             <remarks>
+              The GetCurrentAccessFlags method returns the current set of flags
+             representing the restricted SMS operations currently reserved for use by
+             applications.
+             </remarks>
+            
+             <param name="accessFlags"> The current set of operations not be performed by the
+              WWAN user interface (WWANUI).</param>
+             <returns> The status of the request:
+              * WwanRequest.Success        - If the operation was successful.
+              * WwanRequest.NotInitialized - If the Initialize method was not called or failed.
+             </returns>
+        </member>
+        <member name="M:PsionTeklogix.WWAN.WirelessWAN.SetCurrentAccessFlags(PsionTeklogix.WWAN.AccessFlags)">
+             <summary>
+              Modifies the set of access flags used to control access to the restricted
+             operations listed in the AccessFlags enumeration.
+             </summary>
+             <remarks>
+             <p>When calling this method, one or more access flags may be supplied. These
+             flags allow the application to access several operations normally reserved
+             for the WWAN user interface (WWANUI.exe), while at the same time preventing
+             the WWANUI itself from performing them. Take care when using these operations,
+             especially the Set PIN operation, as setting an invalid value(s) could
+             prevent the modem from functioning properly.</p>
+            
+             <p>An application calling this method should take care to save the old set of
+             access flags and restore them on exit.</p>
+            
+             <p>An application should NOT simply change access flags, perform an operation,
+             and then reset the flags. Under most circumstances, the application should modify
+             the flags at startup, and reset them on exit.</p>
+             </remarks>
+            
+             <param name="accessFlags"> Specifies the set of reserved operations to be performed
+               by the application. Set the parameter value to zero if no reserved operations
+               are required by the application.</param>
+             <returns> The status of the request:
+              * WwanRequest.Success            - If the operation was successful.
+              * WwanRequest.NotInitialized     - If the Initialize method was not called or
+                                                   failed.
+             </returns>
+        </member>
+        <member name="M:PsionTeklogix.WWAN.WirelessWAN.SetIndicationsListener(PsionTeklogix.WWAN.IndicationsListener)">
+             <summary>
+               Registers the specified object to receive indications sent by the WWAN
+             driver.
+             </summary>
+             <remarks>
+              The SetIndicationsListener method registers the specified object to receive
+             indications sent by the WWAN driver. Indications will only be sent if the
+             SetIndicationsState method is called with a value of 'true'.
+             </remarks>
+            
+             <param name="listener"> The object to register to receive indications. The parameter
+              can be null, if so indications will not be generated, regardless of whether
+              indications are enabled.</param>
+        </member>
+        <member name="M:PsionTeklogix.WWAN.WirelessWAN.SetIndicationsState(System.Boolean)">
+             <summary>
+               Enables or disables indications.
+             </summary>
+             <remarks>
+              The SetIndicationsState method enables or disables the generation of
+             indications. It must be called with a value of 'true' in order to enable
+             indications.
+             </remarks>
+            
+             <param name="enable"> If true, indications will be enabled. If false, indications
+              will not be generated.</param>
+        </member>
+        <member name="M:PsionTeklogix.WWAN.WirelessWAN.GetDeviceCaps(PsionTeklogix.WWAN.WWAN_DEVICE_CAPS)">
+             <summary>
+              This method is used to query the capabilities of the WWAN modem.
+             </summary>
+             <remarks>
+              The GetDeviceCaps method is used to query the capabilities of the WWAN modem,
+             including the cellular technology, the classes of packet data supported,
+             the type of voice service provided, and whether a SIM is used.
+             </remarks>
+            
+             <param name="caps"> A WWAN_DEVICE_CAPS object. </param>
+            
+             <returns> The status of the request:
+              * WwanRequest.InvalidParameter   - If the caps parameter was 0 (NULL).
+              * WwanRequest.NotInitialized     - If the Initialize method was not called or
+                                                   failed.
+              * WwanRequest.Failure            - If the request could not be issued.
+              * WwanRequest.Success            - If the request was successful.
+              * WwanRequest.OutOfMemory        - If a memory allocation failure occurred
+              * WwanRequest.BufferTooSmall     - If an internal buffer was too small
+              * WwanRequest.AccessDenied       - If the driver is in an invalid state to
+                                                   handle the request
+             </returns>
+        </member>
+        <member name="M:PsionTeklogix.WWAN.WirelessWAN.GetReadyState(PsionTeklogix.WWAN.WWanRequestParameters,PsionTeklogix.WWAN.WWAN_READY_STATE)">
+             <summary>
+              The method allows the application to retrieve the ready state of the
+             WWAN driver.
+             </summary>
+             <remarks>
+              The GetReadyState method allows the application to retrieve the ready
+             state of the WWAN driver. It also allows the driver to report other related
+             information, such as the subscriber and equipment identity, and associated
+             ISDNs (phone numbers).
+             </remarks>
+            
+             <param name="parms"> The request parameters for the request.</param>
+             <param name="readyState"> A WWAN_READY_STATE object.</param>
+            
+             <returns>
+              * WwanRequest.InvalidParameter   - If the readyState parameter was 0 (NULL).
+              * WwanRequest.NotInitialized     - If the Initialize method was not called or
+                                                   failed.
+              * WwanRequest.Failure            - If the request could not be issued.
+              * WwanRequest.Success            - If the request was successful.
+              * WwanRequest.EventHandleInvalid - If the event handle in the params structure
+                                                   is invalid.
+              * WwanRequest.OutOfMemory        - If a memory allocation failure occurred
+              * WwanRequest.BufferTooSmall     - If an internal buffer was too small
+              * WwanRequest.AccessDenied       - If the driver is in an invalid state to
+                                                   handle the request
+             </returns>
+        </member>
+        <member name="M:PsionTeklogix.WWAN.WirelessWAN.GetPinState(PsionTeklogix.WWAN.WWanRequestParameters,PsionTeklogix.WWAN.WWAN_PIN_STATE)">
+             <summary>
+              Returns the password/PIN state, primarily indicating when a PIN needs
+             to be entered.
+             </summary>
+             <remarks>
+             <p>The GetPinState method is used to retrieve the PIN state, primarily to
+             determine if the PIN/PUK needs to be entered.</p>
+            
+             <p>The GetPinState method will fail if the modem does not support a SIM, as
+             is the case with most CDMA modems. Use the GetDeviceCaps method to determine
+             if the modem supports a SIM.</p>
+             </remarks>
+            
+             <param name="parms"> The request parameters for the request.</param>
+             <param name="pinState"> The current PIN state settings.</param>
+            
+             <returns>
+              * WwanRequest.NotInitialized     - If the Initialize method was not called or
+                                                   failed.
+              * WwanRequest.Failure            - If the request could not be issued.
+              * WwanRequest.Success            - If the request was successful.
+              * WwanRequest.EventHandleInvalid - If the event handle in the params structure
+                                                   is invalid.
+              * WwanRequest.OutOfMemory        - If a memory allocation failure occurred
+              * WwanRequest.BufferTooSmall     - If an internal buffer was too small
+              * WwanRequest.AccessDenied       - If the driver is in an invalid state to
+                                                   handle the request
+             </returns>
+        </member>
+        <member name="M:PsionTeklogix.WWAN.WirelessWAN.SetPin(PsionTeklogix.WWAN.WWanRequestParameters,PsionTeklogix.WWAN.WWAN_SET_PIN)">
+             <summary>
+              This method is used to change the PIN settings on a SIM card.
+             </summary>
+             <remarks>
+             <p>The SetPin method is used to send a PIN to the device, enable or disable PIN
+             settings, or change a PIN on the SIM.</p>
+            
+             <p>The SetPin method will fail if the modem does not support a SIM, as
+             is the case with for most CDMA modems. Use the GetDeviceCaps method to
+             determine if the modem supports a SIM.</p>
+            
+             <p>All PIN operations require that a valid PIN be supplied. If too many invalid
+             PIN values are sent in a row, the SIM will be disabled until a valid PUK is
+             entered.</p>
+            
+             <p>The SetPin method is a restricted operation. The method call will fail
+             with the WwanRequest.AccessFlagNotSet error if the appropriate access flag
+             has not been set using the SetCurrentAccessFlags method.</p>
+             </remarks>
+            
+             <param name="parms"> The request parameters for the request.</param>
+             <param name="SetPin"> The new PIN settings.</param>
+            
+             <returns>
+              * WwanRequest.NotInitialized     - If the Initialize method was not called or
+                                                   failed.
+              * WwanRequest.Failure            - If the request could not be issued.
+              * WwanRequest.Success            - If the request was successful.
+              * WwanRequest.EventHandleInvalid - If the event handle in the params structure
+                                                   is invalid.
+              * WwanRequest.OutOfMemory        - If a memory allocation failure occurred
+              * WwanRequest.BufferTooSmall     - If an internal buffer was too small
+              * WwanRequest.AccessDenied       - If the driver is in an invalid state to
+                                                   handle the request
+             </returns>
+        </member>
+        <member name="M:PsionTeklogix.WWAN.WirelessWAN.GetSIMID(PsionTeklogix.WWAN.WWanRequestParameters,System.String@)">
+             <summary>
+              Returns the ID of the SIM card in the internal GSM modem
+             </summary>
+            
+             <param name="parameters"> The request parameters for the request.</param>
+             <param name="id"> The ID of SIM card in the internal modem.</param>
+            
+             <returns>
+              * WwanRequest.NotInitialized     - If the Initialize method was not called or
+                                                   failed.
+              * WwanRequest.Failure            - If the request could not be issued.
+              * WwanRequest.Success            - If the request was successful.
+              * WwanRequest.EventHandleInvalid - If the event handle in the params structure
+                                                   is invalid.
+              * WwanRequest.OutOfMemory        - If a memory allocation failure occurred
+              * WwanRequest.BufferTooSmall     - If an internal buffer was too small
+              * WwanRequest.AccessDenied       - If tfshe driver is in an invalid state to
+                                                   handle the request
+             </returns>
+        </member>
+        <member name="M:PsionTeklogix.WWAN.WirelessWAN.GetAvailableNetworks(PsionTeklogix.WWAN.WWanRequestParameters,PsionTeklogix.WWAN.WWAN_PROVIDER_LIST)">
+             <summary>
+              Returns a list of available networks.
+             </summary>
+             <remarks>
+             <p>The GetAvailableNetworks returns a list of available networks to the
+             caller.</p>
+            
+             <p>The GetAvailableNetworks method is not supported for CDMA modems. Use the
+             GetDeviceCaps method to determine the modem type.</p>
+             </remarks>
+            
+             <param name="parms"> The request parameters for the request.</param>
+             <param name="providerList"> On exit, the current list of known providers.</param>
+            
+             <returns>
+              * WwanRequest.InvalidParameter   - If the providerList parameter was 0 (NULL).
+              * WwanRequest.NotInitialized     - If the Initialize method was not called or
+                                                   failed.
+              * WwanRequest.Failure            - If the request could not be issued.
+              * WwanRequest.Success            - If the request was successful.
+              * WwanRequest.EventHandleInvalid - If the event handle in the params structure
+                                                   is invalid.
+              * WwanRequest.OutOfMemory        - If a memory allocation failure occurred
+              * WwanRequest.BufferTooSmall     - If an internal buffer was too small
+              * WwanRequest.AccessDenied       - If the driver is in an invalid state to
+                                                   handle the request
+             </returns>
+        </member>
+        <member name="M:PsionTeklogix.WWAN.WirelessWAN.GetRegisterState(PsionTeklogix.WWAN.WWanRequestParameters,PsionTeklogix.WWAN.WWAN_REGISTRATION)">
+             <summary>
+              Returns the register state of the driver.
+             </summary>
+             <remarks>
+             <p>The GetRegisterState is used to retrieve registration information from the
+             WWAN driver, including the register mode, register state, and the current
+             provider the modem is camped on.</p>
+            
+             <p>The registration information will change if the connection to the network
+             drops or if the provider changes.</p>
+             </remarks>
+            
+             <param name="parms"> The request parameters for the request.</param>
+             <param name="registration"> The current register state settings.</param>
+            
+             <returns>
+              * WwanRequest.NotInitialized     - If the Initialize method was not called or
+                                                   failed.
+              * WwanRequest.Failure            - If the request could not be issued.
+              * WwanRequest.Success            - If the request was successful.
+              * WwanRequest.EventHandleInvalid - If the event handle in the params structure
+                                                   is invalid.
+              * WwanRequest.OutOfMemory        - If a memory allocation failure occurred
+              * WwanRequest.BufferTooSmall     - If an internal buffer was too small
+              * WwanRequest.AccessDenied       - If the driver is in an invalid state to
+                                                   handle the request
+             </returns>
+        </member>
+        <member name="M:PsionTeklogix.WWAN.WirelessWAN.SetRegisterState(PsionTeklogix.WWAN.WWanRequestParameters,PsionTeklogix.WWAN.WWAN_REGISTRATION)">
+             <summary>
+              Allows the application to set the register state of the driver.
+             </summary>
+             <remarks>
+             <p>The SetRegisterState is used to change the registration information of the
+             WWAN driver, including the register mode, register state, and the current
+             provider the modem is camped on. The device should remain in this registration
+             mode until either the registration state is changed by a call to
+             SetRegisterState or the driver is disabled.</p>
+            
+             <p>The SetRegisterState method is not supported for CDMA modems.</p>
+            
+             <p>The SetRegisterState method is a restricted operation. The method call will
+             fail with the WwanRequestAccessFlagNotSet error if the appropriate access
+             flag has not been set using the SetCurrentAccessFlags method.</p>
+             </remarks>
+            
+             <param name="parms"> The request parameters for the request.</param>
+             <param name="registration"> The new register state settings.</param>
+            
+             <returns>
+              * WwanRequest.NotInitialized     - If the Initialize method was not called or
+                                                   failed.
+              * WwanRequest.Failure            - If the request could not be issued.
+              * WwanRequest.Success            - If the request was successful.
+              * WwanRequest.EventHandleInvalid - If the event handle in the params structure
+                                                   is invalid.
+              * WwanRequest.OutOfMemory        - If a memory allocation failure occurred
+              * WwanRequest.BufferTooSmall     - If an internal buffer was too small
+              * WwanRequest.AccessDenied       - If the driver is in an invalid state to
+                                                   handle the request
+             </returns>
+        </member>
+        <member name="M:PsionTeklogix.WWAN.WirelessWAN.GetPacketService(PsionTeklogix.WWAN.WWanRequestParameters,PsionTeklogix.WWAN.WWAN_PACKET_SERVICE)">
+             <summary>
+              Returns the current packet service availability state.
+             </summary>
+             <remarks>
+              The GetPacketService method is used to retrieve the current packet service
+             availability state, including the data class and attach state (attached,
+             searching, detached, denied, or unknown). Note that a context cannot be
+             activated through RAS until the attach status is "attached".
+             </remarks>
+            
+             <param name="parms"> The request parameters for the request.</param>
+             <param name="packetService"> The current packet service settings.</param>
+            
+             <returns>
+              * WwanRequest.NotInitialized     - If the Initialize method was not called or
+                                                   failed.
+              * WwanRequest.Failure            - If the request could not be issued.
+              * WwanRequest.Success            - If the request was successful.
+              * WwanRequest.EventHandleInvalid - If the event handle in the params structure
+                                                   is invalid.
+              * WwanRequest.OutOfMemory        - If a memory allocation failure occurred
+              * WwanRequest.BufferTooSmall     - If an internal buffer was too small
+              * WwanRequest.AccessDenied       - If the driver is in an invalid state to
+                                                   handle the request
+             </returns>
+        </member>
+        <member name="M:PsionTeklogix.WWAN.WirelessWAN.SetSignalSuggestion(PsionTeklogix.WWAN.WWanRequestParameters,PsionTeklogix.WWAN.WWAN_SIGNAL_STATE)">
+             <summary>
+              This method sets the suggested notification intervals and thresholds
+             for the signal strength.
+             </summary>
+             <remarks>
+              The SetSignalSuggestion method sets the suggested evaluation intervals
+             and thresholds for signal strength.  These values are optionally used by the
+             driver during conditions where increased power savings can be realized by
+             reducing signal notifications even further.
+             </remarks>
+            
+             <param name="parms"> The request parameters for the request.</param>
+             <param name="signalState"> The new RSSI settings.</param>
+            
+             <returns>
+              * WwanRequest.NotInitialized     - If the Initialize method was not called or
+                                                   failed.
+              * WwanRequest.Failure            - If the request could not be issued.
+              * WwanRequest.Success            - If the request was successful.
+              * WwanRequest.EventHandleInvalid - If the event handle in the params structure
+                                                   is invalid.
+              * WwanRequest.OutOfMemory        - If a memory allocation failure occurred
+              * WwanRequest.BufferTooSmall     - If an internal buffer was too small
+              * WwanRequest.AccessDenied       - If the driver is in an invalid state to
+                                                   handle the request
+             </returns>
+        </member>
+        <member name="M:PsionTeklogix.WWAN.WirelessWAN.SetProvisionedContexts(PsionTeklogix.WWAN.WWanRequestParameters,PsionTeklogix.WWAN.WWAN_CONTEXT_LIST)">
+             <summary>
+              Sets the current provisioned contexts on the device.
+             </summary>
+             <remarks>
+             <p>The SetProvisionedContexts method is used to set one or more provisioned
+             contexts on the device. This information is stored locally. Context
+             information includes the user name and password, authentication type,
+             and access string.</p>
+            
+             <p>Note that the user name and password are also required by RAS. In particular,
+             the access string (e.g. the APN for GPRS) must be set through the
+             SetProvisionedContexts method before a packet data connection can be
+             established through RAS.</p>
+            
+             <p>The SetProvisionedContexts method is a restricted operation. The method
+             call will fail with the WwanRequestAccessFlagNotSet error if the appropriate
+             access flag has not been set using the SetCurrentAccessFlags method.</p>
+             </remarks>
+            
+             <param name="parms"> The request parameters for the request.</param>
+             <param name="ContextList"> The new provisioned contexts.</param>
+            
+             <returns>
+              * WwanRequest.NotInitialized     - If the Initialize method was not called or
+                                                   failed.
+              * WwanRequest.Failure            - If the request could not be issued.
+              * WwanRequest.Success            - If the request was successful.
+              * WwanRequest.EventHandleInvalid - If the event handle in the params structure
+                                                   is invalid.
+              * WwanRequest.OutOfMemory        - If a memory allocation failure occurred
+              * WwanRequest.BufferTooSmall     - If an internal buffer was too small
+              * WwanRequest.AccessDenied       - If the driver is in an invalid state to
+                                                   handle the request
+             </returns>
+        </member>
+        <member name="M:PsionTeklogix.WWAN.WirelessWAN.GetSmsCaps(PsionTeklogix.WWAN.WWAN_SMS_CAPS)">
+             <summary>
+              Retrieves the SMS capabilities.
+             </summary>
+             <remarks>
+             <p>The GetSmsCaps method returns information about the SMS capabilities of
+             the modem, including:
+              * The supported data encoding schemes (DCS)
+              * The number of mailboxes
+              * The maximum and current number of messages in each mailbox
+              * The properties of each mailbox (where the messages are stored, if the
+                   mailbox is writable, etc.)
+             </p>
+             <p>SMS messages cannot be sent, retrieved or deleted, or the SMS capabilities
+             or configuration queried, until the ready-state flag WWAN_READY_STATE.SMSSTORE
+             is set.</p>
+             </remarks>
+            
+             <param name="capabilities"> - If successful, the SMS capabilities.</param>
+            
+             <returns>
+              * WwanRequest.InvalidParameter   - If the result capabilities was 0 (NULL).
+              * WwanRequest.NotInitialized     - If the Initialize method was not called or
+                                                   failed.
+              * WwanRequest.Failure            - If the request could not be issued.
+              * WwanRequest.Success            - If the request was successful.
+              * WwanRequest.AccessDenied       - If the SMS capabilities cannot be queried
+                                                   at this time.
+             </returns>
+        </member>
+        <member name="M:PsionTeklogix.WWAN.WirelessWAN.ReadSms(PsionTeklogix.WWAN.WWanRequestParameters,PsionTeklogix.WWAN.WWAN_SMS_READ_REQUEST,PsionTeklogix.WWAN.WWAN_SMS_READ_RESULT)">
+             <summary>
+              Retrieves an SMS message from a mailbox.
+             </summary>
+             <remarks>
+             <p>The ReadSms method is used to retrieve an SMS message from a specified
+             mailbox and message index. If the location specified in the read request
+             structure is invalid, an error will be returned. Note that messages may
+             not be sequentially located in a mailbox (for example, 3 messages could
+             be found at indicies 2, 3, and 7). The GetSmsCaps method can be used to
+             get the number of mailboxes, and the current/maximum numbers of messages
+             in each mailbox.</p>
+            
+             <p>SMS messages cannot be sent, retrieved or deleted, or the SMS capabilities
+             or configuration queried, until the ready-state flag WWAN_READY_STATE_SMSSTORE
+             is set.</p>
+            
+             <p>Note that SMS messages returned by this method are not guaranteed to be
+             null-terminated. Also, remember that the message size reported is in bytes,
+             not characters.</p>
+             </remarks>
+            
+             <param name="parms"> The request parameters for the request. When the request
+               completes, the following error codes can be set:
+            
+              * WwanResult.Success - operation completed successfully
+              * WwanResult.InvalidMailboxIndex - the mailbox index was outside the allowed range
+              * WwanResult.InvalidMessageIndex - the message index was outside the allowed range
+              * WwanResult.NoDcsConversion - the data coding scheme of the message can't be
+                  converted to the requested data coding scheme
+              * WwanResult.PduDecodeError - a GSM SMS PDU read from the modem could not be decoded
+              * WwanResult.RequestRejected - the modem or driver state does not allow the request
+                  to be processed at this time
+             </param>
+             <param name="Request"> The SMS read request containing the message location at
+                  conversion flags. </param>
+             <param name="readResult"> The SMS read result structure. </param>
+            
+             <returns>
+              * WwanRequest.InvalidParameter   - If the result parameter was 0 (NULL).
+              * WwanRequest.NotInitialized     - If the Initialize method was not called or
+                                                   failed.
+              * WwanRequest.Failure            - If the request could not be issued.
+              * WwanRequest.Success            - If the request was successful.
+              * WwanRequest.EventHandleInvalid - If the event handle in the params structure
+                                                   is invalid.
+              * WwanRequest.OutOfMemory        - If a memory allocation failure occurred
+              * WwanRequest.BufferTooSmall     - If an internal buffer was too small
+              * WwanRequest.AccessDenied       - If the driver is in an invalid state to
+                                                   handle the request
+             </returns>
+        </member>
+        <member name="M:PsionTeklogix.WWAN.WirelessWAN.DeleteSms(PsionTeklogix.WWAN.WWanRequestParameters,PsionTeklogix.WWAN.WWAN_SMS_LOCATION)">
+             <summary>
+              Deletes a message from a mailbox.
+             </summary>
+             <remarks>
+             <p>The DeleteSms function deletes a message from the specified mailbox at
+             a given index. Deleting a message can cause the mailbox to have gaps (for
+             example, deleting message #2 from a mailbox containing messages at indicies
+             1, 2, and 3 will result in messages at indicies 1 and 3). An application
+             must take this into account when retrieving messages using the ReadSms
+             method. The GetSmsCaps method can be used to get the number of mailboxes,
+             and the current/maximum numbers of messages in each mailbox.</p>
+            
+             <p>SMS messages cannot be sent, retrieved or deleted, or the SMS capabilities
+             or configuration queried, until the ready-state flag WWAN_READY_STATE_SMSSTORE
+             is set.</p>
+             </remarks>
+            
+             <param name="parms"> The request parameters for the request. When the request
+               completes, the following error codes can be set:
+            
+              * WwanResult.Success - operation completed successfully
+              * WwanResult.InvalidMailboxIndex - the mailbox index was outside the allowed range
+              * WwanResult.InvalidMessageIndex - the message index was outside the allowed range
+              * WwanResult.PduDecodeError - a GSM SMS PDU read from the modem could not be decoded
+              * WwanResult.RequestRejected - the modem or driver state does not allow the request
+                  to be processed at this time
+             </param>
+             <param name="Location"> The indicies of the mailbox and message to delete.</param>
+            
+             <returns>
+              * WwanRequest.NotInitialized     - If the Initialize method was not called or
+                                                   failed.
+              * WwanRequest.Failure            - If the request could not be issued.
+              * WwanRequest.Success            - If the request was successful.
+              * WwanRequest.EventHandleInvalid - If the event handle in the params structure
+                                                   is invalid.
+              * WwanRequest.OutOfMemory        - If a memory allocation failure occurred
+              * WwanRequest.BufferTooSmall     - If an internal buffer was too small
+              * WwanRequest.AccessDenied       - If the driver is in an invalid state to
+                                                   handle the request
+             </returns>
+        </member>
+        <member name="M:PsionTeklogix.WWAN.WirelessWAN.SendSms(PsionTeklogix.WWAN.WWanRequestParameters,PsionTeklogix.WWAN.WWAN_SMS_SEND_REQUEST)">
+             <summary>
+              Sends a message to device capable of receiving SMS messages.
+             </summary>
+             <remarks>
+             <p>The SendSms method is used to send an SMS message to another SMS-enabled
+             device. Messages can be sent in a variety of formats, including GSM 7-bit
+             character set, UNICODE text, and binary.</p>
+            
+             <p>SMS messages cannot be sent, retrieved or deleted, or the SMS capabilities
+             or configuration queried, until the ready-state flag WWAN_READY_STATE_SMSSTORE
+             is set.</p>
+             </remarks>
+            
+             <param name="parms"> The request parameters for the request. When the request
+               completes, the following error codes can be set:
+            
+              * WwanResult.Success - operation completed successfully
+              * WwanResult.InvalidMailboxIndex - the mailbox index was outside the allowed range
+              * WwanResult.NoDcsConversion - invalid message format for the installed modem
+              * WwanResult.RequestRejected - the modem or driver state does not allow the request
+                  to be processed at this time
+              * WwanResult.MailboxNotWritable - The specified mailbox is read-only.
+              * WwanResult.AddressTooLong - The address in the send request is too long
+              * WwanResult.AddressInvalid - The address in the send request contains invalid
+                  characters
+              * WwanResult.MessageTooLong - The message in a send request is too long and
+                  length checking was requested
+              * WwanResult.UnknownError - An unknown error occurred, probably specific
+                  to one provider/network/modem.
+             </param>
+             <param name="SendRequest"> The request structure containing the SMS message, its
+              destination, etc.</param>
+            
+             <returns>
+              * WwanRequest.NotInitialized     - If the Initialize method was not called or
+                                                   failed.
+              * WwanRequest.Failure            - If the request could not be issued.
+              * WwanRequest.Success            - If the request was successful.
+              * WwanRequest.EventHandleInvalid - If the event handle in the params structure
+                                                   is invalid.
+              * WwanRequest.AccessDenied       - If the driver is in an invalid state to
+                                                   handle the request
+             </returns>
+        </member>
+        <member name="M:PsionTeklogix.WWAN.WirelessWAN.GetSmsConfiguration(PsionTeklogix.WWAN.WWanRequestParameters,PsionTeklogix.WWAN.WWAN_SMS_CONFIG)">
+             <summary>
+              Retrieves the SMS configuration.
+             </summary>
+             <remarks>
+             <p>Retrieves the SMS configuration, including the Short Message Service
+             Centre address and configuration flags.</p>
+            
+             <p>SMS messages cannot be sent, retrieved or deleted, or the SMS capabilities
+             or configuration queried, until the ready-state flag WWAN_READY_STATE_SMSSTORE
+             is set.</p>
+             </remarks>
+            
+             <param name="parms"> The request parameters for the request. When the request
+               completes, the following error codes can be set:
+            
+              * WwanResult.Success - operation completed successfully
+              * WwanResult.RequestRejected - the modem or driver state does not allow the request
+                  to be processed at this time
+              * WwanResult.NoDcsConversion - Illegal DCS encoding
+              * WwanResult.AddressInvalid - The SMSC address contains invalid characters
+              * WwanResult.AddressTooLong - The SMSC address contains too many characters
+             </param>
+             <param name="Config"> The request structure containing the SMS configuration.</param>
+            
+             <returns>
+              * WwanRequest.NotInitialized     - If the Initialize method was not called or
+                                                   failed.
+              * WwanRequest.Failure            - If the request could not be issued.
+              * WwanRequest.Success            - If the request was successful.
+              * WwanRequest.EventHandleInvalid - If the event handle in the params structure
+                                                   is invalid.
+              * WwanRequest.AccessDenied       - If the driver is in an invalid state to
+                                                   handle the request
+             </returns>
+        </member>
+        <member name="M:PsionTeklogix.WWAN.WirelessWAN.SetSmsConfiguration(PsionTeklogix.WWAN.WWanRequestParameters,PsionTeklogix.WWAN.WWAN_SMS_CONFIG)">
+             <summary>
+              Sets the SMS configuration.
+             </summary>
+             <remarks>
+             <p>Sets the SMS configuration, including the Short Message Service Centre
+             address and configuration flags.</p>
+            
+             <p>SMS messages cannot be sent, retrieved or deleted, or the SMS capabilities
+             or configuration queried, until the ready-state flag WWAN_READY_STATE_SMSSTORE
+             is set.</p>
+            
+             <p>Take care when changing the SMS configuration. Setting an empty or invalid
+             SMSC address will prevent the modem from sending SMS messages.</p>
+             </remarks>
+            
+             <param name="parms"> The request parameters for the request. When the request
+               completes, the following error codes can be set:
+            
+              * WwanResult.Success - operation completed successfully
+              * WwanResult.RequestRejected - the modem or driver state does not
+                   allow the request to be processed at this time
+             </param>
+             <param name="Config"> The request structure containing the SMS configuration.</param>
+            
+             <returns>
+              * WwanRequest.NotInitialized     - If the Initialize method was not called or
+                                                 failed.
+              * WwanRequest.Failure            - If the request could not be issued.
+              * WwanRequest.Success            - If the request was successful.
+              * WwanRequest.EventHandleInvalid - If the event handle in the params structure
+                                                 is invalid.
+              * WwanRequest.AccessDenied       - If the driver is in an invalid state to
+                                                 handle the request
+             </returns>
+        </member>
+        <member name="M:PsionTeklogix.WWAN.WirelessWAN.GetSupportedFrequencyBands(PsionTeklogix.WWAN.WWanRequestParameters,System.UInt64@)">
+             <summary>
+             Get the frequency bands supported by the WWAN radio
+             </summary>
+             <param name="parms">The request parameters for the request. When the request
+               completes, the following error codes can be set:
+            
+              * WwanResult.Success - operation completed successfully
+              * WwanResult.RequestRejected - the modem or driver state does not
+                   allow the request to be processed at this time</param>
+             <param name="supportedBands">bit mask of supported frequency bands</param>
+             <returns>
+             WwanRequest.NotInitialized     - If the Initialize method was not called or
+                                                 failed.
+             WwanRequest.Failure            - If the request could not be issued.
+             WwanRequest.Success            - If the request was successful.
+             WwanRequest.EventHandleInvalid - If the event handle in the params structure
+                                                 is invalid.
+             WwanRequest.AccessDenied       - If the driver is in an invalid state to
+                                                 handle the request
+             </returns>
+        </member>
+        <member name="M:PsionTeklogix.WWAN.WirelessWAN.GetEnabledFrequencyBands(PsionTeklogix.WWAN.WWanRequestParameters,System.UInt64@)">
+             <summary>
+             Get the frequency bands enabled by the WWAN radio
+             </summary>
+             <param name="parms">The request parameters for the request. When the request
+               completes, the following error codes can be set:
+            
+              * WwanResult.Success - operation completed successfully
+              * WwanResult.RequestRejected - the modem or driver state does not
+                   allow the request to be processed at this time</param>
+             <param name="enabledBands">bit mask of enabled frequency bands</param>
+             <returns>
+             WwanRequest.NotInitialized     - If the Initialize method was not called or
+                                                 failed.
+             WwanRequest.Failure            - If the request could not be issued.
+             WwanRequest.Success            - If the request was successful.
+             WwanRequest.EventHandleInvalid - If the event handle in the params structure
+                                                 is invalid.
+             WwanRequest.AccessDenied       - If the driver is in an invalid state to
+                                                 handle the request
+             </returns>
+        </member>
+        <member name="M:PsionTeklogix.WWAN.WirelessWAN.SetEnabledFrequencyBands(PsionTeklogix.WWAN.WWanRequestParameters,System.UInt64,System.Boolean@)">
+             <summary>
+             Set the frequency bands enabled by the WWAN radio
+             </summary>
+             <param name="parms">The request parameters for the request. When the request
+               completes, the following error codes can be set:
+            
+              * WwanResult.Success - operation completed successfully
+              * WwanResult.RequestRejected - the modem or driver state does not
+                   allow the request to be processed at this time</param>
+             <param name="bandsToEnable">bit mask of band frequency to be enabled</param>
+             <param name="resetNeeded">true if this set requires a power reset to
+             take effect</param>
+             <returns>
+             WwanRequest.NotInitialized     - If the Initialize method was not called or
+                                              failed.
+             WwanRequest.Failure            - If the request could not be issued.
+             WwanRequest.Success            - If the request was successful.
+             WwanRequest.EventHandleInvalid - If the event handle in the params structure
+                                                 is invalid.
+             WwanRequest.AccessDenied       - If the driver is in an invalid state to
+                                                 handle the request
+             </returns>
+        </member>
+        <member name="M:PsionTeklogix.WWAN.WirelessWAN.GetDriverVersion(System.Int32@,System.Int32@)">
+             <summary>
+              This method is used to get the version of the WWAN driver.
+             </summary>
+            
+             <param name="driverVersionMajor">Receives the major driver version.</param>
+             <param name="driverVersionMinor">Receives the minor driver version.</param>
+            
+             <returns> The status of the request:
+              * WwanRequest.NotInitialized     - If the Initialize method was not called or
+                                                   failed.
+              * WwanRequest.Failure            - If the request could not be issued.
+              * WwanRequest.Success            - If the request was successful.
+              * WwanRequest.OutOfMemory        - If a memory allocation failure occurred
+              * WwanRequest.BufferTooSmall     - If an internal buffer was too small
+              * WwanRequest.AccessDenied       - If the driver is in an invalid state to
+                                                   handle the request
+             </returns>
+             
+        </member>
+        <member name="T:PsionTeklogix.WWAN.PhonebookEntry">
+            <summary>
+            This class represents a WWAN phonebook entry (An entry stored in a WWAN phonebook,
+            See documentation for the Phonebook object for more details.). This class can be 
+            used to read/modify/set the properties of the phonebook entries stored in the phonebook.
+            <para/>
+            A PhonebookEntry object can not be created directly through a public constructor.  
+            Use the Phonebook::GetPhonebooks() method to enumerate and return a list of all of the 
+            accessible WWAN phonebooks. The PhonebookEntries can be retrieved from any of the 
+            returned Phonebook objects using the Phonebook::GetPhonebookEntries() method (which
+            will return an array of PhonebookEntry objects). 
+            <para/>
+            To create a PhonebookEntry not already stored in the Phonebook, use the Phonebook's
+            AddPhonebookEntry() method which will store the new entry in the phsyical phonebook
+            and return a PhonebookEntry object to represent it.
+            
+            <para/>
+            Please note: To use/create this object the following conditions must be met:<para />
+            - The device must have a WWAN modem installed.<para />
+            - The PsionTeklogix::WWAN::WirelessWAN namespace MUST be initialized.  Use
+              PsionTeklogix.WWAN.WirelessWAN.Initialize() to initialize it, and 
+              PsionTeklogix.WWAN.WirelessWAN.Shutdown() when you are finished with the namespace.
+              It will fail to initialize if it is initialized too many times without shutting it
+              down. 
+            </summary>
+        </member>
+        <member name="M:PsionTeklogix.WWAN.PhonebookEntry.#ctor(PsionTeklogix.WWAN.PhonebookEntry)">
+            <summary>
+            Copy constructor for the PhonebookEntry class. Create another object to represent
+            the same phsyical WWAN phonebook entry (No data is copied on the modem/SIM).
+            </summary>
+            <param name="entrySource">The phonebook entry to copy class data from.</param>
+        </member>
+        <member name="M:PsionTeklogix.WWAN.PhonebookEntry.Dispose">
+            <summary>
+            Free all resources held by this object.
+            </summary>
+        </member>
+        <member name="M:PsionTeklogix.WWAN.PhonebookEntry.Dispose(System.Boolean)">
+            <summary>
+            Free managed and/or unmanaged resources.
+            </summary>
+            <param name="disposing">
+            If true, frees managed resources as well
+            </param>
+        </member>
+        <member name="M:PsionTeklogix.WWAN.PhonebookEntry.Finalize">
+            <summary>
+             Destructor
+            </summary>
+        </member>
+        <member name="M:PsionTeklogix.WWAN.PhonebookEntry.GetDataCodingScheme">
+            <summary>
+            Gets the data coding scheme for this PhonebookEntry.
+            </summary>
+            <returns>
+            The datacoding scheme that was used to store this phonebook entry.
+            </returns>
+        </member>
+        <member name="M:PsionTeklogix.WWAN.PhonebookEntry.SetDataCodingScheme(PsionTeklogix.WWAN.DataCodingScheme)">
+            <summary>
+            Set the data coding scheme that is to be used to store this phonebook 
+            entry.  The set datacoding scheme determines how many characters can 
+            actually be stored in a phonebook entry.  For example, you can store 
+            approximately twice as many characters using the Ascii8Bit encoding Vs. 
+            the Unicode 16Bit encoding (but you will not be able to store unicode 
+            characters). Use the Phonebook objects property "SupportedDataCodingSchemes" 
+            to determine which encoding scheme(s) can be set in that phonebook's entries.
+            </summary>
+            <param name="value">
+            The data coding scheme that is to be used to store this phonebook 
+            entry. If the scheme is not supported, there will be no change.
+             </param>
+        </member>
+        <member name="M:PsionTeklogix.WWAN.PhonebookEntry.GetName">
+            <summary>
+            Gets the name stored in this phonebook entry.
+            </summary>
+            <returns>The name stored in this phonebook entry.</returns>
+        </member>
+        <member name="M:PsionTeklogix.WWAN.PhonebookEntry.SetName(System.String)">
+            <summary>
+            Sets the name stored in this phonebook entry.
+            </summary>
+            <param name="value">The name to be stored in this phonebook entry.</param>
+        </member>
+        <member name="M:PsionTeklogix.WWAN.PhonebookEntry.GetPhoneNumber">
+            <summary>
+            Gets the phone number stored in this phonebook entry.
+            </summary>
+            <returns>The phone number stored in this phonebook entry.</returns>
+        </member>
+        <member name="M:PsionTeklogix.WWAN.PhonebookEntry.SetPhoneNumber(System.String)">
+            <summary>
+            Sets the phone number stored in this phonebook entry.
+            </summary>
+            <param name="value">The phone number to be stored in this phonebook entry.</param>
+        </member>
+        <member name="T:PsionTeklogix.WWAN.Phonebook">
+            <summary>
+            This class represents a WWAN phonebook (which is either stored in the WWAN modem 
+            or SIM card). This class can be used to get/create/modify the phonebook entries
+            and phonebook properties stored in any of the existing WWAN Phonebooks.
+            <para/>
+            A Phonebook object can not be created directly through a public constructor.  Use the
+            Phonebook::GetPhonebooks() method to enumerate and return a list of all of the 
+            accessible WWAN phonebooks.  Phonebook entries can be retrieved from any of the 
+            returned Phonebook objects using the Phonebook::GetPhonebookEntries() method (which
+            will return an array of PhonebookEntry objects).  Use the objects to read/modify
+            the existing entires in the phonebook.
+            <para />
+            Please note: To use/create this object the following conditions must be met:<para />
+            - The device must have a WWAN modem installed.<para />
+            - The PsionTeklogix::WWAN::WirelessWAN namespace MUST be initialized.  Use
+              PsionTeklogix.WWAN.WirelessWAN.Initialize() to initialize it, and 
+              PsionTeklogix.WWAN.WirelessWAN.Shutdown() when you are finished with the namespace.
+              It will fail to initialize if it is initialized too many times without shutting it
+              down.
+            </summary>
+        </member>
+        <member name="M:PsionTeklogix.WWAN.Phonebook.#ctor(PsionTeklogix.WWAN.Phonebook)">
+            <summary>
+            Copy constructor for the Phonebook class. Create another object to represent
+            the same phsyical WWAN phonebook (No data is copied on the modem/SIM).
+            </summary>
+            <param name="source">The phonebook to copy class data from.</param>
+        </member>
+        <member name="M:PsionTeklogix.WWAN.Phonebook.Dispose">
+            <summary>
+            Free all resources held by this object.
+            </summary>
+        </member>
+        <member name="M:PsionTeklogix.WWAN.Phonebook.Dispose(System.Boolean)">
+            <summary>
+             Free managed and/or unmanaged resources.
+            </summary>
+            <param name="disposing">
+             If true, frees managed resources as well
+            </param>
+        </member>
+        <member name="M:PsionTeklogix.WWAN.Phonebook.Finalize">
+            <summary>
+             Destructor
+            </summary>
+        </member>
+        <member name="M:PsionTeklogix.WWAN.Phonebook.GetPhonebooks">
+            <summary>
+            Initialize and return an array of all available WWAN phonebooks (stored on 
+            either the WWAN modem or SIM card).  This is the only public method available 
+            to get the phonebook objects.
+            </summary>
+            <returns>The array of available phonebooks.</returns>
+        </member>
+        <member name="M:PsionTeklogix.WWAN.Phonebook.GetPhonebookEntries">
+            <summary>
+            Initialize and return an array containing all phonebook entries sotred 
+            in this phonebook.
+            </summary>
+            <returns>
+            An array containing all of the phonebook entries stored in this phonebook.
+            </returns>
+        </member>
+        <member name="M:PsionTeklogix.WWAN.Phonebook.AddPhonebookEntry(System.String,System.String)">
+            <summary>
+            Create and add a phonebook entry into this phonebook (if the phonebook 
+            is not full).
+            </summary>
+            <param name="newName">The name to store in the created entry.</param>
+            <param name="newNumber">The phone number to store in the created entry.</param>
+            <returns>The created/inserted PhonebookEntry object.</returns>
+        </member>
+        <member name="M:PsionTeklogix.WWAN.Phonebook.RemovePhonebookEntry(PsionTeklogix.WWAN.PhonebookEntry)">
+            <summary>
+            Remove a phonebook entry from this phonebook and invalidate the object.
+            Please Note:
+             After calling this method, the PhonebookEntry object can no longer be used 
+             since the object no longer cooresponds to a phsyical phonebook entry.
+             Any attempt to use the object will result in an Exception.
+            </summary>
+        </member>
+        <member name="P:PsionTeklogix.WWAN.Phonebook.Writable">
+            <summary>
+            Is true if the phonebook is writable (If not, it is read-only).
+            Please Note: Some phonebooks classified as read-only may in fact
+            be writable, depending on the modem and sim card used. If you attempt
+            to write to a read-only phonebook, the operation could take up to 60s to
+            return (20s timeout with 3 retries), be warned.
+            </summary>
+        </member>
+        <member name="P:PsionTeklogix.WWAN.Phonebook.StoredOnSim">
+            <summary>
+            Is true if the phonebook is stored on a SIM card.
+            </summary>
+        </member>
+        <member name="P:PsionTeklogix.WWAN.Phonebook.StoredOnModem">
+            <summary>
+            Is true if the phonebook is stored on a modem.
+            </summary>
+        </member>
+        <member name="P:PsionTeklogix.WWAN.Phonebook.Volatile">
+            <summary>Is true if the phonebook is volatile (it can be modified through 
+            another interface without any notifications to the driver).</summary>
+        </member>
+        <member name="P:PsionTeklogix.WWAN.Phonebook.PhonebookContent">
+            <summary>
+            The content type of the stored entries in this phonebook.
+            </summary>
+        </member>
+        <member name="P:PsionTeklogix.WWAN.Phonebook.SupportedDataCodingSchemes">
+            <summary>
+            Returns an array of DataCodingSchemes supported by this phonebook. If an
+            unsupported data coding scheme is set in one of this phonebook's entries,
+            the driver will use the default encoding scheme and some characters might be lost.
+            </summary>
+        </member>
+        <member name="P:PsionTeklogix.WWAN.Phonebook.NameStorageLimit">
+            <summary>
+            The storage capacity for the name field in any of this phonebook's entries 
+            (in bytes). <para/>
+            Please note: <para/>
+             The actual number of characters that can be stored depends on
+             the selected data coding scheme.
+            </summary>
+        </member>
+        <member name="P:PsionTeklogix.WWAN.Phonebook.PhoneNumberStorageLimit">
+            <summary>
+            The storage capacity for the phone number field in any of this phonebook's 
+            entries (in bytes).<para/>
+            Please note:<para/>
+             The actual number of characters that can be stored depends on
+             the selected data coding scheme.
+            </summary>
+        </member>
+        <member name="P:PsionTeklogix.WWAN.Phonebook.NumberOfPhonebookEntrySlots">
+            <summary>
+            The number of PhonebookEntry objects that can be phsyically stored in this
+            phonebook.
+            </summary>
+        </member>
+        <member name="T:PsionTeklogix.WWAN.VoiceCall">
+            <summary>
+            This class represents a WWAN voice call.  It can be used to view/control the state 
+            of a voice call (For example, answer the call, hang up the call, get the caller ID 
+            of the connected party.. etc.). 
+            <para />
+            This object can not be created through a public constructor.  There are two ways of
+            creating a VoiceCall object:<para />
+            - Create a VoiceCallManager and add a listener to the IncomingCallEvent. The 
+              listener will receive a created voice call object representing any incoming call(s).<para />
+            - Use the VoiceCall::DialNumber() static method to create a VoiceCall object that
+              will be returned to the application in the "Dialing" state.<para />
+            - Note: There is no API, at this time, to return a VoiceCall object for a voice call 
+              already in progress. If you delete all instances of the created VoiceCall object, 
+              you will lose fine control of that specific voice call.  The VoiceCallManager 
+              object can still be used to perform global operations such as "hangup all".
+            
+            Please note: To use/create this object the following conditions must be met:<para />
+            - The device must have a WWAN modem installed and be connected to a voice call 
+              service provider.<para />
+            - The PsionTeklogix::WWAN::WirelessWAN namespace MUST be initialized.  Use
+              PsionTeklogix.WWAN.WirelessWAN.Initialize() to initialize it, and 
+              PsionTeklogix.WWAN.WirelessWAN.Shutdown() when you are finished with the namespace.
+              It will fail to initialize if it is initialized too many times without shutting it
+              down.
+            </summary>
+        </member>
+        <member name="M:PsionTeklogix.WWAN.VoiceCall.Dispose">
+            <summary>
+            Free all resources held by this object, events will no longer be generated.
+            </summary>
+        </member>
+        <member name="M:PsionTeklogix.WWAN.VoiceCall.Finalize">
+            <summary>
+             Destructor, events will no longer be generated.
+            </summary>
+        </member>
+        <member name="M:PsionTeklogix.WWAN.VoiceCall.Dispose(System.Boolean)">
+            <summary>
+            Free managed and/or unmanaged resources.
+            Events will no longer be generated.
+            </summary>
+            <param name="disposing">
+            If true, frees managed resources as well
+            </param>
+        </member>
+        <member name="M:PsionTeklogix.WWAN.VoiceCall.DialNumber(System.String)">
+            <summary>
+            Create a voice call and dial a phone number.  A voice call will be returned
+            in the "Dialing" state.
+            </summary>
+            <param name="numberToDial">The phone number to dial</param>
+            <returns>A VoiceCall object representing the initiated connection with 
+            the dialed number.</returns>
+        </member>
+        <member name="M:PsionTeklogix.WWAN.VoiceCall.HangUp">
+            <summary>
+            Terminate this voice call.  The other party will be disconnected and this VoiceCall
+            object will no longer be functional.
+            </summary>
+        </member>
+        <member name="M:PsionTeklogix.WWAN.VoiceCall.AnswerIncoming">
+            <summary>
+            Answer the incoming call.
+            <para />
+            Please note: <para />
+              If there are any active conversations and an incoming call, the active 
+              conversation will be placed on hold and the incoming call will become 
+              the new active conversation.  If at this time, there is also conversation 
+              on hold, the active conversation and the held conversation will be combined 
+              in the held state (All held parties will be able to converse without you in
+              the created conference), the incoming call will become the new active call.
+            <para />
+              If you do not want to conference the active and held conversations, one of
+              them MUST BE DISCONNECTED BEFORE ANSWERING the incoming call.  
+            </summary>
+        </member>
+        <member name="M:PsionTeklogix.WWAN.VoiceCall.RejectIncoming">
+            <summary>
+            Reject the incoming call.
+            </summary>
+        </member>
+        <member name="M:PsionTeklogix.WWAN.VoiceCall.GetStatus">
+            <summary>
+            Get the current status of this voice call.  The status can change at any time
+            for many reasons (such as other party hangs up).  Instead of polling this method, 
+            it is recommended that an application creates an event handler and adds it to 
+            the VoiceCall's StatusChangeEvent.
+            </summary>
+        </member>
+        <member name="M:PsionTeklogix.WWAN.VoiceCall.ActivateAndHoldOthers">
+            <summary>
+            Activate this call and place all other calls on hold (in a conference).
+            </summary>
+        </member>
+        <member name="M:PsionTeklogix.WWAN.VoiceCall.GetOtherPartyCallerId">
+            <summary>
+            Get the caller Id of the other party.  If the other party has witheld their
+            caller ID, the returned string will be empty.
+            </summary>
+        </member>
+        <member name="E:PsionTeklogix.WWAN.VoiceCall.StatusChangeEvent">
+            <summary>
+            This status changed event is triggered by any change in this VoiceCall's status 
+            (or flags).  Add your StatusChangeHandler implementation to this event to
+            receive the events.  If your handler is not installed at the time the event occurred,
+            the event will be missed.
+            </summary>
+        </member>
+        <member name="T:PsionTeklogix.WWAN.VoiceCall.StatusChangeHandler">
+            <summary>
+            Callback delegate, to receive VoiceCall events.  Register your event handler
+            with the StatusChangeEvent event in the VoiceCall object you with to receive
+            events from.
+            </summary>
+            <param name="sender">The VoiceCall object generating the event</param>
+            <param name="updatedStatus">The new status of the VoiceCall</param>
+            <param name="updatedFlags">The call flags for the VoiceCall</param>
+        </member>
+        <member name="T:PsionTeklogix.WWAN.VoiceCallManager">
+            <summary>
+            This class provides functonality to support WWAN voice calls. It can be used to 
+            control the state of all voice calls in the system simultaneously or network
+            settings that also affect every voice call (for example hangup all calls, hold 
+            all calls, change the volume settings, get or set call forwarding settings in 
+            the network, and many more).<para />
+            
+            In order to receive notification(s) about incoming calls, a VoiceCallManager must
+            be created, and a listener must be added to the IncomingCallEvent. The listener 
+            will receive a created VoiceCall object representing any incoming call(s). 
+            Use this VoiceCall object to get the caller ID of the incoming party, answer, or 
+            reject the call. <para />
+            Please note: To use/create this object the following conditions must be met: <para />
+             - The device must have a WWAN modem installed and be connected to a voice call 
+               service provider. <para />
+             - The PsionTeklogix::WWAN::WirelessWAN namespace MUST be initialized. Use 
+               PsionTeklogix.WWAN.WirelessWAN.Initialize() to initialize it, and 
+               PsionTeklogix.WWAN.WirelessWAN.Shutdown() when you are finished with the 
+               namespace.  It will fail to initialize if it is initialized too many times 
+               without shutting it down.
+            </summary>
+        </member>
+        <member name="M:PsionTeklogix.WWAN.VoiceCallManager.#ctor">
+            <summary>
+            Constructor for the VoiceCallManager class.  <para />
+            This method will throw an exception if the device does not have a WWAN modem
+            installed, it is not connected to a WWAN network, or it is not initialized. 
+            It may take some time (up to 30 seconds) to initialize after booting the device 
+            or restoring it from hibernation.<para />
+            Use the WirelessWAN::GetReadyState() method to test the ready state of the WWAN
+            modem, or register for ready state changes through the 
+            WirelessWAN::SetIndicationsListener() method.
+            </summary>
+        </member>
+        <member name="M:PsionTeklogix.WWAN.VoiceCallManager.Dispose">
+            <summary>
+            Free all resources held by this object.
+            Events will no longer be received from this object.
+            </summary>
+        </member>
+        <member name="M:PsionTeklogix.WWAN.VoiceCallManager.Dispose(System.Boolean)">
+            <summary>
+            Free managed and/or unmanaged resources.
+            Events will no longer be received from this object.
+            </summary>
+            <param name="disposing">
+            If true, frees managed resources as well
+            </param>
+        </member>
+        <member name="M:PsionTeklogix.WWAN.VoiceCallManager.Finalize">
+            <summary>
+            Destructor.
+            Events will no longer be received from this object.
+            </summary>
+        </member>
+        <member name="M:PsionTeklogix.WWAN.VoiceCallManager.SendDTMF(System.String)">
+            <summary>
+            Send any DTMF tone(s) to the active conversation. <para/>
+            This method can be used to use an automated service that accepts DTMF
+            tones (such as dialing an extension or using voicemail). <para/> 
+            This method will throw an exception if there is no active call.
+            </summary>
+            <param name="toneToSend">The tone(s) to send.</param>
+        </member>
+        <member name="M:PsionTeklogix.WWAN.VoiceCallManager.HangUpAll">
+            <summary>
+            Hang-up all active and held calls.
+            Please note: Any unanswered waiting call will be automatically answered.
+            </summary>
+        </member>
+        <member name="M:PsionTeklogix.WWAN.VoiceCallManager.HangUpHeld">
+            <summary>
+            Hang-up all held calls if there is no incoming waiting call. If there is an 
+            incoming waiting call, this method will throw an exception.
+            </summary>
+        </member>
+        <member name="M:PsionTeklogix.WWAN.VoiceCallManager.HangUpActive">
+            <summary>
+            Hang-up all active calls.
+            Please note: Any unanswered waiting call will be automatically answered.
+            If there is no waiting call, then any held conversation will become active.
+            </summary>
+        </member>
+        <member name="M:PsionTeklogix.WWAN.VoiceCallManager.HoldActive">
+            <summary>
+            Place all active calls on hold.  These calls will be joined in a conference 
+            with any conversation already on hold. If there is a waiting call, this 
+            function will throw an exception.
+            </summary>
+        </member>
+        <member name="M:PsionTeklogix.WWAN.VoiceCallManager.SwapHeldAndActive">
+            <summary>
+            Swap any held conversation and active conversation.
+            If there is an incoming waiting call, this method will throw an exception.
+            </summary>
+        </member>
+        <member name="M:PsionTeklogix.WWAN.VoiceCallManager.RetrieveHeld">
+            <summary>
+            Place all held calls in the active state.
+            </summary>
+        </member>
+        <member name="M:PsionTeklogix.WWAN.VoiceCallManager.Transfer">
+            <summary>
+            Connect all active and held calls and withdraw from the conversation. <para/>
+            Please note: Some networks may not support this function.
+            </summary>
+        </member>
+        <member name="M:PsionTeklogix.WWAN.VoiceCallManager.GetSpeakerVolume">
+            <summary>
+            Get the volume of the speaker (Range 0 - 100).
+            </summary>
+            <returns>The volume of the speaker (Range 0 - 100).</returns>
+        </member>
+        <member name="M:PsionTeklogix.WWAN.VoiceCallManager.SetSpeakerVolume(System.UInt32)">
+            <summary>
+            Set the volume of the speaker during a voice call (Range 0 - 100). <para/>
+            Please note: the actual set value will be rounded to the nearest allowed value.
+            This method will throw an exception if there are no voice calls in progress.
+            </summary>
+            <param name="volume">The volume to set (Valid range 0 - 100)</param>
+        </member>
+        <member name="M:PsionTeklogix.WWAN.VoiceCallManager.GetMicrophoneMute">
+            <summary>
+            Get the status of the mute setting for the michrophone.
+            If mute is enabled, the other parties will not be able to hear you
+            even if the conversation is in the active state.  You will be able to
+            hear the other parties. <br/>
+            Please Note: This method may return an incorrect setting if the Microphone
+            was muted in a previous call and not re-set for the current call.  This is a known
+            issue and will be fixed.  To workaround, set the mute state to the desired state 
+            at the beginning of each voice call.
+            </summary>
+            <returns>true, if mute is enabled</returns>
+        </member>
+        <member name="M:PsionTeklogix.WWAN.VoiceCallManager.SetMicrophoneMute(System.Boolean)">
+            <summary>
+            Set the status of the mute setting for the microphone.
+            If mute is enabled, the other parties will not be able to hear you
+            even if the conversation is in the active state.  You will be able to
+            hear the other parties.
+            This method will throw an exception if there is no active call.
+            </summary>
+            <param name="enableMute">Set to true to enable mute.</param>
+        </member>
+        <member name="M:PsionTeklogix.WWAN.VoiceCallManager.GetForwardingData(PsionTeklogix.WWAN.VoiceForwardingReason,PsionTeklogix.WWAN.VoiceForwardingData@)">
+            <summary>
+            Get the current forwarding service status and forwarding data from the network.
+            <para/>
+            Data for only one forwarding reason can be requested at a time. <para/>
+            Please note:  This method performs an interrogation to the WWAN network and may
+            take a few seconds to return.
+            </summary>
+            <param name="reasonToLookup">The forwarding reason to request the status of</param>
+            <param name="dataToGet">Forwarding data from the WWAN network</param>
+            <returns>The forwarding status for the specified forwarding reason</returns>
+        </member>
+        <member name="M:PsionTeklogix.WWAN.VoiceCallManager.EnableForwarding(PsionTeklogix.WWAN.VoiceForwardingData)">
+            <summary>
+            Enable call forwarding and set forwarding data on the network. <para/>
+            Please note:  This method performs an interrogation to the WWAN network and may
+            take a few seconds to return. <para/>
+            Please note: This service may not be supported by all networks.
+            </summary>
+            <param name="dataToSet">The forwarding data to commit to the WWAN network</param>
+        </member>
+        <member name="M:PsionTeklogix.WWAN.VoiceCallManager.DisableForwarding(PsionTeklogix.WWAN.VoiceForwardingReason,System.Boolean)">
+            <summary>
+            Disable call forwarding (and erase set call forwarding data if requested) on 
+            the network. <para/>
+            Please note:  This method performs an interrogation to the WWAN network and may
+            take a few seconds to return.
+            </summary>
+            <param name="reason">The reason that call forwarding will be disabled for</param>
+            <param name="eraseDataOnServer">Set to true to erase the data from the network.  
+            If set to false, the forwarding data can later be queried using GetForwardingData()
+            then enabled using EnableForwarding()</param>
+        </member>
+        <member name="M:PsionTeklogix.WWAN.VoiceCallManager.GetCallWaitingEnabled">
+            <summary>
+            Get the state of the call waiting service.
+            </summary>
+            <returns>true if call waiting is enabled</returns>
+        </member>
+        <member name="M:PsionTeklogix.WWAN.VoiceCallManager.SetCallWaitingEnabled(System.Boolean)">
+            <summary>
+            Set the state of the call waiting service.  <para/>
+            Please note: This service may not be supported by all networks.
+            </summary>
+            <param name="enableCallWaiting">Set to true to enable call waiting</param>
+        </member>
+        <member name="M:PsionTeklogix.WWAN.VoiceCallManager.GetOutgoingCallerId">
+            <summary>
+            Get the state of the outgoing caller Id.  <para/>
+            If enabled, the dialed party will be able to see this device's phone number.
+            </summary>
+            <returns>The network setting of the outgoing caller ID functionality.</returns>
+        </member>
+        <member name="M:PsionTeklogix.WWAN.VoiceCallManager.SetOutgoingCallerId(PsionTeklogix.WWAN.VoiceCallerIdSetting)">
+            <summary>
+            Set the state of the outgoing caller ID. <para/>
+            Please note: This service may not be supported by all networks.
+            </summary>
+            <param name="showOutgoingCallerId">The outgoing caller ID setting to set 
+            in the network.</param>
+        </member>
+        <member name="E:PsionTeklogix.WWAN.VoiceCallManager.IncomingCallEvent">
+            <summary>
+            This event is triggered by any incoming voice call. Add your IncomingCallHandler 
+            implementation to this event to receive the events. If your handler is not installed 
+            at the time the event occurred, the event will be missed.
+            
+            Please note: There may be a PTX application running called WWANUI that also handles
+            WWAN Voice notifications.  To prevent WWANUI from notifying the user about incoming
+            calls (so that your application can do it on it's own), use the SetCurrentAccessFlags 
+            method with the SuppressCallNotifications flag set.
+            </summary>
+        </member>
+        <member name="T:PsionTeklogix.WWAN.VoiceCallManager.IncomingCallHandler">
+            <summary>
+            Callback delegate, to receive VoiceCallManager events.  Register your event handler
+            with the IncomingCallEvent event.
+            </summary>
+            <param name="sender">The VoiceCallManager generating the event</param>
+            <param name="incomingCall">The VoiceCall object representing the incoming
+            voice call.  Use this object to answer the call.</param>
+        </member>
+        <member name="F:PsionTeklogix.WWAN.VoiceCallManager.VoiceForwardingMode.Enabled">
+            <summary>
+            Enable call forwarding
+            </summary>
+        </member>
+        <member name="F:PsionTeklogix.WWAN.VoiceCallManager.VoiceForwardingMode.Disabled">
+            <summary>
+            Disable call forwarding
+            </summary>
+        </member>
+        <member name="F:PsionTeklogix.WWAN.VoiceCallManager.VoiceForwardingMode.Erase">
+            <summary>
+            Remove all forwarding data from the network
+            </summary>
+        </member>
+        <member name="F:PsionTeklogix.WWAN.VoiceCallManager.VoiceCallerIdStatus.Unknown">
+            <summary>
+            Unknown caller ID state.
+            </summary>
+        </member>
+        <member name="F:PsionTeklogix.WWAN.VoiceCallManager.VoiceCallerIdStatus.Provisioned">
+            <summary>
+            The service can be used.
+            </summary>
+        </member>
+        <member name="F:PsionTeklogix.WWAN.VoiceCallManager.VoiceCallerIdStatus.NotProvisioned">
+            <summary>
+            The service can not be used.
+            </summary>
+        </member>
+        <member name="F:PsionTeklogix.WWAN.VoiceCallManager.VoiceCallerIdMode.Unknown">
+            <summary>
+            The status is "unknown" or "not provisioned".
+            </summary>
+        </member>
+        <member name="F:PsionTeklogix.WWAN.VoiceCallManager.VoiceCallerIdMode.Permanent">
+            <summary>
+            The outgoing Caller ID is shown can NOT be changed by the user.
+            </summary>
+        </member>
+        <member name="F:PsionTeklogix.WWAN.VoiceCallManager.VoiceCallerIdMode.TemporaryShow">
+            <summary>
+            The outgoing Caller ID is by default shown, user can change this 
+            through the Set command.
+            </summary>
+        </member>
+        <member name="F:PsionTeklogix.WWAN.VoiceCallManager.VoiceCallerIdMode.TemporaryHide">
+            <summary>
+            The outgoing Caller ID is by default not shown, user can change this 
+            through the Set command.
+            </summary>
+        </member>
+        <member name="F:PsionTeklogix.WWAN.VoiceCallManager.VoiceCallerIdOwnStatus.Unknown">
+            <summary>
+            The service status is not known.
+            </summary>
+        </member>
+        <member name="F:PsionTeklogix.WWAN.VoiceCallManager.VoiceCallerIdOwnStatus.Default">
+            <summary>
+            Use the subscription default.
+            </summary>
+        </member>
+        <member name="F:PsionTeklogix.WWAN.VoiceCallManager.VoiceCallerIdOwnStatus.OwnShow">
+            <summary>
+            Show outgoing caller Id.
+            </summary>
+        </member>
+        <member name="F:PsionTeklogix.WWAN.VoiceCallManager.VoiceCallerIdOwnStatus.OwnHide">
+            <summary>
+            Hide outgoing caller Id.
+            </summary>
+        </member>
+        <member name="M:PsionTeklogix.Runtime.InteropServices.Marshalling.BasicTypeArrayToArrayList(System.Byte[],System.Int32)">
+            <summary>
+            Convert an unmanaged array of basic types (int, char, etc) to an array list.
+            </summary>
+            <remarks> I only needed to convert "normal" ints.  If you need to support other
+            types you will have to add them yourself.
+            This is similar to ByteToArrayList, but works for basic types such as int.
+            </remarks>
+            <param name="buffer">A byte array containing the data</param>
+            <param name="itemSize">size of each item in the byte array</param>
+            <returns>An arraylist of items</returns>
+        </member>
+        <member name="T:PsionTeklogix.WWAN.WwanRequestStatus">
+            <summary>
+             The request status.
+            </summary>
+        </member>
+        <member name="F:PsionTeklogix.WWAN.WwanRequestStatus.Success">
+            <summary>The request was successfully issued.</summary>
+        </member>
+        <member name="F:PsionTeklogix.WWAN.WwanRequestStatus.Failure">
+            <summary>The request was not successfully issued.</summary>
+        </member>
+        <member name="F:PsionTeklogix.WWAN.WwanRequestStatus.NotInitialized">
+            <summary>The request failed because the API was not initialized.</summary>
+        </member>
+        <member name="F:PsionTeklogix.WWAN.WwanRequestStatus.DriverNotRunning">
+            <summary>The request failed because the driver is not running.</summary>
+        </member>
+        <member name="F:PsionTeklogix.WWAN.WwanRequestStatus.InvalidParameter">
+            <summary>The request failed because a parameter specified by the application was 
+            not valid.</summary>
+        </member>
+        <member name="F:PsionTeklogix.WWAN.WwanRequestStatus.EventHandleInvalid">
+            <summary>The request failed because the handle specified was not a valid event 
+            (and not null).</summary>
+        </member>
+        <member name="F:PsionTeklogix.WWAN.WwanRequestStatus.OutOfMemory">
+            <summary>The request failed because of a memory allocation failure.</summary>
+        </member>
+        <member name="F:PsionTeklogix.WWAN.WwanRequestStatus.BufferTooSmall">
+            <summary>The request failed because an internal buffer was too small.</summary>
+        </member>
+        <member name="F:PsionTeklogix.WWAN.WwanRequestStatus.AccessDenied">
+            <summary>The request failed because the driver was not in the correct state 
+            at the time the request was issued.</summary>
+        </member>
+        <member name="F:PsionTeklogix.WWAN.WwanRequestStatus.AccessFlagNotSet">
+            <summary>The request failed because the appropriate access flag was not set.</summary>
+        </member>
+        <member name="F:PsionTeklogix.WWAN.WwanRequestStatus.NotSupported">
+            <summary> The request failed because the requested functionality is not 
+            supported. </summary>
+        </member>
+        <member name="T:PsionTeklogix.WWAN.WwanResult">
+            <summary>
+             The WWAN operation result.
+            </summary>
+        </member>
+        <member name="F:PsionTeklogix.WWAN.WwanResult.Success">
+            <summary>Succeeded.</summary>
+        </member>
+        <member name="F:PsionTeklogix.WWAN.WwanResult.SuccessPartial">
+            <summary>Succeeded, partial results given.</summary>
+        </member>
+        <member name="F:PsionTeklogix.WWAN.WwanResult.Failure">
+            <summary>Failed, no reason given.</summary>
+        </member>
+        <member name="F:PsionTeklogix.WWAN.WwanResult.NoSim">
+            <summary>Failed, SIM is not present.</summary>
+        </member>
+        <member name="F:PsionTeklogix.WWAN.WwanResult.BadSim">
+            <summary>Failed, SIM is invalid.</summary>
+        </member>
+        <member name="F:PsionTeklogix.WWAN.WwanResult.SimRejected">
+            <summary>Failed, SIM was rejected.</summary>
+        </member>
+        <member name="F:PsionTeklogix.WWAN.WwanResult.NotInitialized">
+            <summary>Failed, device not ready.</summary>
+        </member>
+        <member name="F:PsionTeklogix.WWAN.WwanResult.SubsidyLocked">
+            <summary>Failed, Device is subsidy locked.</summary>
+        </member>
+        <member name="F:PsionTeklogix.WWAN.WwanResult.PinLocked">
+            <summary>Failed, operation requires PIN.</summary>      
+        </member>
+        <member name="F:PsionTeklogix.WWAN.WwanResult.PukLocked">
+            <summary>Failed, operation requires PUK.</summary>      
+        </member>
+        <member name="F:PsionTeklogix.WWAN.WwanResult.Pin2Locked">
+            <summary>Failed, operation requires PIN2.</summary>     
+        </member>
+        <member name="F:PsionTeklogix.WWAN.WwanResult.Puk2Locked">
+            <summary>Failed, operation requires PUK2.</summary>     
+        </member>
+        <member name="F:PsionTeklogix.WWAN.WwanResult.NetworkPwdLocked">
+            <summary>Failed, requires network pwd.</summary>
+        </member>
+        <member name="F:PsionTeklogix.WWAN.WwanResult.DevicePwdLocked">
+            <summary>Failed, requires device pwd.</summary>
+        </member>
+        <member name="F:PsionTeklogix.WWAN.WwanResult.WrongPassword">
+            <summary>Failed, password/PIN is incorrect.</summary>
+        </member>
+        <member name="F:PsionTeklogix.WWAN.WwanResult.PasswordIgnored">
+            <summary>Failed, password type is unlocked.</summary>   
+        </member>
+        <member name="F:PsionTeklogix.WWAN.WwanResult.RegistrationDenied">
+            <summary>Failed, emergency calls okay.</summary>        
+        </member>
+        <member name="F:PsionTeklogix.WWAN.WwanResult.NoProvidersFound">
+            <summary>Failed, still searching.</summary>             
+        </member>
+        <member name="F:PsionTeklogix.WWAN.WwanResult.NoActiveProvider">
+            <summary>Failed, must be registered.</summary>          
+        </member>
+        <member name="F:PsionTeklogix.WWAN.WwanResult.NotAttached">
+            <summary>Failed, must be packet attached.</summary>     
+        </member>
+        <member name="F:PsionTeklogix.WWAN.WwanResult.MaxActivatedContexts">
+            <summary>Failed, max active contexts.</summary>
+        </member>
+        <member name="F:PsionTeklogix.WWAN.WwanResult.ServiceUnavailable">
+            <summary>Failed, e.g. no packet roaming.</summary>
+        </member>
+        <member name="F:PsionTeklogix.WWAN.WwanResult.InvalidMailboxIndex">
+            <summary>mailbox index was invalid.</summary>
+        </member>
+        <member name="F:PsionTeklogix.WWAN.WwanResult.InvalidMessageIndex">
+            <summary>the message index was outside the allowed range or there is no 
+            message for this index.</summary>
+        </member>
+        <member name="F:PsionTeklogix.WWAN.WwanResult.NoDcsConversion">
+            <summary>the data coding scheme of the message can't be converted to the 
+            requested data coding scheme.</summary>
+        </member>
+        <member name="F:PsionTeklogix.WWAN.WwanResult.PduDecodeError">
+            <summary>a GSM SMS PDU read from the modem could not be decoded.</summary>
+        </member>
+        <member name="F:PsionTeklogix.WWAN.WwanResult.RequestRejected">
+            <summary>the modem or driver state does not allow the request to be processed 
+            at this time.</summary>
+        </member>
+        <member name="F:PsionTeklogix.WWAN.WwanResult.MailboxNotWritable">
+            <summary>the mailbox index in a send request points to a mailbox that is 
+            read-only.</summary>
+        </member>
+        <member name="F:PsionTeklogix.WWAN.WwanResult.AddressTooLong">
+            <summary>the address in a send request is too long.</summary> 
+        </member>
+        <member name="F:PsionTeklogix.WWAN.WwanResult.AddressInvalid">
+            <summary>the address in a send request contains invalid characters.</summary>
+        </member>
+        <member name="F:PsionTeklogix.WWAN.WwanResult.MessageTooLong">
+            <summary>the message in a send request is too long and length checking had 
+            been requested.</summary>
+        </member>
+        <member name="F:PsionTeklogix.WWAN.WwanResult.UnknownError">
+            <summary>an unknown error occurred.</summary>
+        </member>
+        <member name="F:PsionTeklogix.WWAN.WwanResult.SmsResultNotSupported">
+            <summary>the modem in use does not support this function</summary>
+        </member>
+        <member name="F:PsionTeklogix.WWAN.WwanResult.SmsResultBadParameter">
+            <summary>one or more of the parameter values or the combination 
+            of parameter values is not allowed</summary>
+        </member>
+        <member name="F:PsionTeklogix.WWAN.WwanResult.SmsResultNetworkError">
+            <summary>the modem has reported an error after trying to process the 
+            request</summary>
+        </member>
+        <member name="T:PsionTeklogix.WWAN.WWanRequestParameters">
+            <summary>
+             The structure used when performing some WWAN operations.
+            </summary>
+        </member>
+        <member name="F:PsionTeklogix.WWAN.WWanRequestParameters.hWaitForAsyncCompletion">
+            <summary>
+            The handle of a valid event Windows CE handle, or IntPtr.Zero for synchronous requests.
+            </summary>
+            <remarks>
+             This field is not used and must be set to IntPtr.Zero. All WWAN operations are
+            performed synchronously. 
+            </remarks>
+        </member>
+        <member name="F:PsionTeklogix.WWAN.WWanRequestParameters.resultCode">
+            <summary>
+             The result of the operation. This value will only be valid if the request is
+            successfully issued, and the requested operation has completed. 
+            </summary>
+        </member>
+        <member name="T:PsionTeklogix.WWAN.WWAN_DEVICE_TYPE">
+            <summary>
+             The device type.
+            </summary>
+        </member>
+        <member name="F:PsionTeklogix.WWAN.WWAN_DEVICE_TYPE.WwanDeviceTypeUnknown">
+            <summary>Unknown device type.</summary>
+        </member>
+        <member name="F:PsionTeklogix.WWAN.WWAN_DEVICE_TYPE.WwanDeviceTypeLocal">
+            <summary>Local device type.</summary>
+        </member>
+        <member name="F:PsionTeklogix.WWAN.WWAN_DEVICE_TYPE.WwanDeviceTypeRemote">
+            <summary>Remove device type.</summary>
+        </member>
+        <member name="F:PsionTeklogix.WWAN.WWAN_DEVICE_TYPE.WwanDeviceTypeMax">
+            <summary>Maximum device type value.</summary>
+        </member>
+        <member name="T:PsionTeklogix.WWAN.WWAN_CELLULAR_CLASS">
+            <summary>
+             The modem class (GSM or CDMA)
+            </summary>
+        </member>
+        <member name="F:PsionTeklogix.WWAN.WWAN_CELLULAR_CLASS.WwanCellularClassUnknown">
+            <summary>Unknown cellular class.</summary>
+        </member>
+        <member name="F:PsionTeklogix.WWAN.WWAN_CELLULAR_CLASS.WwanCellularClassGsm">
+            <summary>GSM Modem.</summary>
+        </member>
+        <member name="F:PsionTeklogix.WWAN.WWAN_CELLULAR_CLASS.WwanCellularClassCdma">
+            <summary>CDMA Modem.</summary>
+        </member>
+        <member name="F:PsionTeklogix.WWAN.WWAN_CELLULAR_CLASS.WwanCellularClassMax">
+            <summary>Maximum value.</summary>
+        </member>
+        <member name="T:PsionTeklogix.WWAN.WWAN_VOICE_CLASS">
+            <summary>
+             The voice service capabilities of the modem
+            </summary>
+        </member>
+        <member name="F:PsionTeklogix.WWAN.WWAN_VOICE_CLASS.WwanVoiceClassUnknown">
+            <summary>Unknown voice class.</summary>
+        </member>
+        <member name="F:PsionTeklogix.WWAN.WWAN_VOICE_CLASS.WwanVoiceClassNoVoice">
+            <summary>No voice support.</summary>
+        </member>
+        <member name="F:PsionTeklogix.WWAN.WWAN_VOICE_CLASS.WwanVoiceClassSeparateVoiceData">
+            <summary>Separate voice and data support.</summary>
+        </member>
+        <member name="F:PsionTeklogix.WWAN.WWAN_VOICE_CLASS.WwanVoiceClassSimultaneousVoiceData">
+            <summary>Simultaneous voice and data support.</summary>
+        </member>
+        <member name="F:PsionTeklogix.WWAN.WWAN_VOICE_CLASS.WwanVoiceClassMax">
+            <summary>Maximum value.</summary>
+        </member>
+        <member name="T:PsionTeklogix.WWAN.WWAN_SIM_CLASS">
+            <summary>
+             Used to determine whether or not a SIM is required.
+            </summary>
+        </member>
+        <member name="F:PsionTeklogix.WWAN.WWAN_SIM_CLASS.WwanSimClassUnknown">
+            <summary>Unknown SIM class.</summary>
+        </member>
+        <member name="F:PsionTeklogix.WWAN.WWAN_SIM_CLASS.WwanSimClassNoSim">
+            <summary>SIM not required.</summary>
+        </member>
+        <member name="F:PsionTeklogix.WWAN.WWAN_SIM_CLASS.WwanSimClassSimSupported">
+            <summary>SIM supported and required.</summary>
+        </member>
+        <member name="F:PsionTeklogix.WWAN.WWAN_SIM_CLASS.WwanSimClassMax">
+            <summary>Maximum value.</summary>
+        </member>
+        <member name="T:PsionTeklogix.WWAN.WWAN_DATA_CLASS">
+            <summary>
+             The data service information (supported technologies)
+            </summary>
+        </member>
+        <member name="F:PsionTeklogix.WWAN.WWAN_DATA_CLASS.UNKNOWN">
+            <summary>Data class is not known.</summary>
+        </member>
+        <member name="F:PsionTeklogix.WWAN.WWAN_DATA_CLASS.GPRS">
+            <summary>GPRS Modem.</summary>
+        </member>
+        <member name="F:PsionTeklogix.WWAN.WWAN_DATA_CLASS.EGPRS">
+            <summary>Enhanced GPRS support.</summary>
+        </member>
+        <member name="F:PsionTeklogix.WWAN.WWAN_DATA_CLASS.UMTS">
+            <summary>Universal Mobile Telecommunications System support.</summary>
+        </member>
+        <member name="F:PsionTeklogix.WWAN.WWAN_DATA_CLASS.HSDPA">
+            <summary>High Speed Downlink Packet Access support.</summary>
+        </member>
+        <member name="F:PsionTeklogix.WWAN.WWAN_DATA_CLASS.ONE_XRTT">
+            <summary>1xRTT support.</summary>
+        </member>
+        <member name="F:PsionTeklogix.WWAN.WWAN_DATA_CLASS.ONE_XEVDO">
+            <summary>Evolution-Data Only support.</summary>
+        </member>
+        <member name="F:PsionTeklogix.WWAN.WWAN_DATA_CLASS.ONE_XEVDV">
+            <summary>Evolution-Data Voice support.</summary>
+        </member>
+        <member name="F:PsionTeklogix.WWAN.WWAN_DATA_CLASS.THREE_XRTT">
+            <summary>3xRTT support.</summary>
+        </member>
+        <member name="F:PsionTeklogix.WWAN.WWAN_DATA_CLASS.INVMASK">
+            <summary>Invalid flags mask.</summary>
+        </member>
+        <member name="T:PsionTeklogix.WWAN.WWAN_DEVICE_CAPS">
+            <summary>
+             The capabilities of the modem.
+            </summary>
+        </member>
+        <member name="F:PsionTeklogix.WWAN.WWAN_DEVICE_CAPS.WwanDeviceType">
+            <summary>The device type.</summary>
+        </member>
+        <member name="F:PsionTeklogix.WWAN.WWAN_DEVICE_CAPS.WwanCellularClass">
+            <summary>The modem class: GSM, CDMA, etc.</summary>
+        </member>
+        <member name="F:PsionTeklogix.WWAN.WWAN_DEVICE_CAPS.WwanVoiceClass">
+            <summary>The voice service capabilities of the modem.</summary>
+        </member>
+        <member name="F:PsionTeklogix.WWAN.WWAN_DEVICE_CAPS.WwanSimClass">
+            <summary>Determines if a SIM is required.</summary>
+        </member>
+        <member name="F:PsionTeklogix.WWAN.WWAN_DEVICE_CAPS.WwanDataClass">
+            <summary>The data service information (supported technologies).</summary>
+        </member>
+        <member name="F:PsionTeklogix.WWAN.WWAN_DEVICE_CAPS.Manufacturer">
+            <summary>The modem manufacturer.</summary>
+        </member>
+        <member name="F:PsionTeklogix.WWAN.WWAN_DEVICE_CAPS.Model">
+            <summary>The modem model.</summary>
+        </member>
+        <member name="F:PsionTeklogix.WWAN.WWAN_DEVICE_CAPS.FirmwareInfo">
+            <summary>The modem firmware information.</summary>
+        </member>
+        <member name="F:PsionTeklogix.WWAN.WWAN_DEVICE_CAPS.MaxActivatedContexts">
+            <summary>Maximum number of simultaneous activated contexts.</summary>
+        </member>
+        <member name="T:PsionTeklogix.WWAN.WWAN_READY_STATE_FLAGS">
+            <summary>
+             The state of the modem
+            </summary>
+        </member>
+        <member name="F:PsionTeklogix.WWAN.WWAN_READY_STATE_FLAGS.SHUTDOWN">
+            <summary>stack is not running.</summary>
+        </member>
+        <member name="F:PsionTeklogix.WWAN.WWAN_READY_STATE_FLAGS.PHONEBOOK">
+            <summary>can read the phonebook.</summary>
+        </member>
+        <member name="F:PsionTeklogix.WWAN.WWAN_READY_STATE_FLAGS.SMSSTORE">
+            <summary>SMS store is available (can read messages).</summary>
+        </member>
+        <member name="F:PsionTeklogix.WWAN.WWAN_READY_STATE_FLAGS.INITIALIZED">
+            <summary>We can transmit / receive.</summary>
+        </member>
+        <member name="F:PsionTeklogix.WWAN.WWAN_READY_STATE_FLAGS.NO_SIM">
+            <summary>SIM not inserted.</summary>
+        </member>
+        <member name="F:PsionTeklogix.WWAN.WWAN_READY_STATE_FLAGS.BAD_SIM">
+            <summary>SIM is invalid.</summary>
+        </member>
+        <member name="F:PsionTeklogix.WWAN.WWAN_READY_STATE_FLAGS.FAILURE">
+            <summary>modem failure.</summary>
+        </member>
+        <member name="F:PsionTeklogix.WWAN.WWAN_READY_STATE_FLAGS.INVMASK">
+            <summary>Invalid flags mask.</summary>
+        </member>
+        <member name="T:PsionTeklogix.WWAN.WWAN_READY_STATE">
+            <summary>
+             The class used to report modem state information.
+            </summary>
+        </member>
+        <member name="F:PsionTeklogix.WWAN.WWAN_READY_STATE.State">
+            <summary>The modem state (what operations can be performed).</summary>
+        </member>
+        <member name="F:PsionTeklogix.WWAN.WWAN_READY_STATE.Imsi">
+            <summary>International Mobile Station Identity.</summary>
+        </member>
+        <member name="F:PsionTeklogix.WWAN.WWAN_READY_STATE.Imei">
+            <summary>International Mobile Equipment Identity.</summary>
+        </member>
+        <member name="P:PsionTeklogix.WWAN.WWAN_READY_STATE.IsdnList">
+            <summary>List of phone numbers.</summary>
+        </member>
+        <member name="T:PsionTeklogix.WWAN.WWAN_PIN_TYPE">
+            <summary>
+             The pin type, used when retrieving the PIN state or setting the PIN.
+            </summary>
+        </member>
+        <member name="F:PsionTeklogix.WWAN.WWAN_PIN_TYPE.WwanPinTypeUnknown">
+            <summary>Unknown PIN type.</summary>
+        </member>
+        <member name="F:PsionTeklogix.WWAN.WWAN_PIN_TYPE.WwanPinTypeNone">
+            <summary>No PIN is needed.</summary>
+        </member>
+        <member name="F:PsionTeklogix.WWAN.WWAN_PIN_TYPE.WwanPinTypeSubsidyLock">
+            <summary>Subsidy unlock code.</summary>
+        </member>
+        <member name="F:PsionTeklogix.WWAN.WWAN_PIN_TYPE.WwanPinTypePin">
+            <summary>Standard PIN.</summary>
+        </member>
+        <member name="F:PsionTeklogix.WWAN.WWAN_PIN_TYPE.WwanPinTypePuk">
+            <summary>Standard PUK.</summary>
+        </member>
+        <member name="F:PsionTeklogix.WWAN.WWAN_PIN_TYPE.WwanPinTypePin2">
+            <summary>PIN2.</summary>
+        </member>
+        <member name="F:PsionTeklogix.WWAN.WWAN_PIN_TYPE.WwanPinTypePuk2">
+            <summary>PUK2.</summary>
+        </member>
+        <member name="F:PsionTeklogix.WWAN.WWAN_PIN_TYPE.WwanPinTypeNetworkPassword">
+            <summary>Network password.</summary>
+        </member>
+        <member name="F:PsionTeklogix.WWAN.WWAN_PIN_TYPE.WwanPinTypeDevicePassword">
+            <summary>Device password.</summary>
+        </member>
+        <member name="F:PsionTeklogix.WWAN.WWAN_PIN_TYPE.WwanPinTypeMax">
+            <summary>Maximum value.</summary>
+        </member>
+        <member name="T:PsionTeklogix.WWAN.WWAN_PIN_FORMAT">
+            <summary>
+             The pin format - numeric or alphanumeric.
+            </summary>
+        </member>
+        <member name="F:PsionTeklogix.WWAN.WWAN_PIN_FORMAT.WwanPinFormatUnknown">
+            <summary>Format of needed pin is unknown.</summary>
+        </member>
+        <member name="F:PsionTeklogix.WWAN.WWAN_PIN_FORMAT.WwanPinFormatNumeric">
+            <summary>Allow characters 0-9,*,#</summary>
+        </member>
+        <member name="F:PsionTeklogix.WWAN.WWAN_PIN_FORMAT.WwanPinFormatAlphaNumeric">
+            <summary>Allow characters a-z, A-Z, 0-9,*,#</summary>
+        </member>
+        <member name="F:PsionTeklogix.WWAN.WWAN_PIN_FORMAT.WwanPinFormatMax">
+            <summary>Maximum value.</summary>
+        </member>
+        <member name="T:PsionTeklogix.WWAN.WWAN_PIN_STATE">
+            <summary>
+             The pin state information - pin format, type, etc.
+            </summary>
+        </member>
+        <member name="F:PsionTeklogix.WWAN.WWAN_PIN_STATE.PinType">
+            <summary>The PIN type.</summary>
+        </member>
+        <member name="F:PsionTeklogix.WWAN.WWAN_PIN_STATE.PinFormat">
+            <summary>The PIN format.</summary>
+        </member>
+        <member name="F:PsionTeklogix.WWAN.WWAN_PIN_STATE.PinLengthMin">
+            <summary>Minimum PIN length, usually -1 (i.e. maximum unsigned int value)</summary>
+        </member>
+        <member name="F:PsionTeklogix.WWAN.WWAN_PIN_STATE.PinLengthMax">
+            <summary>Maximum PIN length, usually -1 (i.e. maximum unsigned int value)</summary>
+        </member>
+        <member name="F:PsionTeklogix.WWAN.WWAN_PIN_STATE.AttemptsRemaining">
+            <summary># of attempts remaining</summary>
+        </member>
+        <member name="T:PsionTeklogix.WWAN.WWAN_PIN_ACTION">
+            <summary>
+             The pin operation to perform.
+            </summary>
+        </member>
+        <member name="F:PsionTeklogix.WWAN.WWAN_PIN_ACTION.WwanPinActionUnknown">
+            <summary>Unknown.</summary>
+        </member>
+        <member name="F:PsionTeklogix.WWAN.WWAN_PIN_ACTION.WwanPinActionSend">
+            <summary>Send PIN.</summary>
+        </member>
+        <member name="F:PsionTeklogix.WWAN.WWAN_PIN_ACTION.WwanPinActionEnable">
+            <summary>Enable PIN.</summary>
+        </member>
+        <member name="F:PsionTeklogix.WWAN.WWAN_PIN_ACTION.WwanPinActionDisable">
+            <summary>Disable PIN.</summary>
+        </member>
+        <member name="F:PsionTeklogix.WWAN.WWAN_PIN_ACTION.WwanPinActionChange">
+            <summary>Change PIN.</summary>
+        </member>
+        <member name="F:PsionTeklogix.WWAN.WWAN_PIN_ACTION.WwanPinActionCancel">
+            <summary>Cancel PIN operation.</summary>
+        </member>
+        <member name="F:PsionTeklogix.WWAN.WWAN_PIN_ACTION.WwanPinActionMax">
+            <summary>Maximum value.</summary>
+        </member>
+        <member name="T:PsionTeklogix.WWAN.WWAN_SET_PIN">
+            <summary>
+             The class used to perform a set PIN operation.
+            </summary>
+        </member>
+        <member name="F:PsionTeklogix.WWAN.WWAN_SET_PIN.PinAction">
+            <summary>The PIN operation.</summary>
+        </member>
+        <member name="F:PsionTeklogix.WWAN.WWAN_SET_PIN.PinType">
+            <summary>The PIN type.</summary>
+        </member>
+        <member name="F:PsionTeklogix.WWAN.WWAN_SET_PIN.Pin">
+            <summary>The current PIN, or PIN to submit.</summary>
+        </member>
+        <member name="F:PsionTeklogix.WWAN.WWAN_SET_PIN.NewPin">
+            <summary>The new PIN.</summary>
+        </member>
+        <member name="T:PsionTeklogix.WWAN.WWAN_PROVIDER_STATE">
+            <summary>
+             The provider state.
+            </summary>
+        </member>
+        <member name="F:PsionTeklogix.WWAN.WWAN_PROVIDER_STATE.WwanProviderStateUnknown">
+            <summary>The provider state is unknown.</summary>
+        </member>
+        <member name="F:PsionTeklogix.WWAN.WWAN_PROVIDER_STATE.WwanProviderStateForbidden">
+            <summary>The provider is forbidder.</summary>
+        </member>
+        <member name="F:PsionTeklogix.WWAN.WWAN_PROVIDER_STATE.WwanProviderStateAvailable">
+            <summary>The provider is available.</summary>
+        </member>
+        <member name="F:PsionTeklogix.WWAN.WWAN_PROVIDER_STATE.WwanProviderStatePreferred">
+            <summary>The provider is available and preferred.</summary>
+        </member>
+        <member name="F:PsionTeklogix.WWAN.WWAN_PROVIDER_STATE.WwanProviderStateCurrent">
+            <summary>The provider is the current provider being used.</summary>
+        </member>
+        <member name="F:PsionTeklogix.WWAN.WWAN_PROVIDER_STATE.WwanProviderStateMax">
+            <summary>Maximum value.</summary>
+        </member>
+        <member name="T:PsionTeklogix.WWAN.WWAN_PROVIDER">
+            <summary>
+             Provider information.
+            </summary>
+        </member>
+        <member name="F:PsionTeklogix.WWAN.WWAN_PROVIDER.ProviderId">
+            <summary>Provider ID.</summary>
+        </member>
+        <member name="F:PsionTeklogix.WWAN.WWAN_PROVIDER.State">
+            <summary>Provider State.</summary>
+        </member>
+        <member name="F:PsionTeklogix.WWAN.WWAN_PROVIDER.Name">
+            <summary>Provider Name.</summary>
+        </member>
+        <member name="T:PsionTeklogix.WWAN.WWAN_PROVIDER_LIST">
+            <summary>
+             List of available providers.
+            </summary>
+        </member>
+        <member name="P:PsionTeklogix.WWAN.WWAN_PROVIDER_LIST.Providers">
+            <summary>
+             Returns an array of visisble providers.
+            </summary>
+        </member>
+        <member name="T:PsionTeklogix.WWAN.WWAN_REGISTER_MODE">
+            <summary>
+             The registration mode.
+            </summary>
+        </member>
+        <member name="F:PsionTeklogix.WWAN.WWAN_REGISTER_MODE.WwanRegisterModeUnknown">
+            <summary>Unknown.</summary>
+        </member>
+        <member name="F:PsionTeklogix.WWAN.WWAN_REGISTER_MODE.WwanRegisterModeReregister">
+            <summary>Reregister to the registered operator using current mode.</summary>
+        </member>
+        <member name="F:PsionTeklogix.WWAN.WWAN_REGISTER_MODE.WwanRegisterModeAutomatic">
+            <summary>Turn on transceiver, camp on best available network, packet attach.</summary>
+        </member>
+        <member name="F:PsionTeklogix.WWAN.WWAN_REGISTER_MODE.WwanRegisterModeManual">
+            <summary>Turn on transceiver, use numeric code to camp, packet attach.</summary>
+        </member>
+        <member name="F:PsionTeklogix.WWAN.WWAN_REGISTER_MODE.WwanRegisterModeDeregister">
+            <summary>Transceiver is on, but device is detached and deregistered.</summary>
+        </member>
+        <member name="F:PsionTeklogix.WWAN.WWAN_REGISTER_MODE.WwanRegisterModeRadioOff">
+            <summary>Transceiver is off, device is detached and deregistered.</summary>
+        </member>
+        <member name="F:PsionTeklogix.WWAN.WWAN_REGISTER_MODE.WwanRegisterModeMax">
+            <summary></summary>
+        </member>
+        <member name="T:PsionTeklogix.WWAN.WWAN_REGISTER_STATE">
+            <summary>
+             The registration state.
+            </summary>
+        </member>
+        <member name="F:PsionTeklogix.WWAN.WWAN_REGISTER_STATE.WwanRegisterStateUnknown">
+            <summary>Registration state unknown.</summary>
+        </member>
+        <member name="F:PsionTeklogix.WWAN.WWAN_REGISTER_STATE.WwanRegisterStateDeregistered">
+            <summary>Not registered, not searching.</summary>
+        </member>
+        <member name="F:PsionTeklogix.WWAN.WWAN_REGISTER_STATE.WwanRegisterStateSearching">
+            <summary>Searching for a provider.</summary>
+        </member>
+        <member name="F:PsionTeklogix.WWAN.WWAN_REGISTER_STATE.WwanRegisterStateHome">
+            <summary>Device is on a home provider.</summary>
+        </member>
+        <member name="F:PsionTeklogix.WWAN.WWAN_REGISTER_STATE.WwanRegisterStateRoaming">
+            <summary>Device is on roaming provider.</summary>
+        </member>
+        <member name="F:PsionTeklogix.WWAN.WWAN_REGISTER_STATE.WwanRegisterStateDenied">
+            <summary>Registration denied, emergency calls may still be made.</summary>
+        </member>
+        <member name="F:PsionTeklogix.WWAN.WWAN_REGISTER_STATE.WwanRegisterStateMax">
+            <summary>Maximum value.</summary>
+        </member>
+        <member name="T:PsionTeklogix.WWAN.WWAN_REGISTRATION">
+            <summary>
+             Registration information structure.
+            </summary>
+        </member>
+        <member name="F:PsionTeklogix.WWAN.WWAN_REGISTRATION.RegisterMode">
+            <summary>Registration mode.</summary>
+        </member>
+        <member name="F:PsionTeklogix.WWAN.WWAN_REGISTRATION.RegisterState">
+            <summary>Registration state.</summary>
+        </member>
+        <member name="F:PsionTeklogix.WWAN.WWAN_REGISTRATION.Provider">
+            <summary>Registration provider.</summary>
+        </member>
+        <member name="T:PsionTeklogix.WWAN.WWAN_ATTACH_STATE">
+            <summary>
+            </summary>
+        </member>
+        <member name="F:PsionTeklogix.WWAN.WWAN_ATTACH_STATE.WwanAttachStateUnknown">
+            <summary>Attach state unknown.</summary>
+        </member>
+        <member name="F:PsionTeklogix.WWAN.WWAN_ATTACH_STATE.WwanAttachStateDetached">
+            <summary>Device is not attached and likely unregistered.</summary>
+        </member>
+        <member name="F:PsionTeklogix.WWAN.WWAN_ATTACH_STATE.WwanAttachStateSearching">
+            <summary>Automatic after registered.</summary>
+        </member>
+        <member name="F:PsionTeklogix.WWAN.WWAN_ATTACH_STATE.WwanAttachStateAttached">
+            <summary>Packet attached.</summary>
+        </member>
+        <member name="F:PsionTeklogix.WWAN.WWAN_ATTACH_STATE.WwanAttachStateDenied">
+            <summary>Packet service unavailable.</summary>
+        </member>
+        <member name="F:PsionTeklogix.WWAN.WWAN_ATTACH_STATE.WwanAttachStateMax">
+            <summary></summary>
+        </member>
+        <member name="T:PsionTeklogix.WWAN.WWAN_PACKET_SERVICE">
+            <summary>
+             Packet service information.
+            </summary>
+        </member>
+        <member name="F:PsionTeklogix.WWAN.WWAN_PACKET_SERVICE.AttachState">
+            <summary></summary>
+        </member>
+        <member name="F:PsionTeklogix.WWAN.WWAN_PACKET_SERVICE.DataClass">
+            <summary></summary>
+        </member>
+        <member name="T:PsionTeklogix.WWAN.WWAN_SIGNAL_STATE">
+            <summary>
+             Signal strength and configuration information. 
+            </summary>
+        </member>
+        <member name="F:PsionTeklogix.WWAN.WWAN_SIGNAL_STATE.Rssi">
+            <summary>Received Signal Strength in decibels (db).</summary>
+        </member>
+        <member name="F:PsionTeklogix.WWAN.WWAN_SIGNAL_STATE.RssiInterval">
+            <summary>Suggested interval in seconds.</summary>
+        </member>
+        <member name="F:PsionTeklogix.WWAN.WWAN_SIGNAL_STATE.RssiThreshold">
+            <summary>Suggested +/- threshold in db.</summary>
+        </member>
+        <member name="T:PsionTeklogix.WWAN.WWAN_CONTEXT_AUTHENTICATION">
+            <summary>
+             Authenication information.
+            </summary>
+        </member>
+        <member name="F:PsionTeklogix.WWAN.WWAN_CONTEXT_AUTHENTICATION.WwanContextAuthenticationUnknown">
+            <summary>Unknown.</summary>
+        </member>
+        <member name="F:PsionTeklogix.WWAN.WWAN_CONTEXT_AUTHENTICATION.WwanContextAuthenticationNone">
+            <summary>Ignore user/pwd fields.</summary>
+        </member>
+        <member name="F:PsionTeklogix.WWAN.WWAN_CONTEXT_AUTHENTICATION.WwanContextAuthenticationChap">
+            <summary>Use CHAP authentication.</summary>
+        </member>
+        <member name="F:PsionTeklogix.WWAN.WWAN_CONTEXT_AUTHENTICATION.WwanContextAuthenticationPap">
+            <summary>Use PAP authentication.</summary>
+        </member>
+        <member name="F:PsionTeklogix.WWAN.WWAN_CONTEXT_AUTHENTICATION.WwanContextAuthenticationEap">
+            <summary>Use EAP authentication.</summary>
+        </member>
+        <member name="F:PsionTeklogix.WWAN.WWAN_CONTEXT_AUTHENTICATION.WwanContextAuthenticationMax">
+            <summary></summary>
+        </member>
+        <member name="T:PsionTeklogix.WWAN.WWAN_ACTIVATION_STATE">
+            <summary>
+             The activation state.
+            </summary>
+        </member>
+        <member name="F:PsionTeklogix.WWAN.WWAN_ACTIVATION_STATE.WwanActivationStateUnknown">
+            <summary>Unknown.</summary>
+        </member>
+        <member name="F:PsionTeklogix.WWAN.WWAN_ACTIVATION_STATE.WwanActivationStateActivated">
+            <summary>Activated.</summary>
+        </member>
+        <member name="F:PsionTeklogix.WWAN.WWAN_ACTIVATION_STATE.WwanActivationStateDeactivated">
+            <summary>Deactivated.</summary>
+        </member>
+        <member name="F:PsionTeklogix.WWAN.WWAN_ACTIVATION_STATE.WwanActivationStateMax">
+            <summary>Maximum value.</summary>
+        </member>
+        <member name="T:PsionTeklogix.WWAN.WWAN_CONTEXT">
+            <summary>
+             Context information.
+            </summary>
+        </member>
+        <member name="F:PsionTeklogix.WWAN.WWAN_CONTEXT.ProviderId">
+            <summary>Provider owns the access str.</summary>
+        </member>
+        <member name="F:PsionTeklogix.WWAN.WWAN_CONTEXT.ActivationState">
+            <summary>Activation state.</summary>
+        </member>
+        <member name="F:PsionTeklogix.WWAN.WWAN_CONTEXT.AccessString">
+            <summary>Context access string.</summary>
+        </member>
+        <member name="F:PsionTeklogix.WWAN.WWAN_CONTEXT.AuthenticationType">
+            <summary>Authentication type.</summary>
+        </member>
+        <member name="F:PsionTeklogix.WWAN.WWAN_CONTEXT.UserName">
+            <summary>User name.</summary>
+        </member>
+        <member name="F:PsionTeklogix.WWAN.WWAN_CONTEXT.Password">
+            <summary>Password.</summary>
+        </member>
+        <member name="T:PsionTeklogix.WWAN.WWAN_CONTEXT_LIST">
+            <summary>
+             List of contexts.
+            </summary>
+        </member>
+        <member name="P:PsionTeklogix.WWAN.WWAN_CONTEXT_LIST.ContextList">
+            <summary></summary>
+        </member>
+        <member name="T:PsionTeklogix.WWAN.PhonebookContent">
+            <summary>
+            Represents the content type of the stored phonebook.  For example, there are
+            usually multiple phonebooks stored on a SIM card (Contact list, emergency numbers
+            received calls....). Use this property to determine which type of content the
+            phonebook object represents.  Use the "PhonebookContent" property of the object
+            to get this enum.
+            </summary>
+        </member>
+        <member name="F:PsionTeklogix.WWAN.PhonebookContent.Regular">
+            <summary>
+            Regular phonebook content (contact list).
+            </summary>
+        </member>
+        <member name="F:PsionTeklogix.WWAN.PhonebookContent.Services">
+            <summary>
+            Services phonebook content.
+            </summary>
+        </member>
+        <member name="F:PsionTeklogix.WWAN.PhonebookContent.Mailboxes">
+            <summary>
+            Mailboxes phonebook content.
+            </summary>
+        </member>
+        <member name="F:PsionTeklogix.WWAN.PhonebookContent.OwnNumbers">
+            <summary>
+            Own numbers phonebook content.
+            </summary>
+        </member>
+        <member name="F:PsionTeklogix.WWAN.PhonebookContent.DialedCalls">
+            <summary>
+            Dialed calls phonebook content.
+            </summary>
+        </member>
+        <member name="F:PsionTeklogix.WWAN.PhonebookContent.ReceivedCalls">
+            <summary>
+            Received calls phonebook content.
+            </summary>
+        </member>
+        <member name="F:PsionTeklogix.WWAN.PhonebookContent.MissedCalls">
+            <summary>
+            Missed calls phonebook content.
+            </summary>
+        </member>
+        <member name="F:PsionTeklogix.WWAN.PhonebookContent.WhiteList">
+            <summary>
+            White list phonebook content.
+            </summary>
+        </member>
+        <member name="F:PsionTeklogix.WWAN.PhonebookContent.BlackList">
+            <summary>
+            Black list phonebook content.
+            </summary>
+        </member>
+        <member name="F:PsionTeklogix.WWAN.PhonebookContent.Emergency">
+            <summary>
+            Emergency phonebook content.
+            </summary>
+        </member>
+        <member name="T:PsionTeklogix.WWAN.DataCodingScheme">
+            <summary>
+            Represents the encoding scheme for data stored in a PhonebookEntry.  The set
+            datacoding scheme determines how many characters can actually be stored in a
+            phonebook entry.  For example, you can store approximately twice as many characters 
+            using the Ascii8Bit encoding Vs. the Unicode 16Bit encoding (but you will not be able
+            to store unicode characters). Use the Phonebook objects property 
+            "SupportedDataCodingSchemes" to determine which encoding scheme(s) can be set in that 
+            phonebook's entries.
+            </summary>
+        </member>
+        <member name="F:PsionTeklogix.WWAN.DataCodingScheme.SmsDefault">
+            <summary>
+            Let the driver decide which coding scheme is best.
+            </summary>
+        </member>
+        <member name="F:PsionTeklogix.WWAN.DataCodingScheme.SmsGsm7Bit">
+            <summary>
+            GSM encoding scheme.
+            </summary>
+        </member>
+        <member name="F:PsionTeklogix.WWAN.DataCodingScheme.SmsAscii8Bit">
+            <summary>
+            CDMA encoding scheme.
+            </summary>
+        </member>
+        <member name="F:PsionTeklogix.WWAN.DataCodingScheme.SmsUnicode16Bit">
+            <summary>
+            GSM encoding scheme.
+            </summary>
+        </member>
+        <member name="F:PsionTeklogix.WWAN.DataCodingScheme.SmsBinary8Bit">
+            <summary>
+            GSM and CDMA encoding scheme.
+            </summary>
+        </member>
+        <member name="F:PsionTeklogix.WWAN.DataCodingScheme.SmsGsmPdu">
+            <summary>
+            GSM encoding scheme.
+            </summary>
+        </member>
+        <member name="T:PsionTeklogix.WWAN.VoiceCallStatus">
+            <summary>
+            Represents the state of a voice call.  A voice call will usually progress through 
+            at least three of the states below (example: Dialing -> Active -> NormalTermination).
+            The status of a voice call can be retrieved through the GetStatus() method in the
+            VoiceCall object, or an application can be notified of any status change through
+            the "StatusChangeEvent" event (recommended method).
+            </summary>
+        </member>
+        <member name="F:PsionTeklogix.WWAN.VoiceCallStatus.Active">
+            <summary>
+            The voice call is active. You may speak with the connected parties now.
+            All calls in the active state are able to converse.
+            </summary>
+        </member>
+        <member name="F:PsionTeklogix.WWAN.VoiceCallStatus.Held">
+            <summary>
+            The voice call is held.  Other parties will be unable to hear or speak to you.
+            </summary>
+        </member>
+        <member name="F:PsionTeklogix.WWAN.VoiceCallStatus.Dialing">
+            <summary>
+            The network is attempting to connect the call with the other party.  
+            This state is used for outgoing calls only.
+            </summary>
+        </member>
+        <member name="F:PsionTeklogix.WWAN.VoiceCallStatus.Alerting">
+            <summary>
+            The other party is being alerted of an incoming voice call 
+            (i.e. their phone is ringing). This state is used for outgoing calls only.
+            </summary>
+        </member>
+        <member name="F:PsionTeklogix.WWAN.VoiceCallStatus.Incoming">
+            <summary>
+            An incoming call will always have this
+            state if there are no other conversations at the time (your phone is ringing).
+            A This state is used for incoming calls only.
+            </summary>
+        </member>
+        <member name="F:PsionTeklogix.WWAN.VoiceCallStatus.Waiting">
+            <summary>
+            An "incoming" call will always have this
+            state if there are other conversations at the time (call waiting ringing).
+            This state is used for incoming calls only.
+            </summary>
+        </member>
+        <member name="F:PsionTeklogix.WWAN.VoiceCallStatus.NoAnswer">
+            <summary>
+            The other party did not answer the call. This state is used for outgoing calls only.
+            </summary>
+        </member>
+        <member name="F:PsionTeklogix.WWAN.VoiceCallStatus.NoCarrier">
+            <summary>
+            The modem was not able to connect to the remote system. 
+            This state is used for outgoing calls only.
+            </summary>
+        </member>
+        <member name="F:PsionTeklogix.WWAN.VoiceCallStatus.Busy">
+            <summary>
+            The other parties line is busy. This state is used for outgoing calls only.
+            </summary>
+        </member>
+        <member name="F:PsionTeklogix.WWAN.VoiceCallStatus.SupplementaryAccepted">
+            <summary>
+            Status to indicate that the supplementary command has been accepted by the 
+            network (i.e. sending a *# command through the VoiceCall object's DialNumber method). 
+            </summary>
+        </member>
+        <member name="F:PsionTeklogix.WWAN.VoiceCallStatus.NormalTermination">
+            <summary>
+            The call was terminated under normal conditions (One of the parties may have 
+            hung-up or the call may have been disconnected).
+            </summary>
+        </member>
+        <member name="T:PsionTeklogix.WWAN.VoiceCallFlags">
+            <summary>
+            Represents any active "properties" a voice call may possess.  
+            An application can be notified of any changes to the call flags, which will usually
+            correspond to a change in status, through the "StatusChangeEvent" event.  The
+            most useful flag is the "LastEvent" flag.
+            </summary>
+        </member>
+        <member name="F:PsionTeklogix.WWAN.VoiceCallFlags.Incoming">
+            <summary>
+            This is an incoming call.  The other party initiated this voice call.
+            </summary>
+        </member>
+        <member name="F:PsionTeklogix.WWAN.VoiceCallFlags.Conference">
+            <summary>
+            This call is part of a conference (More than one voice calls are in
+            the same state, active or held).
+            </summary>
+        </member>
+        <member name="F:PsionTeklogix.WWAN.VoiceCallFlags.FirstEvent">
+            <summary>
+             This is the first event for the call.
+              Please note: The first event generates an Incoming Call Event
+              through the VoiceCallManager.  An application will never see this set.
+            </summary>
+        </member>
+        <member name="F:PsionTeklogix.WWAN.VoiceCallFlags.LastEvent">
+            <summary>
+            This will be the last event sent for this voice call.  The call has been 
+            terminated (for any reason) and the VoiceCall object is no longer "usable".  
+            The voice call object should be deleted whenever convienent.
+            </summary>
+        </member>
+        <member name="F:PsionTeklogix.WWAN.VoiceCallFlags.WithheldIncomingNumber">
+            <summary>
+            The calling party withheld their phone number.  GetOtherPartyCallerId() will
+            return an empty string.
+            </summary>
+        </member>
+        <member name="T:PsionTeklogix.WWAN.VoiceForwardingReason">
+            <summary>
+            Represents the reason(s) for forwarding a voice call.  Get the settings for each
+            forwarding reason(s) from the WWAN network through the VoiceCallManager's 
+            GetForwardingData method. Change the networks forwarding settings for any reason
+            with the EnableForwarding or DisableForwarding methods.
+            </summary>
+        </member>
+        <member name="F:PsionTeklogix.WWAN.VoiceForwardingReason.Unconditional">
+            <summary>
+            All calls forwarded, overrides any set conditional reasons.
+            </summary>
+        </member>
+        <member name="F:PsionTeklogix.WWAN.VoiceForwardingReason.Busy">
+            <summary>
+            Forward the incoming call if this line is busy.
+            </summary>
+        </member>
+        <member name="F:PsionTeklogix.WWAN.VoiceForwardingReason.NoAnswer">
+            <summary>
+            Forward the incoming call if it is not answered within a specified timeout 
+            period.
+            </summary>
+        </member>
+        <member name="F:PsionTeklogix.WWAN.VoiceForwardingReason.NotReachable">
+            <summary>
+            Forward the incoming call if out of reach (Ex. not connected to the network).
+            </summary>
+        </member>
+        <member name="F:PsionTeklogix.WWAN.VoiceForwardingReason.ReasonAll">
+            <summary>
+            Represents the reasons: Unconditional, Busy, NoReply, and NotReachable.
+            </summary>
+        </member>
+        <member name="F:PsionTeklogix.WWAN.VoiceForwardingReason.AllConditional">
+            <summary>
+            Represents the reasons: Busy, NoReply, and NotReachable.
+            </summary>
+        </member>
+        <member name="T:PsionTeklogix.WWAN.VoiceCallerIdSetting">
+            <summary>
+            Represents the setting of the outgoing voice caller Id.  Use the 
+            GetOutgoingCallerId method to retrieve the currently set value of this 
+            property.  Use the SetOutgoingCallerId method to change the setting of 
+            this property in the network.
+            </summary>
+        </member>
+        <member name="F:PsionTeklogix.WWAN.VoiceCallerIdSetting.Default">
+            <summary>
+            Use the subscription default.
+            </summary>
+        </member>
+        <member name="F:PsionTeklogix.WWAN.VoiceCallerIdSetting.Show">
+            <summary>
+            Show outgoing caller Id.
+            </summary>
+        </member>
+        <member name="F:PsionTeklogix.WWAN.VoiceCallerIdSetting.Hide">
+            <summary>
+            Hide outgoing caller Id.
+            </summary>
+        </member>
+        <member name="T:PsionTeklogix.WWAN.VoiceServiceStatus">
+            <summary>
+            Represents the status of a WWAN voice service. This enum is returned in the response
+            of the VoiceCallManager's GetForwardingData method to represent the the status of 
+            the voice forwarding service.
+            </summary>
+        </member>
+        <member name="F:PsionTeklogix.WWAN.VoiceServiceStatus.Unknown">
+            <summary>
+            Unable to retrieve the status of the service.
+            </summary>
+        </member>
+        <member name="F:PsionTeklogix.WWAN.VoiceServiceStatus.Enabled">
+            <summary>
+            The service is fully enabled.
+            </summary>
+        </member>
+        <member name="F:PsionTeklogix.WWAN.VoiceServiceStatus.Disabled">
+            <summary>
+            The service is fully disabled.
+            </summary>
+        </member>
+        <member name="F:PsionTeklogix.WWAN.VoiceServiceStatus.SomeEnabled">
+            <summary>
+            Some of the service is enabled. For example, if forwarding is enabled for the 
+            reason "Busy" but disabled for all other reasons, "SomeEnabled" is the service 
+            status when forwarding data is requested for "ReasonAll".
+            </summary>
+        </member>
+        <member name="T:PsionTeklogix.WWAN.VoiceForwardingData">
+            <summary>
+            Voice call forwarding settings.  An application can get the forwarding data 
+            for each forwarding reason(s) from the WWAN network through the VoiceCallManager's 
+            GetForwardingData method. An application can change the networks forwarding 
+            settings for any reason with the EnableForwarding or DisableForwarding methods.
+            </summary>
+        </member>
+        <member name="F:PsionTeklogix.WWAN.VoiceForwardingData.reason">
+            <summary>
+            The type of situation that will cause the network to forward an incoming voice call.
+            </summary>
+        </member>
+        <member name="F:PsionTeklogix.WWAN.VoiceForwardingData.number">
+            <summary>
+            The phone number to forward the incoming voice call to.
+            </summary>
+        </member>
+        <member name="F:PsionTeklogix.WWAN.VoiceForwardingData.timeout">
+            <summary>
+            Time, in seconds, to wait before forwarding.  Only applies to Reasons: "NoAnswer", 
+            "All", and "AllConditional".  A value of zero will leave the timeout unchanged.
+            The value set may be rounded to the nearest allowed value (due to network
+            requirements).  Allowed values are (in seconds): 5, 10, 15, 20, 25, or 30.
+            </summary>
+        </member>
+        <member name="T:PsionTeklogix.WWAN.WwanIndicationsHandler">
+            <summary>
+            Handles the conversion of WWAN indications from the common layer to the C# layer.
+            </summary>
+        </member>
+        <member name="M:PsionTeklogix.WWAN.WwanIndicationsHandler.IndicationReceiverProc">
+            <summary>
+            Thread procedure.  Blocks until an indication event arrives, marshals the 
+            data and calls function so common layer knows that we are done with the data.
+            </summary>
+        </member>
+        <member name="M:PsionTeklogix.WWAN.WwanIndicationsHandler.ParseSmsLocation">
+            <summary>
+            Parse WWAN_SMS_LOCATION when WM_ON_NEW_SMS_MSG is received 
+            Created for unit test purpose
+            </summary>
+            <returns>location data read from the native side </returns>
+        </member>
+        <member name="M:PsionTeklogix.WWAN.WwanIndicationsHandler.Dispose">
+            <summary>
+            Dispose of the DeviceInterface.
+            </summary>
+        </member>
+        <member name="M:PsionTeklogix.WWAN.WwanIndicationsHandler.Dispose(System.Boolean)">
+            <summary>
+            Finalizer method.  Dispose of all managed and unmanaged resources.
+            </summary>
+            <remarks>
+            This function must be called explicitly by the application (via the
+            device interface's Dispose() method.  The reason for this is that 
+            CF 1.0 does not support background threads.  That means that the
+            garbage collector will not run because there is an active foreground
+            thread (workerThread).  Unfortunately the thread will not be terminated
+            until the Dispose method is called. 
+            </remarks>
+        </member>
+        <member name="M:PsionTeklogix.WWAN.WwanIndicationsHandler.WaitForIndication">
+            <summary>
+            wrapper for WaitForIndicationNative        
+            </summary>
+            <returns>indication id</returns>
+        </member>
+        <member name="M:PsionTeklogix.WWAN.WwanIndicationsHandler.StopWaitingForIndication">
+            <summary>
+            Wrapper for StopWaitingForIndicationNative
+            Created for unit test purpose
+            </summary>
+        </member>
+        <member name="M:PsionTeklogix.WWAN.WwanIndicationsHandler.SetIndicationsListener">
+            <summary>
+            Wrapper for SetIndicationsListenerNative
+            Created for unit test purpose
+            </summary>        
+        </member>
+    </members>
+</doc>

@@ -1,0 +1,454 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<HTML>
+<HEAD>
+<meta name="GENERATOR" content="Microsoft&reg; HTML Help Workshop 4.1">
+<!-- Sitemap 1.0 -->
+</HEAD><BODY><OBJECT type="text/site properties">
+</OBJECT>
+<UL>
+	<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="ContactUs">
+	<param name="Local" value="ContactUs.html">
+	</OBJECT>
+</UL>
+<UL>
+	<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="contact">
+	<param name="Local" value="ContactUs.html">
+	</OBJECT>
+</UL>
+<UL>
+	<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Blog">
+	<param name="Local" value="Blog.html">
+	</OBJECT>
+</UL>
+<UL>
+	<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Blog">
+	<param name="Local" value="Blog.html">
+	</OBJECT>
+</UL>
+<UL>
+	<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="RESTOverview">
+	<param name="Local" value="RESTOverview.html">
+	</OBJECT>
+</UL>
+<UL>
+	<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="REST">
+	<param name="Local" value="RESTOverview.html">
+	</OBJECT>
+</UL>
+<UL>
+	<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="JSON">
+	<param name="Local" value="RESTOverview.html">
+	</OBJECT>
+</UL>
+<UL>
+	<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="JSON">
+	<param name="Local" value="RESTOverview.html">
+	</OBJECT>
+</UL>
+<UL>
+	<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="XML">
+	<param name="Local" value="RESTOverview.html">
+	</OBJECT>
+</UL>
+<UL>
+	<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="FiglutWebServiceOverview">
+	<param name="Local" value="FiglutWebServiceOverview.html">
+	</OBJECT>
+</UL>
+<UL>
+	<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="CSV">
+	<param name="Local" value="FiglutWebServiceOverview.html">
+	</OBJECT>
+</UL>
+<UL>
+	<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="XML">
+	<param name="Local" value="FiglutWebServiceOverview.html">
+	</OBJECT>
+</UL>
+<UL>
+	<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="JSON">
+	<param name="Local" value="FiglutWebServiceOverview.html">
+	</OBJECT>
+</UL>
+<UL>
+	<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="CSV">
+	<param name="Local" value="FiglutWebServiceOverview.html">
+	</OBJECT>
+</UL>
+<UL>
+	<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="HTTP">
+	<param name="Local" value="FiglutWebServiceOverview.html">
+	</OBJECT>
+</UL>
+<UL>
+	<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="POST">
+	<param name="Local" value="FiglutWebServiceOverview.html">
+	</OBJECT>
+</UL>
+<UL>
+	<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="PUT">
+	<param name="Local" value="FiglutWebServiceOverview.html">
+	</OBJECT>
+</UL>
+<UL>
+	<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="DELETE">
+	<param name="Local" value="FiglutWebServiceOverview.html">
+	</OBJECT>
+</UL>
+<UL>
+	<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="URI">
+	<param name="Local" value="FiglutWebServiceOverview.html">
+	</OBJECT>
+</UL>
+<UL>
+	<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="MMC">
+	<param name="Local" value="configuration-overview.html">
+	</OBJECT>
+</UL>
+<UL>
+	<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="SettingsFile">
+	<param name="Local" value="SettingsFile.html">
+	</OBJECT>
+</UL>
+<UL>
+	<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="settings">
+	<param name="Local" value="SettingsFile.html">
+	</OBJECT>
+</UL>
+<UL>
+	<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="MMCSnap-in">
+	<param name="Local" value="FiglutServerManager.html">
+	</OBJECT>
+</UL>
+<UL>
+	<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Database">
+	<param name="Local" value="FiglutServerManager.html">
+	</OBJECT>
+</UL>
+<UL>
+	<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Service">
+	<param name="Local" value="FiglutServerManager.html">
+	</OBJECT>
+</UL>
+<UL>
+	<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Logging">
+	<param name="Local" value="FiglutServerManager.html">
+	</OBJECT>
+</UL>
+<UL>
+	<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Figlut Server Manager">
+	<param name="Local" value="FiglutServerManager.html">
+	</OBJECT>
+</UL>
+<UL>
+	<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Web Service">
+	<param name="Local" value="FiglutServerManager.html">
+	</OBJECT>
+</UL>
+<UL>
+	<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Server Manager">
+	<param name="Local" value="FiglutServerManager.html">
+	</OBJECT>
+</UL>
+<UL>
+	<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Start menu">
+	<param name="Local" value="FiglutServerManager.html">
+	</OBJECT>
+</UL>
+<UL>
+	<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Windows Start menu">
+	<param name="Local" value="FiglutServerManager.html">
+	</OBJECT>
+</UL>
+<UL>
+	<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Run Dialog Box">
+	<param name="Local" value="FiglutServerManager.html">
+	</OBJECT>
+</UL>
+<UL>
+	<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Windows Run Dialog Box">
+	<param name="Local" value="FiglutServerManager.html">
+	</OBJECT>
+</UL>
+<UL>
+	<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Database">
+	<param name="Local" value="Database.html">
+	</OBJECT>
+</UL>
+<UL>
+	<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="DBMS">
+	<param name="Local" value="Database.html">
+	</OBJECT>
+</UL>
+<UL>
+	<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Connection String">
+	<param name="Local" value="Database.html">
+	</OBJECT>
+</UL>
+<UL>
+	<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Name">
+	<param name="Local" value="Database.html">
+	</OBJECT>
+</UL>
+<UL>
+	<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="User Name">
+	<param name="Local" value="Database.html">
+	</OBJECT>
+</UL>
+<UL>
+	<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Password">
+	<param name="Local" value="Database.html">
+	</OBJECT>
+</UL>
+<UL>
+	<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Save ORM Assembly">
+	<param name="Local" value="Database.html">
+	</OBJECT>
+</UL>
+<UL>
+	<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Service">
+	<param name="Local" value="Service.html">
+	</OBJECT>
+</UL>
+<UL>
+	<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="ORM">
+	<param name="Local" value="Service.html">
+	</OBJECT>
+</UL>
+<UL>
+	<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Object Relational Mapping">
+	<param name="Local" value="Service.html">
+	</OBJECT>
+</UL>
+<UL>
+	<LI><OBJECT type="text/sitemap">
+	<param name="Name" value=".NET">
+	<param name="Local" value="Service.html">
+	</OBJECT>
+</UL>
+<UL>
+	<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Host Address Suffix">
+	<param name="Local" value="Service.html">
+	</OBJECT>
+</UL>
+<UL>
+	<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Port Number">
+	<param name="Local" value="Service.html">
+	</OBJECT>
+</UL>
+<UL>
+	<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Text Response Encoding">
+	<param name="Local" value="Service.html">
+	</OBJECT>
+</UL>
+<UL>
+	<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Include ORM Type Names in JSON Response">
+	<param name="Local" value="Service.html">
+	</OBJECT>
+</UL>
+<UL>
+	<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Logging">
+	<param name="Local" value="Logging.html">
+	</OBJECT>
+</UL>
+<UL>
+	<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="To File">
+	<param name="Local" value="Logging.html">
+	</OBJECT>
+</UL>
+<UL>
+	<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="To Windows Event Log">
+	<param name="Local" value="Logging.html">
+	</OBJECT>
+</UL>
+<UL>
+	<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="To Console">
+	<param name="Local" value="Logging.html">
+	</OBJECT>
+</UL>
+<UL>
+	<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Log File Name">
+	<param name="Local" value="Logging.html">
+	</OBJECT>
+</UL>
+<UL>
+	<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Event Source Name">
+	<param name="Local" value="Logging.html">
+	</OBJECT>
+</UL>
+<UL>
+	<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Event Log Name">
+	<param name="Local" value="Logging.html">
+	</OBJECT>
+</UL>
+<UL>
+	<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Logging Level">
+	<param name="Local" value="Logging.html">
+	</OBJECT>
+</UL>
+<UL>
+	<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="None">
+	<param name="Local" value="Logging.html">
+	</OBJECT>
+</UL>
+<UL>
+	<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Minimum">
+	<param name="Local" value="Logging.html">
+	</OBJECT>
+</UL>
+<UL>
+	<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Normal">
+	<param name="Local" value="Logging.html">
+	</OBJECT>
+</UL>
+<UL>
+	<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Maximum">
+	<param name="Local" value="Logging.html">
+	</OBJECT>
+</UL>
+<UL>
+	<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="QueryingData">
+	<param name="Local" value="QueryingData.html">
+	</OBJECT>
+</UL>
+<UL>
+	<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="InsertingData">
+	<param name="Local" value="InsertingData.html">
+	</OBJECT>
+</UL>
+<UL>
+	<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="UpdatingData">
+	<param name="Local" value="UpdatingData.html">
+	</OBJECT>
+</UL>
+<UL>
+	<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="DeletingData">
+	<param name="Local" value="DeletingData.html">
+	</OBJECT>
+</UL>
+<UL>
+	<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Overview">
+	<param name="Local" value="Overview.html">
+	</OBJECT>
+</UL>
+<UL>
+	<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="GettingStarted">
+	<param name="Local" value="GettingStarted.html">
+	</OBJECT>
+</UL>
+<UL>
+	<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="APIDocumentation">
+	<param name="Local" value="APIDocumentation.html">
+	</OBJECT>
+</UL>
+<UL>
+	<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Samples">
+	<param name="Local" value="Samples.html">
+	</OBJECT>
+</UL>
+<UL>
+	<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Overview">
+	<param name="Local" value="Overview.html">
+	</OBJECT>
+</UL>
+<UL>
+	<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="GettingStarted">
+	<param name="Local" value="GettingStarted.html">
+	</OBJECT>
+</UL>
+<UL>
+	<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="APIDocumentation">
+	<param name="Local" value="APIDocumentation.html">
+	</OBJECT>
+</UL>
+<UL>
+	<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Samples">
+	<param name="Local" value="Samples.html">
+	</OBJECT>
+</UL>
+<UL>
+	<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="FAQ">
+	<param name="Local" value="FAQ.html">
+	</OBJECT>
+</UL>
+<UL>
+	<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="HowToBuy">
+	<param name="Local" value="HowToBuy.html">
+	</OBJECT>
+</UL>
+
+	
+</BODY></HTML>

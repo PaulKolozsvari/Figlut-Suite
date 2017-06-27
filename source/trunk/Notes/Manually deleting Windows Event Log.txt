@@ -1,0 +1,4 @@
+1.	Navigate to “HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\Eventlog”
+2.	Delete the application's event log.
+3.	Go to “C:\WINDOWS\system32\config\”
+4.	Delete the application's event log.

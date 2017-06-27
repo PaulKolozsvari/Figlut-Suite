@@ -1,0 +1,43 @@
+Microsoft HTML Help Compiler 4.74.8702
+
+Compiling c:\Docs\BINARY~1\Figlut\DOCUME~1\HELPMA~1\FiglutSuiteHelp_tmphhp\FiglutSuiteHelp.chm
+
+HHC4006: Warning: The file "Overview.html" is already listed in the [FILES] section of the project file.
+HHC4006: Warning: The file "GettingStarted.html" is already listed in the [FILES] section of the project file.
+HHC4006: Warning: The file "APIDocumentation.html" is already listed in the [FILES] section of the project file.
+HHC4006: Warning: The file "Samples.html" is already listed in the [FILES] section of the project file.
+figlut-suite-overview.html
+ContactUs.html
+Blog.html
+RESTOverview.html
+FiglutWebServiceOverview.html
+configuration-overview.html
+SettingsFile.html
+FiglutServerManager.html
+Database.html
+Service.html
+Logging.html
+QueryingData.html
+InsertingData.html
+UpdatingData.html
+DeletingData.html
+Overview.html
+GettingStarted.html
+APIDocumentation.html
+Samples.html
+FAQ.html
+HowToBuy.html
+FiglutSuiteHelp.hhc
+FiglutSuiteHelp.hhk
+FiglutServerManagerb1.PNG
+hm.css
+
+Compile time: 0 minutes, 0 seconds
+23	Topics
+259	Local links
+4	Internet links
+1	Graphic
+
+
+Created c:\Docs\BINARY~1\Figlut\DOCUME~1\HELPMA~1\FiglutSuiteHelp_tmphhp\FiglutSuiteHelp.chm, 54,792 bytes
+Compression decreased file by 140,861 bytes.

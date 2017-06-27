@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>10.0.0</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{14C0318C-E7BF-462A-ABBE-DACB65B2F7BB}</ProjectGuid>
+    <ProjectTypeGuids>{EFBA0AD7-5A72-4C68-AF49-83D382785DCF};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <RootNamespace>Figlut.MonoDroid.DataBox</RootNamespace>
+    <AndroidApplication>True</AndroidApplication>
+    <AndroidResgenFile>Resources\Resource.designer.cs</AndroidResgenFile>
+    <AndroidResgenClass>Resource</AndroidResgenClass>
+    <MonoAndroidResourcePrefix>Resources</MonoAndroidResourcePrefix>
+    <MonoAndroidAssetsPrefix>Assets</MonoAndroidAssetsPrefix>
+    <AndroidUseLatestPlatformSdk>True</AndroidUseLatestPlatformSdk>
+    <AssemblyName>Figlut.Android.DataBox</AssemblyName>
+    <TargetFrameworkVersion>v4.3</TargetFrameworkVersion>
+    <AndroidManifest>Properties\AndroidManifest.xml</AndroidManifest>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug</OutputPath>
+    <DefineConstants>DEBUG;</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <AndroidLinkMode>None</AndroidLinkMode>
+    <ConsolePause>false</ConsolePause>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>full</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release</OutputPath>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <AndroidUseSharedRuntime>false</AndroidUseSharedRuntime>
+    <ConsolePause>false</ConsolePause>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Core" />
+    <Reference Include="Mono.Android" />
+    <Reference Include="System.Data" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="MainActivity.cs" />
+    <Compile Include="Resources\Resource.designer.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Utilities\MainMenuItem.cs" />
+    <Compile Include="Utilities\MainMenuItemListAdapter.cs" />
+    <Compile Include="Utilities\DataTableGridAdapter.cs" />
+    <Compile Include="DataBoxActivity.cs" />
+    <Compile Include="ORM\Product.cs" />
+    <Compile Include="Utilities\DataTableListAdapter.cs" />
+    <Compile Include="LoadDataBoxActivity.cs" />
+    <Compile Include="Utilities\LoadDataBoxListAdapter.cs" />
+    <Compile Include="ManageEntityActivity.cs" />
+    <Compile Include="Utilities\InputControlInfoHolder.cs" />
+    <Compile Include="ConfigurationManagerActivity.cs" />
+    <Compile Include="Utilities\ConfigurationManagerItemListAdapter.cs" />
+    <Compile Include="Utilities\ConfigurationManagerItem.cs" />
+    <Compile Include="EditSettingsActivity.cs" />
+    <Compile Include="Utilities\SettingsCategoryItemListAdapter.cs" />
+    <Compile Include="Utilities\SettingsCategoryItem.cs" />
+    <Compile Include="BaseActivity.cs" />
+    <Compile Include="Utilities\FileListAdapter.cs" />
+    <Compile Include="Utilities\FileItem.cs" />
+    <Compile Include="FilePickerActivity.cs" />
+    <Compile Include="LogViewerActivity.cs" />
+    <Compile Include="LoginActivity.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\AboutResources.txt" />
+    <None Include="Assets\AboutAssets.txt" />
+    <None Include="Properties\AndroidManifest.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\values\Strings.xml" />
+    <AndroidResource Include="Resources\drawable\Icon.png" />
+    <AndroidResource Include="Resources\drawable\figlut_configuration_manager.png" />
+    <AndroidResource Include="Resources\drawable\figlut_exit.png" />
+    <AndroidResource Include="Resources\drawable\figlut_mobile_databox.png" />
+    <AndroidResource Include="Resources\layout\main_activity_content_layout.axml" />
+    <AndroidResource Include="Resources\layout\base_activity_layout.axml" />
+    <AndroidResource Include="Resources\layout\manage_entity_content_layout.axml" />
+    <AndroidResource Include="Resources\layout\data_box_context_menu_layout.axml" />
+    <AndroidResource Include="Resources\layout\data_box_main_menu_layout.axml" />
+    <AndroidResource Include="Resources\layout\data_box_row_layout.axml" />
+    <AndroidResource Include="Resources\layout\main_menu_row_layout.axml" />
+    <AndroidResource Include="Resources\layout\manage_entity_main_menu_layout.axml" />
+    <AndroidResource Include="Resources\layout\config_manager_activity_content_layout.axml" />
+    <AndroidResource Include="Resources\layout\data_box_activity_content_layout.axml" />
+    <AndroidResource Include="Resources\layout\load_data_box_activity_content_layout.axml" />
+    <AndroidResource Include="Resources\drawable\figlut_database.png" />
+    <AndroidResource Include="Resources\drawable\figlut_help.png" />
+    <AndroidResource Include="Resources\drawable\figlut_logging.png" />
+    <AndroidResource Include="Resources\drawable\figlut_manager.png" />
+    <AndroidResource Include="Resources\drawable\figlut_service.png" />
+    <AndroidResource Include="Resources\drawable\figlut_web_service.png" />
+    <AndroidResource Include="Resources\drawable\figlut_web_site.png" />
+    <AndroidResource Include="Resources\layout\config_manager_row_layout.axml" />
+    <AndroidResource Include="Resources\layout\edit_settings_acitivity_content_layout.axml" />
+    <AndroidResource Include="Resources\layout\edit_settings_row_layout.axml" />
+    <AndroidResource Include="Resources\layout\file_picker_row_layout.axml" />
+    <AndroidResource Include="Resources\drawable\file.png" />
+    <AndroidResource Include="Resources\drawable\folder.png" />
+    <AndroidResource Include="Resources\layout\file_picker_content_layout.axml" />
+    <AndroidResource Include="Resources\drawable\figlut_logo.png" />
+    <AndroidResource Include="Resources\layout\config_manager_main_menu_layout.axml" />
+    <AndroidResource Include="Resources\layout\log_viewer_activity_content_layout.axml" />
+    <AndroidResource Include="Resources\layout\log_viewer_activity_main_menu_layout.axml" />
+    <AndroidResource Include="Resources\layout\login_activity_content_layout.axml" />
+    <AndroidResource Include="Resources\layout\login_activity_main_menu_layout.axml" />
+    <AndroidResource Include="Resources\drawable\figlut_data_box_icon.ico" />
+  </ItemGroup>
+  <Import Project="$(MSBuildExtensionsPath)\Novell\Novell.MonoDroid.CSharp.targets" />
+  <ItemGroup>
+    <Folder Include="Utilities\" />
+    <Folder Include="ORM\" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidAsset Include="FiglutMonoDroidDataBoxSettings.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </AndroidAsset>
+    <AndroidAsset Include="Assets\FiglutApplicationBanner.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </AndroidAsset>
+  </ItemGroup>
+  <ItemGroup>
+    <LinkDescription Include="linker.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Figlut.MonoDroid.DataBox.Configuration\Figlut.MonoDroid.DataBox.Configuration.csproj">
+      <Project>{4BDC35D5-6B50-41BB-A24B-D80545C83550}</Project>
+      <Name>Figlut.MonoDroid.DataBox.Configuration</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Figlut.MonoDroid.DataBox.Utilities\Figlut.MonoDroid.DataBox.Utilities.csproj">
+      <Project>{81E71D24-2753-47EF-BB15-EA32AF07496B}</Project>
+      <Name>Figlut.MonoDroid.DataBox.Utilities</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Figlut.MonoDroid.Toolkit\Figlut.MonoDroid.Toolkit.csproj">
+      <Project>{87CA759D-C6A3-4A5D-A1A1-8497C6A5BE92}</Project>
+      <Name>Figlut.MonoDroid.Toolkit</Name>
+    </ProjectReference>
+  </ItemGroup>
+</Project>

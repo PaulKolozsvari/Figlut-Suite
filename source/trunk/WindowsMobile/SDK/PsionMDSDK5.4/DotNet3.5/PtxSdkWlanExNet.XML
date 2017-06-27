@@ -1,0 +1,1019 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>PtxSdkWlanExNet</name>
+    </assembly>
+    <members>
+        <member name="T:PsionTeklogix.WlanEx.DsaInterface">
+            <summary>
+            This class provides access to the DSA supplicant.
+            </summary>
+        </member>
+        <member name="M:PsionTeklogix.WlanEx.DsaInterface.#ctor(System.UInt32)">
+            <summary>
+            Constructor. Create a C++ object and save the handle.
+            </summary>
+            <param name="aPtxFactoryHandle">The handle to the interface factory</param>
+        </member>
+        <member name="M:PsionTeklogix.WlanEx.DsaInterface.Finalize">
+            <summary>
+            Finalize. This destructor will run only if the Dispose method
+            does not get called.
+            </summary>
+        </member>
+        <member name="M:PsionTeklogix.WlanEx.DsaInterface.Dispose">
+            <summary>
+            Implementation for IDisposable interface
+            </summary>
+        </member>
+        <member name="M:PsionTeklogix.WlanEx.DsaInterface.Dispose(System.Boolean)">
+            <summary>
+            Dispose(bool disposing) executes in two distinct scenarios.
+            If disposing equals true, the method has been called directly
+            or indirectly by a user's code. Managed and unmanaged resources
+            can be disposed.
+            If disposing equals false, the method has been called by the
+            runtime from inside the finalizer and you should not reference
+            other objects. Only unmanaged resources can be disposed.
+            </summary>
+            <param name="disposing">true if called from user code</param>
+        </member>
+        <member name="M:PsionTeklogix.WlanEx.DsaInterface.GetAvailableNetworks(System.Int32,System.Collections.Generic.List{PsionTeklogix.WlanEx.DsaInterface.DsaNetwork}@)">
+            <summary>
+            This routine queries for a list of currently accessible networks.
+            </summary>
+            <param name="timeout">length of time to look for networks (milliseconds)</param>
+            <param name="networkList">The list of networks found in the given time frame</param>
+        </member>
+        <member name="M:PsionTeklogix.WlanEx.DsaInterface.GetActiveConfiguration">
+            <summary>
+            Used to determine which network configuration is currently active
+            </summary>
+            <returns>The ssid of the active configuration</returns>
+        </member>
+        <member name="M:PsionTeklogix.WlanEx.DsaInterface.GetAllConfigurations">
+            <summary>
+            Retrieve the list of configured networks
+            </summary>
+        </member>
+        <member name="M:PsionTeklogix.WlanEx.DsaInterface.ActivateConfiguration(System.String)">
+            <summary>
+            Set the given configuration as "active". i.e. the one used to 
+            connect to the network.
+            </summary>
+            <param name="ssid">ssid of the configuration that you want to activate</param>
+        </member>
+        <member name="M:PsionTeklogix.WlanEx.DsaInterface.RemoveConfiguration(System.String)">
+            <summary>
+            Delete a configuration.
+            </summary>
+            <param name="ssid">ssid of the configuration to be deleted</param>
+        </member>
+        <member name="M:PsionTeklogix.WlanEx.DsaInterface.SaveConfiguration(PsionTeklogix.WlanEx.DsaInterface.DsaConfiguration)">
+            <summary>
+            Save the given configuration
+            </summary>
+            <param name="cfg">A properly set up configuration object.</param>
+        </member>
+        <member name="M:PsionTeklogix.WlanEx.DsaInterface.GetConnectionStatistics">
+            <summary>
+            Get the statistics for the active connection.
+            </summary>
+            <returns>An object containing connection information</returns>
+        </member>
+        <member name="M:PsionTeklogix.WlanEx.DsaInterface.Disassociate">
+            <summary>
+            Disconnect from the currently associated access point.
+            </summary>
+        </member>
+        <member name="P:PsionTeklogix.WlanEx.DsaInterface.Power">
+            <summary>
+            Get/Set the power state of the wifi radio
+            </summary>
+            <remarks>It will take some time for the radio to start.</remarks>
+        </member>
+        <member name="T:PsionTeklogix.WlanEx.DsaInterface.DsaConstants">
+            <summary>
+            Encapsulates data used for native methods
+            </summary>
+        </member>
+        <member name="T:PsionTeklogix.WlanEx.DsaInterface.WepKey">
+            <summary>
+            This class is used to hold WEP key data
+            </summary>
+        </member>
+        <member name="T:PsionTeklogix.WlanEx.DsaInterface.DsaConfiguration">
+            <summary>
+            A network configuration as defined by DSA.
+            </summary>
+        </member>
+        <member name="F:PsionTeklogix.WlanEx.DsaInterface.DsaConfiguration.clientCert">
+            <summary> 
+            Ascii encoded hash of certificate.  Also known as fingerprint or thumbprint.
+            You can get this value via the certificate control panel, or programatically via
+            MS Cryptography api.  See CertGetCertificateContextProperty and CERT_HASH_PROP_ID
+            </summary>
+            <remarks> the hash string DOES NOT include colons 
+            e.g. bytes = encoding.GetBytes("4561136ce70c152a8ae6cb7e21a81fb1");
+            </remarks>
+        </member>
+        <member name="T:PsionTeklogix.WlanEx.DsaInterface.DsaNetwork">
+            <summary>
+            This class is used to hold the result of a network scan. Each network
+            has a number of properties stored in a hashtable as a name (key) value
+            pair.
+            </summary>
+        </member>
+        <member name="M:PsionTeklogix.WlanEx.DsaInterface.DsaNetwork.AddProperty(System.String,System.String)">
+            <summary>
+            Add a network property to the hash table. Trim off leading
+            and trailing spaces.
+            </summary>
+            <param name="name">The name of the network property</param>
+            <param name="value">The value associated with the name</param>
+        </member>
+        <member name="M:PsionTeklogix.WlanEx.DsaInterface.DsaNetwork.GetProperty(System.String)">
+            <summary>
+            Look up the value associated with a given name.
+            </summary>
+            <param name="name">A network property name</param>
+            <returns>Either the value associated with the name or null</returns>
+        </member>
+        <member name="T:PsionTeklogix.WlanEx.SummitInterface">
+            <summary>
+            This class provides access to the Summit supplicant.
+            </summary>
+        </member>
+        <member name="M:PsionTeklogix.WlanEx.SummitInterface.#ctor(System.UInt32)">
+            <summary>
+            Constructor. Create a C++ object and save the handle.
+            </summary>
+            <param name="aPtxFactoryHandle"></param>
+        </member>
+        <member name="M:PsionTeklogix.WlanEx.SummitInterface.Finalize">
+            <summary>
+            Finalize. This destructor will run only if the Dispose method
+            does not get called.
+            </summary>
+        </member>
+        <member name="M:PsionTeklogix.WlanEx.SummitInterface.Dispose">
+            <summary>
+            Implementation for IDisposable interface
+            </summary>
+        </member>
+        <member name="M:PsionTeklogix.WlanEx.SummitInterface.Dispose(System.Boolean)">
+            <summary>
+            Dispose(bool disposing) executes in two distinct scenarios.
+            If disposing equals true, the method has been called directly
+            or indirectly by a user's code. Managed and unmanaged resources
+            can be disposed.
+            If disposing equals false, the method has been called by the
+            runtime from inside the finalizer and you should not reference
+            other objects. Only unmanaged resources can be disposed.
+            </summary>
+            <param name="disposing">true if called from user code</param>
+        </member>
+        <member name="M:PsionTeklogix.WlanEx.SummitInterface.GetAvailableNetworks(System.Int32,PsionTeklogix.WlanEx.NdisInterface.PTX_NDIS_NETWORK[]@)">
+            <summary>
+            This routine queries for a list of currently accessible networks.
+            </summary>
+            <param name="timeout">length of time to look for networks (milliseconds)</param>
+            <param name="networkList">The list of networks found in the given time frame</param>
+        </member>
+        <member name="M:PsionTeklogix.WlanEx.SummitInterface.GetActiveConfiguration">
+            <summary>
+            Get the name of the active configuration
+            </summary>
+            <returns>The name of the active configuration.</returns>
+        </member>
+        <member name="M:PsionTeklogix.WlanEx.SummitInterface.GetAllConfigurations">
+            <summary>
+            Retrieve the list of configured networks
+            </summary>
+        </member>
+        <member name="M:PsionTeklogix.WlanEx.SummitInterface.ActivateConfiguration(System.String)">
+            <summary>
+            Activate a configuration.
+            </summary>
+            <param name="configurationName">Name of the configuration to activate.
+            i.e. SummitConfiguration::configName
+            </param>
+        </member>
+        <member name="M:PsionTeklogix.WlanEx.SummitInterface.RemoveConfiguration(System.String)">
+            <summary>
+            Delete a configuration.
+            </summary>
+            <param name="configurationName">Name of the configuration to be deleted</param>
+        </member>
+        <member name="M:PsionTeklogix.WlanEx.SummitInterface.SaveConfiguration(PsionTeklogix.WlanEx.SummitInterface.SummitConfiguration)">
+            <summary>
+            Save the given configuration
+            </summary>
+            <param name="cfg">A properly set up configuration object.</param>
+        </member>
+        <member name="M:PsionTeklogix.WlanEx.SummitInterface.GetConnectionStatistics">
+            <summary>
+            Get the statistics for the active connection.
+            </summary>
+            <returns>An object containing connection information</returns>
+        </member>
+        <member name="M:PsionTeklogix.WlanEx.SummitInterface.SetWEPKey(PsionTeklogix.WlanEx.SummitInterface.SummitConfiguration@,System.Int32,PsionTeklogix.WlanEx.SummitInterface.SummitWepKeyLength,System.Byte[],System.Boolean)">
+            <summary>
+            Set the wep key in the given configuration
+            </summary>
+            <param name="cfg">Configuration being set up</param>
+            <param name="nWepKeyIndex">Index of the wep key you want to set (1-4)</param>
+            <param name="keyLength">KeyLength indicator</param>
+            <param name="key">The wep key data</param>
+            <param name="txKey">set if this is the active transmit key, only one of the 4 keys can be the txKey</param>
+        </member>
+        <member name="M:PsionTeklogix.WlanEx.SummitInterface.GetWEPKey(PsionTeklogix.WlanEx.SummitInterface.SummitConfiguration,System.Int32,PsionTeklogix.WlanEx.SummitInterface.SummitWepKeyLength@,System.Byte[]@,System.Boolean@)">
+            <summary>
+            Get the wep key information from the given configuration.
+            </summary>
+            <param name="cfg">The configuration holding the data</param>
+            <param name="nWepKeyIndex">Which key are you looking for (1-4)</param>
+            <param name="keyLength">The will indicate the length of the wep key</param>
+            <param name="key">The key data</param>
+            <param name="txKey">Set to true if this is the active key</param>
+        </member>
+        <member name="M:PsionTeklogix.WlanEx.SummitInterface.SetPsk(PsionTeklogix.WlanEx.SummitInterface.SummitConfiguration@,System.String)">
+            <summary>
+            Set the pre-shared key in the given configuration
+            </summary>
+            <param name="cfg">The configuration to hold the data</param>
+            <param name="preSharedKey">The pre-shared key data</param>
+        </member>
+        <member name="M:PsionTeklogix.WlanEx.SummitInterface.GetPsk(PsionTeklogix.WlanEx.SummitInterface.SummitConfiguration)">
+            <summary>
+            Gets the pre-shared key data from the given configuration
+            </summary>
+            <param name="cfg">The configuration holding the data</param>
+            <returns>The pre-shared key</returns>
+        </member>
+        <member name="M:PsionTeklogix.WlanEx.SummitInterface.SetLeap(PsionTeklogix.WlanEx.SummitInterface.SummitConfiguration@,System.String,System.String)">
+            <summary>
+            Set the LEAP username and password in the given configuration
+            </summary>
+            <param name="cfg">The configuration to hold the data</param>
+            <param name="userName">username</param>
+            <param name="passWord">password</param>
+        </member>
+        <member name="M:PsionTeklogix.WlanEx.SummitInterface.GetLeap(PsionTeklogix.WlanEx.SummitInterface.SummitConfiguration,System.String@,System.String@)">
+            <summary>
+            Get the LEAP username and password from the given configuration
+            </summary>
+            <param name="cfg">The configuration holding the data</param>
+            <param name="userName">username</param>
+            <param name="passWord">password</param>
+        </member>
+        <member name="M:PsionTeklogix.WlanEx.SummitInterface.SetEapFast(PsionTeklogix.WlanEx.SummitInterface.SummitConfiguration@,System.String,System.String,System.String,System.String)">
+            <summary>
+            Set the EAPFAST information in the given configuration
+            </summary>
+            <param name="cfg">The configuration to hold the data</param>
+            <param name="userName">username</param>
+            <param name="passWord">password</param>
+            <param name="pacFileName">Protected Access Credential filename</param>
+            <param name="pacPassWord">Protected Access Credential password</param>
+        </member>
+        <member name="M:PsionTeklogix.WlanEx.SummitInterface.GetEapFast(PsionTeklogix.WlanEx.SummitInterface.SummitConfiguration,System.String@,System.String@,System.String@,System.String@)">
+            <summary>
+            Get the EAPFAST information from the given configuration
+            </summary>
+            <param name="cfg">The configuration holding the data</param>
+            <param name="userName">username</param>
+            <param name="passWord">password</param>
+            <param name="pacFileName">Protected Access Credential filename</param>
+            <param name="pacPassWord">Protected Access Credential password</param>
+        </member>
+        <member name="M:PsionTeklogix.WlanEx.SummitInterface.SetPeapGtc(PsionTeklogix.WlanEx.SummitInterface.SummitConfiguration@,System.String,System.String,PsionTeklogix.WlanEx.SummitInterface.SummitCertLocation,System.Byte[])">
+            <summary>
+            Set the PEAPGTC information in the given configuration
+            </summary>
+            <param name="cfg">The network configuration</param>
+            <param name="userName">Username</param>
+            <param name="passWord">Password</param>
+            <param name="certLocation">Code used to identify the certificate location</param>
+            <param name="caCert">depending on the caLocation field, caCert will contain: 
+             - if PTX_SUMMIT_CERT_NONE, caCert should be NULL - don't validate the server 
+             - if PTX_SUMMIT_CERT_FILE, caCert specifies the cert filename, up to PTX_SUMMIT_CRED_CERT_SZ chars 
+             - if PTX_SUMMIT_CERT_FULL_STORE, caCert is NULL - the full MS cert store will be searched for a valid cert 
+             - if PTX_SUMMIT_CERT_IN_STORE, caCert is a 20 byte hash representing one specific cert from the MS-store
+            </param>
+        </member>
+        <member name="M:PsionTeklogix.WlanEx.SummitInterface.GetPeapGtc(PsionTeklogix.WlanEx.SummitInterface.SummitConfiguration,System.String@,System.String@,PsionTeklogix.WlanEx.SummitInterface.SummitCertLocation@,System.Byte[])">
+            <summary>
+            Get the PEAPGTC information associated with the given configuration
+            </summary>
+            <param name="cfg">The network configuration</param>
+            <param name="userName">Username</param>
+            <param name="passWord">Password</param>
+            <param name="certLocation">Code used to identify the certificate location</param>
+            <param name="caCert">depending on the caLocation field, caCert will contain: 
+             - if PTX_SUMMIT_CERT_NONE, caCert should be NULL - don't validate the server 
+             - if PTX_SUMMIT_CERT_FILE, caCert specifies the cert filename, up to PTX_SUMMIT_CRED_CERT_SZ chars 
+             - if PTX_SUMMIT_CERT_FULL_STORE, caCert is NULL - the full MS cert store will be searched for a valid cert 
+             - if PTX_SUMMIT_CERT_IN_STORE, caCert is a 20 byte hash representing one specific cert from the MS-store
+            </param>
+        </member>
+        <member name="M:PsionTeklogix.WlanEx.SummitInterface.SetPeapMsChap(PsionTeklogix.WlanEx.SummitInterface.SummitConfiguration@,System.String,System.String,PsionTeklogix.WlanEx.SummitInterface.SummitCertLocation,System.Byte[])">
+            <summary>
+            Set the PEAP-MSCHAP information for the given configuration
+            </summary>
+            <param name="cfg">The network configuration</param>
+            <param name="userName">Username</param>
+            <param name="passWord">Password</param>
+            <param name="certLocation">Code used to identify the certificate location</param>
+            <param name="caCert">depending on the caLocation field, caCert will contain: 
+             - if PTX_SUMMIT_CERT_NONE, caCert should be NULL - don't validate the server 
+             - if PTX_SUMMIT_CERT_FILE, caCert specifies the cert filename, up to PTX_SUMMIT_CRED_CERT_SZ chars 
+             - if PTX_SUMMIT_CERT_FULL_STORE, caCert is NULL - the full MS cert store will be searched for a valid cert 
+             - if PTX_SUMMIT_CERT_IN_STORE, caCert is a 20 byte hash representing one specific cert from the MS-store
+            </param>
+        </member>
+        <member name="M:PsionTeklogix.WlanEx.SummitInterface.GetPeapMsChap(PsionTeklogix.WlanEx.SummitInterface.SummitConfiguration,System.String@,System.String@,PsionTeklogix.WlanEx.SummitInterface.SummitCertLocation@,System.Byte[])">
+            <summary>
+            Get the PEAP-MSCHAP information associated with the given configuration
+            </summary>
+            <param name="cfg">The network configuration</param>
+            <param name="userName">Username</param>
+            <param name="passWord">Password</param>
+            <param name="certLocation">Code used to identify the certificate location</param>
+            <param name="caCert">depending on the caLocation field, caCert will contain: 
+             - if PTX_SUMMIT_CERT_NONE, caCert should be NULL - don't validate the server 
+             - if PTX_SUMMIT_CERT_FILE, caCert specifies the cert filename, up to PTX_SUMMIT_CRED_CERT_SZ chars 
+             - if PTX_SUMMIT_CERT_FULL_STORE, caCert is NULL - the full MS cert store will be searched for a valid cert 
+             - if PTX_SUMMIT_CERT_IN_STORE, caCert is a 20 byte hash representing one specific cert from the MS-store
+            </param>
+        </member>
+        <member name="P:PsionTeklogix.WlanEx.SummitInterface.Power">
+            <summary>
+            Get/Set the power state of the wifi radio
+            </summary>
+            <remarks>It will take some time for the radio to start.</remarks>
+        </member>
+        <member name="T:PsionTeklogix.WlanEx.SummitInterface.SummitConstants">
+            <summary>
+            Encapsulates data used for native methods
+            Please keep members of this class in sync with constants defined in 
+            PtxSummit.hpp
+            </summary>
+        </member>
+        <member name="T:PsionTeklogix.WlanEx.SummitInterface.SummitAuthType">
+            <summary>
+            Supported basic authentication types
+            </summary>
+        </member>
+        <member name="T:PsionTeklogix.WlanEx.SummitInterface.SummitEapType">
+            <summary>
+            Supported extended authentication types
+            </summary>
+        </member>
+        <member name="T:PsionTeklogix.WlanEx.SummitInterface.SummitPowerSaveMode">
+            <summary>
+            Power saving mode options
+            </summary>
+        </member>
+        <member name="T:PsionTeklogix.WlanEx.SummitInterface.SummitWepType">
+            <summary>
+            Supported WEP types
+            </summary>
+        </member>
+        <member name="T:PsionTeklogix.WlanEx.SummitInterface.SummitBitRate">
+            <summary>
+            Supported bit rates
+            </summary>
+        </member>
+        <member name="T:PsionTeklogix.WlanEx.SummitInterface.SummitRadioMode">
+            <summary>
+            Supported radio modes
+            </summary>
+        </member>
+        <member name="F:PsionTeklogix.WlanEx.SummitInterface.SummitRadioMode.B_Only">
+            <summary>802.11b</summary>
+        </member>
+        <member name="F:PsionTeklogix.WlanEx.SummitInterface.SummitRadioMode.BG">
+            <summary>802.11b, 802.11g</summary>
+        </member>
+        <member name="F:PsionTeklogix.WlanEx.SummitInterface.SummitRadioMode.G_Only">
+            <summary>802.11g</summary>
+        </member>
+        <member name="F:PsionTeklogix.WlanEx.SummitInterface.SummitRadioMode.BGLRS">
+            <summary>802.11b and 802.11g (Limited Range Support)</summary>
+        </member>
+        <member name="F:PsionTeklogix.WlanEx.SummitInterface.SummitRadioMode.A_Only">
+            <summary>802.11a</summary>
+        </member>
+        <member name="F:PsionTeklogix.WlanEx.SummitInterface.SummitRadioMode.ABG">
+            <summary>802.11a, 802.11b, 802.11g</summary>
+        </member>
+        <member name="F:PsionTeklogix.WlanEx.SummitInterface.SummitRadioMode.BGA">
+            <summary>undocumented</summary>
+        </member>
+        <member name="F:PsionTeklogix.WlanEx.SummitInterface.SummitRadioMode.Adhoc">
+            <summary>adhoc</summary>
+        </member>
+        <member name="T:PsionTeklogix.WlanEx.SummitInterface.SummitTxPower">
+            <summary>
+            Supported power levels
+            </summary>
+        </member>
+        <member name="F:PsionTeklogix.WlanEx.SummitInterface.SummitTxPower.TxPower_MAX">
+            <summary>Max power</summary>
+        </member>
+        <member name="F:PsionTeklogix.WlanEx.SummitInterface.SummitTxPower.TxPower_1">
+            <summary></summary>
+        </member>
+        <member name="F:PsionTeklogix.WlanEx.SummitInterface.SummitTxPower.TxPower_5">
+            <summary></summary>
+        </member>
+        <member name="F:PsionTeklogix.WlanEx.SummitInterface.SummitTxPower.TxPower_10">
+            <summary></summary>
+        </member>
+        <member name="F:PsionTeklogix.WlanEx.SummitInterface.SummitTxPower.TxPower_20">
+            <summary></summary>
+        </member>
+        <member name="F:PsionTeklogix.WlanEx.SummitInterface.SummitTxPower.TxPower_30">
+            <summary></summary>
+        </member>
+        <member name="F:PsionTeklogix.WlanEx.SummitInterface.SummitTxPower.TxPower_50">
+            <summary></summary>
+        </member>
+        <member name="T:PsionTeklogix.WlanEx.SummitInterface.SummitEncryptionData">
+            <summary>
+            Used in SummitConfiguration class to hold encryption data.
+            </summary>
+        </member>
+        <member name="T:PsionTeklogix.WlanEx.SummitInterface.SummitConfiguration">
+            <summary>
+            A network configuration as defined by Summit.
+            </summary>
+        </member>
+        <member name="T:PsionTeklogix.WlanEx.WlanConstants">
+            <summary>
+            Encapsulates data used for native methods
+            Please keep members of this class in sync with constants defined in 
+            PtxWzc.hpp
+            </summary>
+        </member>
+        <member name="T:PsionTeklogix.WlanEx.WzcInterface">
+            <summary>
+            This class provides access to the WZC supplicant.
+            </summary>
+        </member>
+        <member name="M:PsionTeklogix.WlanEx.WzcInterface.#ctor(System.UInt32)">
+            <summary>
+            Constructor. Create a C++ object and save the handle.
+            </summary>
+            <param name="aPtxFactoryHandle">Handle to the interface factory</param>
+        </member>
+        <member name="M:PsionTeklogix.WlanEx.WzcInterface.Finalize">
+            <summary>
+            Finalize. This destructor will run only if the Dispose method
+            does not get called.
+            </summary>
+        </member>
+        <member name="M:PsionTeklogix.WlanEx.WzcInterface.Dispose">
+            <summary>
+            Implementation for IDisposable interface
+            </summary>
+        </member>
+        <member name="M:PsionTeklogix.WlanEx.WzcInterface.Dispose(System.Boolean)">
+            <summary>
+            Dispose(bool disposing) executes in two distinct scenarios.
+            If disposing equals true, the method has been called directly
+            or indirectly by a user's code. Managed and unmanaged resources
+            can be disposed.
+            If disposing equals false, the method has been called by the
+            runtime from inside the finalizer and you should not reference
+            other objects. Only unmanaged resources can be disposed.
+            </summary>
+            <param name="disposing">true if called from user code</param>
+        </member>
+        <member name="M:PsionTeklogix.WlanEx.WzcInterface.GetAvailableNetworks(System.Int32,PsionTeklogix.WlanEx.WzcInterface.PTX_WZC_NETWORK[]@)">
+            <summary>
+            This routine queries for a list of currently accessible networks.
+            </summary>
+            <param name="timeout">length of time to look for networks (milliseconds)</param>
+            <param name="networkList">The list of networks found in the given time frame</param>
+        </member>
+        <member name="M:PsionTeklogix.WlanEx.WzcInterface.GetConnectionStatistics">
+            <summary>
+            Retrieves information about the current network connection. 
+            </summary>
+            <remarks>You should check ConnectState before you interpret the rest of 
+            the members</remarks>
+            <returns>A connection statistics structure</returns>
+        </member>
+        <member name="M:PsionTeklogix.WlanEx.WzcInterface.GetAllConfigurations">
+            <summary>
+            Retrieve the list of configured (Preferred) networks
+            </summary>
+        </member>
+        <member name="M:PsionTeklogix.WlanEx.WzcInterface.SaveConfiguration(PsionTeklogix.WlanEx.WzcInterface.WzcConfiguration)">
+            <summary>
+            Add the given configuration to the list of preferred networks
+            </summary>
+            <param name="configuration">A WZC network configuration</param>
+        </member>
+        <member name="M:PsionTeklogix.WlanEx.WzcInterface.EncodeKeyMaterial(PsionTeklogix.WlanEx.WzcInterface.WzcConfiguration@)">
+            <summary>
+            Encode the configuration's key material.  This is required if you 
+            are building a configuration from scratch. E.g. Create the configuration,
+            Encode the key material, save the configuration.
+            </summary>
+            <param name="configuration"></param>
+        </member>
+        <member name="M:PsionTeklogix.WlanEx.WzcInterface.RemoveConfiguration(System.Byte[])">
+            <summary>
+            Remove the network configuration with the given ssid
+            </summary>
+            <param name="ssid">ssid of the configuration being removed</param>
+        </member>
+        <member name="M:PsionTeklogix.WlanEx.WzcInterface.Disassociate">
+            <summary>
+            Force the current connection to dis-associate from the access point.
+            </summary>
+            <remarks>The WZC supplicant is designed to automatically connect using the
+            first working network connection in it's preferred list.  i.e. This function
+            will only disconnect you for a few seconds until the supplicant reconnects.
+            </remarks>
+        </member>
+        <member name="M:PsionTeklogix.WlanEx.WzcInterface.CreateWzcConfigurationBuilder(System.String)">
+            <summary>
+            Create an object that can be used to set up a wzc configuration.
+            </summary>
+            <remarks> 
+            You can manually set up a wzc configurion, this is simply
+            a utility to help guide you along the way.
+            </remarks>
+            <param name="ssid">ssid of the configuration being removed</param>
+            <returns></returns>
+        </member>
+        <member name="P:PsionTeklogix.WlanEx.WzcInterface.Power">
+            <summary>
+            Get/Set the power state of the wifi radio
+            </summary>
+            <remarks>It will take some time for the radio to start.</remarks>
+        </member>
+        <member name="T:PsionTeklogix.WlanEx.WzcInterface.WzcAuthenticationMode">
+            <summary>
+            Supported authentication modes
+            </summary>
+        </member>
+        <member name="F:PsionTeklogix.WlanEx.WzcInterface.WzcAuthenticationMode.Ndis802_11AuthModeOpen">
+            <summary>Open</summary>
+        </member>
+        <member name="F:PsionTeklogix.WlanEx.WzcInterface.WzcAuthenticationMode.Ndis802_11AuthModeShared">
+            <summary>Shared</summary>
+        </member>
+        <member name="F:PsionTeklogix.WlanEx.WzcInterface.WzcAuthenticationMode.Ndis802_11AuthModeAutoSwitch">
+            <summary>switch between open and shared</summary>
+        </member>
+        <member name="F:PsionTeklogix.WlanEx.WzcInterface.WzcAuthenticationMode.Ndis802_11AuthModeWPA">
+            <summary>WPA</summary>
+        </member>
+        <member name="F:PsionTeklogix.WlanEx.WzcInterface.WzcAuthenticationMode.Ndis802_11AuthModeWPAPSK">
+            <summary>WPA-PSK</summary>
+        </member>
+        <member name="F:PsionTeklogix.WlanEx.WzcInterface.WzcAuthenticationMode.Ndis802_11AuthModeWPAPSK_ADHOC">
+            <summary>WPA-PSK in adhoc mode</summary>
+        </member>
+        <member name="F:PsionTeklogix.WlanEx.WzcInterface.WzcAuthenticationMode.Ndis802_11AuthModeWPA2">
+            <summary>WPA2</summary>
+        </member>
+        <member name="F:PsionTeklogix.WlanEx.WzcInterface.WzcAuthenticationMode.Ndis802_11AuthModeWPA2PSK">
+            <summary>WPA2-PSK</summary>
+        </member>
+        <member name="T:PsionTeklogix.WlanEx.WzcInterface.PTX_WZC_NETWORK">
+            <summary>
+            Properties associated with a network entry under WZC supplicant
+            </summary>
+        </member>
+        <member name="F:PsionTeklogix.WlanEx.WzcInterface.WzcConfiguration.Enable8021x">
+            <summary>extended authentication</summary>
+        </member>
+        <member name="F:PsionTeklogix.WlanEx.WzcInterface.WzcConfiguration.EapFlags">
+            <summary>See EapFlagsType</summary>
+        </member>
+        <member name="F:PsionTeklogix.WlanEx.WzcInterface.WzcConfiguration.EapType">
+            <summary>See EapTypes</summary>
+        </member>
+        <member name="F:PsionTeklogix.WlanEx.WzcInterface.EapFlagsType.WEPK_PRESENT">
+            <summary>specifies whether the configuration includes or not a WEP key</summary>
+        </member>
+        <member name="F:PsionTeklogix.WlanEx.WzcInterface.EapFlagsType.WEPK_XFORMAT">
+            <summary>specifies whether the WEP key is in hex</summary>
+        </member>
+        <member name="T:PsionTeklogix.WlanEx.WzcInterface.EapTypes">
+            <summary>
+            See WzcConfiguration
+            </summary>
+        </member>
+        <member name="F:PsionTeklogix.WlanEx.WzcInterface.EapTypes.MD5">
+            <summary>Not supported</summary>
+        </member>
+        <member name="F:PsionTeklogix.WlanEx.WzcInterface.EapTypes.TLS">
+            <summary>EAP type TLS</summary>
+        </member>
+        <member name="F:PsionTeklogix.WlanEx.WzcInterface.EapTypes.PEAP">
+            <summary>EAP type PEAP</summary>
+        </member>
+        <member name="F:PsionTeklogix.WlanEx.WzcInterface.EapTypes.MSCHAPv2">
+            <summary>Not supported</summary>
+        </member>
+        <member name="T:PsionTeklogix.WlanEx.WzcInterface.WzcConfigurationBuilder">
+            <summary>
+            This class can be used to generate a WZC configuration. 
+            Each step will validate your selection based on information provide in 
+            the previous steps. At the end of the process you will have a valid 
+            configuration. If any errors occur during the process, you can use the 
+            logging utility to GetLastError() for more details. 
+            </summary>
+            <remarks>
+            A valid configuration does not guarentee you can connect to the network 
+            as we do not verify the access point configuration. 
+            </remarks>
+        </member>
+        <member name="M:PsionTeklogix.WlanEx.WzcInterface.WzcConfigurationBuilder.#ctor(System.UInt32,System.String)">
+            <summary>
+            Constructor. Called from WzcInterface object
+            </summary>
+            <param name="aPtxWzcHandle">Handle to our Wzc Inteface</param>
+            <param name="ssid">ssid of the new configuration</param>
+        </member>
+        <member name="M:PsionTeklogix.WlanEx.WzcInterface.WzcConfigurationBuilder.Finalize">
+            <summary>
+            Finalize. This destructor will run only if the Dispose method
+            does not get called.
+            </summary>
+        </member>
+        <member name="M:PsionTeklogix.WlanEx.WzcInterface.WzcConfigurationBuilder.Dispose">
+            <summary>
+            Implementation for IDisposable interface
+            </summary>
+        </member>
+        <member name="M:PsionTeklogix.WlanEx.WzcInterface.WzcConfigurationBuilder.Dispose(System.Boolean)">
+            <summary>
+            Dispose(bool disposing) executes in two distinct scenarios.
+            If disposing equals true, the method has been called directly
+            or indirectly by a user's code. Managed and unmanaged resources
+            can be disposed.
+            If disposing equals false, the method has been called by the
+            runtime from inside the finalizer and you should not reference
+            other objects. Only unmanaged resources can be disposed.
+            </summary>
+            <param name="disposing">true if called from user code</param>
+        </member>
+        <member name="M:PsionTeklogix.WlanEx.WzcInterface.WzcConfigurationBuilder.AreYouCreatingAnAdHocNetwork(System.Boolean)">
+            <summary>
+            Building a configuration, Step 1: selecting network type
+            </summary>
+            <param name="yes">Set to true if this will be an adhoc network</param>
+        </member>
+        <member name="M:PsionTeklogix.WlanEx.WzcInterface.WzcConfigurationBuilder.GetAllowedAuthenticationTypes">
+            <summary>
+            Get a list of allowed authentication types given the current configuration
+            parameters
+            </summary>
+            <returns>An array of WzcAuthenticationMode items</returns>
+        </member>
+        <member name="M:PsionTeklogix.WlanEx.WzcInterface.WzcConfigurationBuilder.SelectAuthentication(PsionTeklogix.WlanEx.WzcInterface.WzcAuthenticationMode)">
+            <summary>
+            Building a configuration, Step 2: selecting authentication mode
+            </summary>
+            <param name="authMode">One of the modes return returned by GetAllowedAuthenticationTypes</param>
+        </member>
+        <member name="M:PsionTeklogix.WlanEx.WzcInterface.WzcConfigurationBuilder.GetAllowedEncryptionTypes">
+            <summary>
+            Get a list of allowed encryption types given the current configuration
+            parameters
+            </summary>
+            <returns>An array of EncryptionStatus items</returns>
+        </member>
+        <member name="M:PsionTeklogix.WlanEx.WzcInterface.WzcConfigurationBuilder.SelectEncryption(PsionTeklogix.WlanEx.NdisInterface.EncryptionStatus)">
+            <summary>
+            Building a configuration, Step 3: selecting encryption mode
+            </summary>
+            <param name="encMode">One of the modes return returned by GetAllowedEncryptionTypes</param>
+        </member>
+        <member name="M:PsionTeklogix.WlanEx.WzcInterface.WzcConfigurationBuilder.IsNetworkKeySupported">
+            <summary>
+            Used to determine if the current configuration supports a network key. 
+            If so the key in question may be automatic or manual. See UseAutomaticNetworkKey();
+            </summary>
+            <returns>true if this configuration supports a network key</returns>
+        </member>
+        <member name="M:PsionTeklogix.WlanEx.WzcInterface.WzcConfigurationBuilder.UseAutomaticNetworkKey(System.Boolean)">
+            <summary>
+            Use an automatic network key. Throws an exception if automatic key
+            is not supported
+            </summary>
+            <param name="autoKey">true if you want to use automatic key</param>
+        </member>
+        <member name="M:PsionTeklogix.WlanEx.WzcInterface.WzcConfigurationBuilder.Enter40BitWepKey(System.String)">
+            <summary>
+            Set the network key information that is used with WEP encryption.
+            This function does NOT support hex format. e.g. 0x0A...
+            </summary>
+            <param name="key">The WEP key</param>
+        </member>
+        <member name="M:PsionTeklogix.WlanEx.WzcInterface.WzcConfigurationBuilder.Enter104BitWepKey(System.String)">
+            <summary>
+            Set the network key information that is used with WEP encryption.
+            This function does NOT support hex format. e.g. 0x0A...
+            </summary>
+            <param name="key">The WEP key</param>
+        </member>
+        <member name="M:PsionTeklogix.WlanEx.WzcInterface.WzcConfigurationBuilder.EnterPsk(System.String)">
+            <summary>
+            Set the network key information used under WPA-PSK and WPA2-PSK.
+            This function does NOT support hex format. e.g. 0x0A...
+            </summary>
+            <param name="key">The key string</param>
+        </member>
+        <member name="M:PsionTeklogix.WlanEx.WzcInterface.WzcConfigurationBuilder.IsEapSelectable">
+            <summary>
+            Used to determine if the current configuration gives you the option of 
+            enabling/disabling EAP.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:PsionTeklogix.WlanEx.WzcInterface.WzcConfigurationBuilder.EnableEap(System.Boolean)">
+            <summary>
+            Used to enable/disable EAP
+            </summary>
+            <param name="enabled">Set to true to enable EAP</param>
+        </member>
+        <member name="M:PsionTeklogix.WlanEx.WzcInterface.WzcConfigurationBuilder.IsEapSettable">
+            <summary>
+            Used to determine if the current configuration gives you the option of 
+            selecting the type of EAP protocol to use. 
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:PsionTeklogix.WlanEx.WzcInterface.WzcConfigurationBuilder.SetEapType(PsionTeklogix.WlanEx.WzcInterface.EapTypes)">
+            <summary>
+            Used to set the EAP type.
+            </summary>
+        </member>
+        <member name="P:PsionTeklogix.WlanEx.WzcInterface.WzcConfigurationBuilder.configuration">
+            <summary>
+            The WZC configuration that you have built.
+            </summary>
+            <remarks>
+            You are receiving a copy of the configuration so it will NOT be
+            automatically updated as you call the configuration functions.
+            i.e. Set everything first, then use this to get the configuration.
+            </remarks>
+        </member>
+        <member name="T:PsionTeklogix.WlanEx.LoggingInterface">
+            <summary>
+            This class provides access to the error information.
+            </summary>
+        </member>
+        <member name="M:PsionTeklogix.WlanEx.LoggingInterface.#ctor(System.UInt32)">
+            <summary>
+            Constructor. Create a C++ object and save the handle.
+            </summary>
+            <param name="aPtxFactoryHandle"></param>
+        </member>
+        <member name="M:PsionTeklogix.WlanEx.LoggingInterface.Finalize">
+            <summary>
+            Finalize. This destructor will run only if the Dispose method
+            does not get called.
+            </summary>
+        </member>
+        <member name="M:PsionTeklogix.WlanEx.LoggingInterface.Dispose">
+            <summary>
+            Implementation for IDisposable interface
+            </summary>
+        </member>
+        <member name="M:PsionTeklogix.WlanEx.LoggingInterface.Dispose(System.Boolean)">
+            <summary>
+            Dispose(bool disposing) executes in two distinct scenarios.
+            If disposing equals true, the method has been called directly
+            or indirectly by a user's code. Managed and unmanaged resources
+            can be disposed.
+            If disposing equals false, the method has been called by the
+            runtime from inside the finalizer and you should not reference
+            other objects. Only unmanaged resources can be disposed.
+            </summary>
+            <param name="disposing">true if called from user code</param>
+        </member>
+        <member name="M:PsionTeklogix.WlanEx.LoggingInterface.GetLastError">
+            <summary>
+            Used for getting error details
+            </summary>
+            <returns>a human readable error report.</returns>
+        </member>
+        <member name="M:PsionTeklogix.WlanEx.LoggingInterface.HasError">
+            <summary>
+            Indicates whether or not there has been an error
+            </summary>
+            <returns>true if there has been an error</returns>
+        </member>
+        <member name="M:PsionTeklogix.WlanEx.LoggingInterface.ClearError">
+            <summary>
+            Reset the HasError flag.
+            </summary>
+        </member>
+        <member name="P:PsionTeklogix.WlanEx.LoggingInterface.LogToFile">
+            <summary>
+            If this is set all error will be written to a log file. "\wlanlog.txt"
+            </summary>
+        </member>
+        <member name="T:PsionTeklogix.WlanEx.InterfaceFactory">
+            <summary>
+            This class encapsulates creation and destruction for objects representing various 
+            WLAN supplicants supported by PTX radios.
+            </summary>
+            <example>
+            \code
+            PsionTeklogix.WlanEx.InterfaceFactory myFactory = new PsionTeklogix.WlanEx.InterfaceFactory()
+            WZCInterface = myFactory.CreateWZCInterface();
+            ...
+            \endcode
+            </example>
+        </member>
+        <member name="M:PsionTeklogix.WlanEx.InterfaceFactory.#ctor">
+            <summary>
+            Constructor.
+            </summary>
+        </member>
+        <member name="M:PsionTeklogix.WlanEx.InterfaceFactory.Finalize">
+            <summary>
+            Finalize. This destructor will run only if the Dispose method
+            does not get called.
+            </summary>
+        </member>
+        <member name="M:PsionTeklogix.WlanEx.InterfaceFactory.Dispose">
+            <summary>
+            Implementation for IDisposable interface
+            </summary>
+        </member>
+        <member name="M:PsionTeklogix.WlanEx.InterfaceFactory.Dispose(System.Boolean)">
+            <summary>
+            Dispose(bool disposing) executes in two distinct scenarios.
+            If disposing equals true, the method has been called directly
+            or indirectly by a user's code. Managed and unmanaged resources
+            can be disposed.
+            If disposing equals false, the method has been called by the
+            runtime from inside the finalizer and you should not reference
+            other objects. Only unmanaged resources can be disposed.
+            </summary>
+            <param name="disposing">true if called from user code</param>
+        </member>
+        <member name="M:PsionTeklogix.WlanEx.InterfaceFactory.GetCurrentInterfaceType">
+            <summary>
+            Used to determine which type of interface to create based on the
+            currently active supplicant.
+            </summary>
+            <returns>The currently active supplicant type.</returns>
+        </member>
+        <member name="M:PsionTeklogix.WlanEx.InterfaceFactory.GetPotentialInterfaceTypes">
+            <summary>
+            Retrieve all interfaces supported by the current WLAN radio card. 
+            </summary>
+            <see cref="M:PsionTeklogix.WlanEx.InterfaceFactory.GetCurrentInterfaceType"/>
+            <returns>An array of supported interfaces.</returns>
+        </member>
+        <member name="M:PsionTeklogix.WlanEx.InterfaceFactory.CreateWzcInterface">
+            <summary>
+            Create an instance of the WzcInterface class. This class allows you to 
+            interact with a WZC supplicant.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:PsionTeklogix.WlanEx.InterfaceFactory.CreateSummitInterface">
+            <summary>
+            Create an instance of the SummitInterface class. This class allows you to 
+            interact with a Summit supplicant.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:PsionTeklogix.WlanEx.InterfaceFactory.CreateDsaInterface">
+            <summary>
+            Create an instance of the DsaInterface class. This class allows you to 
+            interact with a DSA supplicant.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:PsionTeklogix.WlanEx.InterfaceFactory.CreateLoggingInterface">
+            <summary>
+            Create an instance of the LoggingInterface class. This class allows you to 
+            get detailed error information.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:PsionTeklogix.WlanEx.InterfaceFactory.InterfaceType">
+            <summary>
+            Possible Wifi radio supplicants.
+            </summary>
+        </member>
+        <member name="M:PsionTeklogix.Runtime.InteropServices.Marshalling.BasicTypeArrayToArrayList(System.Byte[],System.Int32)">
+            <summary>
+            Convert an unmanaged array of basic types (int, char, etc) to an array list.
+            </summary>
+            <remarks> I only needed to convert "normal" ints.  If you need to support other
+            types you will have to add them yourself.
+            This is similar to ByteToArrayList, but works for basic types such as int.
+            </remarks>
+            <param name="buffer">A byte array containing the data</param>
+            <param name="itemSize">size of each item in the byte array</param>
+            <returns>An arraylist of items</returns>
+        </member>
+        <member name="T:PsionTeklogix.WlanEx.NdisInterface">
+            <summary>
+            Contains constants and classes common to all supplicants.
+            </summary>
+        </member>
+        <member name="T:PsionTeklogix.WlanEx.NdisInterface.InfrastructureMode">
+            <summary>
+            Network type
+            </summary>
+        </member>
+        <member name="F:PsionTeklogix.WlanEx.NdisInterface.InfrastructureMode.IBSS">
+            <summary>Adhoc (no access point)</summary>
+        </member>
+        <member name="F:PsionTeklogix.WlanEx.NdisInterface.InfrastructureMode.Infrastructure">
+            <summary>802.11 network with an access point</summary>
+        </member>
+        <member name="F:PsionTeklogix.WlanEx.NdisInterface.InfrastructureMode.AutoUnknown">
+            <summary>auto</summary>
+        </member>
+        <member name="T:PsionTeklogix.WlanEx.NdisInterface.EncryptionStatus">
+            <summary>
+            Encryption types (privacy).  This setting is used in two situations
+            the first is when you query for available networks.  In this instance
+            the value shows the maximum encryption type. i.e. Encryption3Enabled
+            implies that encryption2 and encryption1 is also enabled.  The second
+            situation is when you are configuring a connection.  In this instance
+            you are specifying the encryption that you want to use.
+            </summary>
+        </member>
+        <member name="F:PsionTeklogix.WlanEx.NdisInterface.EncryptionStatus.WEPEnabled">
+            <summary>WEP (Also known as Encryption1)</summary>
+        </member>
+        <member name="F:PsionTeklogix.WlanEx.NdisInterface.EncryptionStatus.WEPDisabled">
+            <summary>WEP</summary>
+        </member>
+        <member name="F:PsionTeklogix.WlanEx.NdisInterface.EncryptionStatus.WEPKeyAbsent">
+            <summary>WEP</summary>
+        </member>
+        <member name="F:PsionTeklogix.WlanEx.NdisInterface.EncryptionStatus.WEPNotSupported">
+            <summary>WEP</summary>
+        </member>
+        <member name="F:PsionTeklogix.WlanEx.NdisInterface.EncryptionStatus.Encryption2Enabled">
+            <summary>TKIP</summary>
+        </member>
+        <member name="F:PsionTeklogix.WlanEx.NdisInterface.EncryptionStatus.Encryption2KeyAbsent">
+            <summary>TKIP</summary>
+        </member>
+        <member name="F:PsionTeklogix.WlanEx.NdisInterface.EncryptionStatus.Encryption3Enabled">
+            <summary>AES</summary>
+        </member>
+        <member name="F:PsionTeklogix.WlanEx.NdisInterface.EncryptionStatus.Encryption3KeyAbsent">
+            <summary>AES</summary>
+        </member>
+        <member name="T:PsionTeklogix.WlanEx.NdisInterface.NetworkType">
+            <summary>
+            Network physical layer
+            </summary>
+        </member>
+        <member name="F:PsionTeklogix.WlanEx.NdisInterface.NetworkType.FrequencyHopping">
+            <summary>frequency hopping spread spectrum</summary>
+        </member>
+        <member name="F:PsionTeklogix.WlanEx.NdisInterface.NetworkType.DirectSequence">
+            <summary>direct sequence spread spectrum</summary>
+        </member>
+        <member name="F:PsionTeklogix.WlanEx.NdisInterface.NetworkType.OFDM5">
+            <summary>5 Ghz OFDM</summary>
+        </member>
+        <member name="F:PsionTeklogix.WlanEx.NdisInterface.NetworkType.OFDM24">
+            <summary>2.4 Ghz OFDM</summary>
+        </member>
+        <member name="F:PsionTeklogix.WlanEx.NdisInterface.NetworkType.Automode">
+            <summary>all supported and enabled physical layers</summary>
+        </member>
+        <member name="F:PsionTeklogix.WlanEx.NdisInterface.NetworkType.NetworkTypeMax">
+            <summary>End of enum indicator</summary>
+        </member>
+        <member name="T:PsionTeklogix.WlanEx.NdisInterface.PTX_NDIS_NETWORK">
+            <summary>
+            Properties associated with a network entry as defined by NDIS
+            </summary>
+        </member>
+        <member name="T:PsionTeklogix.WlanEx.NdisInterface.MediaState">
+            <summary>
+            Indicates whether or not we have a connection to the access point.
+            </summary>
+        </member>
+        <member name="T:PsionTeklogix.WlanEx.NdisInterface.ConnectionStatistics">
+            <summary>
+            Basic connection statistics.
+            </summary>
+        </member>
+    </members>
+</doc>
