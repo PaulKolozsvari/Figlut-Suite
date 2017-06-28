@@ -1,5 +1,0 @@
-C:\Docs\Git\Figlut-Suite\source\trunk\Windows\Figlut.Web.Service\bin\Debug\Figlut.QueryRunner.dll
-C:\Docs\Git\Figlut-Suite\source\trunk\Windows\Figlut.Web.Service\bin\Debug\Figlut.QueryRunner.pdb
-C:\Docs\Git\Figlut-Suite\source\trunk\Windows\Figlut.QueryRunner\obj\Debug\Figlut.QueryRunner.dll
-C:\Docs\Git\Figlut-Suite\source\trunk\Windows\Figlut.QueryRunner\obj\Debug\Figlut.QueryRunner.pdb
-C:\Docs\Git\Figlut-Suite\source\trunk\Windows\Figlut.QueryRunner\obj\Debug\Figlut.QueryRunner.csprojResolveAssemblyReference.cache
