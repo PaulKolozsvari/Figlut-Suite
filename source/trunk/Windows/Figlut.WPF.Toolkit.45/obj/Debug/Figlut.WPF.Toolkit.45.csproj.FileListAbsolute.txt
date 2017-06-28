@@ -1,0 +1,9 @@
+C:\Docs\Git\Figlut-Suite\source\trunk\Windows\Figlut.WPF.Toolkit.45\bin\Debug\Figlut.WPF.Toolkit.45.dll
+C:\Docs\Git\Figlut-Suite\source\trunk\Windows\Figlut.WPF.Toolkit.45\bin\Debug\Figlut.WPF.Toolkit.45.pdb
+C:\Docs\Git\Figlut-Suite\source\trunk\Windows\Figlut.WPF.Toolkit.45\bin\Debug\DotRas.dll
+C:\Docs\Git\Figlut-Suite\source\trunk\Windows\Figlut.WPF.Toolkit.45\bin\Debug\Newtonsoft.Json.dll
+C:\Docs\Git\Figlut-Suite\source\trunk\Windows\Figlut.WPF.Toolkit.45\bin\Debug\WPFToolkit.Extended.dll
+C:\Docs\Git\Figlut-Suite\source\trunk\Windows\Figlut.WPF.Toolkit.45\bin\Debug\DotRas.xml
+C:\Docs\Git\Figlut-Suite\source\trunk\Windows\Figlut.WPF.Toolkit.45\bin\Debug\Newtonsoft.Json.xml
+C:\Docs\Git\Figlut-Suite\source\trunk\Windows\Figlut.WPF.Toolkit.45\obj\Debug\Figlut.WPF.Toolkit.45.dll
+C:\Docs\Git\Figlut-Suite\source\trunk\Windows\Figlut.WPF.Toolkit.45\obj\Debug\Figlut.WPF.Toolkit.45.pdb

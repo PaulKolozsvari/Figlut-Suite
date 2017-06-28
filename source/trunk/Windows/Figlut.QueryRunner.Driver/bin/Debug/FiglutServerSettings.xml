@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FiglutServerSettings xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <ShowMessageBoxOnException>false</ShowMessageBoxOnException>
+  <LogToFile>true</LogToFile>
+  <LogToWindowsEventLog>true</LogToWindowsEventLog>
+  <LogToConsole>true</LogToConsole>
+  <LogFileName>Figlut.Web.Service.Log.txt</LogFileName>
+  <EventSourceName>Figlut.Web.Service.Source</EventSourceName>
+  <EventLogName>Figlut.Web.Service.Log</EventLogName>
+  <LoggingLevel>Maximum</LoggingLevel><!--None/Minimum/Normal/Maximum-->
+  <DBMS>MsSqlServer</DBMS><!--MS SQL Server is currently the only supported DBMS.-->
+  <!--<DatabaseConnectionString>Data Source=PAULKOLOZSV4DD3\SQL2008STANDARD;Initial Catalog=DigisticsAssetTracker;Persist Security Info=True;User ID=DigisticsAssetTrackerUser;Password=password</DatabaseConnectionString>-->
+  <DatabaseConnectionString>Data Source=PAULKOLOZSV4DD3\SQL2008STANDARD;Initial Catalog=DigisticsStoreDelivery;Persist Security Info=True;User ID=DigisticsStoreDeliveryUser;Password=password</DatabaseConnectionString>
+  <DatabaseServerName></DatabaseServerName>
+  <DatabaseName></DatabaseName>
+  <DatabaseUserName></DatabaseUserName>
+  <DatabaseUserPassword></DatabaseUserPassword>
+  <SaveOrmAssembly>false</SaveOrmAssembly>
+  <QueryRunnnerAssemblyName>Figlut.Server.QueryRunner.dll</QueryRunnnerAssemblyName>
+  <SqlQueryRunnerFullTypeName>Figlut.Server.QueryRunner.SqlQueryRunner</SqlQueryRunnerFullTypeName>
+  <HostAddressSuffix>Figlut</HostAddressSuffix>
+  <PortNumber>8889</PortNumber>
+  <TextResponseEncoding>UTF8</TextResponseEncoding><!--UTF8/ASCII/BigEndianUnicode/Default/Unicode/UTF32/UTF7-->
+  <IncludeOrmTypeNamesInJsonResponse>true</IncludeOrmTypeNamesInJsonResponse>
+</FiglutServerSettings>

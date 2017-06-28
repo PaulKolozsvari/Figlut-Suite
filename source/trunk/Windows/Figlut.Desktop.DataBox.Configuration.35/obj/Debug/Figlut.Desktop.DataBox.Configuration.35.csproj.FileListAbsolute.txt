@@ -1,0 +1,11 @@
+C:\Docs\Git\Figlut-Suite\source\trunk\Windows\Figlut.Desktop.DataBox.Configuration.35\bin\Debug\Figlut.Desktop.DataBox.Configuration.35.dll
+C:\Docs\Git\Figlut-Suite\source\trunk\Windows\Figlut.Desktop.DataBox.Configuration.35\bin\Debug\Figlut.Desktop.DataBox.Configuration.35.pdb
+C:\Docs\Git\Figlut-Suite\source\trunk\Windows\Figlut.Desktop.DataBox.Configuration.35\bin\Debug\Figlut.Server.Toolkit.35.dll
+C:\Docs\Git\Figlut-Suite\source\trunk\Windows\Figlut.Desktop.DataBox.Configuration.35\bin\Debug\Newtonsoft.Json.dll
+C:\Docs\Git\Figlut-Suite\source\trunk\Windows\Figlut.Desktop.DataBox.Configuration.35\bin\Debug\Figlut.Server.Toolkit.35.pdb
+C:\Docs\Git\Figlut-Suite\source\trunk\Windows\Figlut.Desktop.DataBox.Configuration.35\bin\Debug\Figlut.Server.Toolkit.35.xml
+C:\Docs\Git\Figlut-Suite\source\trunk\Windows\Figlut.Desktop.DataBox.Configuration.35\bin\Debug\Newtonsoft.Json.pdb
+C:\Docs\Git\Figlut-Suite\source\trunk\Windows\Figlut.Desktop.DataBox.Configuration.35\bin\Debug\Newtonsoft.Json.xml
+C:\Docs\Git\Figlut-Suite\source\trunk\Windows\Figlut.Desktop.DataBox.Configuration.35\obj\Debug\Figlut.Desktop.DataBox.Configuration.35.csprojResolveAssemblyReference.cache
+C:\Docs\Git\Figlut-Suite\source\trunk\Windows\Figlut.Desktop.DataBox.Configuration.35\obj\Debug\Figlut.Desktop.DataBox.Configuration.35.dll
+C:\Docs\Git\Figlut-Suite\source\trunk\Windows\Figlut.Desktop.DataBox.Configuration.35\obj\Debug\Figlut.Desktop.DataBox.Configuration.35.pdb

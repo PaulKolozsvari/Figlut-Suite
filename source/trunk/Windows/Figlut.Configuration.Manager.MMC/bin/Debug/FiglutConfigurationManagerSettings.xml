@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FiglutConfigurationManagerSettings xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <ShowMessageBoxOnException>false</ShowMessageBoxOnException>
+  <LogToFile>false</LogToFile>
+  <LogToWindowsEventLog>true</LogToWindowsEventLog>
+  <LogToConsole>false</LogToConsole>
+  <LogFileName>Figlut.Server.Log.txt</LogFileName>
+  <EventSourceName>Figlut.Server.Source</EventSourceName>
+  <EventLogName>Figlut.Server.Log</EventLogName>
+  <LoggingLevel>Maximum</LoggingLevel><!--None/Minimum/Normal/Maximum-->
+</FiglutConfigurationManagerSettings>
