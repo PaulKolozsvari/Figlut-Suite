@@ -153,14 +153,44 @@
             return result;
         }
 
-        public void Save(string ormAssemblyOutputDirectory)
+        /// <summary>
+        /// Gets the default assembly file path which is the assembly file name in the current executing directory.
+        /// </summary>
+        /// <returns></returns>
+        private string GetAssemblyFilePathToExecutingDirectory()
+        {
+            return Path.Combine(Information.GetExecutingDirectory(), _assemblyFileName);
+        }
+
+        private void DeleteAssemblyFromCurrentDirectory()
         {
             if (File.Exists(_assemblyFileName))
             {
                 File.Delete(_assemblyFileName);
             }
-            _assemblyBuilder.Save(_assemblyFileName); //Saves it to the current directory.
-            if (string.IsNullOrEmpty(ormAssemblyOutputDirectory))
+        }
+
+        private void SaveOrmAssemblyToExecutingDirectory()
+        {
+            DeleteAssemblyFromCurrentDirectory();
+            _assemblyBuilder.Save(_assemblyFileName);
+            string defaultAssemblyFilePath = GetAssemblyFilePathToExecutingDirectory();
+            if (File.Exists(defaultAssemblyFilePath))
+            {
+                File.Delete(defaultAssemblyFilePath);
+            }
+            File.Copy(_assemblyFileName, defaultAssemblyFilePath);
+            DeleteAssemblyFromCurrentDirectory();
+        }
+
+        /// <summary>
+        /// Saves the assembly in the default assembly file path and then copies it to the specified output directory if the output directory is different from the executing directory.
+        /// Throws an exception of the specified output directory does not exist.
+        /// </summary>
+        public void Save(string ormAssemblyOutputDirectory)
+        {
+            SaveOrmAssemblyToExecutingDirectory();
+            if (string.IsNullOrEmpty(ormAssemblyOutputDirectory) || (ormAssemblyOutputDirectory.ToLower().Trim() == Information.GetExecutingDirectory().ToLower().Trim()))
             {
                 return;
             }
@@ -170,17 +200,18 @@
                     string.Format("Could not find ORM output directory {0}.", ormAssemblyOutputDirectory),
                     LoggingLevel.Minimum);
             }
-            _assemblyFilePath = Path.Combine(ormAssemblyOutputDirectory, _assemblyFileName);
-            if (!ormAssemblyOutputDirectory.Equals(Environment.CurrentDirectory))
+            string newOutputAssemblyFilePath = Path.Combine(ormAssemblyOutputDirectory, _assemblyFileName);
+            if (File.Exists(newOutputAssemblyFilePath))
             {
-                if (File.Exists(_assemblyFilePath))
-                {
-                    File.Delete(_assemblyFilePath);
-                }
-                File.Copy(_assemblyFileName, _assemblyFilePath); //Copy from the current directory to the output directory specified by the user in settings file.
+                File.Delete(newOutputAssemblyFilePath);
             }
+            File.Copy(_assemblyFilePath, newOutputAssemblyFilePath); //Copy from the executing directory to the output directory specified by the user in settings file.
+            _assemblyFilePath = newOutputAssemblyFilePath;
         }
 
+        /// <summary>
+        /// Gets the assembly file name.
+        /// </summary>
         public override string ToString()
         {
             return _assemblyName;

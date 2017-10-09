@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FiglutServiceInstallerSettings xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <ShowMessageBoxOnException>false</ShowMessageBoxOnException>
+  <InstallUtilFilePath>C:\Windows\Microsoft.NET\Framework64\v4.0.30319\InstallUtil.exe</InstallUtilFilePath>
+  <LogToFile>false</LogToFile>
+  <LogToWindowsEventLog>true</LogToWindowsEventLog>
+  <LogToConsole>true</LogToConsole>
+  <LogFileName>Figlut.ReModem.Log.txt</LogFileName>
+  <EventSourceName>Figlut.ReModem.Source</EventSourceName>
+  <EventLogName>Figlut.ReModem.Log</EventLogName>
+  <LoggingLevel>Maximum</LoggingLevel>
+</FiglutServiceInstallerSettings>
