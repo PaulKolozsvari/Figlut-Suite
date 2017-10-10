@@ -1,4 +1,0 @@
-﻿Post Build Command:
-
-call "$(DevEnvDir)\..\..\VC\bin\vcvars32.bat"
-call "$(DevEnvDir)\..\..\VC\bin\editbin.exe" /NXCOMPAT:NO "$(TargetPath)"

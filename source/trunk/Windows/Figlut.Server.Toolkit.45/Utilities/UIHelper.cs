@@ -959,6 +959,16 @@
             return true;
         }
 
+        public static void PopulateDataGridViewRowFromEntity(object entity, DataGridViewRow row, bool shapePropertyNames, Type entityType)
+        {
+            foreach (PropertyInfo p in entityType.GetProperties())
+            {
+                object propertyValue = EntityReader.GetPropertyValue(p.Name, entity, true);
+                string propertyName = shapePropertyNames ? DataShaper.ShapeCamelCaseString(p.Name) : p.Name;
+                row.Cells[propertyName].Value = propertyValue;
+            }
+        }
+
         #endregion //Methods
     }
 }
