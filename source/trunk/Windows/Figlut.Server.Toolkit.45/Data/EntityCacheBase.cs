@@ -261,6 +261,72 @@
             return result;
         }
 
+        public virtual List<object> GetEntitiesByWildCardSearch(object wildCardSearchValue, bool exactMatch)
+        {
+            List<object> result = new List<object>();
+            if (wildCardSearchValue == null || 
+                (wildCardSearchValue.GetType() == typeof(string) && string.IsNullOrEmpty(wildCardSearchValue.ToString()))) //Return all the items.
+            {
+                _entities.ForEach(p => result.Add(p));
+                return result;
+            }
+            string wildCardSearchValueLower = wildCardSearchValue.ToString().ToLower();
+            List<PropertyInfo> propertyList = _entityType.GetProperties().ToList();
+            if (exactMatch)
+            {
+                foreach (object e in _entities)
+                {
+                    bool include = false;
+                    foreach (PropertyInfo p in propertyList)
+                    {
+                        object entityProvidedValue = p.GetValue(e, null);
+                        if (entityProvidedValue.Equals(wildCardSearchValue))
+                        {
+                            include = true;
+                            break;
+                        }
+                    }
+                    if (include)
+                    {
+                        result.Add(e);
+                    }
+                }
+            }
+            else
+            {
+                foreach (object e in _entities)
+                {
+                    bool include = false;
+                    foreach (PropertyInfo p in propertyList)
+                    {
+                        object entityProvidedValue = p.GetValue(e, null);
+                        if (p.PropertyType == typeof(string)) //String (contains) comparison only on strings.
+                        {
+                            string entityValueStr = entityProvidedValue == null ? string.Empty : entityProvidedValue.ToString().ToLower();
+                            if (entityValueStr.Contains(wildCardSearchValueLower))
+                            {
+                                include = true;
+                                break;
+                            }
+                        }
+                        else //Object comparison on anything else
+                        {
+                            if (entityProvidedValue.Equals(wildCardSearchValue))
+                            {
+                                include = true;
+                                break;
+                            }
+                        }
+                    }
+                    if (include)
+                    {
+                        result.Add(e);
+                    }
+                }
+            }
+            return result;
+        }
+
         public virtual bool PropertyValueExists(string propertyName, object propertyValue)
         {
             PropertyInfo p = _entityType.GetProperty(propertyName);
@@ -286,6 +352,18 @@
         {
             DataTable result = EntityReader.GetDataTable(shapeColumnNames, _entityType);
             List<object> entities = GetEntitiesByProperties(properties, exactMatch);
+            foreach (object e in entities)
+            {
+                DataRow row = EntityReader.PopulateDataRow(e, result.NewRow(), shapeColumnNames, _entityType);
+                result.Rows.Add(row);
+            }
+            return result;
+        }
+
+        public virtual DataTable GetDataTable(object wildCardSearchValue, bool exactMatch, bool shapeColumnNames)
+        {
+            DataTable result = EntityReader.GetDataTable(shapeColumnNames, _entityType);
+            List<object> entities = GetEntitiesByWildCardSearch(wildCardSearchValue, exactMatch);
             foreach (object e in entities)
             {
                 DataRow row = EntityReader.PopulateDataRow(e, result.NewRow(), shapeColumnNames, _entityType);
