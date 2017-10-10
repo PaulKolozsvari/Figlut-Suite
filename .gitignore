@@ -1048,3 +1048,150 @@ source/trunk/WindowsMobile/EmitCF/obj/Debug/EmitCF.csproj.FileListAbsolute.txt
 source/trunk/WindowsMobile/EmitCF/bin/Debug/Mono.CecilCF.dll
 source/trunk/WindowsMobile/EmitCF/bin/Debug/EmitCF.dll
 source/trunk/Windows/Figlut.Web.Service.Configuration.45/obj/Debug/DesignTimeResolveAssemblyReferencesInput.cache
+source/trunk/Windows/Figlut.ServiceInstaller/obj/Debug/TemporaryGeneratedFile_036C0B5B-1481-4323-8D20-8F5ADCB23D92.cs
+source/trunk/Windows/Figlut.ServiceInstaller/obj/Debug/Figlut.ServiceInstaller.exe
+source/trunk/Windows/Figlut.ServiceInstaller/obj/Debug/Figlut.ServiceInstaller.csprojResolveAssemblyReference.cache
+source/trunk/Windows/Figlut.ServiceInstaller/obj/Debug/Figlut.ServiceInstaller.csproj.FileListAbsolute.txt
+source/trunk/Windows/Figlut.ServiceInstaller/obj/Debug/DesignTimeResolveAssemblyReferencesInput.cache
+source/trunk/Windows/Figlut.ServiceInstaller/bin/Debug/antlr.runtime.xml
+source/trunk/Windows/Figlut.ServiceInstaller/bin/Debug/antlr.runtime.dll
+source/trunk/Windows/Figlut.ServiceInstaller/bin/Debug/Renci.SshNet.dll
+source/trunk/Windows/Figlut.ServiceInstaller/bin/Debug/NodaTime.dll
+source/trunk/Windows/Figlut.ServiceInstaller/bin/Debug/Newtonsoft.Json.xml
+source/trunk/Windows/Figlut.ServiceInstaller/bin/Debug/Newtonsoft.Json.dll
+source/trunk/Windows/Figlut.ServiceInstaller/bin/Debug/Ical.Net.xml
+source/trunk/Windows/Figlut.ServiceInstaller/bin/Debug/Ical.Net.dll
+source/trunk/Windows/Figlut.ServiceInstaller/bin/Debug/Ical.Net.Collections.dll
+source/trunk/Windows/Figlut.ServiceInstaller/bin/Debug/FiglutServiceInstallerSettings.xml
+source/trunk/Windows/Figlut.ServiceInstaller/bin/Debug/Figlut.ServiceInstaller.exe.config
+source/trunk/Windows/Figlut.ServiceInstaller/bin/Debug/Figlut.Server.Toolkit45.dll
+source/trunk/Windows/Figlut.ServiceInstaller/bin/Debug/DotRas.xml
+source/trunk/Windows/Figlut.ServiceInstaller/bin/Debug/DotRas.dll
+source/trunk/Windows/Figlut.ServiceInstaller.Configuration/obj/Debug/TemporaryGeneratedFile_E7A71F73-0F8D-4B9B-B56E-8E70B10BC5D3.cs
+source/trunk/Windows/Figlut.ServiceInstaller.Configuration/obj/Debug/TemporaryGeneratedFile_5937a670-0e60-4077-877b-f7221da3dda1.cs
+source/trunk/Windows/Figlut.ServiceInstaller.Configuration/obj/Debug/TemporaryGeneratedFile_036C0B5B-1481-4323-8D20-8F5ADCB23D92.cs
+source/trunk/Windows/Figlut.ServiceInstaller.Configuration/obj/Debug/Figlut.ServiceInstaller.Configuration.dll
+source/trunk/Windows/Figlut.ServiceInstaller.Configuration/obj/Debug/Figlut.ServiceInstaller.Configuration.csprojResolveAssemblyReference.cache
+source/trunk/Windows/Figlut.ServiceInstaller.Configuration/obj/Debug/Figlut.ServiceInstaller.Configuration.csproj.FileListAbsolute.txt
+source/trunk/Windows/Figlut.ServiceInstaller.Configuration/obj/Debug/DesignTimeResolveAssemblyReferencesInput.cache
+source/trunk/Windows/Figlut.ServiceInstaller.Configuration/bin/Debug/antlr.runtime.xml
+source/trunk/Windows/Figlut.ServiceInstaller.Configuration/bin/Debug/antlr.runtime.dll
+source/trunk/Windows/Figlut.ServiceInstaller.Configuration/bin/Debug/Renci.SshNet.dll
+source/trunk/Windows/Figlut.ServiceInstaller.Configuration/bin/Debug/NodaTime.dll
+source/trunk/Windows/Figlut.ServiceInstaller.Configuration/bin/Debug/Newtonsoft.Json.xml
+source/trunk/Windows/Figlut.ServiceInstaller.Configuration/bin/Debug/Newtonsoft.Json.dll
+source/trunk/Windows/Figlut.ServiceInstaller.Configuration/bin/Debug/Ical.Net.xml
+source/trunk/Windows/Figlut.ServiceInstaller.Configuration/bin/Debug/Ical.Net.dll
+source/trunk/Windows/Figlut.ServiceInstaller.Configuration/bin/Debug/Ical.Net.Collections.dll
+source/trunk/Windows/Figlut.ServiceInstaller.Configuration/bin/Debug/Figlut.ServiceInstaller.Configuration.dll
+source/trunk/Windows/Figlut.ServiceInstaller.Configuration/bin/Debug/Figlut.Server.Toolkit45.xml
+source/trunk/Windows/Figlut.ServiceInstaller.Configuration/bin/Debug/Figlut.Server.Toolkit45.dll
+source/trunk/Windows/Figlut.ServiceInstaller.Configuration/bin/Debug/DotRas.xml
+source/trunk/Windows/Figlut.ServiceInstaller.Configuration/bin/Debug/DotRas.dll
+source/trunk/Windows/Figlut.Server.Toolkit.35/obj/Debug/DesignTimeResolveAssemblyReferencesInput.cache
+source/trunk/Windows/Figlut.SMS.TestDriver/obj/Debug/DesignTimeResolveAssemblyReferencesInput.cache
+source/trunk/Windows/Figlut.ReModem/obj/Debug/DesignTimeResolveAssemblyReferencesInput.cache
+source/trunk/Windows/Figlut.ReModem.Installer/Figlut.ReModem.Installer/Express/SingleImage/Reports/10-10-2017 06-11-01 PM.htm
+source/trunk/Windows/Figlut.ReModem.Installer/Figlut.ReModem.Installer/Express/SingleImage/LogFiles/10-10-2017 06-10-49 PM.txt
+source/trunk/Windows/Figlut.ReModem.Installer/Figlut.ReModem.Installer/Express/SingleImage/DiskImages/DISK1/setup.exe
+source/trunk/Windows/Figlut.ReModem.Installer/Figlut.ReModem.Installer/Express/Interm/_IsIcoRes.Exe
+source/trunk/Windows/Figlut.ReModem.Installer/Figlut.ReModem.Installer/Express/DVD-5/Reports/10-10-2017 06-09-15 PM.htm
+source/trunk/Windows/Figlut.ReModem.Installer/Figlut.ReModem.Installer/Express/DVD-5/LogFiles/10-10-2017 06-09-04 PM.txt
+source/trunk/Windows/Figlut.ReModem.Installer/Figlut.ReModem.Installer/Express/DVD-5/DiskImages/DISK1/setup.exe
+source/trunk/Windows/Figlut.ReModem.Installer/Figlut.ReModem.Installer/Express/DVD-5/DiskImages/DISK1/program files/Binary Chef/Figlut ReModem/antlr.runtime.DLL
+source/trunk/Windows/Figlut.ReModem.Installer/Figlut.ReModem.Installer/Express/DVD-5/DiskImages/DISK1/program files/Binary Chef/Figlut ReModem/System.IO.Compression.dll
+source/trunk/Windows/Figlut.ReModem.Installer/Figlut.ReModem.Installer/Express/DVD-5/DiskImages/DISK1/program files/Binary Chef/Figlut ReModem/System.IO.Compression.FileSystem.dll
+source/trunk/Windows/Figlut.ReModem.Installer/Figlut.ReModem.Installer/Express/DVD-5/DiskImages/DISK1/program files/Binary Chef/Figlut ReModem/System.Dynamic.dll
+source/trunk/Windows/Figlut.ReModem.Installer/Figlut.ReModem.Installer/Express/DVD-5/DiskImages/DISK1/program files/Binary Chef/Figlut ReModem/Renci.SshNet.DLL
+source/trunk/Windows/Figlut.ReModem.Installer/Figlut.ReModem.Installer/Express/DVD-5/DiskImages/DISK1/program files/Binary Chef/Figlut ReModem/NodaTime.DLL
+source/trunk/Windows/Figlut.ReModem.Installer/Figlut.ReModem.Installer/Express/DVD-5/DiskImages/DISK1/program files/Binary Chef/Figlut ReModem/Newtonsoft.Json.DLL
+source/trunk/Windows/Figlut.ReModem.Installer/Figlut.ReModem.Installer/Express/DVD-5/DiskImages/DISK1/program files/Binary Chef/Figlut ReModem/Microsoft.CSharp.dll
+source/trunk/Windows/Figlut.ReModem.Installer/Figlut.ReModem.Installer/Express/DVD-5/DiskImages/DISK1/program files/Binary Chef/Figlut ReModem/Ical.Net.DLL
+source/trunk/Windows/Figlut.ReModem.Installer/Figlut.ReModem.Installer/Express/DVD-5/DiskImages/DISK1/program files/Binary Chef/Figlut ReModem/Ical.Net.Collections.DLL
+source/trunk/Windows/Figlut.ReModem.Installer/Figlut.ReModem.Installer/Express/DVD-5/DiskImages/DISK1/program files/Binary Chef/Figlut ReModem/FiglutReModemSettings.xml
+source/trunk/Windows/Figlut.ReModem.Installer/Figlut.ReModem.Installer/Express/DVD-5/DiskImages/DISK1/program files/Binary Chef/Figlut ReModem/FiglutReModemIcon.ico
+source/trunk/Windows/Figlut.ReModem.Installer/Figlut.ReModem.Installer/Express/DVD-5/DiskImages/DISK1/program files/Binary Chef/Figlut ReModem/Figlut.Server.Toolkit45.DLL
+source/trunk/Windows/Figlut.ReModem.Installer/Figlut.ReModem.Installer/Express/DVD-5/DiskImages/DISK1/program files/Binary Chef/Figlut ReModem/Figlut.ReModem.exe.config
+source/trunk/Windows/Figlut.ReModem.Installer/Figlut.ReModem.Installer/Express/DVD-5/DiskImages/DISK1/program files/Binary Chef/Figlut ReModem/Figlut.ReModem.exe
+source/trunk/Windows/Figlut.ReModem.Installer/Figlut.ReModem.Installer/Express/DVD-5/DiskImages/DISK1/program files/Binary Chef/Figlut ReModem/Figlut.ReModem.Configuration.dll
+source/trunk/Windows/Figlut.ReModem.Installer/Figlut.ReModem.Installer/Express/DVD-5/DiskImages/DISK1/program files/Binary Chef/Figlut ReModem/DotRas.DLL
+source/trunk/Windows/Figlut.ReModem.Installer/Figlut.ReModem.Installer/Express/DVD-5/DiskImages/DISK1/Setup.ini
+source/trunk/Windows/Figlut.ReModem.Installer/Figlut.ReModem.Installer/Express/DVD-5/DiskImages/DISK1/Figlut ReModem.msi
+source/trunk/Windows/Figlut.ReModem.Installer/Figlut.ReModem.Installer/Express/DVD-5/DiskImages/DISK1/0x0409.ini
+source/trunk/Windows/Figlut.ReModem.Configuration/obj/Debug/DesignTimeResolveAssemblyReferencesInput.cache
+source/trunk/Windows/Figlut.QueryRunner/obj/Debug/DesignTimeResolveAssemblyReferencesInput.cache
+source/trunk/Windows/Figlut.QueryRunner.Driver/obj/Debug/DesignTimeResolveAssemblyReferencesInput.cache
+source/trunk/Windows/Figlut.ORM/obj/Debug/DesignTimeResolveAssemblyReferencesInput.cache
+source/trunk/Windows/Figlut.ORM.Installer/Figlut.ORM.Installer/Express/SingleImage/Reports/10-10-2017 06-11-12 PM.htm
+source/trunk/Windows/Figlut.ORM.Installer/Figlut.ORM.Installer/Express/SingleImage/LogFiles/10-10-2017 06-11-02 PM.txt
+source/trunk/Windows/Figlut.ORM.Installer/Figlut.ORM.Installer/Express/Interm/_IsIcoRes.Exe
+source/trunk/Windows/Figlut.ORM.Installer/Figlut.ORM.Installer/Express/DVD-5/Reports/10-10-2017 06-09-26 PM.htm
+source/trunk/Windows/Figlut.ORM.Installer/Figlut.ORM.Installer/Express/DVD-5/LogFiles/10-10-2017 06-09-16 PM.txt
+source/trunk/Windows/Figlut.ORM.Installer/Figlut.ORM.Installer/Express/DVD-5/DiskImages/DISK1/setup.exe
+source/trunk/Windows/Figlut.ORM.Installer/Figlut.ORM.Installer/Express/DVD-5/DiskImages/DISK1/program files/Binary Chef/Figlut ORM/antlr.runtime.DLL
+source/trunk/Windows/Figlut.ORM.Installer/Figlut.ORM.Installer/Express/DVD-5/DiskImages/DISK1/program files/Binary Chef/Figlut ORM/System.IO.Compression.dll
+source/trunk/Windows/Figlut.ORM.Installer/Figlut.ORM.Installer/Express/DVD-5/DiskImages/DISK1/program files/Binary Chef/Figlut ORM/System.IO.Compression.FileSystem.dll
+source/trunk/Windows/Figlut.ORM.Installer/Figlut.ORM.Installer/Express/DVD-5/DiskImages/DISK1/program files/Binary Chef/Figlut ORM/System.Dynamic.dll
+source/trunk/Windows/Figlut.ORM.Installer/Figlut.ORM.Installer/Express/DVD-5/DiskImages/DISK1/program files/Binary Chef/Figlut ORM/Renci.SshNet.DLL
+source/trunk/Windows/Figlut.ORM.Installer/Figlut.ORM.Installer/Express/DVD-5/DiskImages/DISK1/program files/Binary Chef/Figlut ORM/READ ME.txt
+source/trunk/Windows/Figlut.ORM.Installer/Figlut.ORM.Installer/Express/DVD-5/DiskImages/DISK1/program files/Binary Chef/Figlut ORM/NodaTime.DLL
+source/trunk/Windows/Figlut.ORM.Installer/Figlut.ORM.Installer/Express/DVD-5/DiskImages/DISK1/program files/Binary Chef/Figlut ORM/Newtonsoft.Json.DLL
+source/trunk/Windows/Figlut.ORM.Installer/Figlut.ORM.Installer/Express/DVD-5/DiskImages/DISK1/program files/Binary Chef/Figlut ORM/Microsoft.CSharp.dll
+source/trunk/Windows/Figlut.ORM.Installer/Figlut.ORM.Installer/Express/DVD-5/DiskImages/DISK1/program files/Binary Chef/Figlut ORM/Ical.Net.DLL
+source/trunk/Windows/Figlut.ORM.Installer/Figlut.ORM.Installer/Express/DVD-5/DiskImages/DISK1/program files/Binary Chef/Figlut ORM/Ical.Net.Collections.DLL
+source/trunk/Windows/Figlut.ORM.Installer/Figlut.ORM.Installer/Express/DVD-5/DiskImages/DISK1/program files/Binary Chef/Figlut ORM/Figlut.Server.Toolkit45.DLL
+source/trunk/Windows/Figlut.ORM.Installer/Figlut.ORM.Installer/Express/DVD-5/DiskImages/DISK1/program files/Binary Chef/Figlut ORM/Figlut.ORM.exe.config
+source/trunk/Windows/Figlut.ORM.Installer/Figlut.ORM.Installer/Express/DVD-5/DiskImages/DISK1/program files/Binary Chef/Figlut ORM/Figlut.ORM.exe
+source/trunk/Windows/Figlut.ORM.Installer/Figlut.ORM.Installer/Express/DVD-5/DiskImages/DISK1/program files/Binary Chef/Figlut ORM/DotRas.DLL
+source/trunk/Windows/Figlut.ORM.Installer/Figlut.ORM.Installer/Express/DVD-5/DiskImages/DISK1/Setup.ini
+source/trunk/Windows/Figlut.ORM.Installer/Figlut.ORM.Installer/Express/DVD-5/DiskImages/DISK1/Figlut ORM.msi
+source/trunk/Windows/Figlut.ORM.Installer/Figlut.ORM.Installer/Express/DVD-5/DiskImages/DISK1/0x0409.ini
+source/trunk/Windows/Figlut.Mobile.Web.DataBox/obj/Debug/DesignTimeResolveAssemblyReferencesInput.cache
+source/trunk/Windows/Figlut.Desktop.DataBox/obj/Debug/DesignTimeResolveAssemblyReferencesInput.cache
+source/trunk/Windows/Figlut.Desktop.DataBox.Utilities/obj/Debug/DesignTimeResolveAssemblyReferencesInput.cache
+source/trunk/Windows/Figlut.Desktop.DataBox.Controls/obj/Debug/DesignTimeResolveAssemblyReferencesInput.cache
+source/trunk/Windows/Figlut.Desktop.DataBox.Configuration.45/obj/Debug/DesignTimeResolveAssemblyReferencesInput.cache
+source/trunk/Windows/Figlut.Desktop.DataBox.Configuration.35/obj/Debug/DesignTimeResolveAssemblyReferencesInput.cache
+source/trunk/Windows/Figlut.Desktop.DataBox.AuxilaryUI/obj/Debug/DesignTimeResolveAssemblyReferencesInput.cache
+source/trunk/Windows/Figlut.Desktop.BaseUI/obj/Debug/DesignTimeResolveAssemblyReferencesInput.cache
+source/trunk/Windows/Figlut.Desktop.Barcode/obj/Debug/DesignTimeResolveAssemblyReferencesInput.cache
+source/trunk/Windows/Figlut.Desktop.Barcode.Installer/Figlut.Desktop.Barcode.Installer/Express/Interm/_IsIcoRes.Exe
+source/trunk/Windows/Figlut.Desktop.Barcode.Installer/Figlut.Desktop.Barcode.Installer/Express/DVD-5/Reports/10-10-2017 06-09-43 PM.htm
+source/trunk/Windows/Figlut.Desktop.Barcode.Installer/Figlut.Desktop.Barcode.Installer/Express/DVD-5/LogFiles/10-10-2017 06-09-27 PM.txt
+source/trunk/Windows/Figlut.Desktop.Barcode.Installer/Figlut.Desktop.Barcode.Installer/Express/DVD-5/DiskImages/DISK1/setup.exe
+source/trunk/Windows/Figlut.Desktop.Barcode.Installer/Figlut.Desktop.Barcode.Installer/Express/DVD-5/DiskImages/DISK1/program files/Binary Chef/Figlut Desktop Barcode/zxing.dll
+source/trunk/Windows/Figlut.Desktop.Barcode.Installer/Figlut.Desktop.Barcode.Installer/Express/DVD-5/DiskImages/DISK1/program files/Binary Chef/Figlut Desktop Barcode/antlr.runtime.dll
+source/trunk/Windows/Figlut.Desktop.Barcode.Installer/Figlut.Desktop.Barcode.Installer/Express/DVD-5/DiskImages/DISK1/program files/Binary Chef/Figlut Desktop Barcode/System.Numerics.dll
+source/trunk/Windows/Figlut.Desktop.Barcode.Installer/Figlut.Desktop.Barcode.Installer/Express/DVD-5/DiskImages/DISK1/program files/Binary Chef/Figlut Desktop Barcode/System.IO.Compression.dll
+source/trunk/Windows/Figlut.Desktop.Barcode.Installer/Figlut.Desktop.Barcode.Installer/Express/DVD-5/DiskImages/DISK1/program files/Binary Chef/Figlut Desktop Barcode/System.IO.Compression.FileSystem.dll
+source/trunk/Windows/Figlut.Desktop.Barcode.Installer/Figlut.Desktop.Barcode.Installer/Express/DVD-5/DiskImages/DISK1/program files/Binary Chef/Figlut Desktop Barcode/System.Dynamic.dll
+source/trunk/Windows/Figlut.Desktop.Barcode.Installer/Figlut.Desktop.Barcode.Installer/Express/DVD-5/DiskImages/DISK1/program files/Binary Chef/Figlut Desktop Barcode/Renci.SshNet.dll
+source/trunk/Windows/Figlut.Desktop.Barcode.Installer/Figlut.Desktop.Barcode.Installer/Express/DVD-5/DiskImages/DISK1/program files/Binary Chef/Figlut Desktop Barcode/NodaTime.dll
+source/trunk/Windows/Figlut.Desktop.Barcode.Installer/Figlut.Desktop.Barcode.Installer/Express/DVD-5/DiskImages/DISK1/program files/Binary Chef/Figlut Desktop Barcode/Newtonsoft.Json.dll
+source/trunk/Windows/Figlut.Desktop.Barcode.Installer/Figlut.Desktop.Barcode.Installer/Express/DVD-5/DiskImages/DISK1/program files/Binary Chef/Figlut Desktop Barcode/Microsoft.CSharp.dll
+source/trunk/Windows/Figlut.Desktop.Barcode.Installer/Figlut.Desktop.Barcode.Installer/Express/DVD-5/DiskImages/DISK1/program files/Binary Chef/Figlut Desktop Barcode/Ical.Net.dll
+source/trunk/Windows/Figlut.Desktop.Barcode.Installer/Figlut.Desktop.Barcode.Installer/Express/DVD-5/DiskImages/DISK1/program files/Binary Chef/Figlut Desktop Barcode/Ical.Net.Collections.dll
+source/trunk/Windows/Figlut.Desktop.Barcode.Installer/Figlut.Desktop.Barcode.Installer/Express/DVD-5/DiskImages/DISK1/program files/Binary Chef/Figlut Desktop Barcode/FiglutDesktopBarcodeSettings.xml
+source/trunk/Windows/Figlut.Desktop.Barcode.Installer/Figlut.Desktop.Barcode.Installer/Express/DVD-5/DiskImages/DISK1/program files/Binary Chef/Figlut Desktop Barcode/FiglutBarcodeIcon.ico
+source/trunk/Windows/Figlut.Desktop.Barcode.Installer/Figlut.Desktop.Barcode.Installer/Express/DVD-5/DiskImages/DISK1/program files/Binary Chef/Figlut Desktop Barcode/Figlut.Server.Toolkit45.dll
+source/trunk/Windows/Figlut.Desktop.Barcode.Installer/Figlut.Desktop.Barcode.Installer/Express/DVD-5/DiskImages/DISK1/program files/Binary Chef/Figlut Desktop Barcode/Figlut.Desktop.DataBox.Configuration.45.dll
+source/trunk/Windows/Figlut.Desktop.Barcode.Installer/Figlut.Desktop.Barcode.Installer/Express/DVD-5/DiskImages/DISK1/program files/Binary Chef/Figlut Desktop Barcode/Figlut.Desktop.BaseUI.dll
+source/trunk/Windows/Figlut.Desktop.Barcode.Installer/Figlut.Desktop.Barcode.Installer/Express/DVD-5/DiskImages/DISK1/program files/Binary Chef/Figlut Desktop Barcode/Figlut.Desktop.Barcode.exe.config
+source/trunk/Windows/Figlut.Desktop.Barcode.Installer/Figlut.Desktop.Barcode.Installer/Express/DVD-5/DiskImages/DISK1/program files/Binary Chef/Figlut Desktop Barcode/Figlut.Desktop.Barcode.exe
+source/trunk/Windows/Figlut.Desktop.Barcode.Installer/Figlut.Desktop.Barcode.Installer/Express/DVD-5/DiskImages/DISK1/program files/Binary Chef/Figlut Desktop Barcode/Figlut.Desktop.Barcode.Configuration.dll
+source/trunk/Windows/Figlut.Desktop.Barcode.Installer/Figlut.Desktop.Barcode.Installer/Express/DVD-5/DiskImages/DISK1/program files/Binary Chef/Figlut Desktop Barcode/DotRas.dll
+source/trunk/Windows/Figlut.Desktop.Barcode.Installer/Figlut.Desktop.Barcode.Installer/Express/DVD-5/DiskImages/DISK1/Setup.ini
+source/trunk/Windows/Figlut.Desktop.Barcode.Installer/Figlut.Desktop.Barcode.Installer/Express/DVD-5/DiskImages/DISK1/Figlut Desktop Barcode.msi
+source/trunk/Windows/Figlut.Desktop.Barcode.Installer/Figlut.Desktop.Barcode.Installer/Express/DVD-5/DiskImages/DISK1/0x0409.ini
+source/trunk/Windows/Figlut.Desktop.Barcode.Configuration/obj/Debug/DesignTimeResolveAssemblyReferencesInput.cache
+source/trunk/Windows/Figlut.Configuration.Manager/obj/Debug/DesignTimeResolveAssemblyReferencesInput.cache
+source/trunk/Windows/Figlut.Web.Site/obj/Debug/DesignTimeResolveAssemblyReferencesInput.cache
+source/trunk/Windows/Figlut.Web.Service/obj/Debug/DesignTimeResolveAssemblyReferencesInput.cache
+source/trunk/Windows/Figlut.Web.Service.Configuration.35/obj/Debug/DesignTimeResolveAssemblyReferencesInput.cache
+source/trunk/Windows/Figlut.WPF.Toolkit.45/obj/Debug/DesignTimeResolveAssemblyReferencesInput.cache
+source/trunk/Windows/Figlut.Suite.Installer/obj/Debug/DesignTimeResolveAssemblyReferencesInput.cache
+source/trunk/Windows/Figlut.ServiceInstaller/obj/Debug/TemporaryGeneratedFile_E7A71F73-0F8D-4B9B-B56E-8E70B10BC5D3.cs
+source/trunk/Windows/Figlut.ServiceInstaller/obj/Debug/TemporaryGeneratedFile_5937a670-0e60-4077-877b-f7221da3dda1.cs
+source/trunk/Windows/Figlut.ServiceInstaller/bin/Debug/Figlut.ServiceInstaller.exe
+source/trunk/Windows/Figlut.ServiceInstaller/bin/Debug/Figlut.ServiceInstaller.Configuration.dll
+source/trunk/Windows/Figlut.ServiceInstaller/bin/Debug/Figlut.Server.Toolkit45.xml
