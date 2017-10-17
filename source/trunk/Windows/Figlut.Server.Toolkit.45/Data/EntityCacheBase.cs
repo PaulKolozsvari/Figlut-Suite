@@ -111,6 +111,19 @@
             _entities = result;
         }
 
+        public virtual void OverrideFromDataTable(DataTable table)
+        {
+            List<object> result = new List<object>();
+            foreach (DataRow row in table.Rows)
+            {
+                object e = EntityReader.PopulateFromDataRow(Activator.CreateInstance(_entityType), row);
+                result.Add(e);
+            }
+            Clear();
+            _entities = null;
+            _entities = result;
+        }
+
         public virtual void Add(object e)
         {
             ValidateEntityType(e);

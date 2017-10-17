@@ -170,21 +170,31 @@
             }
         }
 
+        /// <summary>
+        /// We can only save the assembly in the current directory when we call save i.e. we're not allowed to set a path.
+        /// However, the current directory may not always be equal to current directory. 
+        /// If that's the case we need to save it to the current directory, then copy it to the executing directory and thereafter delete it from the current directory.
+        /// </summary>
         private void SaveOrmAssemblyToExecutingDirectory()
         {
-            DeleteAssemblyFromCurrentDirectory();
-            _assemblyBuilder.Save(_assemblyFileName);
-            string defaultAssemblyFilePath = GetAssemblyFilePathToExecutingDirectory();
-            if (File.Exists(defaultAssemblyFilePath))
+            DeleteAssemblyFromCurrentDirectory(); //Delete the old assembly from the current directory.
+            _assemblyBuilder.Save(_assemblyFileName); //Saves it to the current directory.
+            if (Environment.CurrentDirectory == Information.GetExecutingDirectory())
             {
-                File.Delete(defaultAssemblyFilePath);
+                return; //If the current and executing directories are the same, then we can leave the assembly where it is.
             }
-            File.Copy(_assemblyFileName, defaultAssemblyFilePath);
-            DeleteAssemblyFromCurrentDirectory();
+            string executingDirectoryAssemblyFilePath = GetAssemblyFilePathToExecutingDirectory(); //Path to the executing directory where we need to actually save it to.
+            if (File.Exists(executingDirectoryAssemblyFilePath))
+            {
+                File.Delete(executingDirectoryAssemblyFilePath); //Delete the old assembly from the executing directory.
+            }
+            File.Copy(_assemblyFileName, executingDirectoryAssemblyFilePath); //Copy from the current directory to the executing directory.
+            DeleteAssemblyFromCurrentDirectory(); //Delete the assembly from the current directory.
+            _assemblyFilePath = executingDirectoryAssemblyFilePath;
         }
 
         /// <summary>
-        /// Saves the assembly in the default assembly file path and then copies it to the specified output directory if the output directory is different from the executing directory.
+        /// Saves the assembly in the executing directory and then copies it to the specified output directory if the output directory is different from the executing directory.
         /// Throws an exception of the specified output directory does not exist.
         /// </summary>
         public void Save(string ormAssemblyOutputDirectory)
@@ -192,7 +202,7 @@
             SaveOrmAssemblyToExecutingDirectory();
             if (string.IsNullOrEmpty(ormAssemblyOutputDirectory) || (ormAssemblyOutputDirectory.ToLower().Trim() == Information.GetExecutingDirectory().ToLower().Trim()))
             {
-                return;
+                return; //Output directory not specified or the specified output directory is in fact the executing directory.
             }
             if (!Directory.Exists(ormAssemblyOutputDirectory))
             {
@@ -203,7 +213,7 @@
             string newOutputAssemblyFilePath = Path.Combine(ormAssemblyOutputDirectory, _assemblyFileName);
             if (File.Exists(newOutputAssemblyFilePath))
             {
-                File.Delete(newOutputAssemblyFilePath);
+                File.Delete(newOutputAssemblyFilePath); //Delete the old assembly from the output directory.
             }
             File.Copy(_assemblyFilePath, newOutputAssemblyFilePath); //Copy from the executing directory to the output directory specified by the user in settings file.
             _assemblyFilePath = newOutputAssemblyFilePath;

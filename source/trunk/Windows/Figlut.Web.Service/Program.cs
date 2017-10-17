@@ -116,8 +116,7 @@
                 if (_testMode)
                 {
                     FiglutWebService.Start();
-                    Console.WriteLine("Press any key to stop service.")
-                        ;
+                    Console.WriteLine("Press any key to stop service.");
                     Console.Read();
                     FiglutWebService.Stop();
                     return;
