@@ -205,6 +205,30 @@
             return region.IsVisible(vertex.ToPoint());
         }
 
+        /// <summary>
+        /// Calculates the percentage of a value out of a total value e.g. 8 (value) out of 10 (totalValue) = 80.
+        /// </summary>
+        /// <param name="value">The value in question.</param>
+        /// <param name="totalValue">The total value to calculate the percentage out of.</param>
+        /// <param name="decimals">The number of decimal places to include in the percentage result.</param>
+        /// <returns></returns>
+        public static double GetPercentage(int value, int totalValue, int decimals)
+        {
+            return Math.Round((Convert.ToDouble(value) / totalValue) * 100, decimals);
+        }
+
+        /// <summary>
+        /// Calculates the percentage of a value out of a total value e.g. 8 (value) out of 10 (totalValue) = 80.
+        /// </summary>
+        /// <param name="value">The value in question.</param>
+        /// <param name="totalValue">The total value to calculate the percentage out of.</param>
+        /// <param name="decimals">The number of decimal places to include in the percentage result.</param>
+        /// <returns></returns>
+        public static double GetPercentage(long value, long totalValue, int decimals)
+        {
+            return Math.Round((Convert.ToDouble(value) / totalValue) * 100, decimals);
+        }
+
         #endregion //Methods
     }
 }
