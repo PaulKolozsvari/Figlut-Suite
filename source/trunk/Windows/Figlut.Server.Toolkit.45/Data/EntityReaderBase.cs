@@ -210,7 +210,15 @@
                     continue;
                 }
                 object value = null;
-                if (p.PropertyType == typeof(Guid))
+                if ((row[c.ColumnName] == null) || (row[c.ColumnName].ToString() == string.Empty))
+                {
+                    //do nothing, leave value as null.
+                }
+                else if (p.PropertyType == typeof(Guid))
+                {
+                    value = new Guid(row[c.ColumnName].ToString());
+                }
+                else if (p.PropertyType == typeof(Nullable<Guid>))
                 {
                     value = new Guid(row[c.ColumnName].ToString());
                 }
@@ -218,7 +226,15 @@
                 {
                     value = Convert.ToBoolean(row[c.ColumnName]);
                 }
+                else if (p.PropertyType == typeof(Nullable<Boolean>))
+                {
+                    value = Convert.ToBoolean(row[c.ColumnName]);
+                }
                 else if (p.PropertyType == typeof(Byte))
+                {
+                    value = Convert.ToByte(row[c.ColumnName]);
+                }
+                else if (p.PropertyType == typeof(Nullable<Byte>))
                 {
                     value = Convert.ToByte(row[c.ColumnName]);
                 }
@@ -230,7 +246,15 @@
                 {
                     value = Convert.ToChar(row[c.ColumnName]);
                 }
+                else if (p.PropertyType == typeof(Nullable<Char>))
+                {
+                    value = Convert.ToChar(row[c.ColumnName]);
+                }
                 else if (p.PropertyType == typeof(Int16))
+                {
+                    value = Convert.ToInt16(row[c.ColumnName]);
+                }
+                else if (p.PropertyType == typeof(Nullable<Int16>))
                 {
                     value = Convert.ToInt16(row[c.ColumnName]);
                 }
@@ -238,7 +262,15 @@
                 {
                     value = Convert.ToInt32(row[c.ColumnName]);
                 }
+                else if (p.PropertyType == typeof(Nullable<Int32>))
+                {
+                    value = Convert.ToInt32(row[c.ColumnName]);
+                }
                 else if (p.PropertyType == typeof(Int64))
+                {
+                    value = Convert.ToInt64(row[c.ColumnName]);
+                }
+                else if (p.PropertyType == typeof(Nullable<Int64>))
                 {
                     value = Convert.ToInt64(row[c.ColumnName]);
                 }
@@ -246,7 +278,15 @@
                 {
                     value = Convert.ToUInt16(row[c.ColumnName]);
                 }
+                else if (p.PropertyType == typeof(Nullable<UInt16>))
+                {
+                    value = Convert.ToUInt16(row[c.ColumnName]);
+                }
                 else if (p.PropertyType == typeof(UInt32))
+                {
+                    value = Convert.ToUInt32(row[c.ColumnName]);
+                }
+                else if (p.PropertyType == typeof(Nullable<UInt32>))
                 {
                     value = Convert.ToUInt32(row[c.ColumnName]);
                 }
@@ -254,7 +294,15 @@
                 {
                     value = Convert.ToUInt64(row[c.ColumnName]);
                 }
+                else if (p.PropertyType == typeof(Nullable<UInt64>))
+                {
+                    value = Convert.ToUInt64(row[c.ColumnName]);
+                }
                 else if (p.PropertyType == typeof(Single))
+                {
+                    value = Convert.ToSingle(row[c.ColumnName]);
+                }
+                else if (p.PropertyType == typeof(Nullable<Single>))
                 {
                     value = Convert.ToSingle(row[c.ColumnName]);
                 }
@@ -262,11 +310,23 @@
                 {
                     value = Convert.ToDouble(row[c.ColumnName]);
                 }
+                else if (p.PropertyType == typeof(Nullable<Double>))
+                {
+                    value = Convert.ToDouble(row[c.ColumnName]);
+                }
                 else if (p.PropertyType == typeof(Decimal))
                 {
                     value = Convert.ToDecimal(row[c.ColumnName]);
                 }
+                else if (p.PropertyType == typeof(Nullable<Decimal>))
+                {
+                    value = Convert.ToDecimal(row[c.ColumnName]);
+                }
                 else if (p.PropertyType == typeof(DateTime))
+                {
+                    value = Convert.ToDateTime(row[c.ColumnName]);
+                }
+                else if (p.PropertyType == typeof(Nullable<DateTime>))
                 {
                     value = Convert.ToDateTime(row[c.ColumnName]);
                 }
@@ -323,6 +383,11 @@
 
         public static void CopyProperties(object sourceObject, object destinationObject, bool swallowExceptionsOnMismatch)
         {
+            CopyProperties(sourceObject, destinationObject, swallowExceptionsOnMismatch, false);
+        }
+
+        public static void CopyProperties(object sourceObject, object destinationObject, bool swallowExceptionsOnMismatch, bool ignoreClassProperties)
+        {
             Type typeSource = sourceObject.GetType();
             Type typeDestination = destinationObject.GetType();
             Dictionary<string, PropertyInfo> propertiesDestination = new Dictionary<string, PropertyInfo>();
@@ -334,6 +399,10 @@
                     if (!propertiesDestination.ContainsKey(pSource.Name) && swallowExceptionsOnMismatch)
                     {
                         continue; //To prevent exceptions as they are expensive.
+                    }
+                    if ((pSource.PropertyType.IsClass && !pSource.PropertyType.Equals(typeof(string))) && ignoreClassProperties)
+                    {
+                        continue;
                     }
                     PropertyInfo pDestination = propertiesDestination[pSource.Name];
                     object valueSource = pSource.GetValue(sourceObject);
