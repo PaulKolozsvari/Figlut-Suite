@@ -155,6 +155,7 @@
     <Compile Include="Data\QueryRunners\SqlQueryRunnerDispatcher.cs" />
     <Compile Include="Data\QueryRunners\SqlQueryRunnerInput.cs" />
     <Compile Include="Data\QueryRunners\SqlQueryRunnerOutput.cs" />
+    <Compile Include="Data\Sorter.cs" />
     <Compile Include="Utilities\ConsoleApplication.cs" />
     <Compile Include="Utilities\EagerTimer.cs">
       <SubType>Component</SubType>
