@@ -40,7 +40,7 @@
     <WarningLevel>4</WarningLevel>
     <Prefer32Bit>false</Prefer32Bit>
     <DocumentationFile>bin\Release\Figlut.Server.Toolkit45.xml</DocumentationFile>
-    <PlatformTarget>x86</PlatformTarget>
+    <PlatformTarget>AnyCPU</PlatformTarget>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="antlr.runtime">
@@ -155,7 +155,6 @@
     <Compile Include="Data\QueryRunners\SqlQueryRunnerDispatcher.cs" />
     <Compile Include="Data\QueryRunners\SqlQueryRunnerInput.cs" />
     <Compile Include="Data\QueryRunners\SqlQueryRunnerOutput.cs" />
-    <Compile Include="Data\Sorter.cs" />
     <Compile Include="Utilities\ConsoleApplication.cs" />
     <Compile Include="Utilities\EagerTimer.cs">
       <SubType>Component</SubType>
