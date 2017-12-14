@@ -120,7 +120,7 @@
             }
         }
 
-        public string CalculateMD5Hash(string input)
+        public static string CalculateMD5Hash(string input)
         {
             // step 1, calculate MD5 hash from input
             MD5 md5 = System.Security.Cryptography.MD5.Create();
@@ -133,6 +133,34 @@
                 sb.Append(hash[i].ToString("X2"));
             }
             return sb.ToString();
+        }
+
+        /// <summary>
+        /// Return unique Int64 value for input string
+        /// </summary>
+        /// <param name="text"></param>
+        /// <returns></returns>
+        public static Int64 GetInt64HashCode(string text)
+        {
+            Int64 hashCode = 0;
+            if (!string.IsNullOrEmpty(text))
+            {
+                //Unicode Encode Covering all characterset
+                byte[] byteContents = Encoding.Unicode.GetBytes(text);
+                System.Security.Cryptography.SHA256 hash =
+                new System.Security.Cryptography.SHA256CryptoServiceProvider();
+                byte[] hashText = hash.ComputeHash(byteContents);
+                //32Byte hashText separate
+                //hashCodeStart = 0~7  8Byte
+                //hashCodeMedium = 8~23  8Byte
+                //hashCodeEnd = 24~31  8Byte
+                //and Fold
+                Int64 hashCodeStart = BitConverter.ToInt64(hashText, 0);
+                Int64 hashCodeMedium = BitConverter.ToInt64(hashText, 8);
+                Int64 hashCodeEnd = BitConverter.ToInt64(hashText, 24);
+                hashCode = hashCodeStart ^ hashCodeMedium ^ hashCodeEnd;
+            }
+            return (hashCode);
         }
 
         #endregion //Methods
