@@ -88,6 +88,37 @@
             }
         }
 
+        public static string GetCsvStringFromValues(List<object> values, bool quoteall, string endOfLineTerminator)
+        {
+            if (values == null)
+            {
+                return string.Empty;
+            }
+            int valuesCount = values.Count;
+            StringBuilder result = new StringBuilder();
+            for (int i = 0; i < valuesCount; i++)
+            {
+                string s = values[i].ToString();
+                if (quoteall || s.IndexOfAny("\",\x0A\x0D".ToCharArray()) > -1)
+                {
+                    result.Append("\"" + s.Replace("\"", "\"\"") + "\"");
+                }
+                else
+                {
+                    result.Append(s);
+                }
+                if (i < (valuesCount - 1))
+                {
+                    result.Append(',');
+                }
+                else
+                {
+                    result.Append(endOfLineTerminator);
+                }
+            }
+            return result.ToString();
+        }
+
         public static string WriteToStringFromEntities(
             List<object> entities,
             Type entityType,
