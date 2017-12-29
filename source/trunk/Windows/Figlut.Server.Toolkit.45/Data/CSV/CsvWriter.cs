@@ -111,7 +111,7 @@
                 {
                     result.Append(',');
                 }
-                else
+                else if(!string.IsNullOrEmpty(endOfLineTerminator))
                 {
                     result.Append(endOfLineTerminator);
                 }
