@@ -185,7 +185,7 @@
             }
             if (_logToConsole)
             {
-                Console.WriteLine(logMessage.Message);
+                Console.WriteLine(logMessage.ToString());
             }
             if (_logToFile && !string.IsNullOrEmpty(_logFileName))
             {
@@ -196,22 +196,22 @@
                 switch (logMessage.LogMessageType)
                 {
                     case LogMessageType.Exception:
-                        _eventLog.WriteEntry(logMessage.Message, EventLogEntryType.Error);
+                        _eventLog.WriteEntry(logMessage.ToString(), EventLogEntryType.Error);
                         break;
                     case LogMessageType.Error:
-                        _eventLog.WriteEntry(logMessage.Message, EventLogEntryType.Error);
+                        _eventLog.WriteEntry(logMessage.ToString(), EventLogEntryType.Error);
                         break;
                     case LogMessageType.Information:
-                        _eventLog.WriteEntry(logMessage.Message, EventLogEntryType.Information);
+                        _eventLog.WriteEntry(logMessage.ToString(), EventLogEntryType.Information);
                         break;
                     case LogMessageType.Warning:
-                        _eventLog.WriteEntry(logMessage.Message, EventLogEntryType.Warning);
+                        _eventLog.WriteEntry(logMessage.ToString(), EventLogEntryType.Warning);
                         break;
                     case LogMessageType.SuccessAudit:
-                        _eventLog.WriteEntry(logMessage.Message, EventLogEntryType.SuccessAudit);
+                        _eventLog.WriteEntry(logMessage.ToString(), EventLogEntryType.SuccessAudit);
                         break;
                     case LogMessageType.FailureAudit:
-                        _eventLog.WriteEntry(logMessage.Message, EventLogEntryType.FailureAudit);
+                        _eventLog.WriteEntry(logMessage.ToString(), EventLogEntryType.FailureAudit);
                         break;
                     default:
                         break;
