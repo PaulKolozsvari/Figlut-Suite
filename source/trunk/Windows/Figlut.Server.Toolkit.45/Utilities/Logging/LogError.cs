@@ -19,7 +19,12 @@
         }
 
         public LogError(Exception exception, LoggingLevel loggingLevel) :
-            base(GetErrorMessageFromException(exception), LogMessageType.Exception, loggingLevel)
+            base(GetErrorMessageFromException(exception, null), LogMessageType.Exception, loggingLevel)
+        {
+        }
+
+        public LogError(Exception exception, string eventDetailsMessage, LoggingLevel loggingLevel) :
+            base(GetErrorMessageFromException(exception, eventDetailsMessage), LogMessageType.Exception, loggingLevel)
         {
         }
 
@@ -29,13 +34,18 @@
         }
 
         public LogError(Exception exception, LoggingLevel loggingLevel, DateTime date) :
-            base(GetErrorMessageFromException(exception), LogMessageType.Exception, loggingLevel, date)
+            base(GetErrorMessageFromException(exception, null), LogMessageType.Exception, loggingLevel, date)
+        {
+        }
+
+        public LogError(Exception exception, string eventDetailsMessage, LoggingLevel loggingLevel, DateTime date) :
+            base(GetErrorMessageFromException(exception, eventDetailsMessage), LogMessageType.Exception, loggingLevel, date)
         {
         }
 
         #region Methods
 
-        public static string GetErrorMessageFromException(Exception exception)
+        public static string GetErrorMessageFromException(Exception exception, string eventDetailsMessage)
         {
             StringBuilder result = new StringBuilder();
             result.AppendLine(exception.Message);
@@ -44,6 +54,11 @@
                 result.AppendLine(string.Format("Inner Exception : {0}", exception.InnerException.ToString()));
             }
             result.AppendLine(exception.StackTrace);
+            if (!string.IsNullOrEmpty(eventDetailsMessage))
+            {
+                result.AppendLine(string.Format("Event Details:"));
+                result.AppendLine(eventDetailsMessage);
+            }
             return result.ToString();
         }
 

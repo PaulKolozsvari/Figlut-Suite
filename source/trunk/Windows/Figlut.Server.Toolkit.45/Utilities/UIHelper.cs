@@ -48,7 +48,12 @@
         /// <param name="ex">The exception whose message will be displayed.</param>
         public static void DisplayException(Exception ex)
         {
-            DisplayException(ex, null, null);
+            DisplayException(ex, null, null, null);
+        }
+
+        public static void DisplayException(Exception ex, string eventDetailsMessage)
+        {
+            DisplayException(ex, null, null, eventDetailsMessage);
         }
 
         /// <summary>
@@ -57,7 +62,7 @@
         /// Also temporarily disables the specified form's key up event handler.
         /// </summary>
         /// <param name="ex">The exception whose message will be displayed.</param>
-        public static void DisplayException(Exception ex, Form form, KeyEventHandler keyEventHandler)
+        public static void DisplayException(Exception ex, Form form, KeyEventHandler keyEventHandler, string eventDetailsMessage)
         {
             DisableFormKeyUpEventHandler(form, keyEventHandler);
             StringBuilder message = new StringBuilder(ex.Message);
@@ -69,6 +74,11 @@
                     innerExeptionMessage = innerExeptionMessage.Substring(0, 100);
                 }
                 message.Append(string.Format("\r\nInner Exception : {0}", innerExeptionMessage));
+            }
+            if (!string.IsNullOrEmpty(eventDetailsMessage))
+            {
+                message.AppendLine("Event Details:");
+                message.AppendLine(eventDetailsMessage);
             }
             MessageBox.Show(
                 message.ToString(),

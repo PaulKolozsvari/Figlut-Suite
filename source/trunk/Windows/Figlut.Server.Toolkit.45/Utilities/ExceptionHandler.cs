@@ -47,7 +47,12 @@
         /// <param name="display">Whether or not to display the exception mesage and its inner exception message if one exists.</param>
         public static bool HandleException(Exception exception)
         {
-            return HandleException(exception, null, null);
+            return HandleException(exception, null, null, null);
+        }
+
+        public static bool HandleException(Exception exception, string eventDetailsMessage)
+        {
+            return HandleException(exception, null, null, eventDetailsMessage);
         }
 
         /// <summary>
@@ -57,7 +62,7 @@
         /// <param name="exception">The exception to handle.</param>
         /// <param name="log">Whether or not to use the Logger to log the exception to a log file.</param>
         /// <param name="display">Whether or not to display the exception mesage and its inner exception message if one exists.</param>
-        public static bool HandleException(Exception exception, Form form, KeyEventHandler keyEventHandler)
+        public static bool HandleException(Exception exception, Form form, KeyEventHandler keyEventHandler, string eventDetailsMessage)
         {
             try
             {
@@ -68,7 +73,7 @@
                 }
                 if (GOC.Instance.ShowMessageBoxOnException)
                 {
-                    UIHelper.DisplayException(exception, form, keyEventHandler);
+                    UIHelper.DisplayException(exception, form, keyEventHandler, eventDetailsMessage);
                 }
                 if (GOC.Instance.ShowWindowsFormsNotificationOnException && GOC.Instance.NotifyIcon != null)
                 {
@@ -79,19 +84,19 @@
                 if (userThrownException != null)
                 {
                     closeApplication = userThrownException.CloseApplication;
-                    GOC.Instance.Logger.LogMessage(new LogError(exception, userThrownException.LoggingLevel));
+                    GOC.Instance.Logger.LogMessage(new LogError(exception, eventDetailsMessage, userThrownException.LoggingLevel));
                 }
                 else
                 {
-                    GOC.Instance.Logger.LogMessage(new LogError(exception, LoggingLevel.Normal));
+                    GOC.Instance.Logger.LogMessage(new LogError(exception, eventDetailsMessage, LoggingLevel.Normal));
                 }
                 return closeApplication;
             }
             catch (Exception ex)
             {
                 Exception wrappedException = new Exception(ex.Message, exception);
-                Console.WriteLine(LogError.GetErrorMessageFromException(new Exception(ex.Message, exception)));
-                GOC.Instance.Logger.LogMessageToFile(new LogError(wrappedException, LoggingLevel.Minimum));
+                Console.WriteLine(LogError.GetErrorMessageFromException(new Exception(ex.Message, exception), eventDetailsMessage));
+                GOC.Instance.Logger.LogMessageToFile(new LogError(wrappedException, eventDetailsMessage, LoggingLevel.Minimum));
                 return true;
             }
         }
