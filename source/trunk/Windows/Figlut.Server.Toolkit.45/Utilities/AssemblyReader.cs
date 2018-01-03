@@ -15,28 +15,49 @@
     {
         #region Methods
 
-        public static E CreateClassInstance<E>(Assembly assembly, string extensionFullTypeName) where E : class
+        public static E CreateClassInstance<E>(Assembly assembly, string fullTypeName) where E : class
         {
-            Type extensionType = assembly.GetType(extensionFullTypeName, false, true);
-            if (extensionType == null)
+            Type type = assembly.GetType(fullTypeName, false, true);
+            if (type == null)
             {
                 throw new NullReferenceException(
                     string.Format(
                     "Cannot find type {0} in assembly {1}.",
-                    extensionFullTypeName,
+                    fullTypeName,
                     assembly.FullName));
             }
-            object obj = Activator.CreateInstance(extensionType);
+            object obj = Activator.CreateInstance(type);
             E result = obj as E;
             if (result == null)
             {
                 throw new NullReferenceException(
                     string.Format(
                     "Type {0} in assembly {1} is not of type {2}.",
-                    extensionFullTypeName,
+                    fullTypeName,
                     assembly.FullName,
                     typeof(E).FullName));
             }
+            return result;
+        }
+
+        public static object CreateClassInstance(Assembly assembly, string fullTypeName)
+        {
+            Type type = assembly.GetType(fullTypeName, false, true);
+            if (type == null)
+            {
+                throw new NullReferenceException(
+                    string.Format(
+                    "Cannot find type {0} in assembly {1}.",
+                    fullTypeName,
+                    assembly.FullName));
+            }
+            object result = Activator.CreateInstance(type);
+            return result;
+        }
+
+        public static object CreateClassInstance(Type type)
+        {
+            object result = Activator.CreateInstance(type);
             return result;
         }
 
@@ -61,7 +82,7 @@
             Type result = assembly.GetType(fullTypeName, false, true);
             if (result == null && throwExceptionOnError)
             {
-                throw new NullReferenceException(string.Format("Could find type {0} in assembly {1}.", fullTypeName, assemblyName));
+                throw new NullReferenceException(string.Format("Could not find type {0} in assembly {1}.", fullTypeName, assemblyName));
             }
             return result;
         }
