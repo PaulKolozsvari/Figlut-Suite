@@ -458,6 +458,24 @@
             }
         }
 
+        public ServiceFunctionResult<long> GetTotalCountLong<E>(
+            Nullable<Guid> userId,
+            string userName) where E : class
+        {
+            try
+            {
+                return new ServiceFunctionResult<long>() { Contents = base.GetTotalCountLong<E>() };
+            }
+            catch (Exception ex)
+            {
+                if (_handleExceptions)
+                {
+                    HandleException(ex, userId, userName);
+                }
+                throw ex;
+            }
+        }
+
         public Guid GetUserId(string userName)
         {
             List<object> query = GetEntitiesByField(

@@ -722,11 +722,34 @@
         /// </summary>
         /// <typeparam name="E">The entity type i.e. the table from which the entities will be counted.</typeparam>
         /// <returns>Returns the total count of an entity type.</returns>
+        public virtual long GetTotalCountLong<E>() where E : class
+        {
+            _contextIsFresh = false;
+            return DB.GetTable<E>().LongCount();
+        }
+
+        /// <summary>
+        /// Returns the total count of an entity type.
+        /// </summary>
+        /// <typeparam name="E">The entity type i.e. the table from which the entities will be counted.</typeparam>
+        /// <returns>Returns the total count of an entity type.</returns>
         public virtual int GetTotalCount(Type entityType)
         {
             _contextIsFresh = false;
             return GetAllEntities(entityType, false).Count;
         }
+
+        /// <summary>
+        /// Returns the total count of an entity type.
+        /// </summary>
+        /// <typeparam name="E">The entity type i.e. the table from which the entities will be counted.</typeparam>
+        /// <returns>Returns the total count of an entity type.</returns>
+        public virtual long GetTotalCountLong(Type entityType)
+        {
+            _contextIsFresh = false;
+            return GetAllEntities(entityType, false).LongCount();
+        }
+
 
         #endregion //Methods
     }
