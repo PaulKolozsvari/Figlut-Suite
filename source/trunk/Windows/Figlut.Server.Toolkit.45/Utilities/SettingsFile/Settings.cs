@@ -126,6 +126,11 @@ using Figlut.Server.Toolkit.Mmc;
 
         public EntityCache<string, SettingItem> GetAllSettingItems()
         {
+            return GetAllSettingItems(null);
+        }
+
+        public EntityCache<string, SettingItem> GetAllSettingItems(string name)
+        {
             Type settingsType = this.GetType();
             List<SettingItem> settingItems = new List<SettingItem>();
             foreach (PropertyInfo p in settingsType.GetProperties())
@@ -151,7 +156,7 @@ using Figlut.Server.Toolkit.Mmc;
                     settingItems.Add(settingItem);
                 }
             }
-            string entityCacheName = DataShaper.ShapeCamelCaseString(this.GetType().Name);
+            string entityCacheName = string.IsNullOrEmpty(name) ? DataShaper.ShapeCamelCaseString(this.GetType().Name) : name;
             EntityCache<string, SettingItem> result = new EntityCache<string, SettingItem>(entityCacheName);
             settingItems.ToList().ForEach(p => result.Add(p.SettingName, p));
             return result;
