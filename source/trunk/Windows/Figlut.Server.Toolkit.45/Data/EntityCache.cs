@@ -127,6 +127,10 @@ using Figlut.Server.Toolkit.Web.Client.REST;
                 }
                 return null;
             }
+            set
+            {
+                _entities[id] = value;
+            }
         }
 
         #endregion //Indexers Region
