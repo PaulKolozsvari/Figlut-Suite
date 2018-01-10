@@ -51,7 +51,7 @@ using Figlut.Server.Toolkit.Mmc.Forms;
             }
             else
             {
-                _listViewItem.SubItems.Add(_settingValue.ToString());
+                _listViewItem.SubItems.Add(_settingValue != null ? _settingValue.ToString() : null);
             }
             _listViewItem.SubItems.Add(_settingDescription);
             _listViewItem.Tag = this;
