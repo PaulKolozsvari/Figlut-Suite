@@ -20,6 +20,7 @@
     using Figlut.Server.Toolkit.Web;
     using Figlut.Server.Toolkit.Web.Client;
     using Figlut.Server.Toolkit.Web.Service.REST.Events;
+    using System.ServiceModel.Channels;
 
     #endregion //Using Directives
 
@@ -511,6 +512,18 @@
                 GOC.Instance.UserLinqToSqlType,
                 GOC.Instance.ServerActionLinqToSqlType,
                 GOC.Instance.ServerErrorLinqToSqlType);
+        }
+
+        protected string GetCurrentRequestClientIpAddress()
+        {
+            MessageProperties props = OperationContext.Current.IncomingMessageProperties;
+            RemoteEndpointMessageProperty endpointProperty = props[RemoteEndpointMessageProperty.Name] as RemoteEndpointMessageProperty;
+            string result = null;
+            if (endpointProperty != null)
+            {
+                result = endpointProperty.Address;
+            }
+            return result;
         }
 
         #endregion //Utility Methods
