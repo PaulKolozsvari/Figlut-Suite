@@ -459,6 +459,21 @@
             return StreamHelper.GetStreamFromString(GOC.Instance.JsonSerializer.SerializeToText(obj), GOC.Instance.Encoding);
         }
 
+        protected virtual Stream GetStreamFromObject(object obj, Type[] extraTypes)
+        {
+            return StreamHelper.GetStreamFromString(GOC.Instance.JsonSerializer.SerializeToText(obj, extraTypes), GOC.Instance.Encoding);
+        }
+
+        protected virtual Stream GetStreamFromObject(object obj, ISerializer serializer)
+        {
+            return StreamHelper.GetStreamFromString(serializer.SerializeToText(obj), GOC.Instance.Encoding);
+        }
+
+        protected virtual Stream GetStreamFromObject(object obj, ISerializer serializer, Type[] extraTypes)
+        {
+            return StreamHelper.GetStreamFromString(serializer.SerializeToText(obj, extraTypes), GOC.Instance.Encoding);
+        }
+
         protected virtual E GetObjectFromStream<E>(Stream stream) where E : class
         {
             return (E)GetObjectFromStream(typeof(E), stream);
