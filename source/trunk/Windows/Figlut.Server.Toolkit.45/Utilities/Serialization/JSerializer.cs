@@ -68,10 +68,16 @@
         public string SerializeToText(object obj, Type[] extraTypes)
         {
             TypeNameHandling typeNameHandling = _includeOrmTypeNamesInJsonResponse ? TypeNameHandling.All : TypeNameHandling.None;
-            return JsonConvert.SerializeObject(
+            string result = JsonConvert.SerializeObject(
                 obj,
                 Newtonsoft.Json.Formatting.Indented,
-                new JsonSerializerSettings() { TypeNameHandling = typeNameHandling });
+                new JsonSerializerSettings()
+                {
+                    TypeNameHandling = typeNameHandling,
+                    ReferenceLoopHandling = ReferenceLoopHandling.Serialize,
+                    //PreserveReferencesHandling = PreserveReferencesHandling.All
+                });
+            return result;
         }
 
         public object DeserializeFromText(Type type, string rawText)
