@@ -88,6 +88,13 @@
             }
         }
 
+        public static string GetCsvStringFromValues(List<string> values, bool quoteall, string endOfLineTerminator)
+        {
+            List<object> valuesObjects = new List<object>();
+            values.ForEach(p => valuesObjects.Add(p));
+            return GetCsvStringFromValues(valuesObjects, quoteall, endOfLineTerminator);
+        }
+
         public static string GetCsvStringFromValues(List<object> values, bool quoteall, string endOfLineTerminator)
         {
             if (values == null)
