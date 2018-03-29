@@ -13,6 +13,7 @@
     using Figlut.Server.Toolkit.Utilities.Serialization;
 using Figlut.Server.Toolkit.Mmc.Forms;
 using Figlut.Server.Toolkit.Mmc;
+    using Figlut.Server.Toolkit.Utilities.Logging;
 
     #endregion //Using Directives
 
@@ -76,8 +77,13 @@ using Figlut.Server.Toolkit.Mmc;
 
         public virtual void RefreshFromFile(bool saveIfFileDoesNotExist, bool validateAllSettingValuesSet)
         {
+            Type thisType = this.GetType();
             if (!File.Exists(_filePath))
             {
+                if (GOC.Instance.Logger != null)
+                {
+                    GOC.Instance.Logger.LogMessage(new LogMessage(string.Format("Could not find {0} at {1} ...", thisType.FullName, _filePath), LogMessageType.Warning, LoggingLevel.Normal));
+                }
                 if (saveIfFileDoesNotExist)
                 {
                     SaveToFile();
@@ -87,7 +93,10 @@ using Figlut.Server.Toolkit.Mmc;
                     throw new FileNotFoundException(string.Format("Could not find {0}.", Path.GetFileName(_filePath)));
                 }
             }
-            Type thisType = this.GetType();
+            if (GOC.Instance.Logger != null)
+            {
+                GOC.Instance.Logger.LogMessage(new LogMessage(string.Format("Loading {0} from {1} ...", thisType.FullName, _filePath), LogMessageType.Information, LoggingLevel.Normal));
+            }
             object fileSettings = GOC.Instance.GetSerializer(SerializerType.XML).DeserializeFromFile(this.GetType(), _filePath);
             bool requireSave = false;
             foreach (PropertyInfo p in thisType.GetProperties())
@@ -121,6 +130,10 @@ using Figlut.Server.Toolkit.Mmc;
 
         public void SaveToFile()
         {
+            if (GOC.Instance.Logger != null)
+            {
+                GOC.Instance.Logger.LogMessage(new LogMessage(string.Format("Saving {0} to {1} ...", this.GetType().FullName, _filePath), LogMessageType.Information, LoggingLevel.Normal));
+            }
             GOC.Instance.GetSerializer(SerializerType.XML).SerializeToFile(this, _filePath);
         }
 

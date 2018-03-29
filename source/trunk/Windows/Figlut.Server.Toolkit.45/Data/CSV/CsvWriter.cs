@@ -105,6 +105,10 @@
             StringBuilder result = new StringBuilder();
             for (int i = 0; i < valuesCount; i++)
             {
+                if (values[i] == null)
+                {
+                    values[i] = string.Empty;
+                }
                 string s = values[i].ToString();
                 if (quoteall || s.IndexOfAny("\",\x0A\x0D".ToCharArray()) > -1)
                 {
