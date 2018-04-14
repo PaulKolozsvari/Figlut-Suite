@@ -156,6 +156,18 @@
             return result;
         }
 
+        public static string GetCurrencyValueString(double currencyValue, bool includeWindowsRegionalCurrencySymbol)
+        {
+            if (includeWindowsRegionalCurrencySymbol)
+            {
+                return string.Format("{0:C}", currencyValue);
+            }
+            else
+            {
+                return string.Format("{0:N2}", currencyValue);
+            }
+        }
+
         //public static string GetCurrencyValueString(double currencyValue, string currencySymbol)
         //{
         //    string numericValue = 
