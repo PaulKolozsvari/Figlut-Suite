@@ -21,7 +21,7 @@
 
         public Logger()
         {
-            Initialize(true, false, false, LoggingLevel.Normal, DEFAULT_LOG_FILE_NAME, null);
+            Initialize(false, false, false, LoggingLevel.Normal, DEFAULT_LOG_FILE_NAME, null);
         }
 
         public Logger(

@@ -44,6 +44,7 @@ source/trunk/Windows/Figlut.Web.Site/bin/DotNetOpenAuth.Core.xml
 source/trunk/Windows/Figlut.Web.Site/bin/DotNetOpenAuth.Core.dll
 source/trunk/Windows/Figlut.Web.Site/bin/DotNetOpenAuth.AspNet.xml
 source/trunk/Windows/Figlut.Web.Site/bin/DotNetOpenAuth.AspNet.dll
+source/trunk/WindowsMobile/Figlut.Mobile.Toolkit.WM/obj/
 source/trunk/Windows/Figlut.Web.Site/bin/Antlr3.Runtime.dll
 source/trunk/Windows/Figlut.Web.Service/obj/Debug/TemporaryGeneratedFile_E7A71F73-0F8D-4B9B-B56E-8E70B10BC5D3.cs
 source/trunk/Windows/Figlut.Web.Service/obj/Debug/TemporaryGeneratedFile_5937a670-0e60-4077-877b-f7221da3dda1.cs
