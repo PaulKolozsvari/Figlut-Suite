@@ -122,6 +122,7 @@
     <Compile Include="Data\EntityCacheUnique.cs" />
     <Compile Include="Data\EntityReaderBase.cs" />
     <Compile Include="Data\FiglutEntityCacheUnique.cs" />
+    <Compile Include="Data\iCalendar\ICalCalendarDownloader.cs" />
     <Compile Include="Data\iCalendar\ICalPublicHoliday.cs" />
     <Compile Include="Data\iCalendar\ICalCalendar.cs" />
     <Compile Include="Data\iCalendar\ICalPublicHolidayParser.cs" />
