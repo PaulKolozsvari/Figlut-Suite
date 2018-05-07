@@ -104,6 +104,7 @@
         /// The country code, start date and end date will be applied to the download URL of this ICalCalendarDownloader.
         /// The Country Name is only used for display purposes when constructing the resulting the ICalCalendar.
         /// If the output file name is not specified, a temp file path will be generated in the current user's temp folder.
+        /// Country codes should be supplied as ISO 3166-1 alpha-3 Standard: https://en.wikipedia.org/wiki/ISO_3166-1_alpha-3
         /// </summary>
         /// <returns></returns>
         public ICalCalendar DownloadICalCalendar(
