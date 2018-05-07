@@ -68,6 +68,39 @@
         #region Methods
 
         /// <summary>
+        /// Generates a date range with the start date from the 1st of January of the given year to the 31st of December of the given year.
+        /// Converts the date time to the following date format when downloading th calendar from the URL: day-month-year e.g. 01-12-2018.
+        /// </summary>
+        public ICalCalendar DownloadICalCalendar(
+            string countryCode,
+            string countryName,
+            int year,
+            string outputFilePath,
+            bool deleteOutputFileAfterParsing)
+        {
+            DateTime startDate = new DateTime(year, 01, 01);
+            DateTime endDate = new DateTime(year, 12, 31);
+            return DownloadICalCalendar(countryCode, countryName, startDate, endDate, outputFilePath, deleteOutputFileAfterParsing);
+        }
+
+        /// <summary>
+        /// Converts the date time to the following date format when downloading th calendar from the URL: day-month-year e.g. 01-12-2018.
+        /// </summary>
+        /// <returns></returns>
+        public ICalCalendar DownloadICalCalendar(
+            string countryCode,
+            string countryName,
+            DateTime startDate,
+            DateTime endDate,
+            string outputFilePath,
+            bool deleteOutputFileAfterParsing)
+        {
+            string startDateString = string.Format("{0}-{1}-{2}", startDate.Day, startDate.Month, startDate.Day);
+            string endDateString = string.Format("{0}-{1}-{2}", endDate.Day, endDate.Month, endDate.Day);
+            return DownloadICalCalendar(countryCode, countryName, startDateString, endDateString, outputFilePath, deleteOutputFileAfterParsing);
+        }
+
+        /// <summary>
         /// The country code, start date and end date will be applied to the download URL of this ICalCalendarDownloader.
         /// The Country Name is only used for display purposes when constructing the resulting the ICalCalendar.
         /// If the output file name is not specified, a temp file path will be generated in the current user's temp folder.
@@ -81,6 +114,22 @@
             string outputFilePath,
             bool deleteOutputFileAfterParsing)
         {
+            if (string.IsNullOrEmpty(countryCode))
+            {
+                throw new NullReferenceException(string.Format("Country Code may not be null or empty when downloading an {0}", typeof(ICalCalendar).Name));
+            }
+            if (string.IsNullOrEmpty(countryName))
+            {
+                throw new NullReferenceException(string.Format("Country Name may not be null or empty when downloading an {0}", typeof(ICalCalendar).Name));
+            }
+            if (string.IsNullOrEmpty(startDate))
+            {
+                throw new NullReferenceException(string.Format("Start Date may not be null or empty when downloading an {0}", typeof(ICalCalendar).Name));
+            }
+            if (string.IsNullOrEmpty(endDate))
+            {
+                throw new NullReferenceException(string.Format("End Date may not be null or empty when downloading an {0}", typeof(ICalCalendar).Name));
+            }
             if (string.IsNullOrEmpty(outputFilePath))
             {
                 string outputFileName = string.Format("{0}-{1}-{2}{3}", countryCode, startDate, endDate, ICalPublicHolidayParser.ICALENDAR_FILE_EXTENSION);
