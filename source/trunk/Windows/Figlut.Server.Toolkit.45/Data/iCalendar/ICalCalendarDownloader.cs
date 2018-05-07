@@ -95,8 +95,8 @@
             string outputFilePath,
             bool deleteOutputFileAfterParsing)
         {
-            string startDateString = string.Format("{0}-{1}-{2}", startDate.Day, startDate.Month, startDate.Day);
-            string endDateString = string.Format("{0}-{1}-{2}", endDate.Day, endDate.Month, endDate.Day);
+            string startDateString = string.Format("{0}-{1}-{2}", startDate.Day.ToString().PadLeft(2, '0'), startDate.Month.ToString().PadLeft(2, '0'), startDate.Year);
+            string endDateString = string.Format("{0}-{1}-{2}", endDate.Day.ToString().PadLeft(2, '0'), endDate.Month.ToString().PadLeft(2, '0'), endDate.Year);
             return DownloadICalCalendar(countryCode, countryName, startDateString, endDateString, outputFilePath, deleteOutputFileAfterParsing);
         }
 
