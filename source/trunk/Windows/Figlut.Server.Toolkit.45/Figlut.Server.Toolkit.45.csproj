@@ -126,6 +126,7 @@
     <Compile Include="Data\iCalendar\ICalPublicHoliday.cs" />
     <Compile Include="Data\iCalendar\ICalCalendar.cs" />
     <Compile Include="Data\iCalendar\ICalPublicHolidayParser.cs" />
+    <Compile Include="Data\PhoneNumberValidator.cs" />
     <Compile Include="Data\QueryRunners\ISqlQueryRunner.cs" />
     <Compile Include="Data\ORM\OrmCodeGenerator.cs" />
     <Compile Include="Data\ORM\OrmAssembly.cs" />
