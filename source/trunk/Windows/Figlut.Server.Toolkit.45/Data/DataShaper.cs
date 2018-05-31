@@ -67,9 +67,9 @@
 
         private static bool invalid = false;
 
-        public static bool IsValidPhoneNumber(string number)
+        public static bool IsValidPhoneNumber(string phoneNumber, out string formattedPhoneNumber)
         {
-            return new PhoneNumberValidator().IsValidPhoneNumber(ref number);
+            return new PhoneNumberValidator().IsValidPhoneNumber(phoneNumber, out formattedPhoneNumber);
         }
 
         public static bool IsValidEmail(string emailAddress)

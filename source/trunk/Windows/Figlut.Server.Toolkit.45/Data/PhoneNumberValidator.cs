@@ -90,39 +90,48 @@
             }
         }
 
-        public bool IsValidPhoneNumber(ref string phoneNumber)
+        public bool IsValidPhoneNumber(string phoneNumber, out string formattedPhoneNumber)
         {
-            CachedPhoneNumber = phoneNumber;
-            if (string.IsNullOrWhiteSpace(phoneNumber))
+            formattedPhoneNumber = null;
+            try
             {
-                ErrorMessage = "Phone Number value should not be equivalent to null.";
-                return false;
-            }
-            phoneNumber = Regex.Replace(phoneNumber, " {2,}", string.Empty); // remove all whitespaces
-            phoneNumber = Regex.Replace(phoneNumber, "[^0-9]", string.Empty); // remove all non numeric characters
+                CachedPhoneNumber = phoneNumber;
+                if (string.IsNullOrWhiteSpace(phoneNumber))
+                {
+                    ErrorMessage = "Phone Number value should not be equivalent to null.";
+                    return false;
+                }
+                phoneNumber = Regex.Replace(phoneNumber, " {2,}", string.Empty); // remove all whitespaces
+                phoneNumber = Regex.Replace(phoneNumber, "[^0-9]", string.Empty); // remove all non numeric characters
 
-            var lastConsecutiveCharsInPhoneNumberStr = GetConsecutiveCharsInPhoneNumberStr(phoneNumber);
-            if (string.IsNullOrWhiteSpace(lastConsecutiveCharsInPhoneNumberStr))
+                var lastConsecutiveCharsInPhoneNumberStr = GetConsecutiveCharsInPhoneNumberStr(phoneNumber);
+                if (string.IsNullOrWhiteSpace(lastConsecutiveCharsInPhoneNumberStr))
+                {
+                    ErrorMessage = "Phone Number value not supported.";
+                    return false;
+                }
+                if (!IsInteger(lastConsecutiveCharsInPhoneNumberStr))
+                {
+                    ErrorMessage = "Last consecutive characters of Phone Number value should only contain integers.";
+                    return false;
+                }
+                var phoneNumberAreaCode = phoneNumber.Replace(lastConsecutiveCharsInPhoneNumberStr, "");
+                if (!IsValidAreaCode(ref phoneNumber, phoneNumberAreaCode))
+                {
+                    return false;
+                }
+                if (phoneNumber.Length != PhoneNumberDigits)
+                {
+                    ErrorMessage = string.Format("Phone Number value should contain {0} characters instead of {1} characters.", PhoneNumberDigits, phoneNumber.Length);
+                    return false;
+                }
+                formattedPhoneNumber = phoneNumber;
+                return true;
+            }
+            catch (Exception ex)
             {
-                ErrorMessage = "Phone Number value not supported.";
                 return false;
             }
-            if (!IsInteger(lastConsecutiveCharsInPhoneNumberStr))
-            {
-                ErrorMessage = "Last consecutive characters of Phone Number value should only contain integers.";
-                return false;
-            }
-            var phoneNumberAreaCode = phoneNumber.Replace(lastConsecutiveCharsInPhoneNumberStr, "");
-            if (!IsValidAreaCode(ref phoneNumber, phoneNumberAreaCode))
-            {
-                return false;
-            }
-            if (phoneNumber.Length != PhoneNumberDigits)
-            {
-                ErrorMessage = string.Format("Phone Number value should contain {0} characters instead of {1} characters.", PhoneNumberDigits, phoneNumber.Length);
-                return false;
-            }
-            return true;
         }
 
         #endregion //Methods
