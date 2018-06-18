@@ -322,7 +322,7 @@
                                 break;
                             }
                         }
-                        else //Object comparison on anything else
+                        else if(entityProvidedValue != null) //Object comparison on anything else
                         {
                             if (entityProvidedValue.Equals(wildCardSearchValue))
                             {

@@ -77,6 +77,11 @@
             return (new EmailAddressAttribute().IsValid(emailAddress));
         }
 
+        public static string GeneratePassword(int passwordLength, int numberOfNonAlphanumericCharacters)
+        {
+            return System.Web.Security.Membership.GeneratePassword(passwordLength, numberOfNonAlphanumericCharacters);
+        }
+
         private static string DomainMapper(Match match)
         {
             // IdnMapping class with default property values.
