@@ -1254,3 +1254,5 @@ source/trunk/WindowsMobile/Figlut.Mobile.Configuration.Manager/Figlut.Mobile.Con
 source/trunk/WindowsMobile/Figlut.Mobile.Configuration.Manager.Utilities/Figlut.Mobile.Configuration.Manager.Utilities.csproj.user
 source/trunk/WindowsMobile/Figlut.Mobile.Configuration.Manager.UI/Figlut.Mobile.Configuration.Manager.UI.csproj.user
 source/trunk/WindowsMobile/EmitCF/EmitCF.csproj.user
+source/trunk/Windows/Figlut.ServiceInstaller.Configuration/obj/
+source/trunk/Windows/Figlut.ServiceInstaller/obj/

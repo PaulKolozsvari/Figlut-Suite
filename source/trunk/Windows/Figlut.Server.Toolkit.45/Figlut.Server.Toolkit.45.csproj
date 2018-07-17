@@ -164,9 +164,10 @@
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Utilities\Email.cs" />
-    <Compile Include="Utilities\FtpClient.cs" />
-    <Compile Include="Utilities\FtpHelper.cs" />
-    <Compile Include="Utilities\FtpTransferProgressResult.cs" />
+    <Compile Include="Utilities\FTP\FtpClient.cs" />
+    <Compile Include="Utilities\FTP\FtpHelper.cs" />
+    <Compile Include="Utilities\FTP\FtpTransferProgressResult.cs" />
+    <Compile Include="Utilities\Jobs\IntervalJob.cs" />
     <Compile Include="Utilities\ProcessHelper.cs" />
     <Compile Include="Utilities\RAS\RasConnectionType.cs" />
     <Compile Include="Utilities\RAS\RasEventDelegates.cs" />
@@ -445,6 +446,7 @@
   <ItemGroup>
     <Content Include="Web\Client\IP_API\Sample-ip-api.com-ResponseXmlText.txt" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
