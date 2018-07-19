@@ -15,18 +15,18 @@
     {
         #region Constructors
 
-        public IntervalJob(int executionInterval, bool startImmediately)
+        public IntervalJob(int executionMilliSecondsInterval, bool startImmediately)
         {
-            if (executionInterval < 0)
+            if (executionMilliSecondsInterval < 0)
             {
                 throw new ArgumentOutOfRangeException(string.Format("{0} may not be less than 0 when constructing a {1}.",
-                    EntityReader<IntervalJob>.GetPropertyName(p => p.ExecutionInterval, false),
+                    EntityReader<IntervalJob>.GetPropertyName(p => p.ExecutionMilliSecondsInterval, false),
                     this.GetType().Name));
             }
-            _executionInterval = executionInterval;
+            _executionMilliSecondsInterval = executionMilliSecondsInterval;
             _timer = new System.Timers.Timer();
             _timer.Elapsed += _timer_Elapsed;
-            ChangeExecutionInterval(_executionInterval);
+            ChangeExecutionInterval(_executionMilliSecondsInterval);
             if (startImmediately)
             {
                 StartJob();
@@ -37,7 +37,7 @@
 
         #region Fields
 
-        protected int _executionInterval;
+        protected int _executionMilliSecondsInterval;
         protected bool _currentlyExecuting;
         protected System.Timers.Timer _timer;
         protected readonly object _lockObject = new object();
@@ -46,9 +46,9 @@
 
         #region Properties
 
-        public int ExecutionInterval
+        public int ExecutionMilliSecondsInterval
         {
-            get { return _executionInterval; }
+            get { return _executionMilliSecondsInterval; }
         }
 
         public bool CurrentlyExecuting
@@ -86,8 +86,8 @@
             {
                 return false;
             }
-            _executionInterval = executionInterval;
-            _timer.Interval = Convert.ToDouble(_executionInterval);
+            _executionMilliSecondsInterval = executionInterval;
+            _timer.Interval = Convert.ToDouble(_executionMilliSecondsInterval);
             return true;
         }
 
@@ -121,6 +121,7 @@
             {
                 try
                 {
+                    intervalJob.SetCurrentlyExecutingFlag(true);
                     ExecuteJob(intervalJob);
                 }
                 finally

@@ -168,6 +168,7 @@
     <Compile Include="Utilities\FTP\FtpHelper.cs" />
     <Compile Include="Utilities\FTP\FtpTransferProgressResult.cs" />
     <Compile Include="Utilities\Jobs\IntervalJob.cs" />
+    <Compile Include="Utilities\Jobs\DailyJob.cs" />
     <Compile Include="Utilities\ProcessHelper.cs" />
     <Compile Include="Utilities\RAS\RasConnectionType.cs" />
     <Compile Include="Utilities\RAS\RasEventDelegates.cs" />
