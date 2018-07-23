@@ -13,6 +13,56 @@
 
     public abstract class DailyJob
     {
+        #region Inner Types
+
+        public class OnDailyJobFeedbackEventArgs : EventArgs
+        {
+            #region Constructors
+
+            public OnDailyJobFeedbackEventArgs(
+                DateTime nextExecutionDateTime, 
+                TimeSpan waitTimeBeforeStart,
+                bool currentlyExecuting)
+            {
+                _nextExecutionDateTime = nextExecutionDateTime;
+                _waitTimeBeforeStart = waitTimeBeforeStart;
+                _currentlyExecuting = currentlyExecuting;
+            }
+
+            #endregion //Constructors
+
+            #region Fields
+
+            private DateTime _nextExecutionDateTime;
+            private TimeSpan _waitTimeBeforeStart;
+            private bool _currentlyExecuting;
+
+            #endregion //Fields
+
+            #region Properties
+
+            public DateTime NextExecutionDateTime
+            {
+                get { return _nextExecutionDateTime; }
+            }
+
+            public TimeSpan WaitTimeBeforeStart
+            {
+                get { return _waitTimeBeforeStart; }
+            }
+
+            public bool CurrentlyExecuting
+            {
+                get { return _currentlyExecuting; }
+            }
+
+            #endregion //Properties
+        }
+
+        public delegate void OnDailyJobFeedBack(object sender, OnDailyJobFeedbackEventArgs e);
+
+        #endregion //Inner Types
+
         #region Constructors
 
         public DailyJob(
@@ -27,6 +77,13 @@
         }
 
         #endregion //Constructors
+
+        #region Events
+
+        public event OnDailyJobFeedBack OnDailyJobStarted;
+        public event OnDailyJobFeedBack OnDailyJobStopped;
+
+        #endregion //Events
 
         #region Fields
 
@@ -86,19 +143,26 @@
 
         #endregion //Helper Methods
 
-        private void StartJob()
+        public void StartJob()
         {
             DateTime currentDateTime = DateTime.Now;
-            if (_nextExecutionDateTime < currentDateTime) //The execution date has passed already, therfore set the TimeSpan before start to tomorrow.
+            if (_nextExecutionDateTime < currentDateTime) //The execution date has passed already, therefore set the waitTimeBeforeStart to tomorrow.
             {
                 DateTime midnight = GetTodayMidnightDateTime(currentDateTime);
                 TimeSpan timeBeforeMidnight = midnight.Subtract(currentDateTime);
-                _waitTimeBeforeStart = timeBeforeMidnight.Add(new TimeSpan(
-                    0, //Days
-                    _nextExecutionDateTime.Hour,
-                    _nextExecutionDateTime.Minute,
-                    _nextExecutionDateTime.Second,
-                    _nextExecutionDateTime.Millisecond));
+                if (_nextExecutionDateTime.TimeOfDay < currentDateTime.TimeOfDay) //Next execution time has also passed, therefore make it tomorrow at the scheduled next execution time.
+                {
+                    _waitTimeBeforeStart = timeBeforeMidnight.Add(new TimeSpan( //Make the next execution tomorrow.
+                        0, //Days
+                        _nextExecutionDateTime.Hour,
+                        _nextExecutionDateTime.Minute,
+                        _nextExecutionDateTime.Second,
+                        _nextExecutionDateTime.Millisecond));
+                }
+                else
+                {
+                    _waitTimeBeforeStart = _nextExecutionDateTime.TimeOfDay.Subtract(currentDateTime.TimeOfDay); //Next execution time has not passed yet, therefore make it today at the scheduled next execution time.
+                }
             }
             else
             {
@@ -114,12 +178,20 @@
                 _timer.Change(_waitTimeBeforeStart, new TimeSpan(0, 0, 0, 0, -1)); //Will run once off.
             }
             _enabled = true;
+            if (OnDailyJobStarted != null)
+            {
+                OnDailyJobStarted(this, new OnDailyJobFeedbackEventArgs(_nextExecutionDateTime, _waitTimeBeforeStart, _currentlyExecuting));
+            }
         }
 
-        private void StopJob()
+        public void StopJob()
         {
             _timer.Change(System.Threading.Timeout.Infinite, System.Threading.Timeout.Infinite); //Stops the timer from ever running.
             _enabled = false;
+            if (OnDailyJobStopped != null)
+            {
+                OnDailyJobStopped(this, new OnDailyJobFeedbackEventArgs(_nextExecutionDateTime, _waitTimeBeforeStart, _currentlyExecuting));
+            }
         }
 
         public void SetCurrentlyExecutingFlag(bool currentlyExecuting)

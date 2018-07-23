@@ -13,6 +13,48 @@
 
     public abstract class IntervalJob
     {
+        #region Inner Types
+
+        public class OnIntervalJobFeedbackEventArgs : EventArgs
+        {
+            #region Constructors
+
+            public OnIntervalJobFeedbackEventArgs(
+                int executionMilliSecondsInterval,
+                bool currentlyExecuting)
+            {
+                _executionMilliSecondsInterval = executionMilliSecondsInterval;
+                _currentlyExecuting = currentlyExecuting;
+            }
+
+            #endregion //Constructors
+
+            #region Fields
+
+            private int _executionMilliSecondsInterval;
+            private bool _currentlyExecuting;
+
+            #endregion //Fields
+
+            #region Properties
+
+            public int ExecutionMilliSecondsInterval
+            {
+                get { return _executionMilliSecondsInterval; }
+            }
+
+            public bool CurrentlyExecuting
+            {
+                get { return _currentlyExecuting; }
+            }
+
+            #endregion //Properties
+        }
+
+        public delegate void OnIntervalJobFeedback(object sender, OnIntervalJobFeedbackEventArgs e);
+
+        #endregion //Inner Types
+
         #region Constructors
 
         public IntervalJob(int executionMilliSecondsInterval, bool startImmediately)
@@ -34,6 +76,13 @@
         }
 
         #endregion //Constructors
+
+        #region Events
+
+        public event OnIntervalJobFeedback OnIntervalJobStarted;
+        public event OnIntervalJobFeedback OnIntervalJobStopped;
+
+        #endregion //Events
 
         #region Fields
 
@@ -68,11 +117,19 @@
         public void StartJob()
         {
             _timer.Start();
+            if (OnIntervalJobStarted != null)
+            {
+                OnIntervalJobStarted(this, new OnIntervalJobFeedbackEventArgs(_executionMilliSecondsInterval, _currentlyExecuting));
+            }
         }
 
-        internal void StopJob()
+        public void StopJob()
         {
             _timer.Stop();
+            if (OnIntervalJobStopped != null)
+            {
+                OnIntervalJobStopped(this, new OnIntervalJobFeedbackEventArgs(_executionMilliSecondsInterval, _currentlyExecuting));
+            }
         }
 
         internal bool IsEnabled()
@@ -106,7 +163,7 @@
             {
                 if (!this.IsEnabled())
                 {
-                    this.StartJob();
+                    StartJob();
                 }
             }
         }
