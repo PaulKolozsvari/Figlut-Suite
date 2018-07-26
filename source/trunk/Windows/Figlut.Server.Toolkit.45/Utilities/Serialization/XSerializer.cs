@@ -43,6 +43,8 @@
             {
                 File.Delete(filename);
             }
+            XmlWriterSettings settings = new XmlWriterSettings();
+            settings.NewLineHandling = NewLineHandling.Entitize;
             using (XmlTextWriter writer = new XmlTextWriter(filename, System.Text.Encoding.UTF8))
             {
                 using (Stream baseStream = writer.BaseStream)

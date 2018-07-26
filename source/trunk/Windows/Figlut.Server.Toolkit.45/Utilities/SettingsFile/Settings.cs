@@ -11,8 +11,8 @@
     using System.Reflection;
     using Figlut.Server.Toolkit.Data;
     using Figlut.Server.Toolkit.Utilities.Serialization;
-using Figlut.Server.Toolkit.Mmc.Forms;
-using Figlut.Server.Toolkit.Mmc;
+    using Figlut.Server.Toolkit.Mmc.Forms;
+    using Figlut.Server.Toolkit.Mmc;
     using Figlut.Server.Toolkit.Utilities.Logging;
 
     #endregion //Using Directives
@@ -120,6 +120,10 @@ using Figlut.Server.Toolkit.Mmc;
                         p.Name,
                         _filePath));
                 }
+                if (valueFromFile is string)
+                {
+                    valueFromFile = RemoveEscapeSequencesFromNewLineSettingValue((string)valueFromFile);
+                }
                 p.SetValue(this, valueFromFile, null);
             }
             if (requireSave)
@@ -128,11 +132,42 @@ using Figlut.Server.Toolkit.Mmc;
             }
         }
 
-        public void SaveToFile()
+        /// <summary>
+        /// When deserializing \r and \n characters in the XML will be deserialized to \\r and \\n, but the real values we want is \r and \n.
+        /// Therefore we need to strip the escape characters on carriage returns and new line characters to get the intended value of the setting.
+        /// This method should be after Refreshing (deserializing) from the settings file.
+        /// </summary>
+        private string RemoveEscapeSequencesFromNewLineSettingValue(string settingValue)
+        {
+            return settingValue.Replace("\\r", "\r").Replace("\\n", "\n");
+        }
+
+        /// <summary>
+        /// When serializing \r and \n characters to XML, these values will be saved as an actual new line in the XML text file when we in fact want to save
+        /// the setting value as a \r and/or \r character. In order to achieve this, we need to add escape sequences to the carriage return and new line characters in order
+        /// to save the intended setting values. 
+        /// This method should be called before Saving to file (serializing).
+        /// </summary>
+        private string AddEscapeSequencesToNewLineSettingValue(string settingValue)
+        {
+            return settingValue.Replace("\r", "\\r").Replace("\n", "\\n");
+        }
+
+        public virtual void SaveToFile()
         {
             if (GOC.Instance.Logger != null)
             {
                 GOC.Instance.Logger.LogMessage(new LogMessage(string.Format("Saving {0} to {1} ...", this.GetType().FullName, _filePath), LogMessageType.Information, LoggingLevel.Normal));
+            }
+            Type thisType = this.GetType();
+            foreach (PropertyInfo p in thisType.GetProperties())
+            {
+                object settingValue = p.GetValue(this, null);
+                if (settingValue is string)
+                {
+                    settingValue = AddEscapeSequencesToNewLineSettingValue((string)settingValue);
+                }
+                p.SetValue(this, settingValue, null);
             }
             GOC.Instance.GetSerializer(SerializerType.XML).SerializeToFile(this, _filePath);
         }
