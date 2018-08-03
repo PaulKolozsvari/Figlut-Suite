@@ -101,6 +101,45 @@
             ZipFile.ExtractToDirectory(zipFilePath, outputDirectory);
         }
 
+
+        /// <summary>
+        /// Deletes a directory recursively: all sub directory and all files within it.
+        /// If a file within the directory or sub-directory is marked as read-only it will be edit it as not read-only and then deleted.
+        /// </summary>
+        public static void DeleteDirectoryRecursive(DirectoryInfo baseDirectoryPath)
+        {
+            if (!baseDirectoryPath.Exists)
+            {
+                return;
+            }
+            foreach (DirectoryInfo dir in baseDirectoryPath.EnumerateDirectories())
+            {
+                DeleteDirectoryRecursive(dir);
+            }
+            var files = baseDirectoryPath.GetFiles();
+            foreach (var file in files)
+            {
+                DeleteFileForce(file);
+            }
+            baseDirectoryPath.Delete();
+        }
+
+        /// <summary>
+        /// Deletes a file and if it's set to read-only it will edit it as not read-only and then deleted.
+        /// </summary>
+        public static void DeleteFileForce(FileInfo file)
+        {
+            if (!file.Exists)
+            {
+                return;
+            }
+            if (file.IsReadOnly)
+            {
+                file.IsReadOnly = false;
+            }
+            file.Delete();
+        }
+
         #endregion //Methods
     }
 }
