@@ -21,7 +21,7 @@
             {
                 string message = string.IsNullOrEmpty(parentName) ?
                     string.Format("{0} may not be an empty list.", fieldName) :
-                    string.Format("{0} may not be an empty list on a {1}.", fieldName, parentName);
+                    string.Format("{0} may not be an empty list on {1}.", fieldName, parentName);
                 throw new ArgumentOutOfRangeException(message);
             }
         }
@@ -32,7 +32,7 @@
             {
                 string message = string.IsNullOrEmpty(parentName) ? 
                     string.Format("{0} may not be null.", fieldName) : 
-                    string.Format("{0} may not be null on a {1}.", fieldName, parentName);
+                    string.Format("{0} may not be null on {1}.", fieldName, parentName);
                 throw new NullReferenceException(message);
             }
         }
@@ -43,7 +43,18 @@
             {
                 string message = string.IsNullOrEmpty(parentName) ?
                     string.Format("{0} may not be null or empty.", fieldName) :
-                    string.Format("{0} may not be null or empty on a {1}.", fieldName, parentName);
+                    string.Format("{0} may not be null or empty on {1}.", fieldName, parentName);
+                throw new NullReferenceException(message);
+            }
+        }
+
+        public static void ValidateDateNotDefault(DateTime fieldValue, string fieldName, string parentName)
+        {
+            if (fieldValue == new DateTime())
+            {
+                string message = string.IsNullOrEmpty(parentName) ?
+                    string.Format("{0} date value not set.", fieldName) :
+                    string.Format("{0} date value not set on {1}.", fieldName, parentName);
                 throw new NullReferenceException(message);
             }
         }
@@ -54,7 +65,7 @@
             {
                 string message = string.IsNullOrEmpty(parentName) ?
                     string.Format("{0} may not negative.", fieldName) :
-                    string.Format("{0} may not negative on a {1}.", fieldName, parentName);
+                    string.Format("{0} may not negative on {1}.", fieldName, parentName);
                 throw new ArgumentOutOfRangeException(message);
             }
         }
@@ -65,7 +76,7 @@
             {
                 string message = string.IsNullOrEmpty(parentName) ?
                     string.Format("{0} may not negative.", fieldName) :
-                    string.Format("{0} may not negative on a {1}.", fieldName, parentName);
+                    string.Format("{0} may not negative on {1}.", fieldName, parentName);
                 throw new ArgumentOutOfRangeException(message);
             }
         }
@@ -76,7 +87,7 @@
             {
                 string message = string.IsNullOrEmpty(parentName) ?
                     string.Format("{0} may not negative.", fieldName) :
-                    string.Format("{0} may not negative on a {1}.", fieldName, parentName);
+                    string.Format("{0} may not negative on {1}.", fieldName, parentName);
                 throw new ArgumentOutOfRangeException(message);
             }
         }
@@ -87,7 +98,7 @@
             {
                 string message = string.IsNullOrEmpty(parentName) ?
                     string.Format("{0} may not negative.", fieldName) :
-                    string.Format("{0} may not negative on a {1}.", fieldName, parentName);
+                    string.Format("{0} may not negative on {1}.", fieldName, parentName);
                 throw new ArgumentOutOfRangeException(message);
             }
         }
@@ -98,7 +109,7 @@
             {
                 string message = string.IsNullOrEmpty(parentName) ?
                     string.Format("{0} may not negative.", fieldName) :
-                    string.Format("{0} may not negative on a {1}.", fieldName, parentName);
+                    string.Format("{0} may not negative on {1}.", fieldName, parentName);
                 throw new ArgumentOutOfRangeException(message);
             }
         }
