@@ -1,0 +1,14 @@
+/Users/paulk/Documents/binaryChefSvn/xamarin/projects/SDK/Json.Net-4.5.11-Mono/samples/Json.NET.Android.Sample/obj/Debug/MonoAndroid,Version=v2.2.AssemblyAttribute.cs
+/Users/paulk/Documents/binaryChefSvn/xamarin/projects/SDK/Json.Net-4.5.11-Mono/samples/Json.NET.Android.Sample/bin/Debug/Json.NET.Android.Sample.dll.mdb
+/Users/paulk/Documents/binaryChefSvn/xamarin/projects/SDK/Json.Net-4.5.11-Mono/samples/Json.NET.Android.Sample/bin/Debug/Json.NET.Android.Sample.dll
+/Users/paulk/Documents/binaryChefSvn/xamarin/projects/SDK/Json.Net-4.5.11-Mono/samples/Json.NET.Android.Sample/bin/Debug/Json.NET.Android.Sample.apk
+/Users/paulk/Documents/binaryChefSvn/xamarin/projects/SDK/Json.Net-4.5.11-Mono/samples/Json.NET.Android.Sample/obj/Debug/android/bin/Json.NET.Android.Sample.apk
+/Users/paulk/Documents/binaryChefSvn/xamarin/projects/SDK/Json.Net-4.5.11-Mono/samples/Json.NET.Android.Sample/obj/Debug/res/layout/main.xml
+/Users/paulk/Documents/binaryChefSvn/xamarin/projects/SDK/Json.Net-4.5.11-Mono/samples/Json.NET.Android.Sample/obj/Debug/res/values/strings.xml
+/Users/paulk/Documents/binaryChefSvn/xamarin/projects/SDK/Json.Net-4.5.11-Mono/samples/Json.NET.Android.Sample/obj/Debug/res/drawable/icon.png
+/Users/paulk/Documents/binaryChefSvn/xamarin/projects/SDK/Json.Net-4.5.11-Mono/samples/Json.NET.Android.Sample/obj/Debug/R.cs.flag
+/Users/paulk/Documents/binaryChefSvn/xamarin/projects/SDK/Json.Net-4.5.11-Mono/samples/Json.NET.Android.Sample/bin/Debug/Json.NET.Android.Sample-Signed.apk
+/Users/paulk/Documents/binaryChefSvn/xamarin/projects/SDK/Json.Net-4.5.11-Mono/samples/Json.NET.Android.Sample/obj/Debug/uploadflags.txt
+/Users/paulk/Documents/binaryChefSvn/xamarin/projects/SDK/Json.Net-4.5.11-Mono/samples/Json.NET.Android.Sample/obj/Debug/Json.NET.Android.Sample.dll
+/Users/paulk/Documents/binaryChefSvn/xamarin/projects/SDK/Json.Net-4.5.11-Mono/samples/Json.NET.Android.Sample/obj/Debug/Json.NET.Android.Sample.dll.mdb
+/Users/paulk/Documents/binaryChefSvn/xamarin/projects/SDK/Json.Net-4.5.11-Mono/samples/Json.NET.Android.Sample/bin/Debug/Newtonsoft.Json.dll

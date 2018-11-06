@@ -1,4 +1,7 @@
-﻿namespace Figlut.MonoDroid.Toolkit.Data.DB.SQLServer
+﻿using SQLite;
+using Android.Content;
+
+namespace Figlut.MonoDroid.Toolkit.Data.DB.SQLServer
 {
     #region Using Directives
 
@@ -26,9 +29,10 @@
         {
         }
 
-        public SqlDatabase(string name)
+		public SqlDatabase(string name, int version)
             : base(name)
         {
+			_version = version;
         }
 
         #endregion //Constructors
@@ -39,14 +43,36 @@
 
         #endregion //Constants
 
+		#region Fields
+
+		private SqliteDataManagerHelper _dbHelper;
+		private int _version;
+		private Dictionary<string, string> _createTableScripts;
+
+		#endregion //Fields
+
+		#region Properties
+
+		public SqliteDataManagerHelper Helper
+		{
+			get{ return _dbHelper; }
+		}
+
+		public int Version
+		{
+			get{ return _version; }
+		}
+
+		#endregion //Properties
+
         #region Methods
 
-        public SqlDatabaseTable<E> GetSqlDatabaseTable<E>() where E : class
+		public SqlDatabaseTable<E> GetSqlDatabaseTable<E>() where E : class, new()
         {
             return GetSqlDatabaseTable<E>(typeof(E).Name);
         }
 
-        public SqlDatabaseTable<E> GetSqlDatabaseTable<E>(string tableName) where E : class
+		public SqlDatabaseTable<E> GetSqlDatabaseTable<E>(string tableName) where E : class, new()
         {
             if (!_tables.Exists(tableName))
             {
@@ -76,12 +102,12 @@
             _tables.Add(table.TableName, table);
         }
 
-        public void AddTable<E>() where E : class
+		public SqlDatabaseTable<E> AddTable<E>() where E : class, new()
         {
-            AddTable<E>(typeof(E).Name);
+            return AddTable<E>(typeof(E).Name);
         }
 
-        public void AddTable<E>(string tableName) where E : class
+		public SqlDatabaseTable<E> AddTable<E>(string tableName) where E : class, new()
         {
             if (_tables.Exists(tableName))
             {
@@ -93,7 +119,9 @@
             }
 			SqlDatabaseTable<E> table = new SqlDatabaseTable<E> (tableName);
 //            _tables.Add(table.TableName, table);
+			table.DbHelper = _dbHelper;
 			_tables.Add(table);
+			return table;
         }
 
         public override void Dispose()
@@ -165,6 +193,64 @@
             }
             return result;
         }
+
+		public void CreateDatabase()
+		{
+			using (SQLiteConnection connection = new SQLiteConnection(_dbHelper.WritableDatabase.Path))
+			{
+				/*No need to do anything here: when creating a WritableDatabase connection the 
+				 * SqliteDataManagerHelper.onCreate method
+				 *is called which runs the createTableScripts*/
+			}
+		}
+
+		public SQLiteConnection GetConnection()
+		{
+			return new SQLiteConnection (_dbHelper.WritableDatabase.Path);
+		}
+
+		public List<E> Query<E>(SqlQuery query) where E : class
+		{
+			List<E> result = null;
+			using (SQLiteConnection connection = new SQLiteConnection(_dbHelper.ReadableDatabase.Path))
+			{
+				SQLiteCommand cmd = connection.CreateCommand (query.SqlQuerySring);
+				result = cmd.ExecuteQuery<E>();
+			}
+			return result;
+		}
+
+		public List<E> Query<E>() where E : new()
+		{
+			List<E> result = null;
+			using (SQLiteConnection connection = new SQLiteConnection (_dbHelper.ReadableDatabase.Path))
+			{
+				result = connection.Table<E> ().ToList();
+			}
+			return result;
+		}
+
+		public void SetContext(Context context)
+		{
+			if (_createTableScripts == null) 
+			{
+//				_sqlCreateDatabaseScript = @"
+//                        CREATE TABLE IF NOT EXISTS Customer (
+//                            Id              INTEGER PRIMARY KEY AUTOINCREMENT,
+//                            FirstName       TEXT NOT NULL,
+//                            LastName        TEXT NOT NULL )";
+				_createTableScripts = new Dictionary<string, string> ();
+				foreach (SqlDatabaseTable table in _tables) 
+				{
+					_createTableScripts.Add (table.TableName, table.GetSqlCreateTableScript ());
+				}
+			}
+			_dbHelper = new SqliteDataManagerHelper (context, _name, _version, _createTableScripts);
+			foreach (SqlDatabaseTable table in Tables) 
+			{
+				table.DbHelper = _dbHelper;
+			}
+		}
 
         #endregion //Methods
     }

@@ -66,29 +66,23 @@
             set { _columnDefault = value; }
         }
 
-        public bool IsNullable
-        {
-            get
-            {
-                if (_isNullable.ToUpper() == "YES")
-                {
-                    return true;
-                }
-                else if (_isNullable.ToUpper() == "NO")
-                {
-                    return false;
-                }
-                throw new Exception(string.Format(
-                    "{0} is an invalid value for {1} on {2}.",
-                    _isNullable,
-                    EntityReader<DatabaseTableColumn>.GetPropertyName(p => p.IsNullable, false),
-                    this.GetType().FullName));
-            }
-            set
-            {
-                _isNullable = value ? "YES" : "NO";
-            }
-        }
+        public bool IsNullable {
+			get {
+				if (_isNullable.ToUpper () == "YES") {
+					return true;
+				} else if (_isNullable.ToUpper () == "NO") {
+					return false;
+				}
+				throw new Exception (string.Format (
+					"{0} is an invalid value for {1} on {2}.",
+					_isNullable,
+					EntityReader<DatabaseTableColumn>.GetPropertyName (p => p.IsNullable, false),
+					this.GetType ().FullName));
+			}
+			set {
+				_isNullable = value ? "YES" : "NO";
+			}
+		}
 
         public string DataType
         {

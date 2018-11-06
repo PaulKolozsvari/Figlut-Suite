@@ -1,0 +1,2 @@
+/Users/paulk/Documents/binaryChefSvn/xamarin/projects/SDK/Json.Net-4.5.11-Mono/samples/Json.NET.Android.Sample/bin/Debug/Json.NET.Android.Sample.dll
+/Users/paulk/Documents/binaryChefSvn/xamarin/projects/SDK/Json.Net-4.5.11-Mono/lib/android/Newtonsoft.Json.dll

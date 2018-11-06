@@ -128,11 +128,10 @@
                 out statusDescription,
                 wrapWebException);
             T result = default(T);
-            if (deserializeToDotNetObject)
-            {
-                result = (T)GOC.Instance.GetSerializer(SerializerType.JSON).DeserializeFromText(typeof(T), rawOutput);
-            }
-            return result;
+			if (deserializeToDotNetObject) {
+				result = (T)GOC.Instance.GetSerializer (SerializerType.JSON).DeserializeFromText (typeof(T), rawOutput);
+			}
+			return result;
         }
 
         public object CallService(

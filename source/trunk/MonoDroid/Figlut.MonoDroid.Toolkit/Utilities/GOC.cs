@@ -323,7 +323,7 @@ namespace Figlut.MonoDroid.Toolkit.Utilities
                     "Database to be added to {0} may not be null.",
                     this.GetType().FullName));
             }
-            string databaseId = typeof(D).Name;
+			string databaseId = string.IsNullOrEmpty (database.Name) ? typeof(D).Name : database.Name;
             if (_databaseCache.Exists(databaseId))
             {
                 throw new ArgumentException(string.Format(

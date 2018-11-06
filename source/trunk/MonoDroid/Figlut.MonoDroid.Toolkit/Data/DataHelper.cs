@@ -1,4 +1,6 @@
-﻿namespace Figlut.MonoDroid.Toolkit.Data
+﻿using System.Data.SqlClient;
+
+namespace Figlut.MonoDroid.Toolkit.Data
 {
     #region Using Directives
 
@@ -55,6 +57,56 @@
             }
             return Convert.ChangeType(value, conversionType, null);
         }
+
+		public static List<object> ParseReaderToEntities(SqlDataReader reader, Type entityType)
+		{
+			List<object> result = new List<object>();
+			if (reader.HasRows)
+			{
+				while (reader.Read())
+				{
+					object e = Activator.CreateInstance(entityType);
+					foreach (PropertyInfo p in entityType.GetProperties())
+					{
+						if ((p.PropertyType != typeof(string) &&
+							p.PropertyType != typeof(byte) &&
+							p.PropertyType != typeof(byte[])) &&
+							(p.PropertyType.IsClass ||
+								p.PropertyType.IsEnum ||
+								p.PropertyType.IsInterface ||
+								p.PropertyType.IsNotPublic ||
+								p.PropertyType.IsPointer))
+						{
+							continue;
+						}
+						object value = null;
+						try
+						{
+							value = reader[p.Name];
+						}
+						catch (Exception ex)
+						{
+							throw new Exception(string.Format(
+								"Could not find column {0} on {1}.",
+								p.Name,
+								reader.GetType().FullName),
+								ex);
+						}
+						p.SetValue(e, ChangeType(value, p.PropertyType), null);
+					}
+					result.Add(e);
+				}
+			}
+			return result;
+		}
+
+		public static List<E> ParseReaderToEntities<E>(SqlDataReader reader) where E : class
+		{
+			List<object> objects = ParseReaderToEntities(reader, typeof(E));
+			List<E> result = new List<E>();
+			objects.ForEach(o => result.Add((E)o));
+			return result;
+		}
 
         public static E ParseDataRowToEntity<E>(DataRow row) where E : class
         {

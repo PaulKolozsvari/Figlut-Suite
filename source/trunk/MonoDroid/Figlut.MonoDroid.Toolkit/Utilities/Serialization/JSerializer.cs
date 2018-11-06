@@ -71,6 +71,7 @@ namespace Figlut.MonoDroid.Toolkit.Utilities.Serialization
         public string SerializeToText(object obj, Type[] extraTypes)
         {
             TypeNameHandling typeNameHandling = _includeOrmTypeNamesInJsonResponse ? TypeNameHandling.All : TypeNameHandling.None;
+			JsonSerializerSettings settings = new JsonSerializerSettings ();
             return JsonConvert.SerializeObject(
                 obj,
                 Newtonsoft.Json.Formatting.Indented,

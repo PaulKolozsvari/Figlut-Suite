@@ -20,6 +20,11 @@
             return GetDataTable(shapeColumnNames, entityType, null);
         }
 
+		public static bool IsTypeIsNullable(Type type)
+		{
+			return type.IsGenericType && type.GetGenericTypeDefinition() == typeof(Nullable<>);
+		}
+
         public static DataTable GetDataTable(bool shapeColumnNames, Type entityType, List<string> topColumnNames)
         {
             string tableName = shapeColumnNames ? DataShaper.ShapeCamelCaseString(entityType.Name) : entityType.Name;

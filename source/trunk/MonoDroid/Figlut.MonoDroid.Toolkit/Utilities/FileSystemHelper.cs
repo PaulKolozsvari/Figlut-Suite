@@ -77,6 +77,19 @@ namespace Figlut.MonoDroid.Toolkit.Utilities
 			return null; 
 		}
 
+		public long GetTotalFilesSize(List<string> filePaths)
+		{
+			long result = 0;
+			foreach (string f in filePaths) 
+			{
+				ValidateFileExists (f);
+				using (FileStream fs = File.Open (f, FileMode.Open)) {
+					result += fs.Length;
+				}
+			}
+			return result;
+		}
+
         #endregion //Methods
     }
 }

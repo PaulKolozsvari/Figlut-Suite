@@ -55,7 +55,8 @@
             Add(new SqlTypeConversionInfo("image", typeof(SqlBytes), SqlDbType.Image, typeof(byte[])));
             Add(new SqlTypeConversionInfo("int", typeof(SqlInt32), SqlDbType.Int, typeof(Int32)));
             Add(new SqlTypeConversionInfo("money", typeof(SqlMoney), SqlDbType.Money, typeof(Decimal)));
-            Add(new SqlTypeConversionInfo("nchar", typeof(SqlChars), SqlDbType.NChar, typeof(String)));
+			Add(new SqlTypeConversionInfo("varchar", typeof(SqlString), SqlDbType.VarChar, typeof(string))); //this one may need work
+			Add(new SqlTypeConversionInfo("nchar", typeof(SqlChars), SqlDbType.NChar, typeof(String)));
             Add(new SqlTypeConversionInfo("ntext", typeof(SqlChars), SqlDbType.NText, null));
             Add(new SqlTypeConversionInfo("numeric", typeof(SqlDecimal), SqlDbType.Decimal, typeof(Decimal)));
             Add(new SqlTypeConversionInfo("nvarchar", typeof(SqlChars), SqlDbType.NVarChar, typeof(String)));
@@ -75,7 +76,6 @@
             Add(new SqlTypeConversionInfo("varbinary", typeof(SqlBytes), SqlDbType.VarBinary, typeof(Byte[])));
             Add(new SqlTypeConversionInfo("varbinary(1)", typeof(SqlBytes), SqlDbType.VarBinary, typeof(byte)));
             Add(new SqlTypeConversionInfo("binary(1)", typeof(SqlBytes), SqlDbType.Binary, typeof(byte)));
-            Add(new SqlTypeConversionInfo("varchar", typeof(SqlString), SqlDbType.VarChar, typeof(string))); //this one may need work
             Add(new SqlTypeConversionInfo("xml", typeof(SqlXml), SqlDbType.Xml, typeof(string)));
         }
 
@@ -201,17 +201,21 @@
 
         public string GetSqlTypeNameFromDotNetType(Type dotNetType, bool isNullable)
         {
+			if (dotNetType == typeof(Guid)) {
+				int stop = 0;
+			}
             foreach (SqlTypeConversionInfo typeInfo in this)
             {
                 if (typeInfo.DotNetType == null)
                 {
                     continue;
                 }
-                if (!isNullable && typeInfo.DotNetType.IsAssignableFrom(dotNetType))
+                if (!isNullable && typeInfo.DotNetType.IsAssignableFrom(dotNetType) && typeInfo.DotNetType == dotNetType)
                 {
                     return typeInfo.SqlTypeName;
                 }
-                else if (DataHelper.GetNullableType(typeInfo.DotNetType).IsAssignableFrom(dotNetType))
+				else if (DataHelper.GetNullableType(typeInfo.DotNetType).IsAssignableFrom(dotNetType) && 
+					DataHelper.GetNullableType(typeInfo.DotNetType) == dotNetType)
                 {
                     return typeInfo.SqlTypeName;
                 }

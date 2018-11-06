@@ -22,6 +22,7 @@
         public const string TEXT_XML = "text/xml";
         public const string TEXT_PLAIN = "text/plain";
         public const string TEXT_HTML = "text/html";
+		public const string BINARY = "application/octet-stream";
 
         #region Custom Types
 

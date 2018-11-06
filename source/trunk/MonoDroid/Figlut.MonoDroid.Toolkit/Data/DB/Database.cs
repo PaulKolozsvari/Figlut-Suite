@@ -1,4 +1,4 @@
-﻿using System.Xml.Serialization;
+﻿using Android.Content;
 
 namespace Figlut.MonoDroid.Toolkit.Data.DB
 {
@@ -17,6 +17,8 @@ namespace Figlut.MonoDroid.Toolkit.Data.DB
     using System.IO;
     using Figlut.MonoDroid.Toolkit.Utilities;
     using Figlut.MonoDroid.Toolkit.Utilities.Logging;
+	using System.Xml.Serialization;
+	using Android.Database.Sqlite;
 
     #endregion //Using Directives
 
@@ -25,13 +27,13 @@ namespace Figlut.MonoDroid.Toolkit.Data.DB
     {
         #region Constructors
 
-        public Database()
+		public Database ()
         {
 			_tables = new EntityCache<string, DatabaseTable> ();
             _name = this.GetType().Name;
         }
 
-        public Database(string name)
+		public Database(string name)
         {
             if (string.IsNullOrEmpty(name))
             {
@@ -40,6 +42,7 @@ namespace Figlut.MonoDroid.Toolkit.Data.DB
                     EntityReader<Database>.GetPropertyName(p => p.Name, false),
                     this.GetType().FullName));
             }
+			_tables = new EntityCache<string, DatabaseTable> ();
             _name = name;
         }
 
@@ -48,6 +51,7 @@ namespace Figlut.MonoDroid.Toolkit.Data.DB
         #region Fields
 
         protected string _name;
+		protected string _connectionString;
         protected EntityCache<string, DatabaseTable> _tables;
         protected OrmAssembly _ormAssembly;
 
@@ -91,6 +95,25 @@ namespace Figlut.MonoDroid.Toolkit.Data.DB
         {
             _tables.Clear();
         }
+
+		public List<DatabaseTable> GetTablesMentionedInQuery(SqlQuery query)
+		{
+			List<DatabaseTable> result = new List<DatabaseTable>();
+			foreach (string t in query.TableNamesInQuery)
+			{
+				DatabaseTable table = _tables[t];
+				if (table == null)
+				{
+					throw new NullReferenceException(string.Format(
+						"Could not find table {0} mentioned in {1} inside {2}.",
+						t,
+						query.GetType().FullName,
+						this.GetType().FullName));
+				}
+				result.Add(table);
+			}
+			return result;
+		}
 
         public virtual DatabaseTable GetDatabaseTable(string tableName)
         {

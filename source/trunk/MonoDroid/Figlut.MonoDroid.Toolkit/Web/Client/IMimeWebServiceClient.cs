@@ -46,6 +46,15 @@
             out string statusDescription,
             bool wrapWebException);
 
+		string PostBytes (
+			string queryString,
+			byte[] requestPostBytes,
+			int timeout,
+			string accept,
+			out HttpStatusCode statusCode,
+			out string statusDescription,
+			bool wrapWebException);
+
         #endregion //Methods
     }
 }

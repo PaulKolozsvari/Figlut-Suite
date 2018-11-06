@@ -260,16 +260,18 @@
             {
                 request.ContentType = postContentType;
             }
-            if (!string.IsNullOrEmpty(requestPostString))
-            {
-                request.ContentLength = requestPostString.Length;
-                using (StreamWriter writer = new StreamWriter(request.GetRequestStream()))
-                {
-                    writer.Write(requestPostString);
-                    writer.Flush();
-                    writer.Close();
-                }
-            }
+			if (!string.IsNullOrEmpty (requestPostString)) {
+				request.ContentLength = requestPostString.Length;
+				using (StreamWriter writer = new StreamWriter (request.GetRequestStream ())) {
+					writer.Write (requestPostString);
+					writer.Flush ();
+					writer.Close ();
+				}
+			} 
+			else if (string.IsNullOrEmpty (requestPostString) && (verb == HttpVerb.POST || verb == HttpVerb.PUT))
+			{
+				request.ContentLength = 0;
+			}
             if (timeout != 0)
             {
                 request.Timeout = timeout;
@@ -307,6 +309,14 @@
                 {
                     throw wex;
                 }
+				string responseText = null;
+				using (Stream stream = wex.Response.GetResponseStream ()) 
+				{
+					using (StreamReader reader = new StreamReader (stream)) 
+					{
+						responseText = reader.ReadToEnd ();
+					}
+				}
                 throw new UserThrownException(
                     string.Format("{0} {1} : {2}",
                         response.StatusCode.ToString(),
@@ -316,6 +326,96 @@
             }
             return result;
         }
+
+		public virtual string PostBytes(
+			string queryString,
+			byte[] requestPostBytes,
+			int timeout,
+			string accept,
+			out HttpStatusCode statusCode,
+			out string statusDescription,
+			bool wrapWebException)
+		{
+			HttpVerb verb = HttpVerb.POST;
+			string uri = string.Format("{0}/{1}", _webServiceBaseUrl, queryString);
+			HttpWebRequest request = (HttpWebRequest)WebRequest.Create(uri);
+			request.Method = verb.ToString();
+			request.Accept = accept;
+			if (!string.IsNullOrEmpty(GOC.Instance.UserAgent))
+			{
+				request.UserAgent = GOC.Instance.UserAgent;
+			}
+			if (_networkCredential != null)
+			{
+				request.UseDefaultCredentials = false;
+				request.Credentials = _networkCredential;
+				request.AllowAutoRedirect = true;
+			}
+			request.ContentType = MimeContentType.BINARY;
+			if (requestPostBytes != null && requestPostBytes.Length > 0)
+			{
+				request.ContentLength = requestPostBytes.Length;
+				using(BinaryWriter writer = new BinaryWriter(request.GetRequestStream()))
+				{
+					writer.Write (requestPostBytes);
+					writer.Flush();
+					writer.Close();
+				}
+			}
+			if (timeout != 0)
+			{
+				request.Timeout = timeout;
+			}
+			string result = string.Empty;
+			try
+			{
+				using (HttpWebResponse response = (HttpWebResponse)request.GetResponse())
+				{
+					if (response.StatusCode != HttpStatusCode.OK && response.StatusCode != HttpStatusCode.Created)
+					{
+						throw new UserThrownException(
+							string.Format("{0} {1} : {2}",
+								response.StatusCode.ToString(),
+								(int)response.StatusCode,
+								response.StatusDescription),
+							LoggingLevel.Normal);
+					}
+					statusCode = response.StatusCode;
+					statusDescription = response.StatusDescription;
+					using (Stream responseStream = response.GetResponseStream())
+					{
+						using (StreamReader reader = new StreamReader(responseStream))
+						{
+							result = reader.ReadToEnd();
+							reader.Close();
+						}
+					}
+				}
+			}
+			catch (WebException wex)
+			{
+				HttpWebResponse response = (HttpWebResponse)wex.Response;
+				if (response == null || !wrapWebException)
+				{
+					throw wex;
+				}
+				string responseText = null;
+				using (Stream stream = wex.Response.GetResponseStream ()) 
+				{
+					using (StreamReader reader = new StreamReader (stream)) 
+					{
+						responseText = reader.ReadToEnd ();
+					}
+				}
+				throw new UserThrownException(
+					string.Format("{0} {1} : {2}",
+						response.StatusCode.ToString(),
+						(int)response.StatusCode,
+						response.StatusDescription),
+					LoggingLevel.Normal);
+			}
+			return result;
+		}
 
         public object CallService(
             string queryString,

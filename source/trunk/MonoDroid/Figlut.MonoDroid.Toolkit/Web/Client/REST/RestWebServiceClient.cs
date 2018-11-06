@@ -1,4 +1,7 @@
-﻿namespace Figlut.MonoDroid.Toolkit.Web.Client.REST
+﻿using Figlut.MonoDroid.Toolkit.Utilities;
+using System.IO;
+
+namespace Figlut.MonoDroid.Toolkit.Web.Client.REST
 {
     #region Using Directives
 
@@ -26,6 +29,13 @@
         }
 
         #endregion //Constructors
+
+		#region Inner Types
+
+		public delegate void FileTransferProgressHandler(FileTransferProgressResult e);
+		public event FileTransferProgressHandler OnFileTransferProgress;
+
+		#endregion //Inner Types
 
         #region Fields
 
@@ -152,6 +162,76 @@
                 true);
             return rawOut;
         }
+
+		public string FileUpload(
+			string fileUploadQueryString, 
+			string filePath, 
+			int bufferSize, 
+			string fileUploadCompletedQueryString)
+		{
+			FileSystemHelper.ValidateFileExists (filePath);
+			string fileName = Path.GetFileName (filePath);
+			StringBuilder result = new StringBuilder ();
+			using (FileStream fs = File.Open (filePath, FileMode.Open)) 
+			{
+				string rawOutput = null;
+				HttpStatusCode httpStatusCode;
+				string httpStatusDescription = null;
+
+				byte[] buffer = new byte[bufferSize];
+				int bytesRead = fs.Read (buffer, 0, bufferSize);
+				long totalTransferredBytes = bytesRead;
+				while (bytesRead != 0) 
+				{
+					//Upload chunks to the service.
+					try
+					{
+						_webServiceClient.PostBytes(
+							fileUploadQueryString,
+							buffer,
+							_timeout,
+							null,
+							out httpStatusCode,
+							out httpStatusDescription,
+							true);
+					}
+					catch(UserThrownException ex) {
+						if (!ex.Message.Contains ("400")) {
+							throw ex;
+						}
+						_webServiceClient.PostBytes(
+							fileUploadQueryString,
+							buffer,
+							_timeout,
+							null,
+							out httpStatusCode,
+							out httpStatusDescription,
+							true);
+					}
+					if (OnFileTransferProgress != null) {
+						OnFileTransferProgress(new FileTransferProgressResult(fileName, totalTransferredBytes, fs.Length));
+					}
+					buffer = new byte[bufferSize];
+					bytesRead = fs.Read (buffer, 0, bufferSize);
+					totalTransferredBytes += bytesRead;
+					result.AppendLine (rawOutput);
+				}
+				//Tell the service to close the file.
+				_webServiceClient.CallService<string> (
+					fileUploadCompletedQueryString,
+					null,
+					HttpVerb.POST,
+					out rawOutput,
+					false,
+					false,
+					_timeout,
+					out httpStatusCode,
+					out httpStatusDescription,
+					true);
+				result.AppendLine (rawOutput);
+			}
+			return result.ToString ();
+		}
 
         /// <summary>
         /// Deletes an entity with the specified ID on the REST web service according to this pattern: baseURL/{entityName}/{entityId}
