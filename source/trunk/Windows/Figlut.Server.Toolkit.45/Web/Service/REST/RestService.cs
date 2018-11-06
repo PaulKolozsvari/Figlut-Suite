@@ -496,7 +496,7 @@
             userName = null;
             if (ServiceSecurityContext.Current != null && !string.IsNullOrEmpty(ServiceSecurityContext.Current.WindowsIdentity.Name))
             {
-                if (context.UserLinqToSqlType != null)
+                if (context != null && context.UserLinqToSqlType != null)
                 {
                     userId = context.GetUserId(ServiceSecurityContext.Current.WindowsIdentity.Name);
                 }
