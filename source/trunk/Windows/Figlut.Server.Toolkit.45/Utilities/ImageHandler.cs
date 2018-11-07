@@ -17,6 +17,20 @@
     {
         #region Methods
 
+        /// <summary>
+        /// Converts an Image to a byte array.
+        /// </summary>
+        /// <param name="image">An image to convert.</param>
+        /// <returns>Returns a byte array.</returns>
+        public byte[] GetImageBytes(Image image)
+        {
+            using (var ms = new MemoryStream())
+            {
+                image.Save(ms, image.RawFormat);
+                return ms.ToArray();
+            }
+        }
+
         public static void RotateImageFile(
     string filePath,
     RotateFlipType rotateFlipType)
