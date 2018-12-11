@@ -1257,3 +1257,5 @@ source/trunk/WindowsMobile/EmitCF/EmitCF.csproj.user
 source/trunk/Windows/Figlut.ServiceInstaller.Configuration/obj/
 source/trunk/Windows/Figlut.ServiceInstaller/obj/
 source/trunk/Windows/Figlut.Server.Toolkit.45/obj/
+source/trunk/MonoDroid/Figlut.MonoDroid.Toolkit/bin/
+source/trunk/MonoDroid/Figlut.MonoDroid.Toolkit/obj/
