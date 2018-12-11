@@ -22,7 +22,7 @@
         /// </summary>
         /// <param name="image">An image to convert.</param>
         /// <returns>Returns a byte array.</returns>
-        public byte[] GetBytesFromImage(Image image)
+        public static byte[] GetBytesFromImage(Image image)
         {
             using (var ms = new MemoryStream())
             {
