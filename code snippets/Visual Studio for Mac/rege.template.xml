@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<CodeTemplates version="3.0">
+  <CodeTemplate version="2.0">
+    <Header>
+      <_Group>C#</_Group>
+      <Version />
+      <MimeType>text/x-csharp</MimeType>
+      <Shortcut>rege</Shortcut>
+      <_Description>Template region for event handlers</_Description>
+      <TemplateType>Expansion, SurroundsWith</TemplateType>
+    </Header>
+    <Variables />
+    <Code><![CDATA[#region Event Handlers
+
+$selected$$end$
+
+#endregion //Event Handlers]]></Code>
+  </CodeTemplate>
+</CodeTemplates>

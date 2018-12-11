@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<CodeTemplates version="3.0">
+  <CodeTemplate version="2.0">
+    <Header>
+      <_Group>C#</_Group>
+      <Version>1.0</Version>
+      <MimeType>text/x-csharp</MimeType>
+      <Shortcut>foreach</Shortcut>
+      <_Description>Template for 'foreach' loop</_Description>
+      <TemplateType>Expansion, SurroundsWith</TemplateType>
+    </Header>
+    <Variables>
+      <Variable name="id" isIdentifier="true">
+        <Default>item</Default>
+        <_ToolTip>Identifier for the current element</_ToolTip>
+      </Variable>
+      <Variable name="collection">
+        <Default>collection</Default>
+        <_ToolTip>Collection to iterate through</_ToolTip>
+        <Function>GetCollections()</Function>
+      </Variable>
+    </Variables>
+    <Code><![CDATA[foreach (var $id$ in $collection$) {
+	$selected$$end$
+}]]></Code>
+  </CodeTemplate>
+</CodeTemplates>
