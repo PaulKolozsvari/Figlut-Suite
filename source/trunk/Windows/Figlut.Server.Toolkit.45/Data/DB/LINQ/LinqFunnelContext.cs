@@ -608,8 +608,37 @@
         /// </summary>
         /// <typeparam name="E">The entity type i.e. which table the entity will be queried from.</typeparam>
         /// <param name="keyValue"></param>
+        /// <param name="loadChildren">Whether or not to load the children entities onto this entity.</param>
+        /// <param name="throwExceptionOnNotFound">Whether or not to throw an exception if the result is null.</param>
+        /// <returns>Returns an entity with the specified type and surrogate key. Returns null if one is not found.</returns>
+        public virtual E GetEntityBySurrogateKey<E>(object keyValue, bool loadChildren, bool throwExceptionOnNotFound) where E : class
+        {
+            return (E)GetEntityBySurrogateKey(typeof(E), keyValue, loadChildren, throwExceptionOnNotFound);
+        }
+
+        /// <summary>
+        /// Queries for and returns an entity from the table corresponding to the entity type. The query is performed
+        /// on the surrogate key of the entity.
+        /// </summary>
+        /// <typeparam name="E">The entity type i.e. which table the entity will be queried from.</typeparam>
+        /// <param name="keyValue">The value of the surrogate to search by.</param>
+        /// <param name="loadChildren">Whether or not to load the children entities onto this entity.</param>
         /// <returns>Returns an entity with the specified type and surrogate key. Returns null if one is not found.</returns>
         public virtual object GetEntityBySurrogateKey(Type entityType, object keyValue, bool loadChildren)
+        {
+            return GetEntityBySurrogateKey(entityType, keyValue, loadChildren, false);
+        }
+
+        /// <summary>
+        /// Queries for and returns an entity from the table corresponding to the entity type. The query is performed
+        /// on the surrogate key of the entity.
+        /// </summary>
+        /// <typeparam name="E">The entity type i.e. which table the entity will be queried from.</typeparam>
+        /// <param name="keyValue">The value of the surrogate to search by.</param>
+        /// <param name="loadChildren">Whether or not to load the children entities onto this entity.</param>
+        /// <param name="throwExceptionOnNotFound">Whether or not to throw an exception if the result is null.</param>
+        /// <returns>Returns an entity with the specified type and surrogate key. Returns null if one is not found.</returns>
+        public virtual object GetEntityBySurrogateKey(Type entityType, object keyValue, bool loadChildren, bool throwExceptionOnNotFound)
         {
             SetDeferredLoadingEnabled(loadChildren);
             PropertyInfo surrogateKey = GetEntitySurrogateKey(entityType);
@@ -623,6 +652,13 @@
                 {
                     return t;
                 }
+            }
+            if (throwExceptionOnNotFound)
+            {
+                throw new Exception(string.Format("Could not find {0} with {1} of '{2}'.",
+                    entityType.Name,
+                    surrogateKey.Name,
+                    keyValue));
             }
             return null;
         }
