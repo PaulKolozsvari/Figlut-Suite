@@ -1,0 +1,4 @@
+Copy the code snippet template files into the snippets directory to import them
+into Visual Studio for Mac:
+
+/Users/{user_name}/Library/VisualStudio/7.0/Snippets

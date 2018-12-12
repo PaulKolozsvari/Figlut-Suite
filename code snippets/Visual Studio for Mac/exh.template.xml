@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<CodeTemplates version="3.0">
+  <CodeTemplate version="2.0">
+    <Header>
+      <_Group>C#</_Group>
+      <Version />
+      <MimeType>text/x-csharp</MimeType>
+      <Shortcut>exh</Shortcut>
+      <_Description>Template for exception handler</_Description>
+      <TemplateType>Expansion, SurroundsWith</TemplateType>
+    </Header>
+    <Variables />
+    <Code><![CDATA[try
+{
+    $selected$$end$
+}
+catch(Exception ex)
+{
+
+}]]></Code>
+  </CodeTemplate>
+</CodeTemplates>
