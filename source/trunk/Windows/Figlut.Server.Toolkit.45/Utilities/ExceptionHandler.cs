@@ -7,6 +7,7 @@
     using System.Text;
     using System.Windows.Forms;
     using Figlut.Server.Toolkit.Utilities.Logging;
+    using Figlut.Server.Toolkit.Data;
 
     #endregion //Using Directives
 
@@ -89,6 +90,16 @@
                 else
                 {
                     GOC.Instance.Logger.LogMessage(new LogError(exception, eventDetailsMessage, LoggingLevel.Normal));
+                }
+                if (GOC.Instance.SendEmailOnException)
+                {
+                    if (GOC.Instance.EmailClient == null)
+                    {
+                        throw new Exception(string.Format("{0} enabled, but {1} not set.",
+                            EntityReader<GOC>.GetPropertyName(p => p.SendEmailOnException, false),
+                            EntityReader<GOC>.GetPropertyName(p => p.EmailClient, false)));
+                    }
+                    GOC.Instance.EmailClient.SendExceptionEmailNotification(exception);
                 }
                 return closeApplication;
             }

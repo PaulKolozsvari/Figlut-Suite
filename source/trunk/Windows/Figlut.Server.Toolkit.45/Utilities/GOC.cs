@@ -21,6 +21,7 @@
     using Figlut.Server.Toolkit.Web.Client.FiglutWebService;
 using System.Data.Linq;
 using System.Windows.Forms;
+    using Figlut.Server.Toolkit.Utilities.Email;
 
     #endregion //Using Directives
 
@@ -87,6 +88,26 @@ using System.Windows.Forms;
         protected Type _userLinqToSqlType;
         protected Type _serverActionLinqToSqlType;
         protected Type _serverErrorLinqtoSqlType;
+
+        #region Email
+
+        protected bool _emailNotificationsEnabled;
+        protected bool _throwEmailFailExceptions;
+        protected EmailProvider _emailProvider;
+        protected string _gMailSMTPServer;
+        protected string _gMailSmtpUserName;
+        protected string _gMailSmtpPassword;
+        protected int _gMailSmtpPort;
+        protected string _senderEmailAddress;
+        protected string _senderDisplayName;
+        protected string _exceptionEmailSubject;
+        protected bool _emailExceptions;
+        protected bool _logEmails;
+        protected bool _includeDefaultEmailRecipients;
+        protected List<EmailNotificationRecipient> _defaultEmailRecipients;
+        protected EmailClient _emailClient;
+
+        #endregion //Email
 
         #endregion //Fields
 
@@ -211,6 +232,22 @@ using System.Windows.Forms;
             get { return _serverErrorLinqtoSqlType; }
             set { _serverErrorLinqtoSqlType = value; }
         }
+
+        #region Email
+
+        public bool SendEmailOnException
+        {
+            get { return _emailExceptions; }
+            set { _emailExceptions = value; }
+        }
+
+        public EmailClient EmailClient
+        {
+            get { return _emailClient; }
+            set { _emailClient = value; }
+        }
+
+        #endregion //Email
 
         #endregion //Properties
 
