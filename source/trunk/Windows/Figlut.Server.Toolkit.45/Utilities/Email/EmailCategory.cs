@@ -3,6 +3,7 @@
     public enum EmailCategory
     {
         Information,
+        Notification,
         Event,
         Error,
         Warning,

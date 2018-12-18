@@ -307,8 +307,7 @@
             List<string> attachmentFileNames,
             bool isHtml,
             List<EmailNotificationRecipient> emailRecipients,
-            string logoImageFilePath,
-            Nullable<Guid> organizationId)
+            string logoImageFilePath)
         {
             if (!_emailNotificationsEnabled)
             {
@@ -375,7 +374,7 @@
             }
             message.AppendLine(exception.StackTrace);
             string errorMessage = message.ToString();
-            return SendEmail(EmailCategory.Error, _exceptionEmailSubject, errorMessage, null, false, null, null, null);
+            return SendEmail(EmailCategory.Error, _exceptionEmailSubject, errorMessage, null, false, null, null);
         }
 
         private void LogEmailNotification(MailMessage email, string subject)
@@ -385,9 +384,22 @@
                 return;
             }
             StringBuilder logMessage = new StringBuilder();
-            logMessage.AppendLine("Email notification Sent:");
+            logMessage.AppendLine("Email notification Sent");
+            logMessage.AppendLine();
             logMessage.AppendLine(string.Format("Subject: {0}", subject));
+            logMessage.AppendLine();
+            logMessage.AppendLine("Body:");
+            logMessage.AppendLine();
+            logMessage.AppendLine(email.Body);
+            logMessage.AppendLine();
+            logMessage.AppendLine("To:");
             email.To.ToList().ForEach(p => logMessage.AppendLine(p.Address));
+            logMessage.AppendLine();
+            logMessage.AppendLine("CC:");
+            email.To.ToList().ForEach(p => logMessage.AppendLine(p.Address));
+            logMessage.AppendLine();
+            logMessage.AppendLine("BCC:");
+            email.Bcc.ToList().ForEach(p => logMessage.AppendLine(p.Address));
             string logMessageText = logMessage.ToString();
             GOC.Instance.Logger.LogMessage(new LogMessage(logMessageText, LogMessageType.Information, LoggingLevel.Maximum));
         }
@@ -404,6 +416,11 @@
                 result = result.Remove(result.Length - 1, 1);
             }
             return result.ToString();
+        }
+
+        public void SendTestEmail()
+        {
+            SendEmail(EmailCategory.Notification, "Test Email", "This is a test email.", null, false, null, null);
         }
 
         #endregion //Methods
