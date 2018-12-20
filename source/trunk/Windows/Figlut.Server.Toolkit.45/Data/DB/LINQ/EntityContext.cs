@@ -365,7 +365,7 @@
             }
         }
 
-        public ServiceFunctionResult<List<E>> GetEntitiesbyField<E>(
+        public ServiceFunctionResult<List<E>> GetEntitiesByField<E>(
             string fieldName, 
             object fieldValue, 
             bool loadChildren, 
