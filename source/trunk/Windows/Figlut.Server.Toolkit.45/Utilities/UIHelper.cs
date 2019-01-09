@@ -979,6 +979,28 @@
             }
         }
 
+        public static void AddListBoxItemAndScrollToBottom(ListBox listBox, object itemToAdd, bool selectLastItem)
+        {
+            if (itemToAdd != null)
+            {
+                listBox.Items.Add(itemToAdd);
+            }
+            ScrollToBottomOfListBox(listBox, selectLastItem);
+        }
+
+        public static void ScrollToBottomOfListBox(ListBox listBox, bool selectLastItem)
+        {
+            if (selectLastItem)
+            {
+                listBox.SelectedIndex = listBox.Items.Count - 1;
+            }
+            else
+            {
+                listBox.TopIndex = listBox.Items.Count - 1;
+            }
+            Application.DoEvents();
+        }
+
         #endregion //Methods
     }
 }
