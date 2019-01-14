@@ -9,6 +9,7 @@
     using System.Reflection;
     using System.Data.Linq.Mapping;
     using System.Data.Linq;
+    using System.Linq.Expressions;
 
     #endregion //Using Directives
 
@@ -591,6 +592,47 @@
         }
 
         /// <summary>
+        /// Queries for and returns the first entity filtered by the specified expression.
+        /// </summary>
+        /// <typeparam name="E">The entity type i.e. which table the entity will be queried from.</typeparam>
+        /// <param name="expression">The expression to use to filter by.</param>
+        /// <returns>Returns the first entity filtered by the specified expression.</returns>
+        public virtual E GetFirstEntity<E>(Expression<Func<E, bool>> expression) where E : class
+        {
+            return GetFirstEntity<E>(expression, false);
+        }
+
+        /// <summary>
+        /// Queries for and returns the first entity filtered by the specified expression.
+        /// </summary>
+        /// <typeparam name="E">The entity type i.e. which table the entity will be queried from.</typeparam>
+        /// <param name="expression">The expression to use to filter by.</param>
+        /// <param name="throwExceptionOnNotFound">Whether or not to to throw an exception if the result is null.</param>
+        /// <returns>Returns the first entity filtered by the specified expression.</returns>
+        public virtual E GetFirstEntity<E>(Expression<Func<E, bool>> expression, bool throwExceptionOnNotFound) where E : class
+        {
+            E result = DB.GetTable<E>().Where(expression.Compile()).FirstOrDefault();
+            if (result == null && throwExceptionOnNotFound)
+            {
+                throw new Exception(string.Format("Could not find {0} for expression {1}'.",
+                    typeof(E).Name,
+                    expression.ToString()));
+            }
+            return result;
+        }
+
+        /// <summary>
+        /// Queries for and returns a list of entities filtered by the specified expression.
+        /// </summary>
+        /// <typeparam name="E">The entity type i.e. which table the entity will be queried from.</typeparam>
+        /// <param name="expression">The expression to use to filter by.</param>
+        /// <returns>Returns a list of entities filtered by the specified expression.</returns>
+        public virtual List<E> GetEntities<E>(Expression<Func<E, bool>> expression) where E : class
+        {
+            return DB.GetTable<E>().Where(expression.Compile()).ToList();
+        }
+
+        /// <summary>
         /// Queries for and returns an entity from the table corresponding to the entity type. The query is performed
         /// on the surrogate key of the entity.
         /// </summary>
@@ -608,8 +650,37 @@
         /// </summary>
         /// <typeparam name="E">The entity type i.e. which table the entity will be queried from.</typeparam>
         /// <param name="keyValue"></param>
+        /// <param name="loadChildren">Whether or not to load the children entities onto this entity.</param>
+        /// <param name="throwExceptionOnNotFound">Whether or not to throw an exception if the result is null.</param>
+        /// <returns>Returns an entity with the specified type and surrogate key. Returns null if one is not found.</returns>
+        public virtual E GetEntityBySurrogateKey<E>(object keyValue, bool loadChildren, bool throwExceptionOnNotFound) where E : class
+        {
+            return (E)GetEntityBySurrogateKey(typeof(E), keyValue, loadChildren, throwExceptionOnNotFound);
+        }
+
+        /// <summary>
+        /// Queries for and returns an entity from the table corresponding to the entity type. The query is performed
+        /// on the surrogate key of the entity.
+        /// </summary>
+        /// <typeparam name="E">The entity type i.e. which table the entity will be queried from.</typeparam>
+        /// <param name="keyValue">The value of the surrogate to search by.</param>
+        /// <param name="loadChildren">Whether or not to load the children entities onto this entity.</param>
         /// <returns>Returns an entity with the specified type and surrogate key. Returns null if one is not found.</returns>
         public virtual object GetEntityBySurrogateKey(Type entityType, object keyValue, bool loadChildren)
+        {
+            return GetEntityBySurrogateKey(entityType, keyValue, loadChildren, false);
+        }
+
+        /// <summary>
+        /// Queries for and returns an entity from the table corresponding to the entity type. The query is performed
+        /// on the surrogate key of the entity.
+        /// </summary>
+        /// <typeparam name="E">The entity type i.e. which table the entity will be queried from.</typeparam>
+        /// <param name="keyValue">The value of the surrogate to search by.</param>
+        /// <param name="loadChildren">Whether or not to load the children entities onto this entity.</param>
+        /// <param name="throwExceptionOnNotFound">Whether or not to throw an exception if the result is null.</param>
+        /// <returns>Returns an entity with the specified type and surrogate key. Returns null if one is not found.</returns>
+        public virtual object GetEntityBySurrogateKey(Type entityType, object keyValue, bool loadChildren, bool throwExceptionOnNotFound)
         {
             SetDeferredLoadingEnabled(loadChildren);
             PropertyInfo surrogateKey = GetEntitySurrogateKey(entityType);
@@ -623,6 +694,13 @@
                 {
                     return t;
                 }
+            }
+            if (throwExceptionOnNotFound)
+            {
+                throw new Exception(string.Format("Could not find {0} with {1} of '{2}'.",
+                    entityType.Name,
+                    surrogateKey.Name,
+                    keyValue));
             }
             return null;
         }

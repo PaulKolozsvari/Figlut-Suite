@@ -174,7 +174,7 @@
                     OnBeforeGetEntityById(this, new RestServiceGetEntityByIdEventArgs(
                         entityName, userId, userName, context, entityType, entityId, null));
                 }
-                object outputEntity = context.GetEntitybySurrogateKey(
+                object outputEntity = context.GetEntityBySurrogateKey(
                     entityType,
                     entityId,
                     false,

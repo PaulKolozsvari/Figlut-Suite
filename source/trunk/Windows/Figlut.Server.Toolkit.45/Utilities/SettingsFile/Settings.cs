@@ -14,6 +14,7 @@
     using Figlut.Server.Toolkit.Mmc.Forms;
     using Figlut.Server.Toolkit.Mmc;
     using Figlut.Server.Toolkit.Utilities.Logging;
+    using Figlut.Server.Toolkit.Utilities.Email;
 
     #endregion //Using Directives
 
@@ -47,7 +48,6 @@
 
         protected string _name;
         protected string _filePath;
-        protected bool _showMessageBoxOnException;
 
         #endregion //Fields
 
@@ -65,11 +65,21 @@
             set { _filePath = value; }
         }
 
-        public bool ShowMessageBoxOnException
-        {
-            get { return _showMessageBoxOnException; }
-            set { _showMessageBoxOnException = value; }
-        }
+        #region GOC Settings
+
+        /// <summary>
+        /// The name of the application.
+        /// </summary>
+        [SettingInfo("Global Object Cache", AutoFormatDisplayName = true, Description = "The name of the application. This setting should be loaded in the GOC for it to be displayed relevant places.", CategorySequenceId = 0)]
+        public string ApplicationName { get; set; }
+
+        /// <summary>
+        /// Whether or not a message box should be shown when an exception occurs. This should only be enabled for Windows Forms application.
+        /// </summary>
+        [SettingInfo("Global Object Cache", AutoFormatDisplayName = true, Description = "Whether or not a message box should be shown when an exception occurs. This setting should be loaded into GOC for the Exception Handler to determine behavior. This should only be enabled for Windows Forms application.", CategorySequenceId = 1)]
+        public bool ShowMessageBoxOnException { get; set; }
+
+        #endregion //GOC Settings
 
         #endregion //Properties
 

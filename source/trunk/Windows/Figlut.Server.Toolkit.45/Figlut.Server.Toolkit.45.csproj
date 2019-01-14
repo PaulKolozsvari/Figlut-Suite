@@ -164,7 +164,11 @@
     <Compile Include="Utilities\EagerTimer.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Utilities\Email.cs" />
+    <Compile Include="Utilities\Email\EmailCategory.cs" />
+    <Compile Include="Utilities\Email\EmailNotificationRecipient.cs" />
+    <Compile Include="Utilities\Email\EmailProvider.cs" />
+    <Compile Include="Utilities\Email\EmailRecipientType.cs" />
+    <Compile Include="Utilities\Email\EmailClient.cs" />
     <Compile Include="Utilities\FTP\FtpClient.cs" />
     <Compile Include="Utilities\FTP\FtpHelper.cs" />
     <Compile Include="Utilities\FTP\FtpTransferProgressResult.cs" />
@@ -174,6 +178,10 @@
     <Compile Include="Utilities\RAS\RasConnectionType.cs" />
     <Compile Include="Utilities\RAS\RasEventDelegates.cs" />
     <Compile Include="Utilities\RAS\RasConnectionManager.cs" />
+    <Compile Include="Utilities\SettingsFile\Default\DatabaseAppSettings.cs" />
+    <Compile Include="Utilities\SettingsFile\Default\AppSettings.cs" />
+    <Compile Include="Utilities\SettingsFile\Default\WebServiceClientAppSettings.cs" />
+    <Compile Include="Utilities\SettingsFile\Default\WebServiceAppSettings.cs" />
     <Compile Include="Utilities\SSHFtpClient.cs" />
     <Compile Include="Utilities\SMS\SmsEventDelegates.cs" />
     <Compile Include="Utilities\SMS\SmsGateway.cs" />

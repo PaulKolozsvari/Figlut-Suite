@@ -323,7 +323,7 @@
             }
         }
 
-        public ServiceFunctionResult<E> GetEntitybySurrogateKey<E>(
+        public ServiceFunctionResult<E> GetEntityBySurrogateKey<E>(
             object keyValue, 
             bool loadChildren, 
             Nullable<Guid> userId,
@@ -344,7 +344,7 @@
             }
         }
 
-        public ServiceFunctionResult<object> GetEntitybySurrogateKey(
+        public ServiceFunctionResult<object> GetEntityBySurrogateKey(
             Type entityType, 
             object keyValue, 
             bool loadChildren, 
@@ -365,7 +365,7 @@
             }
         }
 
-        public ServiceFunctionResult<List<E>> GetEntitiesbyField<E>(
+        public ServiceFunctionResult<List<E>> GetEntitiesByField<E>(
             string fieldName, 
             object fieldValue, 
             bool loadChildren, 
