@@ -153,6 +153,7 @@
     <Compile Include="Utilities\FtpHelper.cs" />
     <Compile Include="Web\Client\REST\FileTransferProgressResult.cs" />
     <Compile Include="Utilities\FtpTransferProgressResult.cs" />
+    <Compile Include="Data\DataValidator.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\AboutResources.txt" />
