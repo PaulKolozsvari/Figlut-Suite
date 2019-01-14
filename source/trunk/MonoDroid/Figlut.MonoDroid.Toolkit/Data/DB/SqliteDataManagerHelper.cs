@@ -91,11 +91,11 @@ namespace Figlut.MonoDroid.Toolkit
 		{
 			if (oldVersion < 2)
 			{
-				//perform any database upgrade tasks for versions prior to  version 2              
+				//perform any database upgrade tasks for versions prior to version 2.
 			}
 			if (oldVersion < 3)
 			{
-				//perform any database upgrade tasks for versions prior to  version 3
+				//perform any database upgrade tasks for versions prior to version 3.
 			}
 		}
 
