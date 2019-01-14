@@ -56,6 +56,23 @@
             return result.ToString();
         }
 
+        public E GetEnumFromString<E>(string value, E defaultValue) where E : struct, IConvertible
+        {
+            if (!typeof(E).IsEnum)
+            {
+                throw new ArgumentException("E must be an enumerated type");
+            }
+            if (string.IsNullOrEmpty(value))
+            {
+                return defaultValue;
+            }
+            if (!Enum.TryParse<E>(value, out E result))
+            {
+                throw new Exception(string.Format("Could not convert string {0} to type {1}.", value, typeof(E).FullName));
+            }
+            return result;
+        }
+
         #endregion //Methods
     }
 }
