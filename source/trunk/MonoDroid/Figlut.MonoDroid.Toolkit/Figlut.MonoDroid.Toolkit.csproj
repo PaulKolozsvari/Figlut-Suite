@@ -163,6 +163,11 @@
     <Compile Include="Utilities\FTP\FtpClient.cs" />
     <Compile Include="Utilities\FTP\FtpHelper.cs" />
     <Compile Include="Utilities\FTP\FtpTransferProgressResult.cs" />
+    <Compile Include="Utilities\SettingsFile\Default\AppSettings.cs" />
+    <Compile Include="Utilities\SettingsFile\Default\DatabaseAppSettings.cs" />
+    <Compile Include="Utilities\SettingsFile\Default\WebServiceAppSettings.cs" />
+    <Compile Include="Utilities\SettingsFile\Default\WebServiceClientAppSettings.cs" />
+    <Compile Include="Utilities\SettingsFile\Default\WebServiceMobileClientAppSettings.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\AboutResources.txt" />
@@ -176,5 +181,6 @@
     <Folder Include="Data\DB\Sqlite\" />
     <Folder Include="Utilities\Email\" />
     <Folder Include="Utilities\FTP\" />
+    <Folder Include="Utilities\SettingsFile\Default\" />
   </ItemGroup>
 </Project>
