@@ -1,4 +1,4 @@
-﻿namespace Figlut.Server.Toolkit.Utilities
+﻿namespace Figlut.Server.Toolkit.Utilities.FTP
 {
     #region Using Directives
 
