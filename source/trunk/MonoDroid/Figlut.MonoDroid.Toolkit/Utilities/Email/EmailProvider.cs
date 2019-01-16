@@ -1,4 +1,4 @@
-﻿namespace Figlut.Server.Toolkit.Utilities.Email
+﻿namespace Figlut.MonoDroid.Toolkit.Utilities.Email
 {
     public enum EmailProvider
     {

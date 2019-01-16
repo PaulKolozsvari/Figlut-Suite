@@ -1,10 +1,11 @@
-﻿namespace Figlut.Server.Toolkit.Utilities.Email
+﻿namespace Figlut.MonoDroid.Toolkit.Utilities.Email
 {
+    using Android.App;
     #region Using Directives
 
-    using Figlut.Server.Toolkit.Data;
-    using Figlut.Server.Toolkit.Utilities;
-    using Figlut.Server.Toolkit.Utilities.Logging;
+    using Figlut.MonoDroid.Toolkit.Data;
+    using Figlut.MonoDroid.Toolkit.Utilities;
+    using Figlut.MonoDroid.Toolkit.Utilities.Logging;
     using System;
     using System.Collections.Generic;
     using System.IO;
@@ -307,7 +308,8 @@
             List<string> attachmentFileNames,
             bool isHtml,
             List<EmailNotificationRecipient> emailRecipients,
-            string logoImageFilePath)
+            string logoImageFilePath,
+            Activity activity)
         {
             if (!_emailNotificationsEnabled)
             {
@@ -358,13 +360,13 @@
                 {
                     throw;
                 }
-                ExceptionHandler.HandleException(ex);
+                ExceptionHandler.HandleException(ex, activity);
                 return false;
             }
             return true;
         }
 
-        public bool SendExceptionEmailNotification(Exception exception)
+        public bool SendExceptionEmailNotification(Exception exception, Activity activity)
         {
             StringBuilder message = new StringBuilder();
             message.AppendLine(exception.Message);
@@ -374,7 +376,7 @@
             }
             message.AppendLine(exception.StackTrace);
             string errorMessage = message.ToString();
-            return SendEmail(EmailCategory.Error, _exceptionEmailSubject, errorMessage, null, false, null, null);
+            return SendEmail(EmailCategory.Error, _exceptionEmailSubject, errorMessage, null, false, null, null, activity);
         }
 
         private void LogEmailNotification(MailMessage email, string subject)
@@ -418,9 +420,9 @@
             return result.ToString();
         }
 
-        public void SendTestEmail()
+        public void SendTestEmail(Activity activity)
         {
-            SendEmail(EmailCategory.Notification, "Test Email", "This is a test email.", null, false, null, null);
+            SendEmail(EmailCategory.Notification, "Test Email", "This is a test email.", null, false, null, null, activity);
         }
 
         #endregion //Methods
