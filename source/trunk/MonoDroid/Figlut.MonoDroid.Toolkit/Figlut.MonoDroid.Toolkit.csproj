@@ -154,6 +154,7 @@
     <Compile Include="Web\Client\REST\FileTransferProgressResult.cs" />
     <Compile Include="Utilities\FtpTransferProgressResult.cs" />
     <Compile Include="Data\DataValidator.cs" />
+    <Compile Include="Utilities\NetworkHelper.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\AboutResources.txt" />
