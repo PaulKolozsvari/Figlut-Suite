@@ -1,8 +1,8 @@
 ﻿namespace Figlut.MonoDroid.Toolkit.Utilities.Email
 {
-    using Android.App;
     #region Using Directives
 
+    using Android.App;
     using Figlut.MonoDroid.Toolkit.Data;
     using Figlut.MonoDroid.Toolkit.Utilities;
     using Figlut.MonoDroid.Toolkit.Utilities.Logging;

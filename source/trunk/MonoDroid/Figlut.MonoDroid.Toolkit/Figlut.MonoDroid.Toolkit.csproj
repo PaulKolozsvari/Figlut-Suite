@@ -160,6 +160,9 @@
     <Compile Include="Utilities\Email\EmailNotificationRecipient.cs" />
     <Compile Include="Utilities\Email\EmailProvider.cs" />
     <Compile Include="Utilities\Email\EmailRecipientType.cs" />
+    <Compile Include="Utilities\FTP\FtpClient.cs" />
+    <Compile Include="Utilities\FTP\FtpHelper.cs" />
+    <Compile Include="Utilities\FTP\FtpTransferProgressResult.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\AboutResources.txt" />
@@ -172,5 +175,6 @@
     <Folder Include="Utilities\" />
     <Folder Include="Data\DB\Sqlite\" />
     <Folder Include="Utilities\Email\" />
+    <Folder Include="Utilities\FTP\" />
   </ItemGroup>
 </Project>
