@@ -182,6 +182,7 @@
     <Compile Include="Utilities\SettingsFile\Default\AppSettings.cs" />
     <Compile Include="Utilities\SettingsFile\Default\WebServiceClientAppSettings.cs" />
     <Compile Include="Utilities\SettingsFile\Default\WebServiceAppSettings.cs" />
+    <Compile Include="Utilities\SettingsFile\Default\WebServiceMobileClientAppSettings.cs" />
     <Compile Include="Utilities\SSHFtpClient.cs" />
     <Compile Include="Utilities\SMS\SmsEventDelegates.cs" />
     <Compile Include="Utilities\SMS\SmsGateway.cs" />
