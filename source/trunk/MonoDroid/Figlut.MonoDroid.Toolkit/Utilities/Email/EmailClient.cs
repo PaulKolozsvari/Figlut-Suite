@@ -309,6 +309,7 @@
             bool isHtml,
             List<EmailNotificationRecipient> emailRecipients,
             string logoImageFilePath,
+            string logTag,
             Activity activity)
         {
             if (!_emailNotificationsEnabled)
@@ -360,13 +361,13 @@
                 {
                     throw;
                 }
-                ExceptionHandler.HandleException(ex, activity);
+                ExceptionHandler.HandleException(ex, logTag, activity);
                 return false;
             }
             return true;
         }
 
-        public bool SendExceptionEmailNotification(Exception exception, Activity activity)
+        public bool SendExceptionEmailNotification(Exception exception, string logTag, Activity activity)
         {
             StringBuilder message = new StringBuilder();
             message.AppendLine(exception.Message);
@@ -376,7 +377,7 @@
             }
             message.AppendLine(exception.StackTrace);
             string errorMessage = message.ToString();
-            return SendEmail(EmailCategory.Error, _exceptionEmailSubject, errorMessage, null, false, null, null, activity);
+            return SendEmail(EmailCategory.Error, _exceptionEmailSubject, errorMessage, null, false, null, null, logTag, activity);
         }
 
         private void LogEmailNotification(MailMessage email, string subject)
@@ -420,9 +421,9 @@
             return result.ToString();
         }
 
-        public void SendTestEmail(Activity activity)
+        public void SendTestEmail(string logTag, Activity activity)
         {
-            SendEmail(EmailCategory.Notification, "Test Email", "This is a test email.", null, false, null, null, activity);
+            SendEmail(EmailCategory.Notification, "Test Email", "This is a test email.", null, false, null, null, logTag, activity);
         }
 
         #endregion //Methods

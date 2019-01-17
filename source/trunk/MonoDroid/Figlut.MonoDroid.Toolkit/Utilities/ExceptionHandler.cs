@@ -26,15 +26,26 @@ namespace Figlut.MonoDroid.Toolkit.Utilities
         /// <param name="exception">The exception to handle.</param>
         public static bool HandleException(Exception exception)
         {
-            return HandleException(exception, null);
+            return HandleException(exception, null, null);
         }
 
         /// <summary>
         /// Handles an exption by logging and/or displaying it (if an actvity is specified.
         /// </summary>
         /// <param name="exception">The exception to handle.</param>
+        /// <param name="logTag">The TAG to use for logging to the Android log. Passing in a null on this parameter will omit logging to the Android log</param>
+        public static bool HandleException(Exception exception, string logTag)
+        {
+            return HandleException(exception, logTag, null);
+        }
+
+        /// <summary>
+        /// Handles an exption by logging and/or displaying it (if an actvity is specified.
+        /// </summary>
+        /// <param name="exception">The exception to handle.</param>
+        /// <param name="logTag">The TAG to use for logging to the Android log. Passing in a null on this parameter will omit logging to the Android log</param>
         /// <param name="activity">If an activity is specified, a Toast will be shown with the exception's message.</param>
-		public static bool HandleException(Exception exception, Activity activity)
+		public static bool HandleException(Exception exception, string logTag, Activity activity)
         {
             try
             {
@@ -66,7 +77,12 @@ namespace Figlut.MonoDroid.Toolkit.Utilities
             catch (Exception ex)
             {
                 Exception wrappedException = new Exception(ex.Message, exception);
-                Console.WriteLine(LogError.GetErrorMessageFromException(new Exception(ex.Message, exception)));
+                string errorMessage = LogError.GetErrorMessageFromException(new Exception(ex.Message, exception));
+                Console.WriteLine(errorMessage);
+                if (!string.IsNullOrEmpty(logTag))
+                {
+                    Android.Util.Log.Error(logTag, errorMessage);
+                }
                 GOC.Instance.Logger.LogMessageToFile(new LogError(wrappedException, LoggingLevel.Minimum));
                 return true;
             }
