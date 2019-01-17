@@ -2,7 +2,6 @@
 {
     #region Using Directives
 
-    using System;
     using Android.Content;
     using Android.Net;
 
@@ -12,9 +11,18 @@
     {
         #region Methods
 
-        private bool IsNetworkAvailable(ContextWrapper contextWrapper)
+        public static bool IsNetworkAvailable(ContextWrapper contextWrapper)
         {
-            ConnectivityManager connectivityManager = (ConnectivityManager)contextWrapper.GetSystemService(Context.ConnectivityService);
+            return IsNetworkAvailable((ConnectivityManager)contextWrapper.GetSystemService(Context.ConnectivityService));
+        }
+
+        public static bool IsNetworkAvailable(Context context)
+        {
+            return IsNetworkAvailable((ConnectivityManager)context.GetSystemService(Context.ConnectivityService));
+        }
+
+        public static bool IsNetworkAvailable(ConnectivityManager connectivityManager)
+        {
             NetworkInfo networkInfo = connectivityManager.ActiveNetworkInfo;
             return networkInfo != null && networkInfo.IsConnected;
         }
