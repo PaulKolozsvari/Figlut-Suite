@@ -21,12 +21,19 @@ namespace Figlut.MonoDroid.Toolkit.Utilities
         #region Methods
 
         /// <summary>
-        /// Handles an exption by logging and/or displaying it.
-        /// Also temporarily disables the specified form's key up event handler.
+        /// Handles an exption by logging it.
         /// </summary>
         /// <param name="exception">The exception to handle.</param>
-        /// <param name="log">Whether or not to use the Logger to log the exception to a log file.</param>
-        /// <param name="display">Whether or not to display the exception mesage and its inner exception message if one exists.</param>
+        public static bool HandleException(Exception exception)
+        {
+            return HandleException(exception, null);
+        }
+
+        /// <summary>
+        /// Handles an exption by logging and/or displaying it (if an actvity is specified.
+        /// </summary>
+        /// <param name="exception">The exception to handle.</param>
+        /// <param name="activity">If an activity is specified, a Toast will be shown with the exception's message.</param>
 		public static bool HandleException(Exception exception, Activity activity)
         {
             try
@@ -36,7 +43,7 @@ namespace Figlut.MonoDroid.Toolkit.Utilities
                 {
                     throw new NullReferenceException("exception to be handled may not be null.");
                 }
-                if (GOC.Instance.ShowMessageBoxOnException)
+                if (GOC.Instance.ShowMessageBoxOnException && (activity != null))
                 {
 					Toast.MakeText(activity, exception.Message, ToastLength.Long).Show();
                 }
@@ -50,7 +57,7 @@ namespace Figlut.MonoDroid.Toolkit.Utilities
                 {
                     GOC.Instance.Logger.LogMessage(new LogError(exception, LoggingLevel.Normal));
                 }
-                if (closeApplication)
+                if (closeApplication && (activity != null))
                 {
 					activity.Finish();
                 }
