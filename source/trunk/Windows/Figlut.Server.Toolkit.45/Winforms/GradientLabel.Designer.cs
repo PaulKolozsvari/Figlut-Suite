@@ -1,4 +1,4 @@
-﻿namespace Figlut.Server.Toolkit
+﻿namespace Figlut.Server.Toolkit.Winforms
 {
     partial class GradientLabel
     {

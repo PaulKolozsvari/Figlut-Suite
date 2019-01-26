@@ -19,8 +19,8 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(BorderlessForm));
             this.tmrTextAnimator = new System.Windows.Forms.Timer(this.components);
             this.tmrWaitForAnimation = new System.Windows.Forms.Timer(this.components);
-            this.statusMain = new Figlut.Server.Toolkit.GradientLabel();
-            this.lblFormTitle = new Figlut.Server.Toolkit.GradientLabel();
+            this.statusMain = new Figlut.Server.Toolkit.Winforms.GradientLabel();
+            this.lblFormTitle = new Figlut.Server.Toolkit.Winforms.GradientLabel();
             this.pnlFormLeft = new Figlut.Server.Toolkit.Winforms.GradientPanel();
             this.pnlFormRight = new Figlut.Server.Toolkit.Winforms.GradientPanel();
             this.pnlFormContent = new System.Windows.Forms.Panel();
