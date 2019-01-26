@@ -57,6 +57,7 @@
     <Reference Include="Ical.Net.Collections">
       <HintPath>..\SDK\iCal.NET\Ical.Net.2.2.20\lib\net45\Ical.Net.Collections.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.CSharp" />
     <Reference Include="microsoft.managementconsole, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\..\..\..\Program Files\Reference Assemblies\Microsoft\mmc\v3.0\microsoft.managementconsole.dll</HintPath>
@@ -94,6 +95,7 @@
     </Reference>
     <Reference Include="System.Transactions" />
     <Reference Include="System.Web" />
+    <Reference Include="System.Web.Mvc, Version=4.0.0.1, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml.Linq">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
@@ -307,6 +309,9 @@
     <Compile Include="Web\Client\REST\RestWebServiceClient.cs" />
     <Compile Include="Web\Client\XmlWebServiceClient.cs" />
     <Compile Include="Web\MimeContentType.cs" />
+    <Compile Include="Web\MVC\Controllers\FiglutController.cs" />
+    <Compile Include="Web\MVC\Models\InformationModel.cs" />
+    <Compile Include="Web\MVC\Models\WaitModel.cs" />
     <Compile Include="Web\Service\Inspector\ServiceMessageInspectorBehavior.cs" />
     <Compile Include="Web\Service\REST\Events\RestServiceDeleteEntityEventArgs.cs" />
     <Compile Include="Web\Service\REST\Events\RestServiceEventArgs.cs" />
