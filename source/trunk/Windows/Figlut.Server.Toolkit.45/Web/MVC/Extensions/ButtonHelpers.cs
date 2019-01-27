@@ -11,7 +11,7 @@
     #endregion //Using Directives
 
     //http://volaresystems.com/blog/post/2012/09/16/Making-spiffy-buttons-with-CSS-and-MVC-Razor-helpers
-    public static class Test
+    public static class ButtonHelpers
     {
         public static MvcHtmlString LinkButtonForSubmit(
             this HtmlHelper helper,
