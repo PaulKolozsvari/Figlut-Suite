@@ -1,4 +1,4 @@
-﻿namespace Figlut.Repeat.Web.Site.Extensions
+﻿namespace Figlut.Server.Toolkit.Web.MVC.Extensions
 {
     #region Using Directives
 
