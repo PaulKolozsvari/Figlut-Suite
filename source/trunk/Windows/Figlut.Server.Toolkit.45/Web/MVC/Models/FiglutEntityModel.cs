@@ -135,6 +135,21 @@
 
         #endregion //Decimal Validation
 
+        #region Date Validation
+
+        public bool IsDateFieldSet(string fieldName, DateTime fieldValue, out string errorMessage)
+        {
+            errorMessage = null;
+            if (fieldValue == new DateTime())
+            {
+                errorMessage = $"{ fieldName} not set.";
+                return false;
+            }
+            return true;
+        }
+
+        #endregion //Date Validation
+
         #endregion //Methods
     }
 }
