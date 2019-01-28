@@ -328,6 +328,7 @@
     <Compile Include="Web\MVC\Controllers\FiglutController.cs" />
     <Compile Include="Web\MVC\Extensions\ButtonHelpers.cs" />
     <Compile Include="Web\MVC\Extensions\ExtensionMethods.cs" />
+    <Compile Include="Web\MVC\Models\ConfirmationModel.cs" />
     <Compile Include="Web\MVC\Models\FiglutEntityModel.cs" />
     <Compile Include="Web\MVC\Models\FilterModel.cs" />
     <Compile Include="Web\MVC\Models\InformationModel.cs" />

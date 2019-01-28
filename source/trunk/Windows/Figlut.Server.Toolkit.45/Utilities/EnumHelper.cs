@@ -56,7 +56,7 @@
             return result.ToString();
         }
 
-        public E GetEnumFromString<E>(string value, E defaultValue) where E : struct, IConvertible
+        public static E GetEnumFromString<E>(string value, E defaultValue) where E : struct, IConvertible
         {
             if (!typeof(E).IsEnum)
             {

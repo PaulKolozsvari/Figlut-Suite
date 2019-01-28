@@ -38,7 +38,7 @@
 
         #region Actions
 
-        protected virtual ActionResult WaitDialog(string message)
+        public virtual ActionResult WaitDialog(string message)
         {
             try
             {
@@ -57,7 +57,7 @@
             }
         }
 
-        protected virtual ActionResult InformationDialog(string message)
+        public virtual ActionResult InformationDialog(string message)
         {
             try
             {
