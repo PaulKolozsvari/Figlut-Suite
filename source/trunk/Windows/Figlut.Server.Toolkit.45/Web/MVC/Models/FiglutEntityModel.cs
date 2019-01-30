@@ -33,7 +33,7 @@
 
         #region Int Validation
 
-        public bool IsGuidFieldEmpty(string fieldName, Guid fieldValue, out string errorMessage)
+        public bool IsGuidFieldNotEmpty(string fieldName, Guid fieldValue, out string errorMessage)
         {
             errorMessage = null;
             if (fieldValue == Guid.Empty)
