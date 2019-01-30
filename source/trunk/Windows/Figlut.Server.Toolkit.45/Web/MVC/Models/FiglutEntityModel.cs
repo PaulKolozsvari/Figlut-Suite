@@ -18,7 +18,7 @@
 
         #region String Validation
 
-        public bool IsStringFieldValid(string fieldName, string fieldValue, out string errorMessage)
+        public bool IsStringFieldSet(string fieldName, string fieldValue, out string errorMessage)
         {
             errorMessage = null;
             if (string.IsNullOrEmpty(fieldName))
