@@ -33,6 +33,17 @@
 
         #region Int Validation
 
+        public bool IsGuidFieldEmpty(string fieldName, Guid fieldValue, out string errorMessage)
+        {
+            errorMessage = null;
+            if (fieldValue == Guid.Empty)
+            {
+                errorMessage = $"{fieldName} may not be empty.";
+                return false;
+            }
+            return true;
+        }
+
         public bool IsIntFieldNotNegative(string fieldName, int fieldValue, out string errorMessage)
         {
             errorMessage = null;
