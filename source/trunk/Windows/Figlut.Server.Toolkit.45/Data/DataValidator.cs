@@ -114,6 +114,18 @@
             }
         }
 
+        public bool ValidateGuidNotEmpty(string fieldName, Guid fieldValue, string parentName)
+        {
+            if (fieldValue == Guid.Empty)
+            {
+                string message = string.IsNullOrEmpty(parentName) ?
+                    string.Format("{0} may not be empty.", fieldName) :
+                    string.Format("{0} may not be empty on {1}.", fieldName, parentName);
+                throw new ArgumentOutOfRangeException(message);
+            }
+            return true;
+        }
+
         #endregion //Methods
     }
 }
