@@ -1,0 +1,1 @@
+"C:\Program Files\Microsoft SQL Server\100\Tools\Binn\SQLCMD.EXE" -S "SERVER\SQLEXPRESS"  -i "C:\Repeat\RepeatDBBackups\BackupRepeat.sql"
