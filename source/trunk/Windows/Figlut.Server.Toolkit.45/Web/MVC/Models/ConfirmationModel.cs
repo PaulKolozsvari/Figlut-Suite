@@ -57,12 +57,22 @@
         /// <summary>
         /// The ID of the parent i.e. to be used when a group of entities belonging to a parent is loaded and needs to be identified/deleted.
         /// </summary>
-        public Guid ParentId { get; set; }
+        public Nullable<Guid> ParentId { get; set; }
 
         /// <summary>
-        /// A description of the to be used when a group of entities belonging to a parent is loaded and needs to be identified/deleted.
+        /// A description of the parent to be used when a group of entities belonging to a parent is loaded and needs to be identified/deleted.
         /// </summary>
         public string ParentCaption { get; set; }
+
+        /// <summary>
+        /// The ID of the second parent i.e. to be used when a group of entities belonging to a parent is loaded and needs to be identified/deleted.
+        /// </summary>
+        public Nullable<Guid> SecondParentId { get; set; }
+
+        /// <summary>
+        /// A description of the second parent to be used when a group of entities belonging to a second parent is loaded and needs to be identified/deleted.
+        /// </summary>
+        public string SecondParentCaption { get; set; }
 
         /// <summary>
         /// Whether or not to display a wait dialog while posting back to the PostBackControllerAction.

@@ -63,9 +63,13 @@ using System.Web;
 
         public List<T> DataModel { get; set; }
 
-        public Guid ParentId { get; set; }
+        public Nullable<Guid> ParentId { get; set; }
 
         public string ParentCaption { get; set; }
+
+        public Nullable<Guid> SecondParentId { get; set; }
+
+        public string SecondParentCaption { get; set; }
 
         #endregion //Properties
 
