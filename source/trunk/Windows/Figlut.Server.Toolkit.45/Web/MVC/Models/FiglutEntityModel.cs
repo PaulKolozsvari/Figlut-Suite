@@ -21,7 +21,7 @@
         public bool IsStringFieldSet(string fieldName, string fieldValue, out string errorMessage)
         {
             errorMessage = null;
-            if (string.IsNullOrEmpty(fieldName))
+            if (string.IsNullOrEmpty(fieldValue))
             {
                 errorMessage = $"{fieldName} not entered.";
                 return false;
