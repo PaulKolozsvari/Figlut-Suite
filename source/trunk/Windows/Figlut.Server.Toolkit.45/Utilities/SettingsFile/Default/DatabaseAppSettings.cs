@@ -12,6 +12,22 @@
 
     public class DatabaseAppSettings : AppSettings
     {
+        #region Constructors
+
+        public DatabaseAppSettings() : base()
+        {
+        }
+
+        public DatabaseAppSettings(string filePath) : base(filePath)
+        {
+        }
+
+        public DatabaseAppSettings(string name, string filePath) : base(name, filePath)
+        {
+        }
+
+        #endregion //Constructors
+
         #region Properties
 
         #region Database

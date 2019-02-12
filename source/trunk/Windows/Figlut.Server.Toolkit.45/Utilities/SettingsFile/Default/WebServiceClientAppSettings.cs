@@ -13,6 +13,22 @@
 
     public class WebServiceClientAppSettings : AppSettings
     {
+        #region Constructors
+
+        public WebServiceClientAppSettings() : base()
+        {
+        }
+
+        public WebServiceClientAppSettings(string filePath) : base(filePath)
+        {
+        }
+
+        public WebServiceClientAppSettings(string name, string filePath) : base(name, filePath)
+        {
+        }
+
+        #endregion //Constructors
+
         #region Web Service
 
         /// <summary>

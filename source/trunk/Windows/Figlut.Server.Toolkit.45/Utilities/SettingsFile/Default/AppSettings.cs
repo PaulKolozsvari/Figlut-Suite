@@ -13,6 +13,22 @@
     /// </summary>
     public class AppSettings : Settings
     {
+        #region Constructors
+
+        public AppSettings() : base()
+        {
+        }
+
+        public AppSettings(string filePath) : base(filePath)
+        {
+        }
+
+        public AppSettings(string name, string filePath) : base(name, filePath)
+        {
+        }
+
+        #endregion //Constructors
+
         #region Properties
 
         #region Logging

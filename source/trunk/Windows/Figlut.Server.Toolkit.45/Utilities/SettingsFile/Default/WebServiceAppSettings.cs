@@ -12,6 +12,22 @@
 
     public class WebServiceAppSettings : DatabaseAppSettings
     {
+        #region Constructors
+
+        public WebServiceAppSettings() : base()
+        {
+        }
+
+        public WebServiceAppSettings(string filePath) : base(filePath)
+        {
+        }
+
+        public WebServiceAppSettings(string name, string filePath) : base(name, filePath)
+        {
+        }
+
+        #endregion //Constructors
+
         #region Properties
 
         #region Service

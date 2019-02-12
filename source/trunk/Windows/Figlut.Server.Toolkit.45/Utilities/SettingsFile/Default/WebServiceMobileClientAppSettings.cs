@@ -13,6 +13,22 @@
 
     public class WebServiceMobileClientAppSettings : WebServiceClientAppSettings
     {
+        #region Constructors
+
+        public WebServiceMobileClientAppSettings() : base()
+        {
+        }
+
+        public WebServiceMobileClientAppSettings(string filePath) : base(filePath)
+        {
+        }
+
+        public WebServiceMobileClientAppSettings(string name, string filePath) : base(name, filePath)
+        {
+        }
+
+        #endregion //Constructors
+
         #region FTP
 
         /// <summary>
