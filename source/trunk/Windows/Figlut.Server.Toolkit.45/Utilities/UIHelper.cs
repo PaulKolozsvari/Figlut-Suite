@@ -198,6 +198,37 @@
             return result;
         }
 
+        /// <summary>
+        /// Displays question message box containing the question message and error icon and then
+        /// returns a Dialog result of either Yes or No based on the user's selection/response.
+        /// </summary>
+        /// <param name="question">The question message to be displayed to the user.</param>
+        /// <returns>Returns either a Yes or No response based on the user's selection/response.</returns>
+        public static DialogResult AskErrorQuestion(string questionMessage)
+        {
+            return AskErrorQuestion(questionMessage, null, null);
+        }
+
+        /// <summary>
+        /// Displays question message box containing the question message and error icon and then
+        /// returns a Dialog result of either Yes or No based on the user's selection/response.
+        /// Also temporarily disables the specified form's key up event handler.
+        /// </summary>
+        /// <param name="question">The question message to be displayed to the user.</param>
+        /// <returns>Returns either a Yes or No response based on the user's selection/response.</returns>
+        public static DialogResult AskErrorQuestion(string questionMessage, Form form, KeyEventHandler keyEventHandler)
+        {
+            DisableFormKeyUpEventHandler(form, keyEventHandler);
+            DialogResult result = MessageBox.Show(
+                questionMessage,
+                "Question",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Error,
+                MessageBoxDefaultButton.Button2);
+            EnableKeyEventHandler(form, keyEventHandler);
+            return result;
+        }
+
         #endregion //Message Boxes
 
         public static void MenuEnabled(MenuStrip mainMenu, bool enabled)
