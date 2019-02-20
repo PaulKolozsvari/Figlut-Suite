@@ -39,31 +39,32 @@
             return result.ToString();
         }
 
-        /// <summary>
-        /// Handles an exption by logging and/or displaying it.
-        /// Also temporarily disables the specified form's key up event handler.
-        /// </summary>
-        /// <param name="exception">The exception to handle.</param>
-        /// <param name="log">Whether or not to use the Logger to log the exception to a log file.</param>
-        /// <param name="display">Whether or not to display the exception mesage and its inner exception message if one exists.</param>
         public static bool HandleException(Exception exception)
         {
-            return HandleException(exception, null, null, null);
+            return HandleException(exception, null, null, null, true);
+        }
+
+        public static bool HandleException(Exception exception, bool emailException)
+        {
+            return HandleException(exception, null, null, null, emailException);
         }
 
         public static bool HandleException(Exception exception, string eventDetailsMessage)
         {
-            return HandleException(exception, null, null, eventDetailsMessage);
+            return HandleException(exception, null, null, eventDetailsMessage, true);
         }
 
-        /// <summary>
-        /// Handles an exception by logging and/or displaying it.
-        /// Also temporarily disables the specified form's key up event handler.
-        /// </summary>
-        /// <param name="exception">The exception to handle.</param>
-        /// <param name="log">Whether or not to use the Logger to log the exception to a log file.</param>
-        /// <param name="display">Whether or not to display the exception mesage and its inner exception message if one exists.</param>
+        public static bool HandleException(Exception exception, string eventDetailsMessage, bool emailException)
+        {
+            return HandleException(exception, null, null, eventDetailsMessage, emailException);
+        }
+
         public static bool HandleException(Exception exception, Form form, KeyEventHandler keyEventHandler, string eventDetailsMessage)
+        {
+            return HandleException(exception, form, keyEventHandler, eventDetailsMessage, true);
+        }
+
+        public static bool HandleException(Exception exception, Form form, KeyEventHandler keyEventHandler, string eventDetailsMessage, bool emailException)
         {
             try
             {
@@ -91,7 +92,7 @@
                 {
                     GOC.Instance.Logger.LogMessage(new LogError(exception, eventDetailsMessage, LoggingLevel.Normal));
                 }
-                if (GOC.Instance.SendEmailOnException)
+                if (emailException && GOC.Instance.SendEmailOnException)
                 {
                     if (GOC.Instance.EmailClient == null)
                     {

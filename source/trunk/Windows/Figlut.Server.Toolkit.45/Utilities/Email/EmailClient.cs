@@ -41,8 +41,6 @@
             List<EmailNotificationRecipient> defaultEmailRecipients)
         {
             DataValidator.ValidateStringNotEmptyOrNull(exchangeSmtpServer, nameof(exchangeSmtpServer), nameof(EmailClient));
-            DataValidator.ValidateStringNotEmptyOrNull(exchangeSmtpUserName, nameof(exchangeSmtpUserName), nameof(EmailClient));
-            DataValidator.ValidateStringNotEmptyOrNull(exchangeSmtpPassword, nameof(exchangeSmtpPassword), nameof(EmailClient));
             DataValidator.ValidateIntegerNotNegative(exchangeSmtpPort, nameof(exchangeSmtpPort), nameof(EmailClient));
 
             DataValidator.ValidateStringNotEmptyOrNull(gmailSmtpServer, nameof(gmailSmtpServer), nameof(EmailClient));
@@ -370,7 +368,7 @@
                 {
                     throw;
                 }
-                ExceptionHandler.HandleException(ex);
+                ExceptionHandler.HandleException(ex, false); //If emailing failed, then specify that the ExceptionHandler should not try to send the email exception as it would be futile and would result in overflow stack due to cyclic redundancy between ExceptionHandler and EmailClient.
                 errorMessage = ex.Message;
                 return false;
             }
