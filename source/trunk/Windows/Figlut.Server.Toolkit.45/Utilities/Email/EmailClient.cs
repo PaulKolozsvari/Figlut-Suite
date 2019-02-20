@@ -307,10 +307,12 @@
             List<string> attachmentFileNames,
             bool isHtml,
             List<EmailNotificationRecipient> emailRecipients,
-            string logoImageFilePath)
+            string logoImageFilePath,
+            out string errorMessage)
         {
             if (!_emailNotificationsEnabled)
             {
+                errorMessage = "Email notification not enabled.";
                 return false;
             }
             try
@@ -359,12 +361,14 @@
                     throw;
                 }
                 ExceptionHandler.HandleException(ex);
+                errorMessage = ex.Message;
                 return false;
             }
+            errorMessage = null;
             return true;
         }
 
-        public bool SendExceptionEmailNotification(Exception exception)
+        public bool SendExceptionEmailNotification(Exception exception, out string errorMessage)
         {
             StringBuilder message = new StringBuilder();
             message.AppendLine(exception.Message);
@@ -373,8 +377,8 @@
                 message.AppendLine(string.Format("Inner Exception : {0}", exception.InnerException.ToString()));
             }
             message.AppendLine(exception.StackTrace);
-            string errorMessage = message.ToString();
-            return SendEmail(EmailCategory.Error, _exceptionEmailSubject, errorMessage, null, false, null, null);
+            string exceptionMessage = message.ToString();
+            return SendEmail(EmailCategory.Error, _exceptionEmailSubject, exceptionMessage, null, false, null, null, out errorMessage);
         }
 
         private void LogEmailNotification(MailMessage email, string subject)
@@ -418,9 +422,14 @@
             return result.ToString();
         }
 
-        public void SendTestEmail()
+        public bool SendTestEmail(out string errorMessage)
         {
-            SendEmail(EmailCategory.Notification, "Test Email", "This is a test email.", null, false, null, null);
+            return SendEmail(EmailCategory.Notification, "Test Email", "This is a test email.", null, false, null, null, out errorMessage);
+        }
+
+        public bool SendTestEmail(string subject, string body, out string errorMessage)
+        {
+            return SendEmail(EmailCategory.Notification, subject, body, null, false, null, null, out errorMessage);
         }
 
         #endregion //Methods

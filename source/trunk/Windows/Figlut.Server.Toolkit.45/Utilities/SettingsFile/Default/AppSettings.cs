@@ -115,6 +115,9 @@
         [SettingInfo("Email", AutoFormatDisplayName = true, Description = "The password to use when authenticating against the Exchange email server.", CategorySequenceId = 5)]
         public string ExchangeSmtpPassword { get; set; }
 
+        /// <summary>
+        /// The port to connect to when connecting to the Exchange email server.
+        /// </summary>
         [SettingInfo("Email", AutoFormatDisplayName = true, Description = "The port to connect to when connecting to the Exchange email server.", CategorySequenceId = 6)]
         public int ExchangeSmtpPort { get; set; }
 
@@ -128,7 +131,7 @@
         /// The hostname of the GMail server.
         /// </summary>
         [SettingInfo("Email", AutoFormatDisplayName = true, Description = "The hostname of the GMail server.", CategorySequenceId = 8)]
-        public string GMailSMTPServer { get; set; }
+        public string GMailSmtpServer { get; set; }
 
         /// <summary>
         /// The user name to use when authenticating against the GMail email server.
