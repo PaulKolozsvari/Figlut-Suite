@@ -113,6 +113,16 @@
 
         #region Properties
 
+        public bool EmailNotificationsEnabled
+        {
+            get { return _emailLoggingEnabled; }
+        }
+
+        public bool ThrowEmailFailExceptions
+        {
+            get { return _throwEmailFailExceptions; }
+        }
+
         public EmailProvider EmailProvider
         {
             get { return _emailProvider; }
@@ -312,7 +322,7 @@
         {
             if (!_emailNotificationsEnabled)
             {
-                errorMessage = "Email notification not enabled.";
+                errorMessage = $"{nameof(EmailNotificationsEnabled)} set to {false.ToString()}.";
                 return false;
             }
             try
