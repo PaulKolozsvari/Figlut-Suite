@@ -12,6 +12,7 @@
     using Figlut.Server.Toolkit.Data;
     using System.Collections;
     using Microsoft.Win32;
+    using System.Threading;
 
     #endregion //Using Directives
 
@@ -138,6 +139,27 @@
                 }
             }
             return new string(decodedChars);
+        }
+
+        /// <summary>
+        /// Get the number of currently running threads in the CLR thread pool: https://blogs.msdn.microsoft.com/oldnewthing/20170724-00/?p=96675
+        /// </summary>
+        /// <returns></returns>
+        public static int GetWorkerThreadsRunningCount()
+        {
+            ThreadPool.GetMaxThreads(out int maxWorkerThreads, out int maxAsyncIOThreads);
+            ThreadPool.GetAvailableThreads(out int availableWorkerThreads, out int availableAsyncIOThreads);
+            int runningThreads = maxWorkerThreads - availableWorkerThreads;
+            return runningThreads;
+        }
+
+        /// <summary>
+        /// Gets the total number of running threads in the application. This will include both managed and unmanaged threads. https://stackoverflow.com/questions/10439916/find-out-how-many-threads-my-application-is-running
+        /// </summary>
+        /// <returns></returns>
+        public static int GetTotalThreadsRunningCount()
+        {
+            return System.Diagnostics.Process.GetCurrentProcess().Threads.Count;
         }
 
         #endregion //Methods
