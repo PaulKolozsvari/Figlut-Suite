@@ -111,21 +111,40 @@
         public string RestServiceServiceFtpDirectory { get; set; }
 
         /// <summary>
+        /// The number of concurrent calls that can be made – under .NET 4 defaults to 16 x number of cores.
+        /// </summary>
+        [SettingInfo("REST Service", AutoFormatDisplayName = true, Description = "The number of concurrent calls that can be made – under .NET 4 defaults to 16 x number of cores.", CategorySequenceId = 14)]
+        public int RestServiceMaxConcurrentCalls { get; set; }
+
+        /// <summary>
+        /// The number of concurrent sessions that can be in in flight – under .NET 4 defaults to 100 x number of cores.
+        /// Using Sessions: https://docs.microsoft.com/en-us/dotnet/framework/wcf/using-sessions
+        /// </summary>
+        [SettingInfo("REST Service", AutoFormatDisplayName = true, Description = "The number of concurrent sessions that can be in in flight – under .NET 4 defaults to 100 x number of cores.", CategorySequenceId = 15)]
+        public int RestServiceMaxConcurrentSessions { get; set; }
+
+        /// <summary>
+        /// The number of service implementation objects that are in use – defaults to the sum of MaxConcurrentCalls + MaxConcurrentSessions.
+        /// </summary>
+        [SettingInfo("REST Service", AutoFormatDisplayName = true, Description = "The number of service implementation objects that are in use – defaults to the sum of MaxConcurrentCalls + MaxConcurrentSessions.", CategorySequenceId = 16)]
+        public int RestServiceMaxConcurrentInstances { get; set; }
+
+        /// <summary>
         /// Whether or not the server will handle exceptions (logging and email notifications) after HTTP client connections have been accepted. If set to true, exception handling is optional in your custom agents.
         /// </summary>
-        [SettingInfo("REST Service", AutoFormatDisplayName = true, Description = "Whether or not the server will handle exceptions (logging and email notifications) after HTTP client connections have been accepted. If set to true, exception handling is optional in your custom agents.", CategorySequenceId = 14)]
-        public bool RestHandleExceptionsOnClientConnectionAccepted { get; set; }
+        [SettingInfo("REST Service", AutoFormatDisplayName = true, Description = "Whether or not the server will handle exceptions (logging and email notifications) after HTTP client connections have been accepted. If set to true, exception handling is optional in your custom agents.", CategorySequenceId = 17)]
+        public bool RestServiceHandleExceptionsOnClientConnectionAccepted { get; set; }
 
         /// <summary>
         /// Whether or not to return a result to the client when exceptions are thrown by the agents.
         /// </summary>
-        [SettingInfo("REST Service", AutoFormatDisplayName = true, Description = "Whether or not to return a result to the client when exceptions are thrown by web agents.", CategorySequenceId = 15)]
-        public bool RestReturnResponseOnAgentExceptions { get; set; }
+        [SettingInfo("REST Service", AutoFormatDisplayName = true, Description = "Whether or not to return a result to the client when exceptions are thrown by web agents.", CategorySequenceId = 18)]
+        public bool RestServiceReturnResponseOnAgentExceptions { get; set; }
 
         /// <summary>
         /// The date time format used in the messages being sent by the client in web requests.
         /// </summary>
-        [SettingInfo("REST Service", AutoFormatDisplayName = true, Description = "The date time format used in the messages being sent by the client in web requests.", CategorySequenceId = 16)]
+        [SettingInfo("REST Service", AutoFormatDisplayName = true, Description = "The date time format used in the messages being sent by the client in web requests.", CategorySequenceId = 19)]
         public string RestClientDateTimeFormat { get; set; }
 
         #endregion //Service
