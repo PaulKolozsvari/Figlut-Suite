@@ -132,6 +132,11 @@
             return result;
         }
 
+        public virtual List<LinqFunnelChangeResult> Insert<E>(E entity, bool saveChildren) where E : class
+        {
+            return Insert(typeof(E), entity, saveChildren);
+        }
+
         public virtual List<LinqFunnelChangeResult> Insert(Type entityType, object entity, bool saveChildren)
         {
             PropertyInfo surrogateKey = GetEntitySurrogateKey(entityType);

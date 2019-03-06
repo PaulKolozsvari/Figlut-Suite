@@ -22,6 +22,7 @@
 using System.Data.Linq;
 using System.Windows.Forms;
     using Figlut.Server.Toolkit.Utilities.Email;
+    using System.Transactions;
 
     #endregion //Using Directives
 
@@ -85,6 +86,11 @@ using System.Windows.Forms;
         protected Assembly _linqToClassesAssembly;
         protected string _linqToSQLClassesNamespace;
         protected Type _linqToSqlDataContextType;
+        protected TransactionScopeOption _databaseTransactionScopeOption;
+        protected IsolationLevel _databaseTransactionIsolationLevel;
+        protected int _databaseTransactionTimeoutSeconds;
+        protected int _databaseTransactionDeadlockRetryAttempts;
+        protected int _transactionDeadlockRetryWaitPeriod;
         protected Type _userLinqToSqlType;
         protected Type _serverActionLinqToSqlType;
         protected Type _serverErrorLinqtoSqlType;
@@ -102,6 +108,7 @@ using System.Windows.Forms;
         protected string _senderDisplayName;
         protected string _exceptionEmailSubject;
         protected bool _emailExceptions;
+        protected bool _appendHostNameToEmailBody;
         protected bool _logEmails;
         protected bool _includeDefaultEmailRecipients;
         protected List<EmailNotificationRecipient> _defaultEmailRecipients;
@@ -215,6 +222,35 @@ using System.Windows.Forms;
             set { _linqToSQLClassesNamespace = value; }
         }
 
+        public TransactionScopeOption DatabaseTransactionScopeOption
+        {
+            get { return _databaseTransactionScopeOption; }
+            set { _databaseTransactionScopeOption = value; }
+        }
+        public IsolationLevel DatabaseTransactionIsolationLevel
+        {
+            get { return _databaseTransactionIsolationLevel; }
+            set { _databaseTransactionIsolationLevel = value; }
+        }
+
+        public int DatabaseTransactionTimeoutSeconds
+        {
+            get { return _databaseTransactionTimeoutSeconds; }
+            set { _databaseTransactionTimeoutSeconds = value; }
+        }
+
+        public int DatabaseTransactionDeadlockRetryAttempts
+        {
+            get { return _databaseTransactionDeadlockRetryAttempts; }
+            set { _databaseTransactionDeadlockRetryAttempts = value; }
+        }
+
+        public int DatabaseTransactionDeadlockRetryWaitPeriod
+        {
+            get { return _transactionDeadlockRetryWaitPeriod; }
+            set { _transactionDeadlockRetryWaitPeriod = value; }
+        }
+
         public Type UserLinqToSqlType
         {
             get { return _userLinqToSqlType; }
@@ -239,6 +275,12 @@ using System.Windows.Forms;
         {
             get { return _emailExceptions; }
             set { _emailExceptions = value; }
+        }
+
+        public bool AppendHostNameToExceptionEmails
+        {
+            get { return _appendHostNameToEmailBody; }
+            set { _appendHostNameToEmailBody = value; }
         }
 
         public EmailClient EmailClient

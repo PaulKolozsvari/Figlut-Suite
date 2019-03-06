@@ -154,43 +154,49 @@
         /// <summary>
         /// The email address to display of the email sender.
         /// </summary>
-        [SettingInfo("Emails", AutoFormatDisplayName = true, Description = "The email address to display of the email sender.", CategorySequenceId = 12)]
+        [SettingInfo("Email", AutoFormatDisplayName = true, Description = "The email address to display of the email sender.", CategorySequenceId = 12)]
         public string SenderEmailAddress { get; set; }
 
         /// <summary>
         /// The display name of the email sender.
         /// </summary>
-        [SettingInfo("Emails", AutoFormatDisplayName = true, Description = "The display name of the email sender.", CategorySequenceId = 12)]
+        [SettingInfo("Email", AutoFormatDisplayName = true, Description = "The display name of the email sender.", CategorySequenceId = 12)]
         public string SenderDisplayName { get; set; }
 
         /// <summary>
         /// The subject to display on emails sent out due to exceptions handled by the Exception Handler.
         /// </summary>
-        [SettingInfo("Emails", AutoFormatDisplayName = true, Description = "The subject to display on emails sent out due to exceptions handled by the Exception Handler.", CategorySequenceId = 13)]
+        [SettingInfo("Email", AutoFormatDisplayName = true, Description = "The subject to display on emails sent out due to exceptions handled by the Exception Handler.", CategorySequenceId = 13)]
         public string ExceptionEmailSubject { get; set; }
 
         /// <summary>
         /// The subject to display on emails sent out due to exceptions handled by the Exception Handler.
         /// </summary>
-        [SettingInfo("Emails", AutoFormatDisplayName = true, Description = "Whether or not to send emails on exceptions handled by the Exception Handler.", CategorySequenceId = 14)]
+        [SettingInfo("Email", AutoFormatDisplayName = true, Description = "Whether or not to send emails on exceptions handled by the Exception Handler.", CategorySequenceId = 14)]
         public bool SendEmailOnException { get; set; }
+
+        /// <summary>
+        /// Whether or not add a line to every exception email sent out that includes the hostname of the machine running this software and thereby initiating the email.
+        /// </summary>
+        [SettingInfo("Email", AutoFormatDisplayName = true, Description = "Whether or not add a line to every exception email sent out that includes the hostname of the machine running this software and thereby initiating the email.", CategorySequenceId = 15)]
+        public bool AppendHostNameToExceptionEmails { get; set; }
 
         /// <summary>
         /// Whether or not activity related to the sending of emails.
         /// </summary>
-        [SettingInfo("Emails", AutoFormatDisplayName = true, Description = "Whether or not activity related to the sending of emails.", CategorySequenceId = 15)]
+        [SettingInfo("Email", AutoFormatDisplayName = true, Description = "Whether or not to log activity related to the sending of emails.", CategorySequenceId = 16)]
         public bool EmailLoggingEnabled { get; set; }
 
         /// <summary>
         /// Whether or not include the list of default recipients in every email sent out.
         /// </summary>
-        [SettingInfo("Emails", AutoFormatDisplayName = true, Description = "Whether or not include the list of default recipients in every email sent out.", CategorySequenceId = 16)]
+        [SettingInfo("Email", AutoFormatDisplayName = true, Description = "Whether or not include the list of default recipients in every email sent out.", CategorySequenceId = 17)]
         public bool IncludeDefaultEmailRecipients { get; set; }
 
         /// <summary>
         /// The default list of recipients that should be included in every email sent out i.e. if default recipients are configured to be included.
         /// </summary>
-        [SettingInfo("Emails", AutoFormatDisplayName = true, Description = "The default list of recipients that should be included in every email sent out i.e. if default recipients are configured to be included.", CategorySequenceId = 17)]
+        [SettingInfo("Email", AutoFormatDisplayName = true, Description = "The default list of recipients that should be included in every email sent out i.e. if default recipients are configured to be included.", CategorySequenceId = 18)]
         public List<EmailNotificationRecipient> DefaultEmailRecipients { get; set; }
 
         #endregion //Email

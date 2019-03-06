@@ -5,22 +5,20 @@
     using System;
     using System.Collections.Generic;
     using System.Data.Linq;
-    using System.Linq;
     using System.Reflection;
-    using System.Text;
-    using System.Threading.Tasks;
     using System.Transactions;
     using Figlut.Server.Toolkit.Data;
-    using Figlut.Server.Toolkit.Data.DB.LINQ;
     using Figlut.Server.Toolkit.Data.DB.LINQ.Logging;
-    using Figlut.Server.Toolkit.Utilities;
     using Figlut.Server.Toolkit.Web.Service;
     using System.Data;
     using Figlut.Server.Toolkit.Data.DB.SQLServer;
+    using System.Data.SqlClient;
+    using System.Threading;
 
     #endregion //Using Directives
 
     //6 ways of doing locking in .NET (Pessimistic and optimistic): https://www.codeproject.com/Articles/114262/ways-of-doing-locking-in-NET-Pessimistic-and-opt
+    //Deadlocks: https://blog.codinghorror.com/deadlocked/
     //Overview of concurrency in LINQ to SQL: https://www.c-sharpcorner.com/article/overview-of-concurrency-in-linq-to-sql/
     //Optimistic Concurrency Overview: https://docs.microsoft.com/en-us/dotnet/framework/data/adonet/sql/linq/optimistic-concurrency-overview
     //RefreshMode : https://docs.microsoft.com/en-us/dotnet/api/system.data.linq.refreshmode?view=netframework-4.7.2
@@ -32,21 +30,63 @@
         #region Constructors
 
         public EntityContext(
-            DataContext db, 
-            LinqFunnelSettings settings, 
+            DataContext db,
+            LinqFunnelSettings settings,
             bool handleExceptions,
             Type userLinqToSqlType,
             Type serverActionLinqToSqlType,
-            Type serverErrorLinqToSqlType) :
+            Type serverErrorLinqToSqlType) : this(
+                db,
+                settings,
+                handleExceptions,
+                userLinqToSqlType,
+                serverActionLinqToSqlType,
+                serverErrorLinqToSqlType,
+                TransactionScopeOption.Required,
+                new TransactionOptions()
+                {
+                    IsolationLevel = System.Transactions.IsolationLevel.Serializable,
+                    Timeout = TransactionManager.DefaultTimeout
+                },
+                1,
+                1000)
+        {
+        }
+
+        public EntityContext(
+            DataContext db,
+            LinqFunnelSettings settings,
+            bool handleExceptions,
+            Type userLinqToSqlType,
+            Type serverActionLinqToSqlType,
+            Type serverErrorLinqToSqlType,
+            TransactionScopeOption transactionScopeOption,
+            TransactionOptions transactionOptions,
+            int transactionDeadlockRetryAttempts,
+            int transactionDeadlockRetryWaitPeriod) :
             base(db, settings)
         {
+            DataValidator.ValidateIntegerNotNegative(transactionDeadlockRetryAttempts, nameof(transactionDeadlockRetryAttempts), nameof(EntityContext));
+            DataValidator.ValidateIntegerNotNegative(transactionDeadlockRetryWaitPeriod, nameof(transactionDeadlockRetryWaitPeriod), nameof(EntityContext));
+
             _handleExceptions = handleExceptions;
             _userLinqToSqlType = userLinqToSqlType;
             _serverActionLinqToSqlType = serverActionLinqToSqlType;
             _serverErrorLinqtoSqlType = serverErrorLinqToSqlType;
+
+            _transactionScopeOption = transactionScopeOption;
+            _transactionOptions = transactionOptions;
+            _transactionDeadlockRetryAttempts = transactionDeadlockRetryAttempts;
+            _transactionDeadlockRetryWaitPeriod = transactionDeadlockRetryWaitPeriod;
         }
 
         #endregion //Constructors
+
+        #region Constants
+
+        public const int SQL_TRANSACTION_DEADLOCK_ERROR_CODE = 1205;
+
+        #endregion //Constants
 
         #region Fields
 
@@ -54,6 +94,11 @@
         protected Type _userLinqToSqlType;
         protected Type _serverActionLinqToSqlType;
         protected Type _serverErrorLinqtoSqlType;
+
+        protected TransactionScopeOption _transactionScopeOption;
+        protected TransactionOptions _transactionOptions;
+        protected int _transactionDeadlockRetryAttempts;
+        private int _transactionDeadlockRetryWaitPeriod;
 
         #endregion //Fields
 
@@ -74,6 +119,26 @@
             get { return _serverErrorLinqtoSqlType; }
         }
 
+        public TransactionScopeOption TransactionScopeOption
+        {
+            get { return _transactionScopeOption; }
+        }
+
+        public TransactionOptions TransactionOptions
+        {
+            get { return _transactionOptions; }
+        }
+
+        public int TransactionDeadlockRetryAttempts
+        {
+            get { return _transactionDeadlockRetryAttempts; }
+        }
+
+        public int TransactionDeadlockRetryWaitPeriod
+        {
+            get { return _transactionDeadlockRetryWaitPeriod; }
+        }
+
         #endregion //Properties
 
         #region Methods
@@ -81,31 +146,46 @@
         #region Core Methods
 
         public ServiceProcedureResult Save<E>(
-            List<E> entities, 
+            List<E> entities,
             Nullable<Guid> userId,
             string userName,
             bool saveChildren) where E : class
         {
-            try
+            int attempts = 0;
+            while (attempts < _transactionDeadlockRetryAttempts)
             {
-                using (TransactionScope t = new TransactionScope())
+                try
                 {
-                    foreach(E e in entities)
+                    using (TransactionScope t = new TransactionScope(_transactionScopeOption, _transactionOptions))
                     {
-                        base.Save<E>(e, saveChildren).ForEach(c => HandleChange(c, userId, userName));
+                        foreach (E e in entities)
+                        {
+                            base.Save<E>(e, saveChildren).ForEach(c => HandleChange(c, userId, userName));
+                        }
+                        t.Complete();
                     }
-                    t.Complete();
+                    return new ServiceProcedureResult();
                 }
-                return new ServiceProcedureResult();
-            }
-            catch (Exception ex)
-            {
-                if (_handleExceptions)
+                catch (SqlException sqlEx)
                 {
-                    HandleException(ex, userId, userName);
+                    attempts++;
+                    if (sqlEx.Number != SQL_TRANSACTION_DEADLOCK_ERROR_CODE || attempts >= _transactionDeadlockRetryAttempts) 
+                    {
+                        throw sqlEx; //If this was not caused by a deadlock, or if the retry attempts have been reached, then throw the exception.
+                    }
+                    Thread.Sleep(_transactionDeadlockRetryWaitPeriod);
+                    continue;
                 }
-                throw;
+                catch (Exception ex)
+                {
+                    if (_handleExceptions)
+                    {
+                        HandleException(ex, userId, userName);
+                    }
+                    throw;
+                }
             }
+            return new ServiceProcedureResult(new ServiceResult() { Code = ServiceResultCode.FatalError, Message = $"{nameof(Save)} operation could not be completed. See previous errors for results." });
         }
 
         public ServiceProcedureResult Save(
@@ -115,26 +195,84 @@
             string userName,
             bool saveChildren)
         {
-            try
+            int attempts = 0;
+            while (attempts < _transactionDeadlockRetryAttempts)
             {
-                using (TransactionScope t = new TransactionScope())
+                try
                 {
-                    foreach (object e in entities)
+                    using (TransactionScope t = new TransactionScope(_transactionScopeOption, _transactionOptions))
                     {
-                        base.Save(entityType, e, false).ForEach(c => HandleChange(c, userId, userName));
+                        foreach (object e in entities)
+                        {
+                            base.Save(entityType, e, false).ForEach(c => HandleChange(c, userId, userName));
+                        }
+                        t.Complete();
                     }
-                    t.Complete();
+                    return new ServiceProcedureResult();
                 }
-                return new ServiceProcedureResult();
-            }
-            catch (Exception ex)
-            {
-                if (_handleExceptions)
+                catch (SqlException sqlEx)
                 {
-                    HandleException(ex, userId, userName);
+                    attempts++;
+                    if (sqlEx.Number != SQL_TRANSACTION_DEADLOCK_ERROR_CODE || attempts >= _transactionDeadlockRetryAttempts)
+                    {
+                        throw sqlEx; //If this was not caused by a deadlock, or if the retry attempts have been reached, then throw the exception.
+                    }
+                    Thread.Sleep(_transactionDeadlockRetryWaitPeriod);
+                    continue;
                 }
-                throw;
+                catch (Exception ex)
+                {
+                    if (_handleExceptions)
+                    {
+                        HandleException(ex, userId, userName);
+                    }
+                    throw;
+                }
             }
+            return new ServiceProcedureResult(new ServiceResult() { Code = ServiceResultCode.FatalError, Message = $"{nameof(Save)} operation could not be completed. See previous errors for results." });
+        }
+
+        public ServiceProcedureResult Insert<E>(
+            List<E> entities,
+            Nullable<Guid> userId,
+            string userName,
+            bool saveChildren) where E : class
+        {
+            int attempts = 0;
+            while (attempts < _transactionDeadlockRetryAttempts)
+            {
+                try
+                {
+                    using (TransactionScope t = new TransactionScope(_transactionScopeOption, _transactionOptions))
+                    {
+                        foreach (E e in entities)
+                        {
+                            base.Insert<E>(e, false).ForEach(c => HandleChange(c, userId, userName)); 
+                        }
+                        t.Complete();
+                    }
+                    return new ServiceProcedureResult();
+                }
+                catch (SqlException sqlEx)
+                {
+                    attempts++;
+                    if (sqlEx.Number != SQL_TRANSACTION_DEADLOCK_ERROR_CODE || attempts >= _transactionDeadlockRetryAttempts)
+                    {
+                        throw sqlEx; //If this was not caused by a deadlock, or if the retry attempts have been reached, then throw the exception.
+                    }
+                    Thread.Sleep(_transactionDeadlockRetryWaitPeriod);
+                    continue;
+                }
+                catch (Exception ex)
+                {
+                    if (_handleExceptions)
+                    {
+                        HandleException(ex, userId, userName);
+                    }
+                    throw;
+                }
+            }
+            return new ServiceProcedureResult(new ServiceResult() { Code = ServiceResultCode.FatalError, Message = $"{nameof(Insert)} operation could not be completed. See previous errors for results." });
         }
 
         public ServiceProcedureResult Insert(
@@ -144,26 +282,41 @@
             string userName,
             bool saveChildren)
         {
-            try
+            int attempts = 0;
+            while (attempts < _transactionDeadlockRetryAttempts)
             {
-                using (TransactionScope t = new TransactionScope())
+                try
                 {
-                    foreach (object e in entities)
+                    using (TransactionScope t = new TransactionScope(_transactionScopeOption, _transactionOptions))
                     {
-                        base.Insert(entityType, e, false).ForEach(c => HandleChange(c, userId, userName));
+                        foreach (object e in entities)
+                        {
+                            base.Insert(entityType, e, false).ForEach(c => HandleChange(c, userId, userName));
+                        }
+                        t.Complete();
                     }
-                    t.Complete();
+                    return new ServiceProcedureResult();
                 }
-                return new ServiceProcedureResult();
-            }
-            catch (Exception ex)
-            {
-                if (_handleExceptions)
+                catch (SqlException sqlEx)
                 {
-                    HandleException(ex, userId, userName);
+                    attempts++;
+                    if (sqlEx.Number != SQL_TRANSACTION_DEADLOCK_ERROR_CODE || attempts >= _transactionDeadlockRetryAttempts)
+                    {
+                        throw sqlEx; //If this was not caused by a deadlock, or if the retry attempts have been reached, then throw the exception.
+                    }
+                    Thread.Sleep(_transactionDeadlockRetryWaitPeriod);
+                    continue;
                 }
-                throw;
+                catch (Exception ex)
+                {
+                    if (_handleExceptions)
+                    {
+                        HandleException(ex, userId, userName);
+                    }
+                    throw;
+                }
             }
+            return new ServiceProcedureResult(new ServiceResult() { Code = ServiceResultCode.FatalError, Message = $"{nameof(Insert)} operation could not be completed. See previous errors for results." });
         }
 
         public ServiceProcedureResult Delete<E>(
@@ -171,26 +324,41 @@
             Nullable<Guid> userId,
             string userName) where E : class
         {
-            try
+            int attempts = 0;
+            while (attempts < _transactionDeadlockRetryAttempts)
             {
-                using (TransactionScope t = new TransactionScope())
+                try
                 {
-                    foreach (E e in entities)
+                    using (TransactionScope t = new TransactionScope(_transactionScopeOption, _transactionOptions))
                     {
-                        base.Delete<E>(e).ForEach(c => HandleChange(c, userId, userName));
+                        foreach (E e in entities)
+                        {
+                            base.Delete<E>(e).ForEach(c => HandleChange(c, userId, userName));
+                        }
+                        t.Complete();
                     }
-                    t.Complete();
+                    return new ServiceProcedureResult();
                 }
-                return new ServiceProcedureResult();
-            }
-            catch (Exception ex)
-            {
-                if (_handleExceptions)
+                catch (SqlException sqlEx)
                 {
-                    HandleException(ex, userId, userName);
+                    attempts++;
+                    if (sqlEx.Number != SQL_TRANSACTION_DEADLOCK_ERROR_CODE || attempts >= _transactionDeadlockRetryAttempts)
+                    {
+                        throw sqlEx; //If this was not caused by a deadlock, or if the retry attempts have been reached, then throw the exception.
+                    }
+                    Thread.Sleep(_transactionDeadlockRetryWaitPeriod);
+                    continue;
                 }
-                throw;
+                catch (Exception ex)
+                {
+                    if (_handleExceptions)
+                    {
+                        HandleException(ex, userId, userName);
+                    }
+                    throw;
+                }
             }
+            return new ServiceProcedureResult(new ServiceResult() { Code = ServiceResultCode.FatalError, Message = $"{nameof(Delete)} operation could not be completed. See previous errors for results." });
         }
 
         public ServiceProcedureResult Delete(
@@ -199,26 +367,41 @@
             Nullable<Guid> userId,
             string userName)
         {
-            try
+            int attempts = 0;
+            while (attempts < _transactionDeadlockRetryAttempts)
             {
-                using (TransactionScope t = new TransactionScope())
+                try
                 {
-                    foreach (object e in entities)
+                    using (TransactionScope t = new TransactionScope(_transactionScopeOption, _transactionOptions))
                     {
-                        base.Delete(e).ForEach(c => HandleChange(c, userId, userName));
+                        foreach (object e in entities)
+                        {
+                            base.Delete(e).ForEach(c => HandleChange(c, userId, userName));
+                        }
+                        t.Complete();
                     }
-                    t.Complete();
+                    return new ServiceProcedureResult();
                 }
-                return new ServiceProcedureResult();
-            }
-            catch (Exception ex)
-            {
-                if (_handleExceptions)
+                catch (SqlException sqlEx)
                 {
-                    HandleException(ex, userId, userName);
+                    attempts++;
+                    if (sqlEx.Number != SQL_TRANSACTION_DEADLOCK_ERROR_CODE || attempts >= _transactionDeadlockRetryAttempts)
+                    {
+                        throw sqlEx; //If this was not caused by a deadlock, or if the retry attempts have been reached, then throw the exception.
+                    }
+                    Thread.Sleep(_transactionDeadlockRetryWaitPeriod);
+                    continue;
                 }
-                throw;
+                catch (Exception ex)
+                {
+                    if (_handleExceptions)
+                    {
+                        HandleException(ex, userId, userName);
+                    }
+                    throw;
+                }
             }
+            return new ServiceProcedureResult(new ServiceResult() { Code = ServiceResultCode.FatalError, Message = $"{nameof(Delete)} operation could not be completed. See previous errors for results." });
         }
 
         public ServiceProcedureResult DeleteBySurrogateKey<E>(
@@ -226,26 +409,41 @@
             Nullable<Guid> userId,
             string userName) where E : class
         {
-            try
+            int attempts = 0;
+            while (attempts < _transactionDeadlockRetryAttempts)
             {
-                using (TransactionScope t = new TransactionScope())
+                try
                 {
-                    foreach (object keyValue in surrogateKeys)
+                    using (TransactionScope t = new TransactionScope(_transactionScopeOption, _transactionOptions))
                     {
-                        base.DeleteBySurrogateKey<E>(keyValue).ForEach(c => HandleChange(c, userId, userName));
+                        foreach (object keyValue in surrogateKeys)
+                        {
+                            base.DeleteBySurrogateKey<E>(keyValue).ForEach(c => HandleChange(c, userId, userName));
+                        }
                         t.Complete();
                     }
+                    return new ServiceProcedureResult();
                 }
-                return new ServiceProcedureResult();
-            }
-            catch (Exception ex)
-            {
-                if (_handleExceptions)
+                catch (SqlException sqlEx)
                 {
-                    HandleException(ex, userId, userName);
+                    attempts++;
+                    if (sqlEx.Number != SQL_TRANSACTION_DEADLOCK_ERROR_CODE || attempts >= _transactionDeadlockRetryAttempts)
+                    {
+                        throw sqlEx; //If this was not caused by a deadlock, or if the retry attempts have been reached, then throw the exception.
+                    }
+                    Thread.Sleep(_transactionDeadlockRetryWaitPeriod);
+                    continue;
                 }
-                throw;
+                catch (Exception ex)
+                {
+                    if (_handleExceptions)
+                    {
+                        HandleException(ex, userId, userName);
+                    }
+                    throw;
+                }
             }
+            return new ServiceProcedureResult(new ServiceResult() { Code = ServiceResultCode.FatalError, Message = $"{nameof(DeleteBySurrogateKey)} operation could not be completed. See previous errors for results." });
         }
 
         public ServiceProcedureResult DeleteBySurrogateKey(
@@ -254,49 +452,79 @@
             Nullable<Guid> userId,
             string userName)
         {
-            try
+            int attempts = 0;
+            while (attempts < _transactionDeadlockRetryAttempts)
             {
-                using (TransactionScope t = new TransactionScope())
+                try
                 {
-                    foreach (object key in surrogateKeys)
+                    using (TransactionScope t = new TransactionScope(_transactionScopeOption, _transactionOptions))
                     {
-                        base.DeleteBySurrogateKey(key, entityType).ForEach(c => HandleChange(c, userId, userName));
+                        foreach (object key in surrogateKeys)
+                        {
+                            base.DeleteBySurrogateKey(key, entityType).ForEach(c => HandleChange(c, userId, userName));
+                        }
                         t.Complete();
                     }
+                    return new ServiceProcedureResult();
                 }
-                return new ServiceProcedureResult();
-            }
-            catch (Exception ex)
-            {
-                if (_handleExceptions)
+                catch (SqlException sqlEx)
                 {
-                    HandleException(ex, userId, userName);
+                    attempts++;
+                    if (sqlEx.Number != SQL_TRANSACTION_DEADLOCK_ERROR_CODE || attempts >= _transactionDeadlockRetryAttempts)
+                    {
+                        throw sqlEx; //If this was not caused by a deadlock, or if the retry attempts have been reached, then throw the exception.
+                    }
+                    Thread.Sleep(_transactionDeadlockRetryWaitPeriod);
+                    continue;
                 }
-                throw;
+                catch (Exception ex)
+                {
+                    if (_handleExceptions)
+                    {
+                        HandleException(ex, userId, userName);
+                    }
+                    throw;
+                }
             }
+            return new ServiceProcedureResult(new ServiceResult() { Code = ServiceResultCode.FatalError, Message = $"{nameof(DeleteBySurrogateKey)} operation could not be completed. See previous errors for results." });
         }
 
         public ServiceProcedureResult DeleteAll<E>(
             Nullable<Guid> userId,
             string userName) where E : class
         {
-            try
+            int attempts = 0;
+            while (attempts < _transactionDeadlockRetryAttempts)
             {
-                using (TransactionScope t = new TransactionScope())
+                try
                 {
-                    base.DeleteAll<E>().ForEach(c => HandleChange(c, userId, userName));
-                    t.Complete();
+                    using (TransactionScope t = new TransactionScope(_transactionScopeOption, _transactionOptions))
+                    {
+                        base.DeleteAll<E>().ForEach(c => HandleChange(c, userId, userName));
+                        t.Complete();
+                    }
+                    return new ServiceProcedureResult();
                 }
-                return new ServiceProcedureResult();
-            }
-            catch (Exception ex)
-            {
-                if (_handleExceptions)
+                catch (SqlException sqlEx)
                 {
-                    HandleException(ex, userId, userName);
+                    attempts++;
+                    if (sqlEx.Number != SQL_TRANSACTION_DEADLOCK_ERROR_CODE || attempts >= _transactionDeadlockRetryAttempts)
+                    {
+                        throw sqlEx; //If this was not caused by a deadlock, or if the retry attempts have been reached, then throw the exception.
+                    }
+                    Thread.Sleep(_transactionDeadlockRetryWaitPeriod);
+                    continue;
                 }
-                throw;
+                catch (Exception ex)
+                {
+                    if (_handleExceptions)
+                    {
+                        HandleException(ex, userId, userName);
+                    }
+                    throw;
+                }
             }
+            return new ServiceProcedureResult(new ServiceResult() { Code = ServiceResultCode.FatalError, Message = $"{nameof(DeleteAll)} operation could not be completed. See previous errors for results." });
         }
 
         public ServiceProcedureResult DeleteAll(
@@ -304,23 +532,38 @@
             Nullable<Guid> userId,
             string userName)
         {
-            try
+            int attempts = 0;
+            while (attempts < _transactionDeadlockRetryAttempts)
             {
-                using (TransactionScope t = new TransactionScope())
+                try
                 {
-                    base.DeleteAll(entityType).ForEach(c => HandleChange(c, userId, userName));
-                    t.Complete();
+                    using (TransactionScope t = new TransactionScope(_transactionScopeOption, _transactionOptions))
+                    {
+                        base.DeleteAll(entityType).ForEach(c => HandleChange(c, userId, userName));
+                        t.Complete();
+                    }
+                    return new ServiceProcedureResult();
                 }
-                return new ServiceProcedureResult();
-            }
-            catch (Exception ex)
-            {
-                if (_handleExceptions)
+                catch (SqlException sqlEx)
                 {
-                    HandleException(ex, userId, userName);
+                    attempts++;
+                    if (sqlEx.Number != SQL_TRANSACTION_DEADLOCK_ERROR_CODE || attempts >= _transactionDeadlockRetryAttempts)
+                    {
+                        throw sqlEx; //If this was not caused by a deadlock, or if the retry attempts have been reached, then throw the exception.
+                    }
+                    Thread.Sleep(_transactionDeadlockRetryWaitPeriod);
+                    continue;
                 }
-                throw;
+                catch (Exception ex)
+                {
+                    if (_handleExceptions)
+                    {
+                        HandleException(ex, userId, userName);
+                    }
+                    throw;
+                }
             }
+            return new ServiceProcedureResult(new ServiceResult() { Code = ServiceResultCode.FatalError, Message = $"{nameof(DeleteAll)} operation could not be completed. See previous errors for results." });
         }
 
         public ServiceFunctionResult<E> GetEntityBySurrogateKey<E>(
@@ -332,7 +575,6 @@
             try
             {
                 return new ServiceFunctionResult<E> { Contents = base.GetEntityBySurrogateKey<E>(keyValue, loadChildren) };
-
             }
             catch (Exception ex)
             {

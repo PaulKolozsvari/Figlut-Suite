@@ -113,7 +113,7 @@
 
         public bool EmailNotificationsEnabled
         {
-            get { return _emailLoggingEnabled; }
+            get { return _emailNotificationsEnabled; }
         }
 
         public bool ThrowEmailFailExceptions
@@ -316,12 +316,23 @@
             bool isHtml,
             List<EmailNotificationRecipient> emailRecipients,
             string logoImageFilePath,
-            out string errorMessage)
+            out string errorMessage,
+            bool appendHostNameToEmailBody)
         {
             if (!_emailNotificationsEnabled)
             {
                 errorMessage = $"{nameof(EmailNotificationsEnabled)} set to {false.ToString()}.";
                 return false;
+            }
+            body = body ?? string.Empty;
+            if (appendHostNameToEmailBody)
+            {
+                string hostname = Information.GetDomainAndMachineName();
+                StringBuilder editedBody = new StringBuilder();
+                editedBody.AppendLine(body);
+                editedBody.AppendLine();
+                editedBody.AppendLine($"Email originated from host: {hostname}");
+                body = editedBody.ToString();
             }
             try
             {
@@ -376,7 +387,7 @@
             return true;
         }
 
-        public bool SendExceptionEmailNotification(Exception exception, out string errorMessage)
+        public bool SendExceptionEmailNotification(Exception exception, out string errorMessage, bool appendHostNameToEmailBody)
         {
             StringBuilder message = new StringBuilder();
             message.AppendLine(exception.Message);
@@ -386,7 +397,7 @@
             }
             message.AppendLine(exception.StackTrace);
             string exceptionMessage = message.ToString();
-            return SendEmail(EmailCategory.Error, _exceptionEmailSubject, exceptionMessage, null, false, null, null, out errorMessage);
+            return SendEmail(EmailCategory.Error, _exceptionEmailSubject, exceptionMessage, null, false, null, null, out errorMessage, appendHostNameToEmailBody);
         }
 
         private void LogEmailNotification(MailMessage email, string subject)
@@ -430,14 +441,14 @@
             return result.ToString();
         }
 
-        public bool SendTestEmail(out string errorMessage)
+        public bool SendTestEmail(out string errorMessage, bool appendHostNameToEmailBody)
         {
-            return SendEmail(EmailCategory.Notification, "Test Email", "This is a test email.", null, false, null, null, out errorMessage);
+            return SendEmail(EmailCategory.Notification, "Test Email", "This is a test email.", null, false, null, null, out errorMessage, appendHostNameToEmailBody);
         }
 
-        public bool SendTestEmail(string subject, string body, out string errorMessage)
+        public bool SendTestEmail(string subject, string body, out string errorMessage, bool appendHostNameToEmailBody)
         {
-            return SendEmail(EmailCategory.Notification, subject, body, null, false, null, null, out errorMessage);
+            return SendEmail(EmailCategory.Notification, subject, body, null, false, null, null, out errorMessage, appendHostNameToEmailBody);
         }
 
         #endregion //Methods
