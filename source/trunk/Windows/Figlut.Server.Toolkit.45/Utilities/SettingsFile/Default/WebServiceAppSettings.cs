@@ -5,6 +5,7 @@
     using System;
     using System.Collections.Generic;
     using System.Linq;
+    using System.ServiceModel.Diagnostics;
     using System.Text;
     using System.Threading.Tasks;
 
@@ -130,21 +131,27 @@
         public int RestServiceMaxConcurrentInstances { get; set; }
 
         /// <summary>
+        /// The scope of the performance counters to enable on the service in order to view the counters with Windows perfmon.exe.
+        /// </summary>
+        [SettingInfo("REST Service", AutoFormatDisplayName = true, Description = "The scope of the performance counters to enable on the service in order to view the counters with Windows perfmon.exe.", CategorySequenceId = 17)]
+        public PerformanceCounterScope PerformanceCounterScope { get; set; }
+
+        /// <summary>
         /// Whether or not the server will handle exceptions (logging and email notifications) after HTTP client connections have been accepted. If set to true, exception handling is optional in your custom agents.
         /// </summary>
-        [SettingInfo("REST Service", AutoFormatDisplayName = true, Description = "Whether or not the server will handle exceptions (logging and email notifications) after HTTP client connections have been accepted. If set to true, exception handling is optional in your custom agents.", CategorySequenceId = 17)]
+        [SettingInfo("REST Service", AutoFormatDisplayName = true, Description = "Whether or not the server will handle exceptions (logging and email notifications) after HTTP client connections have been accepted. If set to true, exception handling is optional in your custom agents.", CategorySequenceId = 18)]
         public bool RestServiceHandleExceptionsOnClientConnectionAccepted { get; set; }
 
         /// <summary>
         /// Whether or not to return a result to the client when exceptions are thrown by the agents.
         /// </summary>
-        [SettingInfo("REST Service", AutoFormatDisplayName = true, Description = "Whether or not to return a result to the client when exceptions are thrown by web agents.", CategorySequenceId = 18)]
+        [SettingInfo("REST Service", AutoFormatDisplayName = true, Description = "Whether or not to return a result to the client when exceptions are thrown by web agents.", CategorySequenceId = 19)]
         public bool RestServiceReturnResponseOnAgentExceptions { get; set; }
 
         /// <summary>
         /// The date time format used in the messages being sent by the client in web requests.
         /// </summary>
-        [SettingInfo("REST Service", AutoFormatDisplayName = true, Description = "The date time format used in the messages being sent by the client in web requests.", CategorySequenceId = 19)]
+        [SettingInfo("REST Service", AutoFormatDisplayName = true, Description = "The date time format used in the messages being sent by the client in web requests.", CategorySequenceId = 20)]
         public string RestClientDateTimeFormat { get; set; }
 
         #endregion //Service
