@@ -169,7 +169,7 @@
                 catch (SqlException sqlEx)
                 {
                     attempts++;
-                    if (sqlEx.Number != SQL_TRANSACTION_DEADLOCK_ERROR_CODE || attempts >= _transactionDeadlockRetryAttempts) 
+                    if (sqlEx.Number != SQL_TRANSACTION_DEADLOCK_ERROR_CODE || attempts >= _transactionDeadlockRetryAttempts)
                     {
                         throw sqlEx; //If this was not caused by a deadlock, or if the retry attempts have been reached, then throw the exception.
                     }

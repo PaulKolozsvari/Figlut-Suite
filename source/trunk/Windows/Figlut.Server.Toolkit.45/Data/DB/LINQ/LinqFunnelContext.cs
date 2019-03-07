@@ -17,7 +17,7 @@
     /// A LINQ to SQL helper that uses generics to allow for easy Saving (Inserting/Updating), Retrieving and Deleting
     /// of entities.
     /// </summary>
-    public class LinqFunnelContext
+    public class LinqFunnelContext : IDisposable
     {
         //TODO Implement CompiledQuery only available with .NET 4.0 : http://msdn.microsoft.com/en-us/library/bb896297.aspx
 
@@ -831,6 +831,14 @@
         {
             _contextIsFresh = false;
             return GetAllEntities(entityType, false).LongCount();
+        }
+
+        public void Dispose()
+        {
+            if (_db != null)
+            {
+                _db.Dispose();
+            }
         }
 
 

@@ -201,6 +201,22 @@
 
         #endregion //Email
 
+        #region Threading
+
+        /// <summary>
+        /// The Minimum number of threads available in the Worker Thread Pool for each CPU in the machine.
+        /// </summary>
+        [SettingInfo("Threading", AutoFormatDisplayName = true, Description = "The Minimum number of threads available in the Worker Thread Pool for each CPU in the machine.", CategorySequenceId = 18)]
+        public int MinimumWorkerThreadCount { get; set; }
+
+        /// <summary>
+        /// The Minimum number of threads available in the IOCP (IO Completion Port) Thread Pool for each CPU in the machine.
+        /// </summary>
+        [SettingInfo("Threading", AutoFormatDisplayName = true, Description = "The Minimum number of threads available in the IOCP (IO Completion Port) Thread Pool.", CategorySequenceId = 18)]
+        public int MinimumCompletionPortThreadCount { get; set; }
+
+        #endregion //Threading
+
         #endregion //Properties
     }
 }

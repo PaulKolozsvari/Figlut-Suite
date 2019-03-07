@@ -126,10 +126,11 @@
 
         public virtual Stream GetEntities(string entityName)
         {
+            EntityContext context = null;
             try
             {
                 ValidateRequestMethod(HttpVerb.GET);
-                EntityContext context = GetEntityContext();
+                context = GetEntityContext();
                 Nullable<Guid> userId = null;
                 string userName = null;
                 GetUserDetails(context, out userId, out userName);
@@ -157,14 +158,19 @@
                 UpdateHttpStatusOnException(ex);
                 throw ex;
             }
+            finally
+            {
+                DisposeEntityContext(context);
+            }
         }
 
         public virtual Stream GetEntityById(string entityName, string entityId)
         {
+            EntityContext context = null;
             try
             {
                 ValidateRequestMethod(HttpVerb.GET);
-                EntityContext context = GetEntityContext();
+                context = GetEntityContext();
                 Nullable<Guid> userId = null;
                 string userName = null;
                 GetUserDetails(context, out userId, out userName);
@@ -193,14 +199,19 @@
                 UpdateHttpStatusOnException(ex);
                 throw ex;
             }
+            finally
+            {
+                DisposeEntityContext(context);
+            }
         }
 
         public virtual Stream GetEntitiesByField(string entityName, string fieldName, string fieldValue)
         {
+            EntityContext context = null;
             try
             {
                 ValidateRequestMethod(HttpVerb.GET);
-                EntityContext context = GetEntityContext();
+                context = GetEntityContext();
                 Nullable<Guid> userId = null;
                 string userName = null;
                 GetUserDetails(context, out userId, out userName);
@@ -230,14 +241,19 @@
                 UpdateHttpStatusOnException(ex);
                 throw ex;
             }
+            finally
+            {
+                DisposeEntityContext(context);
+            }
         }
 
         public virtual Stream PutEntity(string entityName, Stream inputStream)
         {
+            EntityContext context = null;
             try
             {
                 ValidateRequestMethod(HttpVerb.PUT);
-                EntityContext context = GetEntityContext();
+                context = GetEntityContext();
                 Nullable<Guid> userId = null;
                 string userName = null;
                 Type entityType = GetEntityType(entityName);
@@ -267,14 +283,19 @@
                 UpdateHttpStatusOnException(ex);
                 throw ex;
             }
+            finally
+            {
+                DisposeEntityContext(context);
+            }
         }
 
         public virtual Stream PostEntity(string entityName, Stream inputStream)
         {
+            EntityContext context = null;
             try
             {
                 ValidateRequestMethod(HttpVerb.POST);
-                EntityContext context = GetEntityContext();
+                context = GetEntityContext();
                 Nullable<Guid> userId = null;
                 string userName = null;
                 Type entityType = GetEntityType(entityName);
@@ -304,14 +325,19 @@
                 UpdateHttpStatusOnException(ex);
                 throw ex;
             }
+            finally
+            {
+                DisposeEntityContext(context);
+            }
         }
 
         public virtual Stream DeleteEntity(string entityName, string entityId)
         {
+            EntityContext context = null;
             try
             {
                 ValidateRequestMethod(HttpVerb.DELETE);
-                EntityContext context = GetEntityContext();
+                context = GetEntityContext();
                 Nullable<Guid> userId = null;
                 string userName = null;
                 GetUserDetails(context, out userId, out userName);
@@ -338,6 +364,10 @@
                 ExceptionHandler.HandleException(ex);
                 UpdateHttpStatusOnException(ex);
                 throw ex;
+            }
+            finally
+            {
+                DisposeEntityContext(context);
             }
         }
 
@@ -526,7 +556,23 @@
                 false,
                 GOC.Instance.UserLinqToSqlType,
                 GOC.Instance.ServerActionLinqToSqlType,
-                GOC.Instance.ServerErrorLinqToSqlType);
+                GOC.Instance.ServerErrorLinqToSqlType,
+                GOC.Instance.DatabaseTransactionScopeOption,
+                new System.Transactions.TransactionOptions()
+                {
+                    IsolationLevel = GOC.Instance.DatabaseTransactionIsolationLevel,
+                    Timeout = new TimeSpan(0, 0, GOC.Instance.DatabaseTransactionTimeoutSeconds)
+                },
+                GOC.Instance.DatabaseTransactionDeadlockRetryAttempts,
+                GOC.Instance.DatabaseTransactionDeadlockRetryWaitPeriod);
+        }
+
+        public static void DisposeEntityContext(EntityContext context)
+        {
+            if (context != null)
+            {
+                context.Dispose();
+            }
         }
 
         protected string GetCurrentRequestClientIpAddress()

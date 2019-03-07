@@ -78,6 +78,7 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
     </Reference>
@@ -179,6 +180,7 @@
     <Compile Include="Data\QueryRunners\SqlQueryRunnerInput.cs" />
     <Compile Include="Data\QueryRunners\SqlQueryRunnerOutput.cs" />
     <Compile Include="Utilities\ConsoleApplication.cs" />
+    <Compile Include="Utilities\ConfigurationFileHelper.cs" />
     <Compile Include="Utilities\EagerTimer.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -207,6 +209,7 @@
     <Compile Include="Utilities\SMS\SmsInfo.cs" />
     <Compile Include="Utilities\SMS\SmsReceivedEventArgs.cs" />
     <Compile Include="Utilities\SMS\SmsReceivedInfo.cs" />
+    <Compile Include="Utilities\ThreadHelper.cs" />
     <Compile Include="Utilities\WindowsHelper.cs" />
     <Compile Include="Web\Client\DataProgress\ServiceDataTransactionType.cs" />
     <Compile Include="Web\Client\DataProgress\ServiceTransactionCompletedHandler.cs" />
