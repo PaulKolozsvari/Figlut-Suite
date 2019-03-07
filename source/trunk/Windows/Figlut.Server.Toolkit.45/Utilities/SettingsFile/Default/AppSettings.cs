@@ -17,14 +17,17 @@
 
         public AppSettings() : base()
         {
+            DefaultEmailRecipients = new EmailNotificationRecipientList();
         }
 
         public AppSettings(string filePath) : base(filePath)
         {
+            DefaultEmailRecipients = new EmailNotificationRecipientList();
         }
 
         public AppSettings(string name, string filePath) : base(name, filePath)
         {
+            DefaultEmailRecipients = new EmailNotificationRecipientList();
         }
 
         #endregion //Constructors
@@ -197,7 +200,7 @@
         /// The default list of recipients that should be included in every email sent out i.e. if default recipients are configured to be included.
         /// </summary>
         [SettingInfo("Email", AutoFormatDisplayName = true, Description = "The default list of recipients that should be included in every email sent out i.e. if default recipients are configured to be included.", CategorySequenceId = 18)]
-        public List<EmailNotificationRecipient> DefaultEmailRecipients { get; set; }
+        public EmailNotificationRecipientList DefaultEmailRecipients { get; set; }
 
         #endregion //Email
 

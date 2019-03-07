@@ -19,5 +19,14 @@
         public string DisplayName { get; set; }
 
         #endregion //Properties
+
+        #region Methods
+
+        public override string ToString()
+        {
+            return ($"{this.DisplayName} ({this.EmailAddress})");
+        }
+
+        #endregion //Methods
     }
 }

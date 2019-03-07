@@ -186,6 +186,7 @@
     </Compile>
     <Compile Include="Utilities\Email\EmailCategory.cs" />
     <Compile Include="Utilities\Email\EmailNotificationRecipient.cs" />
+    <Compile Include="Utilities\Email\EmailNotificationRecipientList.cs" />
     <Compile Include="Utilities\Email\EmailProvider.cs" />
     <Compile Include="Utilities\Email\EmailRecipientType.cs" />
     <Compile Include="Utilities\Email\EmailClient.cs" />
