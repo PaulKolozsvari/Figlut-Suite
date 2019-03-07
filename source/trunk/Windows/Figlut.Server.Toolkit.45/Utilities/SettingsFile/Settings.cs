@@ -85,6 +85,32 @@
 
         #region Methods
 
+        /// <summary>
+        /// Queries all the settings in this class grouped by their categorires and writes the categories with each setting name and value to a string which can be logged or displayed.
+        /// </summary>
+        /// <returns></returns>
+        public override string ToString()
+        {
+            StringBuilder result = new StringBuilder();
+            EntityCache<string, List<SettingItem>> settings = GetAllSettingItemsGroupedByCategories();
+            List<string> categories = settings.GetEntitiesKeys();
+            for (int i = 0; i < categories.Count; i++)
+            {
+                string category = categories[i];
+                result.AppendLine($"*** {category} Settings ***");
+                result.AppendLine();
+                foreach (SettingItem s in settings[category])
+                {
+                    result.AppendLine($" * {s.SettingDisplayName} : {s.SettingValue}");
+                }
+                if (i < (categories.Count - 1))
+                {
+                    result.AppendLine(); //There are more categories to go.
+                }
+            }
+            return result.ToString();
+        }
+
         public virtual void RefreshFromFile(bool saveIfFileDoesNotExist, bool validateAllSettingValuesSet)
         {
             Type thisType = this.GetType();
@@ -201,6 +227,7 @@
                 foreach (SettingInfoAttribute c in categoryAttributes)
                 {
                     SettingItem settingItem = new SettingItem(
+                        c.Category,
                         p.Name,
                         EntityReader.GetPropertyValue(p.Name, this, false),
                         p.PropertyType,
@@ -210,13 +237,23 @@
                         c.CategorySequenceId,
                         c.PasswordChar,
                         null,
-                        null);
+                        new SettingsCategoryInfo(this, c.Category));
                     settingItems.Add(settingItem);
                 }
             }
             string entityCacheName = string.IsNullOrEmpty(name) ? DataShaper.ShapeCamelCaseString(this.GetType().Name) : name;
             EntityCache<string, SettingItem> result = new EntityCache<string, SettingItem>(entityCacheName);
-            settingItems.ToList().ForEach(p => result.Add(p.SettingName, p));
+            settingItems.OrderBy(p => p.Category).ToList().ForEach(p => result.Add(p.SettingName, p));
+            return result;
+        }
+
+        public EntityCache<string, List<SettingItem>> GetAllSettingItemsGroupedByCategories()
+        {
+            EntityCache<string, List<SettingItem>> result = new EntityCache<string, List<SettingItem>>();
+            foreach (var group in GetAllSettingItems().GroupBy(p => p.Category))
+            {
+                result.Add(group.Key, group.OrderBy(p => p.CategorySequenceId).ToList());
+            }
             return result;
         }
 
@@ -242,6 +279,7 @@
                     if (c.Category.Trim().ToLower() == categoryLower)
                     {
                         SettingItem settingItem = new SettingItem(
+                            c.Category,
                             p.Name,
                             EntityReader.GetPropertyValue(p.Name, this, false),
                             p.PropertyType,

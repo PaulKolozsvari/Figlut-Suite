@@ -18,6 +18,7 @@ using Figlut.Server.Toolkit.Mmc.Forms;
         #region Constructors
 
         public SettingItem(
+            string category,
             string settingName,
             object settingValue,
             Type settingType,
@@ -29,6 +30,7 @@ using Figlut.Server.Toolkit.Mmc.Forms;
             SettingsControl settingControl,
             SettingsCategoryInfo settingsCategoryInfo)
         {
+            _category = category;
             _settingName = settingName;
             _settingValue = settingValue;
             _settingType = settingType;
@@ -62,6 +64,7 @@ using Figlut.Server.Toolkit.Mmc.Forms;
 
         #region Fields
 
+        protected string _category;
         protected string _settingName;
         protected object _settingValue;
         protected Type _settingType;
@@ -76,6 +79,11 @@ using Figlut.Server.Toolkit.Mmc.Forms;
         #endregion //Fields
 
         #region Properties
+
+        public string Category
+        {
+            get { return _category; }
+        }
 
         public string SettingDisplayName
         {
