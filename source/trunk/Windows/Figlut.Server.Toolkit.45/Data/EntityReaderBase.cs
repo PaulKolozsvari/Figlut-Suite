@@ -145,6 +145,10 @@
             {
                 return value;
             }
+            else if (typeToConvertTo.Equals(typeof(Guid)))
+            {
+                return new Guid(value.ToString());
+            }
             else if (typeToConvertTo.Equals(typeof(String)))
             {
                 return Convert.ToString(value);

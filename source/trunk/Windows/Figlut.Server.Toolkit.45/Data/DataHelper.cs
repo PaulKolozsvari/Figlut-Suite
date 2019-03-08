@@ -193,6 +193,27 @@
             return result;
         }
 
+        public static object ConvertObjectListToTypedList(Type entityType, List<object> objects, bool performConversion = false)
+        {
+            var containedType = entityType.GenericTypeArguments.First();
+            var enumerableType = typeof(System.Linq.Enumerable);
+            var castMethod = enumerableType.GetMethod(nameof(System.Linq.Enumerable.Cast)).MakeGenericMethod(containedType);
+            var toListMethod = enumerableType.GetMethod(nameof(System.Linq.Enumerable.ToList)).MakeGenericMethod(containedType);
+            IEnumerable<object> itemsToCast;
+            if (performConversion)
+            {
+                itemsToCast = objects.Select(item => Convert.ChangeType(item, containedType));
+            }
+            else
+            {
+                itemsToCast = objects;
+            }
+            var castedItems = castMethod.Invoke(null, new[] { itemsToCast });
+            return toListMethod.Invoke(null, new[] { castedItems });
+        }
+
+
+
         public static Array GetArrayOfType(Type entityType, int length)
         {
             return Array.CreateInstance(entityType, length);

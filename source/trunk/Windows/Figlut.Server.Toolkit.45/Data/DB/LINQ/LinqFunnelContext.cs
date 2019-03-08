@@ -10,6 +10,7 @@
     using System.Data.Linq.Mapping;
     using System.Data.Linq;
     using System.Linq.Expressions;
+    using System.Collections;
 
     #endregion //Using Directives
 
@@ -637,37 +638,36 @@
             return DB.GetTable<E>().Where(expression.Compile()).ToList();
         }
 
-        /// <summary>
-        /// Queries for and returns an entity from the table corresponding to the entity type. The query is performed
-        /// on the surrogate key of the entity.
-        /// </summary>
-        /// <typeparam name="E">The entity type i.e. which table the entity will be queried from.</typeparam>
-        /// <param name="keyValue"></param>
-        /// <returns>Returns an entity with the specified type and surrogate key. Returns null if one is not found.</returns>
-        public virtual E GetEntityBySurrogateKey<E>(object keyValue, bool loadChildren) where E : class
-        {
-            return (E)GetEntityBySurrogateKey(typeof(E), keyValue, loadChildren);
-        }
+        //public virtual object GetEntityBySurrogateKey(Type entityType, object keyValue, bool loadChildren, bool throwExceptionOnNotFound)
+        //{
+        //    SetDeferredLoadingEnabled(loadChildren);
+        //    PropertyInfo surrogateKey = GetEntitySurrogateKey(entityType);
+        //    List<object> results = new List<object>();
+        //    _contextIsFresh = false;
+        //    string keyValueString = keyValue.ToString();
+        //    foreach (object t in DB.GetTable(entityType))
+        //    {
+        //        object surrogateKeyValue = surrogateKey.GetValue(t, null);
+        //        if (object.Equals(surrogateKeyValue, keyValue) || (surrogateKeyValue.ToString() == keyValueString))
+        //        {
+        //            return t;
+        //        }
+        //    }
+        //    if (throwExceptionOnNotFound)
+        //    {
+        //        throw new Exception(string.Format("Could not find {0} with {1} of '{2}'.",
+        //            entityType.Name,
+        //            surrogateKey.Name,
+        //            keyValue));
+        //    }
+        //    return null;
+        //}
 
         /// <summary>
         /// Queries for and returns an entity from the table corresponding to the entity type. The query is performed
         /// on the surrogate key of the entity.
         /// </summary>
-        /// <typeparam name="E">The entity type i.e. which table the entity will be queried from.</typeparam>
-        /// <param name="keyValue"></param>
-        /// <param name="loadChildren">Whether or not to load the children entities onto this entity.</param>
-        /// <param name="throwExceptionOnNotFound">Whether or not to throw an exception if the result is null.</param>
-        /// <returns>Returns an entity with the specified type and surrogate key. Returns null if one is not found.</returns>
-        public virtual E GetEntityBySurrogateKey<E>(object keyValue, bool loadChildren, bool throwExceptionOnNotFound) where E : class
-        {
-            return (E)GetEntityBySurrogateKey(typeof(E), keyValue, loadChildren, throwExceptionOnNotFound);
-        }
-
-        /// <summary>
-        /// Queries for and returns an entity from the table corresponding to the entity type. The query is performed
-        /// on the surrogate key of the entity.
-        /// </summary>
-        /// <typeparam name="E">The entity type i.e. which table the entity will be queried from.</typeparam>
+        /// <param name="entityType">The entity type i.e. which table the entity will be queried from.</param>
         /// <param name="keyValue">The value of the surrogate to search by.</param>
         /// <param name="loadChildren">Whether or not to load the children entities onto this entity.</param>
         /// <returns>Returns an entity with the specified type and surrogate key. Returns null if one is not found.</returns>
@@ -680,34 +680,52 @@
         /// Queries for and returns an entity from the table corresponding to the entity type. The query is performed
         /// on the surrogate key of the entity.
         /// </summary>
-        /// <typeparam name="E">The entity type i.e. which table the entity will be queried from.</typeparam>
+        /// <param name="entityType">The entity type i.e. which table the entity will be queried from.</param>
         /// <param name="keyValue">The value of the surrogate to search by.</param>
         /// <param name="loadChildren">Whether or not to load the children entities onto this entity.</param>
         /// <param name="throwExceptionOnNotFound">Whether or not to throw an exception if the result is null.</param>
         /// <returns>Returns an entity with the specified type and surrogate key. Returns null if one is not found.</returns>
         public virtual object GetEntityBySurrogateKey(Type entityType, object keyValue, bool loadChildren, bool throwExceptionOnNotFound)
         {
+            MethodInfo methodDefinition = GetType().GetMethod("GetEntityBySurrogateKey", new Type[] { typeof(object), typeof(bool), typeof(bool)}); //https://stackoverflow.com/questions/266115/pass-an-instantiated-system-type-as-a-type-parameter-for-a-generic-class
+            MethodInfo method = methodDefinition.MakeGenericMethod(entityType);
+            return method.Invoke(this, new object[] { keyValue, loadChildren, throwExceptionOnNotFound });
+        }
+
+        /// <summary>
+        /// Queries for and returns an entity from the table corresponding to the entity type. The query is performed
+        /// on the surrogate key of the entity.
+        /// </summary>
+        /// <typeparam name="E">The entity type i.e. which table the entity will be queried from.</typeparam>
+        /// <param name="keyValue">The value of the surrogate to search by.</param>
+        /// <param name="loadChildren">Whether or not to load the children entities onto this entity.</param>
+        /// <returns>Returns an entity with the specified type and surrogate key. Returns null if one is not found.</returns>
+        public virtual E GetEntityBySurrogateKey<E>(object keyValue, bool loadChildren) where E : class
+        {
+            return GetEntityBySurrogateKey<E>(keyValue, loadChildren, false);
+        }
+
+        /// <summary>
+        /// Queries for and returns an entity from the table corresponding to the entity type. The query is performed
+        /// on the surrogate key of the entity.
+        /// </summary>
+        /// <typeparam name="E">The entity type i.e. which table the entity will be queried from.</typeparam>
+        /// <param name="keyValue">The value of the surrogate to search by.</param>
+        /// <param name="loadChildren">Whether or not to load the children entities onto this entity.</param>
+        /// <param name="throwExceptionOnNotFound">Whether or not to throw an exception if the result is null.</param>
+        /// <returns>Returns an entity with the specified type and surrogate key. Returns null if one is not found.</returns>
+        public virtual E GetEntityBySurrogateKey<E>(object keyValue, bool loadChildren, bool throwExceptionOnNotFound) where E : class
+        {
             SetDeferredLoadingEnabled(loadChildren);
+            Type entityType = typeof(E);
             PropertyInfo surrogateKey = GetEntitySurrogateKey(entityType);
-            List<object> results = new List<object>();
-            _contextIsFresh = false;
-            string keyValueString = keyValue.ToString();
-            foreach (object t in DB.GetTable(entityType))
-            {
-                object surrogateKeyValue = surrogateKey.GetValue(t, null);
-                if (object.Equals(surrogateKeyValue, keyValue) || (surrogateKeyValue.ToString() == keyValueString))
-                {
-                    return t;
-                }
-            }
-            if (throwExceptionOnNotFound)
-            {
-                throw new Exception(string.Format("Could not find {0} with {1} of '{2}'.",
-                    entityType.Name,
-                    surrogateKey.Name,
-                    keyValue));
-            }
-            return null;
+            object keyValueConverted = EntityReader.ConvertValueTypeTo(keyValue, surrogateKey.PropertyType);
+            ParameterExpression e = Expression.Parameter(entityType, "e");
+            MemberExpression memberExpression = Expression.MakeMemberAccess(e, surrogateKey); //Name of surrogate key : left hand side of the expression.
+            ConstantExpression constantExpression = Expression.Constant(keyValueConverted, surrogateKey.PropertyType); //Value of the surrogate key : right hand side of the expression.
+            BinaryExpression binaryExpression = Expression.Equal(memberExpression, constantExpression);
+            Expression<Func<E, bool>> lambdaExpression = Expression.Lambda<Func<E, bool>>(binaryExpression, e);
+            return DB.GetTable<E>().SingleOrDefault(lambdaExpression);
         }
 
         /// <summary>
@@ -718,10 +736,50 @@
         /// <param name="fieldName">The name of the field/column on which the query will be performed.</param>
         /// <param name="fieldValue">The value of the field which will be used for the query.</param>
         /// <returns>Returns a list of entities of the specified type with the specified field/column and field value.</returns>
-        public virtual List<E> GetEntitiesByField<E>(string fieldName, object fieldValue, bool loadChildren) where E : class
+        //public virtual List<object> GetEntitiesByField(Type entityType, string fieldName, object fieldValue, bool loadChildren)
+        //{
+        //    SetDeferredLoadingEnabled(loadChildren);
+        //    PropertyInfo field = entityType.GetProperty(fieldName);
+        //    if (field == null)
+        //    {
+        //        throw new NullReferenceException(
+        //            string.Format("Entity {0} does not contain a field with the name {1}.",
+        //            entityType.Name,
+        //            fieldName));
+        //    }
+        //    List<object> results = new List<object>();
+        //    foreach (object t in DB.GetTable(entityType))
+        //    {
+        //        object eFieldValue = field.GetValue(t, null);
+        //        if (eFieldValue.Equals(fieldValue) || eFieldValue.ToString().Equals(fieldValue.ToString()))
+        //        {
+        //            results.Add(t);
+        //        }
+        //    }
+        //    _contextIsFresh = false;
+        //    return results;
+        //}
+
+        /// <summary>
+        /// Queries for entities in a table corresponding to entity type. The query is performed on the column/field
+        /// specified with the specified field value.
+        /// </summary>
+        /// <typeparam name="E">The entity type i.e. the table from which the entities will be returned.</typeparam>
+        /// <param name="fieldName">The name of the field/column on which the query will be performed.</param>
+        /// <param name="fieldValue">The value of the field which will be used for the query.</param>
+        /// <param name="loadChildren">Whether or not to load the children of the entities as well.</param>
+        /// <returns>Returns a list of entities of the specified type with the specified field/column and field value.</returns>
+        public virtual List<object> GetEntitiesByField(Type entityType, string fieldName, object fieldValue, bool loadChildren)
         {
-            List<E> result = new List<E>();
-            GetEntitiesByField(typeof(E), fieldName, fieldValue, loadChildren).ForEach(e => result.Add((E)e));
+            MethodInfo methodDefinition = GetType().GetMethod("GetEntitiesByField", new Type[] { typeof(string), typeof(object), typeof(bool) }); //https://stackoverflow.com/questions/266115/pass-an-instantiated-system-type-as-a-type-parameter-for-a-generic-class
+            MethodInfo method = methodDefinition.MakeGenericMethod(entityType);
+            object queryResult = method.Invoke(this, new object[] { fieldName, fieldValue, loadChildren });
+            IList genericList = (IList)queryResult;
+            List <object> result = new List<object>();
+            foreach (var e in genericList)
+            {
+                result.Add(e);
+            }
             return result;
         }
 
@@ -732,29 +790,21 @@
         /// <typeparam name="E">The entity type i.e. the table from which the entities will be returned.</typeparam>
         /// <param name="fieldName">The name of the field/column on which the query will be performed.</param>
         /// <param name="fieldValue">The value of the field which will be used for the query.</param>
+        /// <param name="loadChildren">Whether or not to load the children of the entities as well.</param>
         /// <returns>Returns a list of entities of the specified type with the specified field/column and field value.</returns>
-        public virtual List<object> GetEntitiesByField(Type entityType, string fieldName, object fieldValue, bool loadChildren)
+        public virtual List<E> GetEntitiesByField<E>(string fieldName, object fieldValue, bool loadChildren) where E : class
         {
             SetDeferredLoadingEnabled(loadChildren);
+
+            Type entityType = typeof(E);
             PropertyInfo field = entityType.GetProperty(fieldName);
-            if (field == null)
-            {
-                throw new NullReferenceException(
-                    string.Format("Entity {0} does not contain a field with the name {1}.",
-                    entityType.Name,
-                    fieldName));
-            }
-            List<object> results = new List<object>();
-            foreach (object t in DB.GetTable(entityType))
-            {
-                object eFieldValue = field.GetValue(t, null);
-                if (eFieldValue.Equals(fieldValue) || eFieldValue.ToString().Equals(fieldValue.ToString()))
-                {
-                    results.Add(t);
-                }
-            }
-            _contextIsFresh = false;
-            return results;
+            object keyValueConverted = EntityReader.ConvertValueTypeTo(fieldValue, field.PropertyType);
+            ParameterExpression e = Expression.Parameter(entityType, "e");
+            MemberExpression memberExpression = Expression.MakeMemberAccess(e, field); //Name of surrogate key : left hand side of the expression.
+            ConstantExpression constantExpression = Expression.Constant(keyValueConverted, field.PropertyType); //Value of the surrogate key : right hand side of the expression.
+            BinaryExpression binaryExpression = Expression.Equal(memberExpression, constantExpression);
+            Expression<Func<E, bool>> lambdaExpression = Expression.Lambda<Func<E, bool>>(binaryExpression, e);
+            return DB.GetTable<E>().Where(lambdaExpression).ToList();
         }
 
         /// <summary>
