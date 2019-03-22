@@ -54,6 +54,6 @@
 
         [OperationContract]
         [WebGet(UriTemplate = "/FileDownload/{fileName}")]
-        Stream DownloadFile(string fileName);
+        Stream FileDownload(string fileName);
     }
 }

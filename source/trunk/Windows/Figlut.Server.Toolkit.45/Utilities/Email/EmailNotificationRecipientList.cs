@@ -20,6 +20,11 @@
             _emailNotificationRecipients = new List<EmailNotificationRecipient>();
         }
 
+        public EmailNotificationRecipientList(List<EmailNotificationRecipient> emailNotificationRecipientList)
+        {
+            _emailNotificationRecipients = emailNotificationRecipientList;
+        }
+
         #endregion //Constructors
 
         #region Fields

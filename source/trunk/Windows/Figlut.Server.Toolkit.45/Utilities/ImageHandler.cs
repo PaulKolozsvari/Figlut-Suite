@@ -32,8 +32,8 @@
         }
 
         public static void RotateImageFile(
-    string filePath,
-    RotateFlipType rotateFlipType)
+            string filePath,
+            RotateFlipType rotateFlipType)
         {
             FileSystemHelper.ValidateFileExists(filePath);
             using (Image image = Image.FromFile(filePath))
@@ -51,7 +51,7 @@
         /// <param name="maxHeight">resize height.</param>
         /// <param name="quality">quality setting value.</param>
         /// <param name="filePath">file path.</param>      
-        public static void ResizeImage(Bitmap image, int maxWidth, int maxHeight, int quality, string filePath)
+        public static Bitmap ResizeImage(Bitmap image, int maxWidth, int maxHeight, int quality, string filePath)
         {
             // Get the image's original width and height
             int originalWidth = image.Width;
@@ -66,6 +66,7 @@
             int newWidth = (int)(originalWidth * ratio);
             int newHeight = (int)(originalHeight * ratio);
 
+            Bitmap result = null;
             // Convert other formats (including CMYK) to RGB.
             using (Bitmap newImage = new Bitmap(newWidth, newHeight, PixelFormat.Format24bppRgb))
             {
@@ -91,15 +92,19 @@
                     {
                         encoderParameters.Param[0] = encoderParameter;
                         //newImage.Save(filePath, imageCodecInfo, encoderParameters);
-                        using (FileStream fs = new FileStream(filePath, FileMode.OpenOrCreate))
+                        if (!string.IsNullOrEmpty(filePath))
                         {
-                            newImage.Save(fs, imageCodecInfo, encoderParameters);
-                            fs.Close();
+                            using (FileStream fs = new FileStream(filePath, FileMode.OpenOrCreate))
+                            {
+                                newImage.Save(fs, imageCodecInfo, encoderParameters);
+                                fs.Close();
+                            }
                         }
                     }
                 }
-                newImage.Dispose();
+                result = newImage;
             }
+            return result;
         }
 
         public static void SaveImage(string filePath, byte[] imageBytes)
@@ -136,6 +141,16 @@
             {
                 return Image.FromStream(ms);
             }
+        }
+
+        public static Bitmap GetBitmapFromBytes(byte[] imageBytes)
+        {
+            Bitmap result = null;
+            using (var ms = new MemoryStream(imageBytes))
+            {
+                result = new Bitmap(ms);
+            }
+            return result;
         }
 
         /// <summary>
@@ -209,6 +224,34 @@
             }
             errorMessage = null;
             return true;
+        }
+
+        /// <summary>
+        /// Takes the given image, converts it to a base 64 string and replaces replacementPlaceHolder in the HTML with the Image's base64 string presentation.
+        /// </summary>
+        /// <param name="imageFilePath">The file path of the image.</param>
+        /// <param name="html">The HTML that the image needs to be injected into</param>
+        /// <param name="replacementPlaceHolder">The replacement placeholder text in the HTML that needs to be replaced with the Image's base64 string presentation</param>
+        /// <returns></returns>
+        public static string InjectImageBase64IntoHtml(string imageFilePath, string html, string replacementPlaceHolder)
+        {
+            FileSystemHelper.ValidateFileExists(imageFilePath);
+            byte[] imageBytes = File.ReadAllBytes(imageFilePath);
+            return InjectImageBase64IntoHtml(imageBytes, html, replacementPlaceHolder);
+        }
+
+        /// <summary>
+        /// Takes the given image, converts it to a base 64 string and replaces replacementPlaceHolder in the HTML with the Image's base64 string presentation.
+        /// </summary>
+        /// <param name="imageBytes">The bytes of the image.</param>
+        /// <param name="htmlText">The HTML that the image needs to be injected into</param>
+        /// <param name="replacementPlaceHolderText">The replacement placeholder text in the HTML that needs to be replaced with the Image's base64 string presentation</param>
+        /// <returns></returns>
+        public static string InjectImageBase64IntoHtml(byte[] imageBytes, string htmlText, string replacementPlaceHolderText)
+        {
+            string base64ImageRepresentation = Convert.ToBase64String(imageBytes);
+            string result = htmlText.Replace(replacementPlaceHolderText, base64ImageRepresentation);
+            return result;
         }
 
         #endregion //Methods

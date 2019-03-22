@@ -4,23 +4,19 @@
 
     using System;
     using System.Collections.Generic;
-    using System.Data.Linq;
     using System.IO;
-    using System.Linq;
     using System.Net;
     using System.ServiceModel;
     using System.ServiceModel.Web;
     using System.Text;
-    using System.Threading.Tasks;
-    using Figlut.Server.Toolkit.Data;
     using Figlut.Server.Toolkit.Data.DB.LINQ;
     using Figlut.Server.Toolkit.Utilities;
     using Figlut.Server.Toolkit.Utilities.Logging;
     using Figlut.Server.Toolkit.Utilities.Serialization;
-    using Figlut.Server.Toolkit.Web;
     using Figlut.Server.Toolkit.Web.Client;
     using Figlut.Server.Toolkit.Web.Service.REST.Events;
     using System.ServiceModel.Channels;
+    using System.Threading;
 
     #endregion //Using Directives
 
@@ -28,8 +24,17 @@
     {
         #region Constructors
 
-        public RestService()
+        public RestService() : this(false)
         {
+        }
+
+        public RestService(bool auditServiceCalls)
+        {
+            _auditServiceCalls = auditServiceCalls;
+            if (!_serviceInstanceId.HasValue)
+            {
+                _serviceInstanceId = Guid.NewGuid();
+            }
         }
 
         #endregion //Constructors
@@ -54,9 +59,58 @@
         public event OnBeforeDeleteEntityHandler OnBeforeDelete;
         public event OnAfterDeleteEntityHandler OnAfterDelete;
 
+        protected bool _auditServiceCalls;
+        protected Nullable<Guid> _serviceInstanceId;
+
         #endregion //Events
 
         #region Methods
+
+        protected void AuditRequest(string requestName, string requestMessage)
+        {
+            if (!_auditServiceCalls)
+            {
+                return;
+            }
+            StringBuilder logMessage = new StringBuilder();
+            logMessage.AppendLine($"Request Name: {requestName}");
+            if (!string.IsNullOrEmpty(requestMessage))
+            {
+                logMessage.AppendLine($"Request Message:");
+                logMessage.AppendLine(requestMessage);
+            }
+            AppendStatsToLogMessage(logMessage);
+            GOC.Instance.Logger.LogMessage(new LogMessage(logMessage.ToString(), LogMessageType.SuccessAudit, LoggingLevel.Maximum));
+        }
+
+        protected void AuditResponse(string requestName, string responseMessage)
+        {
+            if (!_auditServiceCalls)
+            {
+                return;
+            }
+            StringBuilder logMessage = new StringBuilder();
+            logMessage.AppendLine($"Response Message: {requestName}");
+            if (!string.IsNullOrEmpty(responseMessage))
+            {
+                logMessage.AppendLine($"Request Message:");
+                logMessage.AppendLine(responseMessage);
+            }
+            AppendStatsToLogMessage(logMessage);
+            GOC.Instance.Logger.LogMessage(new LogMessage(logMessage.ToString(), LogMessageType.SuccessAudit, LoggingLevel.Maximum));
+        }
+
+        private void AppendStatsToLogMessage(StringBuilder logMessage)
+        {
+            ThreadHelper.GetCurrentThreadCount(out int workerThreadsRunning, out int completionPortThreadsRunning);
+            int totalThreadsRunning = ThreadHelper.GetTotalThreadsRunningCountInCurrentProcess();
+            logMessage.AppendLine($"Request URI: {GetCurrentRequestUri()}");
+            logMessage.AppendLine($"Service Instance ID: {_serviceInstanceId}");
+            logMessage.AppendLine($"Worker Threads Running: {workerThreadsRunning}");
+            logMessage.AppendLine($"Completion Port Threads Running: {completionPortThreadsRunning}");
+            logMessage.AppendLine($"Total Threads Running: {totalThreadsRunning}");
+            logMessage.AppendLine($"Current Thread ID: {Thread.CurrentThread.ManagedThreadId}");
+        }
 
         public string GetCurrentRequestUri()
         {
@@ -101,6 +155,8 @@
         {
             try
             {
+                string requestName = $"{nameof(AllURIs)}";
+                AuditRequest(requestName, null);
                 string allHeadersFullString = GetAllHeadersFullString();
                 StringBuilder message = new StringBuilder();
                 string applicationName = string.IsNullOrEmpty(GOC.Instance.ApplicationName) ? "REST Web Service" : GOC.Instance.ApplicationName;
@@ -110,9 +166,10 @@
                 message.AppendLine();
                 message.AppendLine(allHeadersFullString);
                 message.AppendLine();
-                return StreamHelper.GetStreamFromString(
-                    message.ToString(), 
-                    GOC.Instance.Encoding);
+                string responseMessage = message.ToString();
+                Stream result = StreamHelper.GetStreamFromString(responseMessage, GOC.Instance.Encoding);
+                AuditResponse(requestName, responseMessage);
+                return result;
             }
             catch (Exception ex)
             {
@@ -129,6 +186,8 @@
             EntityContext context = null;
             try
             {
+                string requestName = $"{nameof(GetEntities)} : Entity Name = {entityName}";
+                AuditRequest(requestName, null);
                 ValidateRequestMethod(HttpVerb.GET);
                 context = GetEntityContext();
                 Nullable<Guid> userId = null;
@@ -150,7 +209,9 @@
                     OnAfterGetEntities(this, new RestServiceGetEntitiesEventArgs(
                         entityName, userId, userName, context, entityType, outputEntities));
                 }
-                return GetStreamFromObject(outputEntities);
+                Stream result = GetStreamFromObject(outputEntities, out string serializedText);
+                AuditResponse(requestName, serializedText);
+                return result;
             }
             catch (Exception ex)
             {
@@ -169,6 +230,8 @@
             EntityContext context = null;
             try
             {
+                string requestName = $"{nameof(GetEntityById)} : Entity Name = {entityName} : Entity ID = {entityId}";
+                AuditRequest(requestName, null);
                 ValidateRequestMethod(HttpVerb.GET);
                 context = GetEntityContext();
                 Nullable<Guid> userId = null;
@@ -191,7 +254,9 @@
                     OnAfterGetEntityById(this, new RestServiceGetEntityByIdEventArgs(
                         entityName, userId, userName, context, entityType, entityId, outputEntity));
                 }
-                return GetStreamFromObject(outputEntity);
+                Stream result = GetStreamFromObject(outputEntity, out string serializedText);
+                AuditResponse(requestName, serializedText);
+                return result;
             }
             catch (Exception ex)
             {
@@ -210,6 +275,8 @@
             EntityContext context = null;
             try
             {
+                string requestName = $"{nameof(GetEntitiesByField)} : Entity Name = {entityName} : Field Name = {fieldName} : Field Value = {fieldValue}";
+                AuditRequest(requestName, null);
                 ValidateRequestMethod(HttpVerb.GET);
                 context = GetEntityContext();
                 Nullable<Guid> userId = null;
@@ -233,7 +300,9 @@
                     OnAfterGetEntitiesByField(this, new RestServiceGetEntitiesByFieldEventArgs(
                         entityName, userId, userName, context, entityType, fieldName, fieldValue, outputEntities));
                 }
-                return GetStreamFromObject(outputEntities);
+                Stream result = GetStreamFromObject(outputEntities, out string serializedText);
+                AuditResponse(requestName, serializedText);
+                return result;
             }
             catch (Exception ex)
             {
@@ -252,13 +321,15 @@
             EntityContext context = null;
             try
             {
+                string requestName = $"{nameof(PutEntity)} : Entity Name : {entityName}";
                 ValidateRequestMethod(HttpVerb.PUT);
                 context = GetEntityContext();
                 Nullable<Guid> userId = null;
                 string userName = null;
                 Type entityType = GetEntityType(entityName);
                 GetUserDetails(context, out userId, out userName);
-                object inputEntity = GetObjectFromStream(entityType, inputStream);
+                object inputEntity = GetObjectFromStream(entityType, inputStream, out string serializedtext);
+                AuditRequest(requestName, serializedtext);
                 if (OnBeforePut != null)
                 {
                     OnBeforePut(this, new RestServicePutEntityEventArgs(
@@ -275,7 +346,10 @@
                     OnAfterPut(this, new RestServicePutEntityEventArgs(
                         entityName, userId, userName, context, entityType, inputEntity));
                 }
-                return StreamHelper.GetStreamFromString(string.Format("{0} saved successfully.", entityName), GOC.Instance.Encoding);
+                string responseMessage = string.Format("{0} saved successfully.", entityName);
+                Stream result = StreamHelper.GetStreamFromString(responseMessage, GOC.Instance.Encoding);
+                AuditResponse(requestName, responseMessage);
+                return result;
             }
             catch (Exception ex)
             {
@@ -294,13 +368,15 @@
             EntityContext context = null;
             try
             {
+                string requestName = $"{nameof(PostEntity)} : Entity Name = {entityName}";
                 ValidateRequestMethod(HttpVerb.POST);
                 context = GetEntityContext();
                 Nullable<Guid> userId = null;
                 string userName = null;
                 Type entityType = GetEntityType(entityName);
                 GetUserDetails(context, out userId, out userName);
-                object inputEntity = GetObjectFromStream(entityType, inputStream);
+                object inputEntity = GetObjectFromStream(entityType, inputStream, out string serializedText);
+                AuditRequest(requestName, serializedText);
                 if (OnBeforePost != null)
                 {
                     OnBeforePost(this, new RestServicePostEntityEventArgs(
@@ -317,7 +393,10 @@
                     OnAfterPost(this, new RestServicePostEntityEventArgs(
                         entityName, userId, userName, context, entityType, inputEntity));
                 }
-                return StreamHelper.GetStreamFromString(string.Format("{0} saved successfully.", entityName), GOC.Instance.Encoding);
+                string responseMessage = string.Format("{0} saved successfully.", entityName);
+                Stream result = StreamHelper.GetStreamFromString(responseMessage, GOC.Instance.Encoding);
+                AuditResponse(requestName, responseMessage);
+                return result;
             }
             catch (Exception ex)
             {
@@ -336,6 +415,8 @@
             EntityContext context = null;
             try
             {
+                string requestName = $"{nameof(DeleteEntity)} : Entity Name = {entityName} : Entity ID = {entityId}";
+                AuditRequest(requestName, null);
                 ValidateRequestMethod(HttpVerb.DELETE);
                 context = GetEntityContext();
                 Nullable<Guid> userId = null;
@@ -357,7 +438,10 @@
                     OnAfterDelete(this, new RestServiceDeleteEntityEventArgs(
                         entityName, userId, userName, context, entityType, entityId));
                 }
-                return StreamHelper.GetStreamFromString(string.Format("{0} deleted successfully.", entityName), GOC.Instance.Encoding);
+                string responseMessage = string.Format("{0} deleted successfully.", entityName);
+                Stream result = StreamHelper.GetStreamFromString(responseMessage, GOC.Instance.Encoding);
+                AuditResponse(requestName, responseMessage);
+                return result;
             }
             catch (Exception ex)
             {
@@ -376,6 +460,8 @@
         {
             try
             {
+                string requestName = $"{nameof(FileUpload)} : File Name = {fileName}";
+                AuditRequest(requestName, null);
                 ValidateRequestMethod(HttpVerb.POST);
                 byte[] fileBytes = StreamHelper.GetBytesFromStream(inputStream);
                 FileStream fs = null;
@@ -390,9 +476,12 @@
                     fs.Write(fileBytes, 0, fileBytes.Length);
                     fs.Flush();
                 }
-                return StreamHelper.GetStreamFromString(
-                    string.Format("{0} bytes written to {1}", fileBytes.Length, fileName),
+                string responseMessage = string.Format("{0} bytes written to {1}", fileBytes.Length, fileName);
+                Stream result = StreamHelper.GetStreamFromString(
+                    responseMessage,
                     GOC.Instance.Encoding);
+                AuditResponse(requestName, responseMessage);
+                return result;
             }
             catch (Exception ex)
             {
@@ -407,6 +496,8 @@
         {
             try
             {
+                string requestName = $"{nameof(FileUploadCompleted)} : File Name = {fileName}";
+                AuditRequest(requestName, null);
                 ValidateRequestMethod(HttpVerb.POST);
                 FileStream fs = null;
                 lock (FileUploadSessions.Instance.FileStreams)
@@ -420,7 +511,10 @@
                     fs.Dispose();
                     FileUploadSessions.Instance.FileStreams.Remove(fileName);
                 }
-                return StreamHelper.GetStreamFromString(string.Format("{0} for {1} closed.", typeof(FileStream).Name, fileName), GOC.Instance.Encoding);
+                string responseMessage = string.Format("{0} for {1} closed.", typeof(FileStream).Name, fileName);
+                Stream result = StreamHelper.GetStreamFromString(responseMessage, GOC.Instance.Encoding);
+                AuditResponse(requestName, responseMessage);
+                return result;
             }
             catch (Exception ex)
             {
@@ -430,12 +524,16 @@
             }
         }
 
-        public Stream DownloadFile(string fileName)
+        public Stream FileDownload(string fileName)
         {
             try
             {
+                string requestName = $"{nameof(FileDownload)}: File Name = {fileName}";
+                AuditRequest(requestName, null);
                 FileSystemHelper.ValidateDirectoryExists(fileName);
-                return File.OpenRead(fileName);
+                Stream result = File.OpenRead(fileName);
+                AuditResponse(requestName, null);
+                return result;
             }
             catch (Exception ex)
             {
@@ -486,12 +584,24 @@
 
         protected virtual Stream GetStreamFromObject(object obj)
         {
-            return StreamHelper.GetStreamFromString(GOC.Instance.JsonSerializer.SerializeToText(obj), GOC.Instance.Encoding);
+            return GetStreamFromObject(obj, out string serializedText);
+        }
+
+        protected virtual Stream GetStreamFromObject(object obj, out string serializedText)
+        {
+            serializedText = GOC.Instance.JsonSerializer.SerializeToText(obj);
+            return StreamHelper.GetStreamFromString(serializedText, GOC.Instance.Encoding);
         }
 
         protected virtual Stream GetStreamFromObject(object obj, Type[] extraTypes)
         {
-            return StreamHelper.GetStreamFromString(GOC.Instance.JsonSerializer.SerializeToText(obj, extraTypes), GOC.Instance.Encoding);
+            return GetStreamFromObject(obj, extraTypes, out string serializedText);
+        }
+
+        protected virtual Stream GetStreamFromObject(object obj, Type[] extraTypes, out string serializedText)
+        {
+            serializedText = GOC.Instance.JsonSerializer.SerializeToText(obj, extraTypes);
+            return StreamHelper.GetStreamFromString(serializedText, GOC.Instance.Encoding);
         }
 
         protected virtual Stream GetStreamFromObject(object obj, ISerializer serializer)
@@ -499,23 +609,45 @@
             return StreamHelper.GetStreamFromString(serializer.SerializeToText(obj), GOC.Instance.Encoding);
         }
 
+        protected virtual Stream GetStreamFromObject(object obj, ISerializer serializer, out string serializedText)
+        {
+            serializedText = serializer.SerializeToText(obj);
+            return StreamHelper.GetStreamFromString(serializedText, GOC.Instance.Encoding);
+        }
+
         protected virtual Stream GetStreamFromObject(object obj, ISerializer serializer, Type[] extraTypes)
         {
             return StreamHelper.GetStreamFromString(serializer.SerializeToText(obj, extraTypes), GOC.Instance.Encoding);
         }
 
+        protected virtual Stream GetStreamFromObject(object obj, ISerializer serializer, Type[] extraTypes, out string serializedText)
+        {
+            serializedText = serializer.SerializeToText(obj, extraTypes);
+            return StreamHelper.GetStreamFromString(serializedText, GOC.Instance.Encoding);
+        }
+
         protected virtual E GetObjectFromStream<E>(Stream stream) where E : class
         {
-            return (E)GetObjectFromStream(typeof(E), stream);
+            return (E)GetObjectFromStream(typeof(E), stream, out string serializedText);
+        }
+
+        protected virtual E GetObjectFromStream<E>(Stream stream, out string serializedText) where E : class
+        {
+            return (E)GetObjectFromStream(typeof(E), stream, out serializedText);
         }
 
         protected virtual object GetObjectFromStream(Type entityType, Stream stream)
         {
-            string inputText = StreamHelper.GetStringFromStream(stream, GOC.Instance.Encoding);
-            object result = GOC.Instance.JsonSerializer.DeserializeFromText(entityType, inputText);
+            return GetObjectFromStream(entityType, stream, out string serializedText);
+        }
+
+        protected virtual object GetObjectFromStream(Type entityType, Stream stream, out string serializedText)
+        {
+            serializedText = StreamHelper.GetStringFromStream(stream, GOC.Instance.Encoding);
+            object result = GOC.Instance.JsonSerializer.DeserializeFromText(entityType, serializedText);
             if (result == null)
             {
-                throw new Exception(string.Format("The following text could not be deserialized to a {0} : {1}", entityType.FullName, inputText));
+                throw new Exception(string.Format("The following text could not be deserialized to a {0} : {1}", entityType.FullName, serializedText));
             }
             return result;
         }

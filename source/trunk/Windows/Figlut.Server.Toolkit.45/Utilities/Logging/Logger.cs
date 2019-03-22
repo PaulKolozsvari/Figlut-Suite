@@ -8,6 +8,7 @@
     using System.IO;
     using System.Diagnostics;
     using Figlut.Server.Toolkit.Data;
+    using Figlut.Server.Toolkit.Utilities.SettingsFile;
 
     #endregion //Using Directives
 
@@ -105,6 +106,10 @@
         /// directory as the executing assembly.
         /// </summary>
         public static string DEFAULT_LOG_FILE_NAME = "FiglutServerToolkitLog.txt";
+        /// <summary>
+        /// The maximun length of a message that can be loggedd to the Windows Event Log.
+        /// </summary>
+        public static int MAXIMUM_EVENT_LOG_MESSAGE_SIZE = 32766;
 
         #endregion //Constants
 
@@ -171,6 +176,15 @@
             }
         }
 
+        public void LogSettings(Settings settings)
+        {
+            StringBuilder result = new StringBuilder();
+            result.AppendLine("Application Settings:");
+            result.AppendLine();
+            result.Append(settings.ToString());
+            LogMessage(new LogMessage(result.ToString(), LogMessageType.Information, LoggingLevel.Normal));
+        }
+
         public void LogMessage(LogMessage logMessage)
         {
             if ((_loggingLevel == LoggingLevel.None) || //Logger is configured to not log anything or ... 
@@ -193,25 +207,30 @@
             }
             if (_logToWindowsEventLog && (_eventLog != null))
             {
+                string logMessageString = logMessage.ToString();
+                if (logMessageString.Length > MAXIMUM_EVENT_LOG_MESSAGE_SIZE)
+                {
+                    logMessageString = logMessageString.Substring(0, MAXIMUM_EVENT_LOG_MESSAGE_SIZE);
+                }
                 switch (logMessage.LogMessageType)
                 {
                     case LogMessageType.Exception:
-                        _eventLog.WriteEntry(logMessage.ToString(), EventLogEntryType.Error);
+                        _eventLog.WriteEntry(logMessageString, EventLogEntryType.Error);
                         break;
                     case LogMessageType.Error:
-                        _eventLog.WriteEntry(logMessage.ToString(), EventLogEntryType.Error);
+                        _eventLog.WriteEntry(logMessageString, EventLogEntryType.Error);
                         break;
                     case LogMessageType.Information:
-                        _eventLog.WriteEntry(logMessage.ToString(), EventLogEntryType.Information);
+                        _eventLog.WriteEntry(logMessageString, EventLogEntryType.Information);
                         break;
                     case LogMessageType.Warning:
-                        _eventLog.WriteEntry(logMessage.ToString(), EventLogEntryType.Warning);
+                        _eventLog.WriteEntry(logMessageString, EventLogEntryType.Warning);
                         break;
                     case LogMessageType.SuccessAudit:
-                        _eventLog.WriteEntry(logMessage.ToString(), EventLogEntryType.SuccessAudit);
+                        _eventLog.WriteEntry(logMessageString, EventLogEntryType.SuccessAudit);
                         break;
                     case LogMessageType.FailureAudit:
-                        _eventLog.WriteEntry(logMessage.ToString(), EventLogEntryType.FailureAudit);
+                        _eventLog.WriteEntry(logMessageString, EventLogEntryType.FailureAudit);
                         break;
                     default:
                         break;
