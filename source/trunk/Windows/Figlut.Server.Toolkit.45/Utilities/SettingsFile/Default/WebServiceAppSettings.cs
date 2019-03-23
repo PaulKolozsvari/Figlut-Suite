@@ -134,7 +134,7 @@
         /// The scope of the performance counters to enable on the service in order to view the counters with Windows perfmon.exe.
         /// </summary>
         [SettingInfo("REST Service", AutoFormatDisplayName = true, Description = "The scope of the performance counters to enable on the service in order to view the counters with Windows perfmon.exe.", CategorySequenceId = 17)]
-        public PerformanceCounterScope PerformanceCounterScope { get; set; }
+        public PerformanceCounterScope RestServicePerformanceCounterScope { get; set; }
 
         /// <summary>
         /// Whether or not the server will handle exceptions (logging and email notifications) after HTTP client connections have been accepted. If set to true, exception handling is optional in your custom agents.
