@@ -109,7 +109,8 @@
         /// <summary>
         /// The maximun length of a message that can be loggedd to the Windows Event Log.
         /// </summary>
-        public static int MAXIMUM_EVENT_LOG_MESSAGE_SIZE = 32766;
+        //public static int MAXIMUM_EVENT_LOG_MESSAGE_SIZE = 32766;
+        public static int MAXIMUM_EVENT_LOG_MESSAGE_SIZE = 10000;
 
         #endregion //Constants
 
