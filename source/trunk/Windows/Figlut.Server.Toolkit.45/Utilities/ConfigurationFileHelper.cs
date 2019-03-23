@@ -22,8 +22,8 @@
             //Performance Counters: http://blogs.microsoft.co.il/idof/2011/08/11/wcf-scaling-check-your-counters/
             //Performance Counters: https://docs.microsoft.com/en-us/dotnet/framework/wcf/diagnostics/performance-counters/
             Configuration config = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
-            ServiceModelSectionGroup sg = ServiceModelSectionGroup.GetSectionGroup(config);
-            sg.Diagnostic.PerformanceCounters = performanceCounterScope;
+            ServiceModelSectionGroup serviceModelConfigurationGroup = ServiceModelSectionGroup.GetSectionGroup(config);
+            serviceModelConfigurationGroup.Diagnostic.PerformanceCounters = performanceCounterScope;
             config.Save();
         }
 
