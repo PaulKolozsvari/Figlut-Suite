@@ -86,6 +86,7 @@
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
     </Reference>
     <Reference Include="System.Drawing" />
+    <Reference Include="System.IdentityModel" />
     <Reference Include="System.IO.Compression" />
     <Reference Include="System.IO.Compression.FileSystem" />
     <Reference Include="System.Net" />
@@ -179,6 +180,7 @@
     <Compile Include="Data\QueryRunners\SqlQueryRunnerDispatcher.cs" />
     <Compile Include="Data\QueryRunners\SqlQueryRunnerInput.cs" />
     <Compile Include="Data\QueryRunners\SqlQueryRunnerOutput.cs" />
+    <Compile Include="Utilities\Singletons\AppSingleton.cs" />
     <Compile Include="Utilities\ConsoleApplication.cs" />
     <Compile Include="Utilities\ConfigurationFileHelper.cs" />
     <Compile Include="Utilities\EagerTimer.cs">
@@ -202,8 +204,10 @@
     <Compile Include="Utilities\SettingsFile\Default\DatabaseAppSettings.cs" />
     <Compile Include="Utilities\SettingsFile\Default\AppSettings.cs" />
     <Compile Include="Utilities\SettingsFile\Default\WebServiceClientAppSettings.cs" />
-    <Compile Include="Utilities\SettingsFile\Default\WebServiceAppSettings.cs" />
+    <Compile Include="Utilities\SettingsFile\Default\RestWebServiceAppSettings.cs" />
     <Compile Include="Utilities\SettingsFile\Default\WebServiceMobileClientAppSettings.cs" />
+    <Compile Include="Utilities\Singletons\DatabaseAppSingleton.cs" />
+    <Compile Include="Utilities\Singletons\RestWebServiceAppSingleton.cs" />
     <Compile Include="Utilities\SSHFtpClient.cs" />
     <Compile Include="Utilities\SMS\SmsEventDelegates.cs" />
     <Compile Include="Utilities\SMS\SmsGateway.cs" />

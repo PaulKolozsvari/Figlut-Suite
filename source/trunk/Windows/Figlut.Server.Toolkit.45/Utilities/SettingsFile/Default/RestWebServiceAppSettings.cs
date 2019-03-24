@@ -11,19 +11,19 @@
 
     #endregion //Using Directives
 
-    public class WebServiceAppSettings : DatabaseAppSettings
+    public class RestWebServiceAppSettings : DatabaseAppSettings
     {
         #region Constructors
 
-        public WebServiceAppSettings() : base()
+        public RestWebServiceAppSettings() : base()
         {
         }
 
-        public WebServiceAppSettings(string filePath) : base(filePath)
+        public RestWebServiceAppSettings(string filePath) : base(filePath)
         {
         }
 
-        public WebServiceAppSettings(string name, string filePath) : base(name, filePath)
+        public RestWebServiceAppSettings(string name, string filePath) : base(name, filePath)
         {
         }
 
@@ -108,7 +108,7 @@
         /// <summary>
         /// Directory where files get uploaded to by the mobile app via FTP.
         /// </summary>
-        [SettingInfo("REST Service", AutoFormatDisplayName = true, Description = "Directory where files get uploaded to by the mobile app via FTP.", CategorySequenceId = 13)]
+        [SettingInfo("REST Service", AutoFormatDisplayName = true, Description = "Directory where files get uploaded to by an FTP client", CategorySequenceId = 13)]
         public string RestServiceServiceFtpDirectory { get; set; }
 
         /// <summary>
