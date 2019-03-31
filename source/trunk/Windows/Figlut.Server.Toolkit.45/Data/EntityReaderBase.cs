@@ -145,7 +145,7 @@
             {
                 return value;
             }
-            else if (typeToConvertTo.Equals(typeof(Guid)))
+            else if (typeToConvertTo.Equals(typeof(Guid)) || typeToConvertTo.Equals(typeof(Nullable<Guid>)))
             {
                 return new Guid(value.ToString());
             }
@@ -153,47 +153,47 @@
             {
                 return Convert.ToString(value);
             }
-            else if (typeToConvertTo.Equals(typeof(Int16)))
+            else if (typeToConvertTo.Equals(typeof(Int16)) || typeToConvertTo.Equals(typeof(Nullable<Int16>)))
             {
                 return Convert.ToInt16(value);
             }
-            else if (typeToConvertTo.Equals(typeof(Int32)))
+            else if (typeToConvertTo.Equals(typeof(Int32)) || typeToConvertTo.Equals(typeof(Nullable<Int32>)))
             {
                 return Convert.ToInt32(value);
             }
-            else if (typeToConvertTo.Equals(typeof(Int64)))
+            else if (typeToConvertTo.Equals(typeof(Int64)) || typeToConvertTo.Equals(typeof(Nullable<Int64>)))
             {
                 return Convert.ToInt64(value);
             }
-            else if (typeToConvertTo.Equals(typeof(UInt16)))
+            else if (typeToConvertTo.Equals(typeof(UInt16)) || typeToConvertTo.Equals(typeof(Nullable<UInt16>)))
             {
                 return Convert.ToUInt16(value);
             }
-            else if (typeToConvertTo.Equals(typeof(UInt32)))
+            else if (typeToConvertTo.Equals(typeof(UInt32)) || typeToConvertTo.Equals(typeof(Nullable<UInt32>)))
             {
                 return Convert.ToUInt32(value);
             }
-            else if (typeToConvertTo.Equals(typeof(UInt64)))
+            else if (typeToConvertTo.Equals(typeof(UInt64)) || typeToConvertTo.Equals(typeof(Nullable<UInt64>)))
             {
                 return Convert.ToUInt64(value);
             }
-            else if (typeToConvertTo.Equals(typeof(Single)))
+            else if (typeToConvertTo.Equals(typeof(Single)) || typeToConvertTo.Equals(typeof(Nullable<Single>)))
             {
                 return Convert.ToSingle(value);
             }
-            else if (typeToConvertTo.Equals(typeof(Double)))
+            else if (typeToConvertTo.Equals(typeof(Double)) || typeToConvertTo.Equals(typeof(Nullable<Double>)))
             {
                 return Convert.ToDouble(value);
             }
-            else if (typeToConvertTo.Equals(typeof(Decimal)))
+            else if (typeToConvertTo.Equals(typeof(Decimal)) || typeToConvertTo.Equals(typeof(Nullable<Decimal>)))
             {
                 return Convert.ToDecimal(value);
             }
-            else if (typeToConvertTo.Equals(typeof(DateTime)))
+            else if (typeToConvertTo.Equals(typeof(DateTime)) || typeToConvertTo.Equals(typeof(Nullable<DateTime>)))
             {
                 return Convert.ToDateTime(value);
             }
-            else if (typeToConvertTo.Equals(typeof(Boolean)))
+            else if (typeToConvertTo.Equals(typeof(Boolean)) || typeToConvertTo.Equals(typeof(Nullable<Boolean>)))
             {
                 return Convert.ToBoolean(value);
             }
