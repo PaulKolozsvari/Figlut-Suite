@@ -10,7 +10,9 @@
 
     #endregion //Using Directives
 
-    public abstract class FiglutEntityModel
+    public abstract class FiglutEntityModel<M, E>
+        where M : class
+        where E : class
     {
         #region Methods
 
@@ -160,6 +162,20 @@
         }
 
         #endregion //Date Validation
+
+        #region Copying Methods
+
+        public virtual void CopyPropertiesFrom(E e)
+        {
+            EntityReader.CopyProperties(e, this, true);
+        }
+
+        public virtual void CopyPropertiesTo(E e)
+        {
+            EntityReader.CopyProperties(this, e, true);
+        }
+
+        #endregion //Copying Methods
 
         #endregion //Methods
     }

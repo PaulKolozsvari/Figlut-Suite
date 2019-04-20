@@ -105,12 +105,12 @@
                 GOC.Instance.AddByTypeName(serviceHost); //The service's stop method will access it from the GOC to close the service host.
                 serviceHost.Open();
 
-                restWebServiceStartedLogMessage = string.Format($"Started - {settings.ApplicationName}: {0}", restWebServiceUrl);
+                restWebServiceStartedLogMessage = string.Format($"Started - {settings.ApplicationName}: {restWebServiceUrl}");
                 GOC.Instance.Logger.LogMessage(new LogMessage(restWebServiceStartedLogMessage, LogMessageType.SuccessAudit, LoggingLevel.Minimum));
             }
             else
             {
-                restWebServiceStartedLogMessage = string.Format($"Not Started - {settings.ApplicationName}: {0}", restWebServiceUrl);
+                restWebServiceStartedLogMessage = string.Format($"Not Started - {settings.ApplicationName}: {restWebServiceUrl}");
             }
         }
 
