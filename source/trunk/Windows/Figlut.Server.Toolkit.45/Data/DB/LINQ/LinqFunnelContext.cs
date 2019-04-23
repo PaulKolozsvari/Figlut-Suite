@@ -357,7 +357,7 @@
             if (createTombstone)
             {
                 object tombstone = Activator.CreateInstance(tombstoneType);
-                CopyToTombstoneEntity(original, tombstone);
+                CopyToTombstoneEntity(entityType, tombstoneType, original, tombstone);
                 object existingTombstone = GetEntityBySurrogateKey(tombstoneType, surrogateKey.GetValue(entity, null), false);
                 if (existingTombstone != null)
                 {
