@@ -25,6 +25,8 @@
     //How to: Specify When Concurrency Exceptions are Thrown: https://docs.microsoft.com/en-us/dotnet/framework/data/adonet/sql/linq/how-to-specify-when-concurrency-exceptions-are-thrown
     //How to handle concurrency in LINQ to SQL: https://www.codeproject.com/Articles/38299/How-To-Handle-Concurrency-in-LINQ-to-SQL
     //Pessimistic Concurrency in LINQ to SQL by using Transactions: https://blogs.msdn.microsoft.com/wriju/2007/08/06/linq-to-sql-using-transaction/
+    //Manage Change Conflicts: https://docs.microsoft.com/en-us/dotnet/framework/data/adonet/sql/linq/how-to-manage-change-conflicts
+    //Detect and Resolve Conflicting Submissions: https://docs.microsoft.com/en-us/dotnet/framework/data/adonet/sql/linq/how-to-detect-and-resolve-conflicting-submissions
     public class EntityContext : LinqFunnelContext
     {
         #region Constructors

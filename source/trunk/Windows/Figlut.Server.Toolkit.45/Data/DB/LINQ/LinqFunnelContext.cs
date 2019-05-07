@@ -11,6 +11,7 @@
     using System.Data.Linq;
     using System.Linq.Expressions;
     using System.Collections;
+    using System.Text;
 
     #endregion //Using Directives
 
@@ -167,7 +168,7 @@
         /// <returns>Retruns the PropertyInfo corresponding to the column which is the surrogate key for the specified entity type.</returns>
         public virtual PropertyInfo GetEntitySurrogateKey<E>()
         {
-            return GetEntitySurrogateKey(typeof(E));
+            return EntityReader.GetLinqToSqlEntitySurrogateKey<E>();
         }
 
         /// <summary>
@@ -178,29 +179,7 @@
         /// <returns>Retruns the PropertyInfo corresponding to the column which is the surrogate key for the specified entity type.</returns>
         public virtual PropertyInfo GetEntitySurrogateKey(Type entityType)
         {
-            PropertyInfo[] properties = entityType.GetProperties();
-            PropertyInfo surrogateKey = null;
-            foreach (PropertyInfo p in properties)
-            {
-                object[] attributes = p.GetCustomAttributes(typeof(ColumnAttribute), false);
-                ColumnAttribute columnAttribute = attributes.Length < 1 ? null : (ColumnAttribute)attributes[0];
-                if ((columnAttribute == null) || (!columnAttribute.IsPrimaryKey))
-                {
-                    continue;
-                }
-                if (surrogateKey != null)
-                {
-                    throw new Exception(
-                        string.Format("{0} has more than one primary key. A surrogate key has to be a single field.",
-                        entityType.Name));
-                }
-                surrogateKey = p;
-            }
-            if (surrogateKey == null)
-            {
-                throw new NullReferenceException(string.Format("{0} does not have surrogate key.", entityType.Name));
-            }
-            return surrogateKey;
+            return EntityReader.GetLinqToSqlEntitySurrogateKey(entityType);
         }
 
         /// <summary>
@@ -210,13 +189,7 @@
         /// <returns>Returns true if the property is an identity column.</returns>
         public virtual bool IsIdentityColumn(PropertyInfo p)
         {
-            object[] attributes = p.GetCustomAttributes(typeof(ColumnAttribute), false);
-            ColumnAttribute columnAttribute = attributes.Length < 1 ? null : (ColumnAttribute)attributes[0];
-            if (columnAttribute == null)
-            {
-                return false;
-            }
-            return columnAttribute.DbType.Contains("IDENTITY");
+            return EntityReader.IsLinqToSqlEntityPropertyIdentityColumn(p);
         }
 
         /// <summary>
@@ -883,6 +856,43 @@
             return GetAllEntities(entityType, false).LongCount();
         }
 
+        /// <summary>
+        /// Searches through all changes that caused a concurrency conflict in the DataContext and 
+        /// compiles an error message listing all the conflicts on all tables and each member (field) that caused the conflicts.
+        /// This method should be called after having called SubmitChanges on a DataContext and where a ChangeConflictException
+        /// has occured.
+        /// </summary>
+        /// <returns></returns>
+        public static string GetLinqToSqlChangeConflictErrorMessage(DataContext dataContext)
+        {
+            StringBuilder result = new StringBuilder();
+            result.AppendLine("LINQ to SQL optimistic concurrency error:");
+            result.AppendLine();
+            foreach (ObjectChangeConflict conflict in dataContext.ChangeConflicts)
+            {
+                MetaTable metatable = dataContext.Mapping.GetTable(conflict.Object.GetType());
+                result.AppendLine($"Conflict Table name: {metatable.TableName}");
+                object entityInConflict = conflict.Object;
+                PropertyInfo surrogateKey = EntityReader.GetLinqToSqlEntitySurrogateKey(entityInConflict.GetType());
+                bool containsIdentityColumn = EntityReader.IsLinqToSqlEntityPropertyIdentityColumn(surrogateKey);
+                object surrogateKeyValue = surrogateKey.GetValue(entityInConflict, null);
+                result.Append($"Conflict Entity ID: {surrogateKeyValue}");
+                foreach (MemberChangeConflict memberConflict in conflict.MemberConflicts)
+                {
+                    object currentValue = memberConflict.CurrentValue;
+                    object originalValue = memberConflict.OriginalValue;
+                    object databaseValue = memberConflict.DatabaseValue;
+                    MemberInfo member = memberConflict.Member;
+                    result.AppendLine($"Conflict Member: {member.Name}");
+                    result.AppendLine($"Current Value: {currentValue}");
+                    result.AppendLine($"Original Value {originalValue}");
+                    result.AppendLine($"Database Value: {databaseValue}");
+                }
+                result.AppendLine();
+            }
+            return result.ToString();
+        }
+
         public void Dispose()
         {
             if (_db != null)
@@ -890,7 +900,6 @@
                 _db.Dispose();
             }
         }
-
 
         #endregion //Methods
     }
