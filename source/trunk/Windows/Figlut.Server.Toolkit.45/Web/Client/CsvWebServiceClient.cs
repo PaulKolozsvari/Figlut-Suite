@@ -42,15 +42,43 @@ using System.Net;
             out string statusDescription,
             bool wrapWebException)
         {
-            string csvOutput;
+            string rawOutput;
+            return CallService<T>(
+                queryString,
+                requestPostObject,
+                verb,
+                out rawOutput,
+                serializePostObject,
+                true,
+                timeout,
+                out statusCode,
+                out statusDescription,
+                wrapWebException);
+        }
+
+        public T CallService<T>(
+            string queryString,
+            object requestPostObject,
+            HttpVerb verb,
+            bool serializePostObject,
+            string postContentType,
+            int timeout,
+            string accept,
+            out HttpStatusCode statusCode,
+            out string statusDescription,
+            bool wrapWebException)
+        {
+            string rawOutput;
             return CallService<T>(
                 queryString, 
                 requestPostObject, 
                 verb, 
-                out csvOutput, 
+                out rawOutput, 
                 serializePostObject, 
                 true, 
+                postContentType,
                 timeout,
+                accept,
                 out statusCode,
                 out statusDescription,
                 wrapWebException);
@@ -64,6 +92,35 @@ using System.Net;
             bool serializePostObject,
             bool deserializeToDotNetObject,
             int timeout,
+            out HttpStatusCode statusCode,
+            out string statusDescription,
+            bool wrapWebException)
+        {
+            return CallService<T>(
+                queryString,
+                requestPostObject,
+                verb,
+                out rawOutput,
+                serializePostObject,
+                deserializeToDotNetObject,
+                MimeContentType.TEXT_PLAIN_XML,
+                timeout,
+                MimeContentType.TEXT_PLAIN_XML,
+                out statusCode,
+                out statusDescription,
+                wrapWebException);
+        }
+
+        public T CallService<T>(
+            string queryString,
+            object requestPostObject,
+            HttpVerb verb,
+            out string rawOutput,
+            bool serializePostObject,
+            bool deserializeToDotNetObject,
+            string postContentType,
+            int timeout,
+            string accept,
             out HttpStatusCode statusCode,
             out string statusDescription,
             bool wrapWebException)
@@ -110,13 +167,13 @@ using System.Net;
         }
 
         public object CallService(
-            Type returnType, 
-            string queryString, 
-            object requestPostObject, 
-            HttpVerb verb, 
+            Type returnType,
+            string queryString,
+            object requestPostObject,
+            HttpVerb verb,
             out string rawOutput,
             bool serializePostObject,
-            bool deserializeToDotNetObject, 
+            bool deserializeToDotNetObject,
             int timeout,
             out HttpStatusCode statusCode,
             out string statusDescription,

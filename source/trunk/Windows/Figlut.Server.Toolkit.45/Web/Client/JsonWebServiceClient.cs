@@ -66,19 +66,102 @@
             out string statusDescription,
             bool wrapWebException)
         {
-            string jsonOutput;
             return CallService<T>(
-                queryString, 
-                requestPostObject, 
-                verb, 
-                out jsonOutput, 
-                serializePostObject, 
-                true, timeout,
+                queryString,
+                requestPostObject,
+                verb,
+                serializePostObject,
+                MimeContentType.TEXT_PLAIN_JSON,
+                timeout,
+                MimeContentType.TEXT_PLAIN_JSON,
                 out statusCode,
                 out statusDescription,
                 wrapWebException);
         }
 
+        /// <summary>
+        /// Performs a web request to a JSON REST based web service by appending the 
+        /// given query string to the WebServiceBaseUrl and applying the given HTTP verb.
+        /// If the object to be posted is not null it will be serialized to a JSON string
+        /// and then included in the web request to the service. Lastly it attempts to 
+        /// deserialize the JSON text it receives from the service into an object of 
+        /// the specified type T.
+        /// </summary>
+        /// <typeparam name="T">The .NET type of the object to be returned from the web service call.</typeparam>
+        /// <param name="queryString">The string that will be appended to the end of the Web Service Base URL.</param>
+        /// <param name="requestPostObject">The object to be serialized to JSON and be posted to the service.</param>
+        /// <param name="verb">The HTTP verb to be applied to the web request.</verb>
+        /// <param name="timeout">The timeout of the web request</param>
+        /// <returns>Returns JSON result deserialized into an object of the specified type T.</returns>
+        public T CallService<T>(
+            string queryString,
+            object requestPostObject,
+            HttpVerb verb,
+            bool serializePostObject,
+            string postContentType,
+            int timeout,
+            string accept,
+            out HttpStatusCode statusCode,
+            out string statusDescription,
+            bool wrapWebException)
+        {
+            string rawOutput;
+            return CallService<T>(
+                queryString, 
+                requestPostObject, 
+                verb,
+                out rawOutput, 
+                serializePostObject,
+                true, 
+                postContentType,
+                timeout,
+                accept,
+                out statusCode,
+                out statusDescription,
+                wrapWebException);
+        }
+
+        ///// <summary>
+        ///// Performs a web request to a JSON REST based web service by appending the 
+        ///// given query string to the WebServiceBaseUrl and applying the given HTTP verb.
+        ///// If the object to be posted is not null it will be serialized to a JSON string
+        ///// and then included in the web request to the service. Lastly it attempts to 
+        ///// deserialize the JSON text it receives from the service into an object of 
+        ///// the specified type T.
+        ///// </summary>
+        ///// <typeparam name="T">The .NET type of the object to be returned from the web service call.</typeparam>
+        ///// <param name="queryString">The string that will be appended to the end of the Web Service Base URL.</param>
+        ///// <param name="requestPostObject">The object to be serialized to JSON and be posted to the service.</param>
+        ///// <param name="verb">The HTTP verb to be applied to the web request.</verb>
+        ///// <param name="jsonOutput">The JSON text returned by the web service call.</param>
+        ///// <param name="timeout">The timeout of the web request</param>
+        ///// <returns>Returns JSON result deserialized into an object of the specified type T.</returns>
+        public T CallService<T>(
+            string queryString,
+            object requestPostObject,
+            HttpVerb verb,
+            out string rawOutput,
+            bool serializePostObject,
+            bool deserializeToDotNetObject,
+            int timeout,
+            out HttpStatusCode statusCode,
+            out string statusDescription,
+            bool wrapWebException)
+        {
+            return CallService<T>(
+                queryString,
+                requestPostObject,
+                verb,
+                out rawOutput,
+                serializePostObject,
+                deserializeToDotNetObject,
+                MimeContentType.TEXT_PLAIN_JSON,
+                timeout,
+                MimeContentType.TEXT_PLAIN_JSON,
+                out statusCode,
+                out statusDescription,
+                wrapWebException);
+        }
 
         /// <summary>
         /// Performs a web request to a JSON REST based web service by appending the 
@@ -102,7 +185,9 @@
             out string rawOutput,
             bool serializePostObject,
             bool deserializeToDotNetObject,
+            string postContentType,
             int timeout,
+            string accept,
             out HttpStatusCode statusCode,
             out string statusDescription,
             bool wrapWebException)
@@ -121,9 +206,9 @@
                 queryString,
                 inputText,
                 verb,
-                MimeContentType.TEXT_PLAIN_JSON,
+                postContentType,
                 timeout,
-                MimeContentType.TEXT_PLAIN_JSON,
+                accept,
                 out statusCode,
                 out statusDescription,
                 wrapWebException);

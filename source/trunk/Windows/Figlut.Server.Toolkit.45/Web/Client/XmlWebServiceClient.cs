@@ -39,15 +39,72 @@
             out string statusDescription,
             bool wrapWebException)
         {
-            string xmlOutput;
+            string rawOutput;
             return CallService<T>(
                 queryString,
                 requestPostObject,
                 verb,
-                out xmlOutput,
+                out rawOutput,
                 serializePostObject,
                 true,
+                MimeContentType.TEXT_PLAIN_XML,
                 timeout,
+                MimeContentType.TEXT_PLAIN_XML,
+                out statusCode,
+                out statusDescription,
+                wrapWebException);
+        }
+
+        public T CallService<T>(
+            string queryString,
+            object requestPostObject,
+            HttpVerb verb,
+            bool serializePostObject,
+            string postContentType,
+            int timeout,
+            string accept,
+            out HttpStatusCode statusCode,
+            out string statusDescription,
+            bool wrapWebException)
+        {
+            string rawOutput;
+            return CallService<T>(
+                queryString,
+                requestPostObject,
+                verb,
+                out rawOutput,
+                serializePostObject,
+                true,
+                postContentType,
+                timeout,
+                accept,
+                out statusCode,
+                out statusDescription,
+                wrapWebException);
+        }
+
+        public T CallService<T>(
+            string queryString,
+            object requestPostObject,
+            HttpVerb verb,
+            out string rawOutput,
+            bool serializePostObject,
+            bool deserializeToDotNetObject,
+            int timeout,
+            out HttpStatusCode statusCode,
+            out string statusDescription,
+            bool wrapWebException)
+        {
+            return CallService<T>(
+                queryString,
+                requestPostObject,
+                verb,
+                out rawOutput,
+                serializePostObject,
+                deserializeToDotNetObject,
+                MimeContentType.TEXT_PLAIN_XML,
+                timeout,
+                MimeContentType.TEXT_PLAIN_XML,
                 out statusCode,
                 out statusDescription,
                 wrapWebException);
@@ -60,7 +117,9 @@
             out string rawOutput,
             bool serializePostObject,
             bool deserializeToDotNetTObject,
+            string postContentType,
             int timeout,
+            string accept,
             out HttpStatusCode statusCode,
             out string statusDescription,
             bool wrapWebException)
@@ -79,9 +138,9 @@
                 queryString,
                 inputText,
                 verb,
-                MimeContentType.TEXT_PLAIN_XML,
+                postContentType,
                 timeout,
-                MimeContentType.TEXT_PLAIN_XML,
+                accept,
                 out statusCode,
                 out statusDescription,
                 wrapWebException);

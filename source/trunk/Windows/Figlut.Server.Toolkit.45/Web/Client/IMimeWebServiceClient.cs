@@ -33,6 +33,20 @@ using Figlut.Server.Toolkit.Web.Client;
             out string statusDescription,
             bool wrapWebException);
 
+        T CallService<T>(
+            string queryString,
+            object requestPostObject,
+            HttpVerb verb,
+            out string rawOutput,
+            bool serializePostObject,
+            bool deserializeToDotNetObject,
+            string postContentType,
+            int timeout,
+            string accept,
+            out HttpStatusCode statusCode,
+            out string statusDescription,
+            bool wrapWebException);
+
         object CallService(
             Type returnType,
             string queryString,
