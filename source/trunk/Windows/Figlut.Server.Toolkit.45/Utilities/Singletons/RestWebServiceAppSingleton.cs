@@ -15,6 +15,8 @@
     using Figlut.Server.Toolkit.Web.Service.REST;
     using System.Data.Linq;
     using System.IdentityModel.Selectors;
+    using System.ServiceModel.Channels;
+    using Figlut.Server.Toolkit.Web.Service.ContentMapping;
 
     #endregion //Using Directives
 
@@ -56,6 +58,20 @@
                 out restWebServiceStartedLogMessage);
         }
 
+        protected CustomBinding GetBinding(RestWebServiceAppSettings settings, out WebHttpBinding webHttpBinding)
+        {
+           webHttpBinding = new WebHttpBinding()
+            {
+                MaxBufferPoolSize = settings.RestServiceMaxBufferPoolSize,
+                MaxBufferSize = Convert.ToInt32(settings.RestServiceMaxBufferSize),
+                MaxReceivedMessageSize = settings.RestServiceMaxReceivedMessageSize
+            };
+            CustomBinding result = new CustomBinding(webHttpBinding);
+            WebMessageEncodingBindingElement webMEBE = result.Elements.Find<WebMessageEncodingBindingElement>();
+            webMEBE.ContentTypeMapper = new RawContentTypeMapper();
+            return result;
+        }
+
         protected virtual void InitializeRestWebServiceServiceHost<R, I>(
             bool startRestWebService,
             RestWebServiceAppSettings settings,
@@ -69,16 +85,12 @@
         {
             GOC.Instance.JsonSerializer.IncludeOrmTypeNamesInJsonResponse = settings.RestServiceIncludeOrmTypeNamesInJsonResponse;
             GOC.Instance.SetEncoding(settings.RestServiceTextResponseEncoding);
-            WebHttpBinding binding = new WebHttpBinding()
-            {
-                MaxBufferPoolSize = settings.RestServiceMaxBufferPoolSize,
-                MaxBufferSize = Convert.ToInt32(settings.RestServiceMaxBufferSize),
-                MaxReceivedMessageSize = settings.RestServiceMaxReceivedMessageSize
-            };
+
+            CustomBinding customBinding = GetBinding(settings, out WebHttpBinding webHttpBinding);
             if (settings.RestServiceUseAuthentication)
             {
-                binding.Security.Mode = webHttpSecurityMode;
-                binding.Security.Transport.ClientCredentialType = httpClientCredentialType;
+                webHttpBinding.Security.Mode = webHttpSecurityMode;
+                webHttpBinding.Security.Transport.ClientCredentialType = httpClientCredentialType;
             }
             ServiceHost serviceHost = new ServiceHost(typeof(R));
             restWebServiceUrl = string.Format("http://127.0.0.1:{0}/{1}", settings.RestServicePortNumber, settings.RestServiceHostAddressSuffix);
@@ -87,7 +99,7 @@
             SetServiceHostThrottlingBehavior(serviceHost, settings);
             ConfigurationFileHelper.SetApplicationServiceModelPerformanceCounters(settings.RestServicePerformanceCounterScope);
 
-            ServiceEndpoint httpEndpoint = serviceHost.AddServiceEndpoint(typeof(I), binding, restWebServiceUrl);
+            ServiceEndpoint httpEndpoint = serviceHost.AddServiceEndpoint(typeof(I), customBinding, restWebServiceUrl);
             httpEndpoint.Behaviors.Add(new WebHttpBehavior());
             httpEndpoint.EndpointBehaviors.Add(new ServiceMessageInspectorBehavior(settings.RestServiceTraceHttpMessages, settings.RestServiceTraceHttpMessageHeaders));
 

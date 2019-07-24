@@ -74,19 +74,22 @@
             ConnectionTest(
                 out statusCode,
                 out statusDescription,
-                wrapWebException);
+                wrapWebException,
+                null);
         }
 
         public void ConnectionTest(
             out HttpStatusCode statusCode,
             out string statusDescription,
-            bool wrapWebException)
+            bool wrapWebException,
+            Dictionary<string, string> requestHeaders)
         {
             _webServiceClient.ConnectionTest(
                 _timeout, 
                 out statusCode, 
                 out statusDescription,
-                wrapWebException);
+                wrapWebException,
+                requestHeaders);
         }
 
         public T GetSqlSchema<T>(
@@ -128,7 +131,8 @@
                 _timeout,
                 out statusCode,
                 out statusDescription,
-                wrapWebException);
+                wrapWebException,
+                null);
         }
 
         public SqlDatabase GetSqlDatabase(
@@ -252,7 +256,8 @@
                 _timeout,
                 out statusCode,
                 out statusDescription,
-                wrapWebException);
+                wrapWebException,
+                null);
         }
 
         public object Query(
@@ -291,7 +296,8 @@
                 _timeout,
                 out statusCode,
                 out statusDescription,
-                wrapWebException);
+                wrapWebException,
+                null);
         }
 
         public string ExecuteSqlScript(
@@ -325,7 +331,8 @@
                 _timeout,
                 out statusCode,
                 out statusDescription,
-                wrapWebException);
+                wrapWebException,
+                null);
             return rawOutput;
         }
 
@@ -365,7 +372,8 @@
                 _timeout,
                 out statusCode,
                 out statusDescription,
-                wrapWebException);
+                wrapWebException,
+                null);
         }
 
         public object ExecuteSqlQuery(
@@ -408,7 +416,8 @@
                 _timeout,
                 out statusCode,
                 out statusDescription,
-                wrapWebException);
+                wrapWebException,
+                null);
         }
 
         public string Insert(
@@ -444,7 +453,8 @@
                 _timeout,
                 out statusCode,
                 out statusDescription,
-                wrapWebException);
+                wrapWebException,
+                null);
             return rawOutput;
         }
 
@@ -488,7 +498,8 @@
                 _timeout,
                 out statusCode,
                 out statusDescription,
-                wrapWebException);
+                wrapWebException,
+                null);
             return rawOutput;
         }
 
@@ -532,7 +543,8 @@
                 _timeout,
                 out statusCode,
                 out statusDescription,
-                wrapWebException);
+                wrapWebException,
+                null);
             return rawOutput;
         }
 
@@ -561,7 +573,8 @@
                 _timeout,
                 out statusCode,
                 out statusDescription,
-                wrapWebException);
+                wrapWebException,
+                null);
         }
 
         #endregion //Methods

@@ -80,7 +80,8 @@
                 _timeout,
                 out httpStatusCode,
                 out httpStatusDescription,
-                true);
+                true,
+                null);
             return result;
         }
 
@@ -106,7 +107,8 @@
                 _timeout,
                 out httpStatusCode,
                 out httpStatusDescription,
-                true);
+                true,
+                null);
             return result;
         }
 
@@ -132,7 +134,8 @@
                 _timeout,
                 out httpStatusCode,
                 out httpStatusDescription,
-                true);
+                true,
+                null);
             return result;
         }
 
@@ -158,7 +161,8 @@
                 _timeout,
                 out httpStatusCode,
                 out httpStatusDescription,
-                true);
+                true,
+                null);
             return rawOut;
         }
 
@@ -184,7 +188,8 @@
                 _timeout,
                 out httpStatusCode,
                 out httpStatusDescription,
-                true);
+                true,
+                null);
             return rawOut;
         }
 
@@ -255,7 +260,8 @@
                     _timeout,
                     out httpStatusCode,
                     out httpStatusDescription,
-                    true);
+                    true,
+                    null);
                 result.AppendLine(rawOutput);
             }
             return result.ToString();
@@ -283,7 +289,8 @@
                 _timeout,
                 out httpStatusCode,
                 out httpStatusDescription,
-                true);
+                true,
+                null);
             return rawOut;
         }
 

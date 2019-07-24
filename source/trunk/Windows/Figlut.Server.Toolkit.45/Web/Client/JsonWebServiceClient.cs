@@ -64,7 +64,8 @@
             int timeout,
             out HttpStatusCode statusCode,
             out string statusDescription,
-            bool wrapWebException)
+            bool wrapWebException,
+            Dictionary<string, string> requestHeaders)
         {
             return CallService<T>(
                 queryString,
@@ -76,7 +77,8 @@
                 MimeContentType.TEXT_PLAIN_JSON,
                 out statusCode,
                 out statusDescription,
-                wrapWebException);
+                wrapWebException,
+                requestHeaders);
         }
 
         /// <summary>
@@ -103,7 +105,8 @@
             string accept,
             out HttpStatusCode statusCode,
             out string statusDescription,
-            bool wrapWebException)
+            bool wrapWebException,
+            Dictionary<string, string> requestHeaders)
         {
             string rawOutput;
             return CallService<T>(
@@ -118,7 +121,8 @@
                 accept,
                 out statusCode,
                 out statusDescription,
-                wrapWebException);
+                wrapWebException,
+                requestHeaders);
         }
 
         ///// <summary>
@@ -146,7 +150,8 @@
             int timeout,
             out HttpStatusCode statusCode,
             out string statusDescription,
-            bool wrapWebException)
+            bool wrapWebException,
+            Dictionary<string, string> requestHeaders)
         {
             return CallService<T>(
                 queryString,
@@ -160,7 +165,8 @@
                 MimeContentType.TEXT_PLAIN_JSON,
                 out statusCode,
                 out statusDescription,
-                wrapWebException);
+                wrapWebException,
+                requestHeaders);
         }
 
         /// <summary>
@@ -190,7 +196,8 @@
             string accept,
             out HttpStatusCode statusCode,
             out string statusDescription,
-            bool wrapWebException)
+            bool wrapWebException,
+            Dictionary<string, string> requestHeaders)
         {
             string uri = string.Format("{0}/{1}", _webServiceBaseUrl, queryString);
             string inputText = null;
@@ -211,7 +218,8 @@
                 accept,
                 out statusCode,
                 out statusDescription,
-                wrapWebException);
+                wrapWebException,
+                requestHeaders);
             T result = default(T);
             if (deserializeToDotNetObject)
             {
@@ -231,7 +239,8 @@
             int timeout,
             out HttpStatusCode statusCode,
             out string statusDescription,
-            bool wrapWebException)
+            bool wrapWebException,
+            Dictionary<string, string> requestHeaders)
         {
             string uri = string.Format("{0}/{1}", _webServiceBaseUrl, queryString);
             string inputText = null;
@@ -252,7 +261,8 @@
                 MimeContentType.TEXT_PLAIN_JSON,
                 out statusCode,
                 out statusDescription,
-                wrapWebException);
+                wrapWebException,
+                requestHeaders);
             object result = null;
             if (deserializeToDotNetObject)
             {

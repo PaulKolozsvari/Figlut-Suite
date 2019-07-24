@@ -40,7 +40,8 @@ using System.Net;
             int timeout,
             out HttpStatusCode statusCode,
             out string statusDescription,
-            bool wrapWebException)
+            bool wrapWebException,
+            Dictionary<string, string> requestHeaders)
         {
             string rawOutput;
             return CallService<T>(
@@ -53,7 +54,8 @@ using System.Net;
                 timeout,
                 out statusCode,
                 out statusDescription,
-                wrapWebException);
+                wrapWebException,
+                requestHeaders);
         }
 
         public T CallService<T>(
@@ -66,7 +68,8 @@ using System.Net;
             string accept,
             out HttpStatusCode statusCode,
             out string statusDescription,
-            bool wrapWebException)
+            bool wrapWebException,
+            Dictionary<string, string> requestHeaders)
         {
             string rawOutput;
             return CallService<T>(
@@ -81,7 +84,8 @@ using System.Net;
                 accept,
                 out statusCode,
                 out statusDescription,
-                wrapWebException);
+                wrapWebException,
+                requestHeaders);
         }
 
         public T CallService<T>(
@@ -94,7 +98,8 @@ using System.Net;
             int timeout,
             out HttpStatusCode statusCode,
             out string statusDescription,
-            bool wrapWebException)
+            bool wrapWebException,
+            Dictionary<string, string> requestHeaders)
         {
             return CallService<T>(
                 queryString,
@@ -108,7 +113,8 @@ using System.Net;
                 MimeContentType.TEXT_PLAIN_XML,
                 out statusCode,
                 out statusDescription,
-                wrapWebException);
+                wrapWebException,
+                requestHeaders);
         }
 
         public T CallService<T>(
@@ -123,7 +129,8 @@ using System.Net;
             string accept,
             out HttpStatusCode statusCode,
             out string statusDescription,
-            bool wrapWebException)
+            bool wrapWebException,
+            Dictionary<string, string> requestHeaders)
         {
             if (deserializeToDotNetObject && DataHelper.GetGenericCollectionItemType(typeof(T)) == null)
             {
@@ -150,7 +157,8 @@ using System.Net;
                 MimeContentType.TEXT_PLAIN_CSV,
                 out statusCode,
                 out statusDescription,
-                wrapWebException);
+                wrapWebException,
+                requestHeaders);
             T result = default(T);
             if (deserializeToDotNetObject)
             {
@@ -177,7 +185,8 @@ using System.Net;
             int timeout,
             out HttpStatusCode statusCode,
             out string statusDescription,
-            bool wrapWebException)
+            bool wrapWebException,
+            Dictionary<string, string> requestHeaders)
         {
             if (deserializeToDotNetObject && DataHelper.GetGenericCollectionItemType(returnType) == null)
             {
@@ -204,7 +213,8 @@ using System.Net;
                 MimeContentType.TEXT_PLAIN_CSV,
                 out statusCode,
                 out statusDescription,
-                wrapWebException);
+                wrapWebException,
+                requestHeaders);
             object result = null;
             if (deserializeToDotNetObject)
             {

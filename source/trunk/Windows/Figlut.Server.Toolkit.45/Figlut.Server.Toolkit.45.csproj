@@ -342,6 +342,7 @@
     <Compile Include="Web\MVC\Models\FilterModel.cs" />
     <Compile Include="Web\MVC\Models\InformationModel.cs" />
     <Compile Include="Web\MVC\Models\WaitModel.cs" />
+    <Compile Include="Web\Service\ContentMapping\RawContentTypeMapper.cs" />
     <Compile Include="Web\Service\Inspector\ServiceMessageInspectorBehavior.cs" />
     <Compile Include="Web\Service\REST\Events\RestServiceDeleteEntityEventArgs.cs" />
     <Compile Include="Web\Service\REST\Events\RestServiceEventArgs.cs" />

@@ -110,7 +110,8 @@
             int timeout, 
             out HttpStatusCode statusCode,
             out string statusDescription,
-            bool wrapWebException)
+            bool wrapWebException,
+            Dictionary<string, string> requestHeaders)
         {
             string textOutput;
             ConnectionTest(
@@ -118,7 +119,8 @@
                 timeout, 
                 out statusCode, 
                 out statusDescription,
-                wrapWebException);
+                wrapWebException,
+                requestHeaders);
         }
 
         /// <summary>
@@ -135,7 +137,8 @@
             int timeout,
             out HttpStatusCode statusCode,
             out string statusDescription,
-            bool wrapWebException)
+            bool wrapWebException,
+            Dictionary<string, string> requestHeaders)
         {
             ConnectionTest(
                 string.Empty, 
@@ -143,7 +146,8 @@
                 timeout, 
                 out statusCode, 
                 out statusDescription,
-                wrapWebException);
+                wrapWebException,
+                requestHeaders);
         }
 
         /// <summary>
@@ -161,7 +165,8 @@
             int timeout, 
             out HttpStatusCode statusCode,
             out string statusDescription,
-            bool wrapWebException)
+            bool wrapWebException,
+            Dictionary<string, string> requestHeaders)
         {
             string textOutput;
             ConnectionTest(
@@ -170,7 +175,8 @@
                 timeout, 
                 out statusCode, 
                 out statusDescription,
-                wrapWebException);
+                wrapWebException,
+                requestHeaders);
         }
 
         /// <summary>
@@ -189,7 +195,8 @@
             int timeout,
             out HttpStatusCode statusCode,
             out string statusDescription,
-            bool wrapWebException)
+            bool wrapWebException,
+            Dictionary<string, string> requestHeaders)
         {
             textOutput = null;
             statusCode = HttpStatusCode.OK;
@@ -206,7 +213,8 @@
                     null, 
                     out statusCode, 
                     out statusDescription,
-                    wrapWebException);
+                    wrapWebException,
+                    requestHeaders);
             }
             catch (System.Net.WebException ex)
             {
@@ -280,7 +288,10 @@
                 requestHeaders.ToList().ForEach(p => request.Headers.Add(p.Key, p.Value));
             }
             request.Method = verb.ToString();
-            request.Accept = accept;
+            if (!string.IsNullOrEmpty(accept))
+            {
+                request.Accept = accept;
+            }
             if (!string.IsNullOrEmpty(GOC.Instance.UserAgent))
             {
                 request.UserAgent = GOC.Instance.UserAgent;
@@ -319,7 +330,9 @@
                 using (HttpWebResponse response = (HttpWebResponse)request.GetResponse())
                 {
                     
-                    if (response.StatusCode != HttpStatusCode.OK && response.StatusCode != HttpStatusCode.Created)
+                    if (response.StatusCode != HttpStatusCode.OK && 
+                        response.StatusCode != HttpStatusCode.Created &&
+                        response.StatusCode != HttpStatusCode.Accepted)
                     {
                         throw new UserThrownException(
                             string.Format("{0} {1} : {2}",
@@ -347,6 +360,14 @@
                 {
                     statusCode = response.StatusCode;
                     statusDescription = response.StatusDescription;
+                    using (Stream responseStream = response.GetResponseStream())
+                    {
+                        using (StreamReader reader = new StreamReader(responseStream))
+                        {
+                            result = reader.ReadToEnd();
+                            reader.Close();
+                        }
+                    }
                 }
                 if (response == null || !wrapWebException)
                 {

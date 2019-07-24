@@ -19,7 +19,8 @@ using Figlut.Server.Toolkit.Web.Client;
             int timeout,
             out HttpStatusCode statusCode,
             out string statusDescription,
-            bool wrapWebException);
+            bool wrapWebException,
+            Dictionary<string, string> requestHeaders);
 
         T CallService<T>(
             string queryString,
@@ -31,7 +32,8 @@ using Figlut.Server.Toolkit.Web.Client;
             int timeout,
             out HttpStatusCode statusCode,
             out string statusDescription,
-            bool wrapWebException);
+            bool wrapWebException,
+            Dictionary<string, string> requestHeaders);
 
         T CallService<T>(
             string queryString,
@@ -45,7 +47,8 @@ using Figlut.Server.Toolkit.Web.Client;
             string accept,
             out HttpStatusCode statusCode,
             out string statusDescription,
-            bool wrapWebException);
+            bool wrapWebException,
+            Dictionary<string, string> requestHeaders);
 
         object CallService(
             Type returnType,
@@ -58,7 +61,8 @@ using Figlut.Server.Toolkit.Web.Client;
             int timeout,
             out HttpStatusCode statusCode,
             out string statusDescription,
-            bool wrapWebException);
+            bool wrapWebException,
+            Dictionary<string, string> requestHeaders);
 
         string PostBytes(
             string queryString,
