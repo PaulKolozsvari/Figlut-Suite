@@ -21,15 +21,15 @@ namespace Figlut.MonoDroid.Toolkit.Data.DB.SQLServer
     #endregion //Using Directives
 
     [Serializable]
-    public class SqlDatabase : Database
+    public class SqliteDatabase : Database
     {
         #region Constructors
 
-        public SqlDatabase()
+        public SqliteDatabase()
         {
         }
 
-		public SqlDatabase(string name, int version)
+		public SqliteDatabase(string name, int version)
             : base(name)
         {
 			_version = version;
@@ -67,25 +67,25 @@ namespace Figlut.MonoDroid.Toolkit.Data.DB.SQLServer
 
         #region Methods
 
-		public SqlDatabaseTable<E> GetSqlDatabaseTable<E>() where E : class, new()
+		public SqliteDatabaseTable<E> GetSqlDatabaseTable<E>() where E : class, new()
         {
             return GetSqlDatabaseTable<E>(typeof(E).Name);
         }
 
-		public SqlDatabaseTable<E> GetSqlDatabaseTable<E>(string tableName) where E : class, new()
+		public SqliteDatabaseTable<E> GetSqlDatabaseTable<E>(string tableName) where E : class, new()
         {
             if (!_tables.Exists(tableName))
             {
                 return null;
             }
-            SqlDatabaseTable<E> result = _tables[tableName] as SqlDatabaseTable<E>;
+            SqliteDatabaseTable<E> result = _tables[tableName] as SqliteDatabaseTable<E>;
             if (result == null)
             {
                 throw new InvalidCastException(string.Format(
                     "Unexpected table type in {0}. Could not type cast {1} to a {2}.",
                     this.GetType().FullName,
                     typeof(Database).FullName,
-                    typeof(SqlDatabaseTable<E>).FullName));
+                    typeof(SqliteDatabaseTable<E>).FullName));
             }
             return result;
         }
@@ -102,22 +102,22 @@ namespace Figlut.MonoDroid.Toolkit.Data.DB.SQLServer
             _tables.Add(table.TableName, table);
         }
 
-		public SqlDatabaseTable<E> AddTable<E>() where E : class, new()
+		public SqliteDatabaseTable<E> AddTable<E>() where E : class, new()
         {
             return AddTable<E>(typeof(E).Name);
         }
 
-		public SqlDatabaseTable<E> AddTable<E>(string tableName) where E : class, new()
+		public SqliteDatabaseTable<E> AddTable<E>(string tableName) where E : class, new()
         {
             if (_tables.Exists(tableName))
             {
                 throw new Exception(string.Format(
                     "{0} with name {1} already added to {2}.",
-                    typeof(SqlDatabaseTable<E>).FullName,
+                    typeof(SqliteDatabaseTable<E>).FullName,
                     tableName,
                     this.GetType().FullName));
             }
-			SqlDatabaseTable<E> table = new SqlDatabaseTable<E> (tableName);
+			SqliteDatabaseTable<E> table = new SqliteDatabaseTable<E> (tableName);
 //            _tables.Add(table.TableName, table);
 			table.DbHelper = _dbHelper;
 			_tables.Add(table);
@@ -160,10 +160,10 @@ namespace Figlut.MonoDroid.Toolkit.Data.DB.SQLServer
         public override List<DatabaseTableKeyColumns> GetTableKeyColumns()
         {
             List<DatabaseTableKeyColumns> result = new List<DatabaseTableKeyColumns>();
-            foreach (SqlDatabaseTable t in _tables)
+            foreach (SqliteDatabaseTable t in _tables)
             {
                 DatabaseTableKeyColumns tableKeyColumns = new DatabaseTableKeyColumns(t.TableName);
-                foreach (SqlDatabaseTableColumn c in t.Columns)
+                foreach (SqliteDatabaseTableColumn c in t.Columns)
                 {
                     if (c.IsKey)
                     {
@@ -178,7 +178,7 @@ namespace Figlut.MonoDroid.Toolkit.Data.DB.SQLServer
         public override List<DatabaseTableForeignKeyColumns> GetTableForeignKeyColumns()
         {
             List<DatabaseTableForeignKeyColumns> result = new List<DatabaseTableForeignKeyColumns>();
-            foreach (SqlDatabaseTable t in _tables)
+            foreach (SqliteDatabaseTable t in _tables)
             {
                 DatabaseTableForeignKeyColumns foreignKeyColumns = new DatabaseTableForeignKeyColumns(t.TableName);
                 t.GetForeignKeyColumns().ToList().ForEach(c => foreignKeyColumns.ForeignKeys.Add(new ForeignKeyInfo()
@@ -240,13 +240,13 @@ namespace Figlut.MonoDroid.Toolkit.Data.DB.SQLServer
 //                            FirstName       TEXT NOT NULL,
 //                            LastName        TEXT NOT NULL )";
 				_createTableScripts = new Dictionary<string, string> ();
-				foreach (SqlDatabaseTable table in _tables) 
+				foreach (SqliteDatabaseTable table in _tables) 
 				{
 					_createTableScripts.Add (table.TableName, table.GetSqlCreateTableScript ());
 				}
 			}
 			_dbHelper = new SqliteDataManagerHelper (context, _name, _version, _createTableScripts);
-			foreach (SqlDatabaseTable table in Tables) 
+			foreach (SqliteDatabaseTable table in Tables) 
 			{
 				table.DbHelper = _dbHelper;
 			}

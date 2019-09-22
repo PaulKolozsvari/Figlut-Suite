@@ -14,20 +14,20 @@
     #endregion //Using Directives
 
     [Serializable]
-    public class SqlDatabaseTable : DatabaseTable
+    public class SqliteDatabaseTable : DatabaseTable
     {
         #region Constructors
 
-        public SqlDatabaseTable() : base()
+        public SqliteDatabaseTable() : base()
         {
         }
 
-        public SqlDatabaseTable(string tableName) 
+        public SqliteDatabaseTable(string tableName) 
             : base(tableName)
         {
         }
 
-        public SqlDatabaseTable(DataRow schemaRow)
+        public SqliteDatabaseTable(DataRow schemaRow)
             : base(schemaRow)
         {
         }
@@ -71,7 +71,7 @@
             List<DatabaseTableColumn> tempColumns = new List<DatabaseTableColumn>();
             foreach (DataRow row in columnsSchema.Rows)
             {
-                tempColumns.Add(new SqlDatabaseTableColumn(row));
+                tempColumns.Add(new SqliteDatabaseTableColumn(row));
             }
             tempColumns.OrderBy(c => c.OrdinalPosition).ToList().ForEach(c => _columns.Add(c.ColumnName, c));
         }
@@ -86,9 +86,9 @@
 				{
 					continue;
 				}
-				SqlDatabaseTableColumn c = new SqlDatabaseTableColumn ();
+				SqliteDatabaseTableColumn c = new SqliteDatabaseTableColumn ();
 				c.ColumnName = p.Name;
-				c.DataType = SqlTypeConverter.Instance.GetSqlTypeNameFromDotNetType (
+				c.DataType = SqliteTypeConverter.Instance.GetSqlTypeNameFromDotNetType (
 					p.PropertyType, 
 					EntityReader.IsTypeIsNullable (p.PropertyType));
 				_columns.Add (c);
@@ -100,7 +100,7 @@
 			StringBuilder result = new StringBuilder ();
 			string tableScript = string.Format ("CREATE TABLE IF NOT EXISTS {0}(", _tableName);
 			result.AppendLine (tableScript);
-			foreach (SqlDatabaseTableColumn column in _columns)
+			foreach (SqliteDatabaseTableColumn column in _columns)
 			{
 				string columnScript = string.Format ("{0} {1},", column.ColumnName, column.DataType);
 				result.AppendLine (columnScript);

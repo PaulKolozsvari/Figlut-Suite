@@ -127,27 +127,30 @@
             return result;
         }
 
-        public abstract List<object> Query(string columnName, object columnValue, bool useLikeFilter, bool caseSensitive, Type entityType);
-
-        public List<object> Query(
+        public abstract List<object> Query(
             string columnName,
             object columnValue,
-            bool useLikeFilter,
-            bool caseSensitive)
-        {
-            //TODO Implement code to query data by filter.
-            throw new NotImplementedException();
-        }
+            Type entityType,
+            bool disposeConnectionAfterExecute,
+            DbConnection connection,
+            DbTransaction transaction);
 
-        public abstract void Insert(object e, bool disposeConnectionAfterExecute);
+        public abstract int Insert(object e, bool disposeConnectionAfterExecute);
 
         public abstract void Insert(List<object> entities, bool useTransaction);
 
-        public abstract void Delete(object e, string columnName, bool disposeConnectionAfterExecute);
+        public abstract long CountAll(
+            bool disposeConnectionAfterExecute,
+            DbConnection connection,
+            DbTransaction transaction);
+
+        public abstract int DeleteAll(bool disposeConnectionAfterExecute, DbConnection connection, DbTransaction transaction);
+
+        public abstract int Delete(object e, string columnName, bool disposeConnectionAfterExecute);
 
         public abstract void Delete(List<object> entities, string columnName, bool useTransaction);
 
-        public abstract void Update(object e, string columnName, bool disposeConnectionAfterExecute);
+        public abstract int Update(object e, string columnName, bool disposeConnectionAfterExecute);
 
         public abstract void Update(List<object> entities, string columnName, bool useTransaction);
 
@@ -162,6 +165,16 @@
         public abstract void PopulateColumnsFromSchema(DataTable columnsSchema);
 
         public abstract DataTable GetRawColumnsSchema(DbConnection connection, bool disposeConnectionAfterExecute);
+
+        public abstract void AddColumnsByEntityType<E>() where E : class;
+
+        public abstract void AddColumnsByEntityType(Type entityType);
+
+        public abstract string GetSqlCreateTableScript();
+
+        public abstract string GetSqlCreateCompositeIndexonAllColumns(string indexName);
+
+        public abstract List<string> GetSqlCreateSeparateIndecesOnAllColumns();
 
         #endregion //Methods
     }

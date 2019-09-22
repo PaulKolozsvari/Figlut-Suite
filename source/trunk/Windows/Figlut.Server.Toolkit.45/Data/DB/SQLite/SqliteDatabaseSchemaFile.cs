@@ -1,4 +1,4 @@
-﻿namespace Figlut.MonoDroid.Toolkit.Data.DB.SQLServer
+﻿namespace Figlut.Server.Toolkit.Data.DB.SQLite
 {
     #region Using Directives
 
@@ -7,23 +7,23 @@
     using System.Collections.Generic;
     using System.Text;
     using System.IO;
-    using Figlut.MonoDroid.Toolkit.Utilities.Serialization;
-    using Figlut.MonoDroid.Toolkit.Utilities;
+    using Figlut.Server.Toolkit.Utilities.Serialization;
+    using Figlut.Server.Toolkit.Utilities;
 
     #endregion //Using Directives
 
-    public class SqlDatabaseSchemaFile
+    public class SqliteDatabaseSchemaFile
     {
         #region Methods
 
-        public static void ExportSchema(SqlDatabase database, string filePath)
+        public static void ExportSchema(SqliteDatabase database, string filePath)
         {
 			GOC.Instance.GetSerializer(SerializerType.JSON).SerializeToFile(
                 database,
                 new Type[] 
                 {
-                    typeof(SqlDatabaseTable),
-                    typeof(SqlDatabaseTableColumn),
+                    typeof(SqliteDatabaseTable),
+                    typeof(SqliteDatabaseTableColumn),
                     typeof(DatabaseCache),
                     typeof(Database),
                     typeof(DatabaseTable),
@@ -32,24 +32,24 @@
 					typeof(DatabaseTableKeyColumns),
 					typeof(ForeignKeyInfo),
 					typeof(Dbms),
-					typeof(SqlTypeConverter),
-					typeof(SqlTypeConversionInfo)
+					typeof(SqliteTypeConverter),
+					typeof(SqliteTypeConversionInfo)
                 },
                 filePath);
         }
 
-        public static SqlDatabase ImportSchema(
+        public static SqliteDatabase ImportSchema(
             string filePath, 
             bool createOrmAssembly, 
             bool saveOrmAssembly, 
             string ormAssemblyOutputDirectory)
         {
-            SqlDatabase result = (SqlDatabase)GOC.Instance.GetSerializer(SerializerType.JSON).DeserializeFromFile(
-                typeof(SqlDatabase),
+            SqliteDatabase result = (SqliteDatabase)GOC.Instance.GetSerializer(SerializerType.JSON).DeserializeFromFile(
+                typeof(SqliteDatabase),
                 new Type[] 
                 {
-                    typeof(SqlDatabaseTable), 
-                    typeof(SqlDatabaseTableColumn),
+                    typeof(SqliteDatabaseTable), 
+                    typeof(SqliteDatabaseTableColumn),
                     typeof(DatabaseCache),
                     typeof(Database), 
                     typeof(DatabaseTable), 

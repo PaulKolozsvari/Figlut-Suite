@@ -1,4 +1,4 @@
-﻿namespace Figlut.Server.Toolkit.Data.DB.SQLServer
+﻿namespace Figlut.Server.Toolkit.Data.DB.SQLite
 {
     #region Using Directives
 
@@ -7,33 +7,34 @@
     using System.Collections.Generic;
     using System.Text;
     using System.Reflection;
-    using Figlut.Server.Toolkit.Data.DB.SQLQuery;
-    using System.Data.SqlClient;
     using System.Data;
     using System.Data.Common;
+    using System.Xml.Serialization;
+    using System.Data.SqlClient;
+    using System.Data.SQLite;
 
     #endregion //Using Directives
 
     [Serializable]
-    public class SqlDatabaseTable : DatabaseTable
+    public class SqliteDatabaseTable : DatabaseTable
     {
         #region Constructors
 
-        public SqlDatabaseTable() : base()
+        public SqliteDatabaseTable() : base()
         {
         }
 
-        public SqlDatabaseTable(string tableName, string connectionString) 
+        public SqliteDatabaseTable(string tableName, string connectionString)
             : base(tableName, connectionString)
         {
         }
 
-        public SqlDatabaseTable(DataRow schemaRow)
+        public SqliteDatabaseTable(DataRow schemaRow)
             : base(schemaRow)
         {
         }
 
-        public SqlDatabaseTable(DataRow schemaRow, string connectionString) 
+        public SqliteDatabaseTable(DataRow schemaRow, string connectionString)
             : base(schemaRow, connectionString)
         {
         }
@@ -58,39 +59,40 @@
             DbTransaction transaction)
         {
             List<object> result = null;
-            List<SqlParameter> parameters = new List<SqlParameter>();
+            List<SQLiteParameter> parameters = new List<SQLiteParameter>();
             PropertyInfo[] entityProperties = entityType.GetProperties();
 
             StringBuilder selectCommand = new StringBuilder();
             selectCommand.AppendLine(string.Format("SELECT * FROM [{0}]", entityType.Name));
 
-            if (!string.IsNullOrEmpty(columnName))
+            if(!string.IsNullOrEmpty(columnName))
             {
                 StringBuilder whereClause = new StringBuilder();
                 whereClause.AppendLine("WHERE ");
                 whereClause.Append(string.Format("[{0}] = @{0}", columnName));
-                parameters.Add(new SqlParameter(string.Format("@{0}", columnName), columnValue));
+                parameters.Add(new SQLiteParameter(string.Format("@{0}", columnName), columnValue));
                 selectCommand.AppendLine(whereClause.ToString());
             }
+            string selectCommandText = selectCommand.ToString();
             try
             {
                 if (connection == null)
                 {
-                    connection = new SqlConnection(_connectionString);
+                    connection = new SQLiteConnection(_connectionString);
                 }
                 if (connection.State != ConnectionState.Open)
                 {
                     connection.Open();
                 }
-                using (SqlCommand command = new SqlCommand(selectCommand.ToString(), (SqlConnection)connection))
+                using (SQLiteCommand command = new SQLiteCommand(selectCommandText, (SQLiteConnection)connection))
                 {
                     if (transaction != null)
                     {
-                        command.Transaction = (SqlTransaction)transaction;
+                        command.Transaction = (SQLiteTransaction)transaction;
                     }
                     parameters.ForEach(p => command.Parameters.Add(p));
                     command.CommandType = System.Data.CommandType.Text;
-                    using (SqlDataReader reader = command.ExecuteReader())
+                    using (SQLiteDataReader reader = command.ExecuteReader())
                     {
                         result = DataHelper.ParseReaderToEntities(reader, entityType);
                     }
@@ -114,14 +116,14 @@
         }
 
         public int Insert(
-            object e, 
+            object e,
             bool disposeConnectionAfterExecute,
-            SqlConnection connection, 
-            SqlTransaction transaction)
+            SQLiteConnection connection,
+            SQLiteTransaction transaction)
         {
             int result = -1;
             Type entityType = e.GetType();
-            List<SqlParameter> parameters = new List<SqlParameter>();
+            List<SQLiteParameter> parameters = new List<SQLiteParameter>();
             StringBuilder sqlInsertCommand = new StringBuilder();
             sqlInsertCommand.AppendLine(string.Format("INSERT INTO [{0}]", entityType.Name));
             sqlInsertCommand.AppendLine("(");
@@ -155,8 +157,11 @@
                 {
                     value = DBNull.Value;
                 }
-                SqlDatabaseTableColumn column = (SqlDatabaseTableColumn)_columns[p.Name];
-                parameters.Add(new SqlParameter(string.Format("@{0}", p.Name), value) { SqlDbType = column.SqlDbType });
+                SqliteDatabaseTableColumn column = (SqliteDatabaseTableColumn)_columns[p.Name];
+                parameters.Add(new SQLiteParameter(string.Format("@{0}", p.Name), value)
+                {
+                    DbType = column.SqlDbType
+                });
                 sqlInsertCommand.Append(string.Format("[{0}]", p.Name));
                 firstInsertColumn = false;
             }
@@ -165,7 +170,7 @@
             sqlInsertCommand.AppendLine("VALUES");
             sqlInsertCommand.AppendLine("(");
             bool firstInsertValue = true;
-            foreach (SqlParameter p in parameters)
+            foreach (SQLiteParameter p in parameters)
             {
                 if (!firstInsertValue)
                 {
@@ -180,13 +185,13 @@
             {
                 if (connection == null)
                 {
-                    connection = new SqlConnection(_connectionString);
+                    connection = new SQLiteConnection(_connectionString);
                 }
                 if (connection.State != ConnectionState.Open)
                 {
                     connection.Open();
                 }
-                using (SqlCommand command = new SqlCommand(sqlInsertCommand.ToString(), connection))
+                using (SQLiteCommand command = new SQLiteCommand(sqlInsertCommand.ToString(), connection))
                 {
                     if (transaction != null)
                     {
@@ -204,8 +209,8 @@
             }
             finally
             {
-                if (disposeConnectionAfterExecute && 
-                    connection != null && 
+                if (disposeConnectionAfterExecute &&
+                    connection != null &&
                     connection.State != ConnectionState.Closed)
                 {
                     connection.Dispose();
@@ -216,9 +221,9 @@
 
         public override void Insert(List<object> entities, bool useTransaction)
         {
-            using (SqlConnection connection = new SqlConnection(_connectionString))
+            using (SQLiteConnection connection = new SQLiteConnection(_connectionString))
             {
-                SqlTransaction t = null;
+                SQLiteTransaction t = null;
                 try
                 {
                     connection.Open();
@@ -257,23 +262,24 @@
             {
                 if (connection == null)
                 {
-                    connection = new SqlConnection(_connectionString);
+                    connection = new SQLiteConnection(_connectionString);
                 }
                 if (connection.State != ConnectionState.Open)
                 {
                     connection.Open();
                 }
                 string sqlCountCommandText = sqlCountCommand.ToString();
-                using (SqlCommand command = new SqlCommand(sqlCountCommandText, (SqlConnection)connection))
+                using (SQLiteCommand command = new SQLiteCommand(sqlCountCommandText, (SQLiteConnection)connection))
                 {
                     if (transaction != null)
                     {
-                        command.Transaction = (SqlTransaction)transaction;
+                        command.Transaction = (SQLiteTransaction)transaction;
                     }
-                    result = command.ExecuteNonQuery();
+                    object scalarResult = command.ExecuteScalar();
+                    result = Convert.ToInt64(scalarResult);
                     if (result < 0)
                     {
-                        throw new Exception(string.Format("Could not count records in {0} on database.", TableName));
+                        throw new Exception(string.Format("Could not count records in {0} on database..", TableName));
                     }
                 }
             }
@@ -301,17 +307,17 @@
             {
                 if (connection == null)
                 {
-                    connection = new SqlConnection(_connectionString);
+                    connection = new SQLiteConnection(_connectionString);
                 }
                 if (connection.State != ConnectionState.Open)
                 {
                     connection.Open();
                 }
-                using (SqlCommand command = new SqlCommand(sqlDeleteCommand.ToString(), (SqlConnection)connection))
+                using (SQLiteCommand command = new SQLiteCommand(sqlDeleteCommand.ToString(), (SQLiteConnection)connection))
                 {
                     if (transaction != null)
                     {
-                        command.Transaction = (SqlTransaction)transaction;
+                        command.Transaction = (SQLiteTransaction)transaction;
                     }
                     result = command.ExecuteNonQuery();
                     if (result < 0)
@@ -333,16 +339,15 @@
         }
 
         public int Delete(
-            object e, 
-            string columnName, 
+            object e,
+            string columnName,
             bool disposeConnectionAfterExecute,
-            SqlConnection connection,
-            SqlTransaction transaction)
+            SQLiteConnection connection,
+            SQLiteTransaction transaction)
         {
             int result = -1;
-
             Type entityType = e.GetType();
-            List<SqlParameter> parameters = new List<SqlParameter>();
+            List<SQLiteParameter> parameters = new List<SQLiteParameter>();
             PropertyInfo[] entityProperties = entityType.GetProperties();
 
             StringBuilder sqlDeleteCommand = new StringBuilder();
@@ -366,7 +371,7 @@
                     {
                         continue;
                     }
-                    SqlDatabaseTableColumn column = (SqlDatabaseTableColumn)_columns[p.Name];
+                    SqliteDatabaseTableColumn column = (SqliteDatabaseTableColumn)_columns[p.Name];
                     if (!column.IsKey)
                     {
                         continue;
@@ -376,7 +381,7 @@
                     {
                         value = DBNull.Value;
                     }
-                    SqlParameter parameter = new SqlParameter(string.Format("@{0}", p.Name), value) { SqlDbType = column.SqlDbType };
+                    SQLiteParameter parameter = new SQLiteParameter(string.Format("@{0}", p.Name), value) { DbType = column.SqlDbType };
                     parameters.Add(parameter);
                     if (!firstUpdateColumn)
                     {
@@ -390,20 +395,20 @@
             {
                 whereClause.Append(string.Format("[{0}] = @{0}", columnName));
                 object value = EntityReader<object>.GetPropertyValue(columnName, e, true);
-                parameters.Add(new SqlParameter(string.Format("@{0}", columnName), value));
+                parameters.Add(new SQLiteParameter(string.Format("@{0}", columnName), value));
             }
             sqlDeleteCommand.AppendLine(whereClause.ToString());
             try
             {
                 if (connection == null)
                 {
-                    connection = new SqlConnection(_connectionString);
+                    connection = new SQLiteConnection(_connectionString);
                 }
                 if (connection.State != ConnectionState.Open)
                 {
                     connection.Open();
                 }
-                using (SqlCommand command = new SqlCommand(sqlDeleteCommand.ToString(), connection))
+                using (SQLiteCommand command = new SQLiteCommand(sqlDeleteCommand.ToString(), connection))
                 {
                     if (transaction != null)
                     {
@@ -428,8 +433,8 @@
             }
             finally
             {
-                if (disposeConnectionAfterExecute && 
-                    connection != null && 
+                if (disposeConnectionAfterExecute &&
+                    connection != null &&
                     connection.State != ConnectionState.Closed)
                 {
                     connection.Dispose();
@@ -445,9 +450,9 @@
 
         public override void Delete(List<object> entities, string columnName, bool useTransaction)
         {
-            using (SqlConnection connection = new SqlConnection(_connectionString))
+            using (SQLiteConnection connection = new SQLiteConnection(_connectionString))
             {
-                SqlTransaction t = null;
+                SQLiteTransaction t = null;
                 try
                 {
                     connection.Open();
@@ -479,15 +484,15 @@
         }
 
         public int Update(
-            object e, 
-            string columnName, 
-            bool disposeConnectionAfterExecute, 
-            SqlConnection connection, 
-            SqlTransaction transaction)
+            object e,
+            string columnName,
+            bool disposeConnectionAfterExecute,
+            SQLiteConnection connection,
+            SQLiteTransaction transaction)
         {
             int result = -1;
             Type entityType = e.GetType();
-            List<SqlParameter> parameters = new List<SqlParameter>();
+            List<SQLiteParameter> parameters = new List<SQLiteParameter>();
             StringBuilder sqlUpdateCommand = new StringBuilder();
             sqlUpdateCommand.AppendLine(string.Format("UPDATE [{0}]", entityType.Name));
             sqlUpdateCommand.AppendLine("SET ");
@@ -514,7 +519,7 @@
                 {
                     continue;
                 }
-                SqlDatabaseTableColumn column = (SqlDatabaseTableColumn)_columns[p.Name];
+                SqliteDatabaseTableColumn column = (SqliteDatabaseTableColumn)_columns[p.Name];
                 if (!firstUpdateColumn)
                 {
                     sqlUpdateCommand.AppendLine(",");
@@ -524,7 +529,7 @@
                 {
                     value = DBNull.Value;
                 }
-                SqlParameter parameter = new SqlParameter(string.Format("@{0}", p.Name), value) { SqlDbType = column.SqlDbType };
+                SQLiteParameter parameter = new SQLiteParameter(string.Format("@{0}", p.Name), value) { DbType = column.SqlDbType };
                 parameters.Add(parameter);
                 sqlUpdateCommand.Append(string.Format("[{0}] = @{0}", p.Name));
                 if (string.IsNullOrEmpty(columnName)) //Look up the record to update based on the key columns because no column name was specified.
@@ -550,14 +555,14 @@
             {
                 if (connection == null)
                 {
-                    connection = new SqlConnection(_connectionString);
+                    connection = new SQLiteConnection(_connectionString);
                 }
                 if (connection.State != ConnectionState.Open)
                 {
                     connection.Open();
                 }
                 string commandText = sqlUpdateCommand.ToString();
-                using (SqlCommand command = new SqlCommand(commandText, connection))
+                using (SQLiteCommand command = new SQLiteCommand(commandText, connection))
                 {
                     if (transaction != null)
                     {
@@ -681,9 +686,9 @@
 
         public override void Update(List<object> entities, string columnName, bool useTransaction)
         {
-            using (SqlConnection connection = new SqlConnection(_connectionString))
+            using (SQLiteConnection connection = new SQLiteConnection(_connectionString))
             {
-                SqlTransaction t = null;
+                SQLiteTransaction t = null;
                 try
                 {
                     connection.Open();
@@ -721,7 +726,7 @@
             List<DatabaseTableColumn> tempColumns = new List<DatabaseTableColumn>();
             foreach (DataRow row in columnsSchema.Rows)
             {
-                tempColumns.Add(new SqlDatabaseTableColumn(row));
+                tempColumns.Add(new SqliteDatabaseTableColumn(row));
             }
             tempColumns.OrderBy(c => c.OrdinalPosition).ToList().ForEach(c => _columns.Add(c.ColumnName, c));
         }
@@ -732,7 +737,7 @@
             {
                 if (connection == null)
                 {
-                    connection = new SqlConnection(_connectionString);
+                    connection = new SQLiteConnection(_connectionString);
                 }
                 if (connection.State != ConnectionState.Open)
                 {
@@ -743,18 +748,18 @@
                 List<DatabaseTableColumn> tempColumns = new List<DatabaseTableColumn>();
                 foreach (DataRow row in schema.Rows)
                 {
-                    tempColumns.Add(new SqlDatabaseTableColumn(row));
+                    tempColumns.Add(new SqliteDatabaseTableColumn(row));
                 }
                 tempColumns.OrderBy(c => c.OrdinalPosition).ToList().ForEach(c => _columns.Add(c.ColumnName, c));
-                if (!(connection is SqlConnection))
+                if (!(connection is SQLiteConnection))
                 {
                     throw new InvalidCastException(string.Format(
                         "Expected a {0}, and received a {1}.",
-                        typeof(SqlConnection).FullName,
+                        typeof(SQLiteConnection).FullName,
                         connection.GetType().FullName));
                 }
                 List<string> keyColumns = GetKeyColummnNames(connection, false);
-                if (keyColumns.Count < 1)
+                if (keyColumns.Count < 0)
                 {
                     throw new Exception(string.Format("Table {0} has no key columns.", _tableName));
                 }
@@ -770,12 +775,12 @@
                     }
                     c.IsKey = true;
                 }
-                SqlConnection sqlConnection = connection as SqlConnection;
-                if (sqlConnection == null)
+                SQLiteConnection sqliteConnection = connection as SQLiteConnection;
+                if (sqliteConnection == null)
                 {
-                    throw new InvalidCastException(string.Format("Expected connection to be a {0} in {1}.", typeof(SqlConnection).FullName, this.GetType().FullName));
+                    throw new InvalidCastException(string.Format("Expected connection to be a {0} in {1}.", typeof(SQLiteConnection).FullName, this.GetType().FullName));
                 }
-                EntityCache<string, ForeignKeyInfo> foreignKeys = sqlConnection.GetTableForeignKeys(_tableName);
+                EntityCache<string, ForeignKeyInfo> foreignKeys = sqliteConnection.GetTableForeignKeys(_tableName);
                 foreach (ForeignKeyInfo f in foreignKeys)
                 {
                     if (_columns.Exists(f.ChildTableForeignKeyName))
@@ -805,21 +810,21 @@
             {
                 if (connection == null)
                 {
-                    connection = new SqlConnection(_connectionString);
+                    connection = new SQLiteConnection(_connectionString);
                 }
                 if (connection.State != ConnectionState.Open)
                 {
                     connection.Open();
                 }
                 List<string> result = new List<string>();
-                using (SqlCommand command = new SqlCommand("sp_pkeys", (SqlConnection)connection)) //Get the primary key columns.
+                using (SQLiteCommand command = new SQLiteCommand("sp_pkeys", (SQLiteConnection)connection)) //Get the primary key columns.
                 {
                     command.CommandType = System.Data.CommandType.StoredProcedure;
                     command.Parameters.Add(new SqlParameter("@table_name", _tableName) { Direction = ParameterDirection.Input });
                     //command.Parameters.Add(new SqlParameter("@table_owner", "dbo") { Direction = ParameterDirection.Input });
                     //command.Parameters.Add(new SqlParameter("@table_qualifier", "DigisticsStoreDelivery") { Direction = ParameterDirection.Input });
                     //using (SqlDataReader reader = command.ExecuteReader(CommandBehavior.SchemaOnly | CommandBehavior.KeyInfo))
-                    using (SqlDataReader reader = command.ExecuteReader())
+                    using (SQLiteDataReader reader = command.ExecuteReader())
                     {
                         while (reader.Read())
                         {
@@ -847,7 +852,7 @@
             {
                 if (connection == null)
                 {
-                    connection = new SqlConnection(_connectionString);
+                    connection = new SQLiteConnection(_connectionString);
                 }
                 if (connection.State != ConnectionState.Open)
                 {
@@ -880,9 +885,9 @@
                 {
                     continue;
                 }
-                SqlDatabaseTableColumn c = new SqlDatabaseTableColumn();
+                SqliteDatabaseTableColumn c = new SqliteDatabaseTableColumn();
                 c.ColumnName = p.Name;
-                c.DataType = SqlTypeConverter.Instance.GetSqlTypeNameFromDotNetType(
+                c.DataType = SqliteTypeConverter.Instance.GetSqlTypeNameFromDotNetType(
                     p.PropertyType,
                     EntityReader.IsTypeIsNullable(p.PropertyType));
                 _columns.Add(c);
@@ -894,18 +899,19 @@
             StringBuilder result = new StringBuilder();
             string tableScript = string.Format("CREATE TABLE IF NOT EXISTS {0}(", _tableName);
             result.AppendLine(tableScript);
-            foreach (SqlDatabaseTableColumn column in _columns)
+            int i = 0;
+            int columnsCount = _columns.Count;
+            foreach (SqliteDatabaseTableColumn column in _columns)
             {
-                string columnScript = string.Format("{0} {1},", column.ColumnName, column.DataType);
+                string columnScript = string.Format($"{column.ColumnName} {column.DataType}");
+                if (i < (columnsCount - 1))
+                {
+                    columnScript += ",";
+                }
                 result.AppendLine(columnScript);
+                i++;
             }
-            string resultString = result.ToString();
-            string lastCharacter = resultString.Substring(resultString.Length - 2, 1);
-            if (lastCharacter == ",")
-            {
-                resultString = resultString.Substring(0, resultString.Length - 2);
-            }
-            resultString += ");";
+            string resultString = result.Append(");").ToString();
             return resultString;
         }
 
@@ -916,7 +922,7 @@
             result.AppendLine(sqlScript);
             int i = 0;
             int columnsCount = _columns.Count;
-            foreach (SqlDatabaseTableColumn column in _columns)
+            foreach (SqliteDatabaseTableColumn column in _columns)
             {
                 string columnScript = column.ColumnName;
                 if (i < (columnsCount - 1))
@@ -930,12 +936,18 @@
             return resultString;
         }
 
+        /// <summary>
+        /// https://www.w3resource.com/sqlite/sqlite-create-drop-index.php
+        /// https://medium.com/@JasonWyatt/squeezing-performance-from-sqlite-indexes-indexes-c4e175f3c346
+        /// https://stackoverflow.com/questions/50982465/composite-indexes-in-sqlite
+        /// </summary>
+        /// <returns></returns>
         public override List<string> GetSqlCreateSeparateIndecesOnAllColumns()
         {
             List<string> result = new List<string>();
             int i = 0;
             int columnsCount = _columns.Count;
-            foreach (SqlDatabaseTableColumn column in _columns)
+            foreach (SqliteDatabaseTableColumn column in _columns)
             {
                 string sqlScript = $"CREATE INDEX {column.ColumnName}Index ON {_tableName} ({column.ColumnName});";
                 result.Add(sqlScript);

@@ -1,0 +1,1 @@
+*   Added PropertyExists method overload on the EntityReader class that allows passing in the entity type not just the entity object.

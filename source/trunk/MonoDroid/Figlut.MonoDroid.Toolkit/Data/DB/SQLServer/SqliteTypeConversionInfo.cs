@@ -10,15 +10,15 @@
 
     #endregion //Using Directives
 
-    public class SqlTypeConversionInfo
+    public class SqliteTypeConversionInfo
     {
         #region Constructors
 
-        public SqlTypeConversionInfo()
+        public SqliteTypeConversionInfo()
         {
         }
 
-        public SqlTypeConversionInfo(
+        public SqliteTypeConversionInfo(
             string sqlTypeName,
             Type sqlType,
             SqlDbType sqlDbType,

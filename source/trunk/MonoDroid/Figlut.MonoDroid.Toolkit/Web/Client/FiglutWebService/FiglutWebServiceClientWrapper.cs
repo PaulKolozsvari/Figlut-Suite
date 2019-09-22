@@ -130,14 +130,14 @@
                 wrapWebException);
         }
 
-        public SqlDatabase GetSqlDatabase(
+        public SqliteDatabase GetSqlDatabase(
             bool createOrmAssembly,
             bool saveOrmAssembly,
             string ormAssemblyOutputDirectory,
             bool wrapWebException)
         {
             string rawOutput = string.Empty;
-            SqlDatabase result = new SqlDatabase();
+            SqliteDatabase result = new SqliteDatabase();
             HttpStatusCode statusCode;
             string statusDescription = null;
 
@@ -149,7 +149,7 @@
             GetSqlSchema<List<DatabaseTableForeignKeyColumns>>(DatabaseSchemaInfoType.TableForeignKeyColumns, null, out rawOutput, out statusCode, out statusDescription, wrapWebException).ForEach(p => tablesForeignKeyColumns.Add(p.TableName, p));
             foreach (DataRow t in tablesSchema.Rows)
             {
-                SqlDatabaseTable table = new SqlDatabaseTable(t);
+                SqliteDatabaseTable table = new SqliteDatabaseTable(t);
                 if (table.IsSystemTable)
                 {
                     continue;
@@ -164,7 +164,7 @@
                 {
                     throw new Exception(string.Format(
                         "{0} with name {1} already added.",
-                        typeof(SqlDatabaseTable).FullName,
+                        typeof(SqliteDatabaseTable).FullName,
                         table.TableName));
                 }
                 result.AddTable(table);
@@ -199,11 +199,11 @@
             return result;
         }
 
-        private void PopulateSqlDatabaseChildrenTables(SqlDatabase database)
+        private void PopulateSqlDatabaseChildrenTables(SqliteDatabase database)
         {
-            foreach (SqlDatabaseTable pkTable in database.Tables)
+            foreach (SqliteDatabaseTable pkTable in database.Tables)
             {
-                foreach (SqlDatabaseTable fkTable in database.Tables) //Find children tables i.e. tables that have foreign keys mapped this table's primary keys'.
+                foreach (SqliteDatabaseTable fkTable in database.Tables) //Find children tables i.e. tables that have foreign keys mapped this table's primary keys'.
                 {
                     EntityCache<string, ForeignKeyInfo> mappedForeignKeys = new EntityCache<string, ForeignKeyInfo>();
                     fkTable.GetForeignKeyColumns().Where(c => c.ParentTableName == pkTable.TableName).ToList().ForEach(fk => mappedForeignKeys.Add(fk.ColumnName, new ForeignKeyInfo()

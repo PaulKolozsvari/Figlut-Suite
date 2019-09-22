@@ -5,6 +5,7 @@
     using System;
     using System.Collections.Generic;
     using System.Data;
+    using System.Data.Common;
     using System.Data.SqlClient;
     using System.Linq;
     using System.Reflection.Emit;
@@ -39,7 +40,7 @@
 
         public OrmType CreateOrmTypeFromSqlDataReader(
             string typeName,
-            SqlDataReader reader,
+            DbDataReader reader,
             bool prefixWithAssemblyNamespace)
         {
             DataTable schemaTable = reader.GetSchemaTable();

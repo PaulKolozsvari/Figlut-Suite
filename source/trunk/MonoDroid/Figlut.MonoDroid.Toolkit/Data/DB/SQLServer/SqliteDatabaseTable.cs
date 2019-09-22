@@ -15,20 +15,20 @@
     #endregion //Using Directives
 
     [Serializable]
-	public class SqlDatabaseTable<E> : SqlDatabaseTable where E : class, new()
+	public class SqliteDatabaseTable<E> : SqliteDatabaseTable where E : class, new()
     {
         #region Constructors
 
-        public SqlDatabaseTable() : base()
+        public SqliteDatabaseTable() : base()
         {
         }
 
-        public SqlDatabaseTable(string tableName) 
+        public SqliteDatabaseTable(string tableName) 
             : base(tableName)
         {
         }
 
-        public SqlDatabaseTable(DataRow schemaRow) 
+        public SqliteDatabaseTable(DataRow schemaRow) 
             : base(schemaRow)
         {
         }
@@ -349,6 +349,23 @@
 			}
 			return result;
 		}
+
+        public override void PopulateFromSchema(DataRow schemaRow)
+        {
+            _tableName = schemaRow[TABLE_NAME_SCHEMA_ATTRIBUTE].ToString();
+            _isSystemTable = _tableName.Contains(SYS_DIAGRAMS_TABLE_NAME);
+        }
+
+        public override void PopulateColumnsFromSchema(DataTable columnsSchema)
+        {
+            _columns.Clear();
+            List<DatabaseTableColumn> tempColumns = new List<DatabaseTableColumn>();
+            foreach (DataRow row in columnsSchema.Rows)
+            {
+                tempColumns.Add(new SqliteDatabaseTableColumn(row));
+            }
+            tempColumns.OrderBy(c => c.OrdinalPosition).ToList().ForEach(c => _columns.Add(c.ColumnName, c));
+        }
 
         #endregion //Methods
     }

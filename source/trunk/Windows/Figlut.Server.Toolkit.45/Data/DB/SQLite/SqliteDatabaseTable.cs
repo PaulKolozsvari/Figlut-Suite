@@ -1,4 +1,4 @@
-﻿namespace Figlut.Server.Toolkit.Data.DB.SQLServer
+﻿namespace Figlut.Server.Toolkit.Data.DB.SQLite
 {
     #region Using Directives
 
@@ -7,28 +7,29 @@
     using System.Collections.Generic;
     using System.Text;
     using System.Reflection;
-    using Figlut.Server.Toolkit.Data.DB.SQLQuery;
-    using System.Data.SqlClient;
     using System.Data;
     using System.Data.Common;
+	using SQLite;
+    using Figlut.Server.Toolkit.Data.DB.SQLQuery;
+    using System.Data.SQLite;
 
     #endregion //Using Directives
 
     [Serializable]
-    public class SqlDatabaseTable<E> : SqlDatabaseTable where E : class
+	public class SqliteDatabaseTable<E> : SqliteDatabaseTable where E : class
     {
         #region Constructors
 
-        public SqlDatabaseTable() : base()
+        public SqliteDatabaseTable() : base()
         {
         }
 
-        public SqlDatabaseTable(string tableName, string connectionString) 
+        public SqliteDatabaseTable(string tableName, string connectionString)
             : base(tableName, connectionString)
         {
         }
 
-        public SqlDatabaseTable(DataRow schemaRow, string connectionString) 
+        public SqliteDatabaseTable(DataRow schemaRow, string connectionString)
             : base(schemaRow, connectionString)
         {
         }
@@ -37,7 +38,7 @@
 
         #region Methods
 
-        public int Insert(E e, bool disposeConnectionAfterExecute, SqlConnection connection, SqlTransaction transaction)
+        public int Insert(E e, bool disposeConnectionAfterExecute, SQLiteConnection connection, SQLiteTransaction transaction)
         {
             return base.Insert(e, disposeConnectionAfterExecute, connection, transaction);
         }
@@ -49,7 +50,7 @@
             base.Insert(objects, useTransaction);
         }
 
-        public int Delete(E e, string columnName, bool disposeConnectionAfterExecute, SqlConnection connection, SqlTransaction transaction)
+        public int Delete(E e, string columnName, bool disposeConnectionAfterExecute, SQLiteConnection connection, SQLiteTransaction transaction)
         {
             return base.Delete(e, columnName, disposeConnectionAfterExecute, connection, transaction);
         }
@@ -61,7 +62,7 @@
             base.Delete(objects, columnName, useTransaction);
         }
 
-        public int Update(E e, string columnName, bool disposeConnectionAfterExecute, SqlConnection connection, SqlTransaction transaction)
+        public int Update(E e, string columnName, bool disposeConnectionAfterExecute, SQLiteConnection connection, SQLiteTransaction transaction)
         {
             return base.Update(e, columnName, disposeConnectionAfterExecute, connection, transaction);
         }

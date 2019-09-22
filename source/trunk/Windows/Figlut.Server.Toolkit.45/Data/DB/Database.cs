@@ -159,37 +159,13 @@
             return _name;
         }
 
-        public void Initialize(
+        public abstract void Initialize(
             string connectionString,
             bool populateTablesFromSchema,
             bool createOrmAssembly,
             bool saveOrmAssembly,
             string ormAssemblyOutputDirectory,
-            bool overrideNameWithDatabaseNameFromSchema)
-        {
-            _tables = new EntityCache<string, DatabaseTable>();
-            _connectionString = connectionString;
-            using (SqlConnection connection = new SqlConnection(_connectionString))
-            {
-                PublishFeedback(string.Format("Opening connection to {0} ...", _connectionString));
-                connection.Open();
-                if (overrideNameWithDatabaseNameFromSchema)
-                {
-                    PublishFeedback("Getting DB name from schema ...");
-                    _name = GetDatabaseNameFromSchema(connection, false);
-                }
-                if (populateTablesFromSchema)
-                {
-                    PublishFeedback("Populating DB tables from schema ...");
-                    PopulateTablesFromSchema(true, connection, false);
-                }
-                if (createOrmAssembly)
-                {
-                    PublishFeedback("Generating ORM assembly ...");
-                    CreateOrmAssembly(saveOrmAssembly, ormAssemblyOutputDirectory);
-                }
-            }
-        }
+            bool overrideNameWithDatabaseNameFromSchema);
 
         protected void PublishFeedback(string feedback)
         {
@@ -216,7 +192,7 @@
             _tables.Clear();
         } 
 
-        public List<DatabaseTable> GetTablesMentionedInQuery(SqlQuery query)
+        public List<DatabaseTable> GetTablesMentionedInQuery(Query query)
         {
             List<DatabaseTable> result = new List<DatabaseTable>();
             foreach (string t in query.TableNamesInQuery)
@@ -275,6 +251,61 @@
                 return;
             }
             _ormAssembly.Save(ormAssemblyOutputDirectory);
+        }
+
+        public virtual List<object> Query(
+            string columnName,
+            object columnValue,
+            Type entityType,
+            bool disposeConnectionAfterExecute,
+            DbConnection connection,
+            DbTransaction transaction)
+        {
+            return Query(columnName, columnValue, entityType.Name, entityType, disposeConnectionAfterExecute, connection, transaction);
+        }
+
+        public abstract List<object> Query(string sqlQueryString,
+            OrmAssemblySql ormCollectibleAssembly,
+            string typeName,
+            out OrmType ormCollecibleType);
+
+        public abstract List<object> Query(
+            Query query, 
+            Type entityType);
+
+        public abstract List<object> Query(
+            Query query,
+            Type entityType,
+            bool disposeConnectionAfterExecute,
+            DbConnection connection,
+            DbTransaction transaction);
+
+        public virtual List<object> Query(
+            string columnName,
+            object columnValue,
+            string tableName,
+            Type entityType,
+            bool disposeConnectionAfterExecute,
+            DbConnection connection,
+            DbTransaction transaction)
+        {
+            DatabaseTable table = GetDatabaseTable(tableName);
+            if (table == null)
+            {
+                throw new NullReferenceException(string.Format(
+                    "Could not find {0} with name {1}.",
+                    typeof(DatabaseTable).FullName,
+                    tableName));
+            }
+            return table.Query(columnName, columnValue, entityType, disposeConnectionAfterExecute, connection, transaction);
+        }
+
+        public List<E> Query<E>(Query query) where E : class
+        {
+            List<object> objects = Query(query, typeof(E));
+            List<E> result = new List<E>();
+            objects.ForEach(o => result.Add((E)o));
+            return result;
         }
 
         #endregion //Methods

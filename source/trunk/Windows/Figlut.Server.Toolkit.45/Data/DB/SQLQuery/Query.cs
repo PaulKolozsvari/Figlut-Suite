@@ -8,6 +8,7 @@
     using System.Text;
     using System.Reflection;
     using System.Data.SqlClient;
+    using System.Data.Common;
 
     #endregion //Using Directives
 
@@ -22,31 +23,31 @@
         NULL
     }
 
-    public class SqlQuery
+    public abstract class Query
     {
         #region Constructors
 
-        public SqlQuery()
+        public Query()
         {
             _sqlQueryString = new StringBuilder();
-            _sqlParameters = new List<SqlParameter>();
+            _sqlParameters = new List<DbParameter>();
             _tableNamesInQuery = new List<string>();
             _whereClause = new List<WhereClauseColumn>();
         }
 
-        public SqlQuery(SqlQueryKeyword keyword)
+        public Query(SqlQueryKeyword keyword)
         {
             _sqlQueryString = new StringBuilder();
-            _sqlParameters = new List<SqlParameter>();
+            _sqlParameters = new List<DbParameter>();
             _tableNamesInQuery = new List<string>();
             _whereClause = new List<WhereClauseColumn>();
             _sqlQueryString.AppendLine(keyword.ToString());
         }
 
-        public SqlQuery(string sqlQueryString)
+        public Query(string sqlQueryString)
         {
             _sqlQueryString = new StringBuilder(sqlQueryString);
-            _sqlParameters = new List<SqlParameter>();
+            _sqlParameters = new List<DbParameter>();
             _tableNamesInQuery = new List<string>();
             _whereClause = new List<WhereClauseColumn>();
         }
@@ -56,7 +57,7 @@
         #region Fields
 
         protected StringBuilder _sqlQueryString;
-        protected List<SqlParameter> _sqlParameters;
+        protected List<DbParameter> _sqlParameters;
         protected bool _firstSelectColumn = true;
         protected bool _firstFromTable = true;
         protected List<WhereClauseColumn> _whereClause;
@@ -66,12 +67,12 @@
 
         #region Properties
 
-        public string SqlQuerySring
+        public string SqlQueryString
         {
             get { return _sqlQueryString.ToString(); }
         }
 
-        public List<SqlParameter> SqlCeParameters
+        public List<DbParameter> SqlParameters
         {
             get { return _sqlParameters; }
         }
@@ -185,43 +186,11 @@
             AppendTable(typeof(E).Name, prefixWithFromKeyword);
         }
 
-        public void AppendWhereColumns(List<WhereClauseColumn> whereClause)
-        {
-            _sqlQueryString.AppendLine("WHERE");
-            foreach (WhereClauseColumn whereColumn in whereClause)
-            {
-                string whereColumnName = whereColumn.ColumnName;
-                if (whereColumn.UseParameter)
-                {
-                    string parameterName = string.Format("@{0}", DataShaper.GetUniqueIdentifier());
-                    if (SqlParameterExists(_sqlParameters, parameterName))
-                    {
-                        throw new Exception(string.Format("Parameter with name {0} already added for where column {1}.", whereColumnName));
-                    }
-                    _sqlParameters.Add(new SqlParameter(parameterName, whereColumn.ColumnValue));
-                    _sqlQueryString.Append(string.Format("[{0}] {1} {2}", 
-                        whereColumnName, 
-                        whereColumn.ComparisonOperator.ToString(),
-                        parameterName));
-                }
-                else
-                {
-                    string value = whereColumn.WrapValueWithQuotes ? string.Format("''", whereColumn.ColumnValue) : string.Format("{0}", whereColumn.ColumnValue);
-                    _sqlQueryString.Append(string.Format("[{0}] {1} {2}", whereColumnName, whereColumn.ComparisonOperator.ToString(), value));
-                }
-                if (whereColumn.LogicalOperatorAgainstNextColumn == null)
-                {
-                    _sqlQueryString.Append("");
-                    break;
-                }
-                _sqlQueryString.AppendLine(string.Format(" {0}", whereColumn.LogicalOperatorAgainstNextColumn.ToString()));
-            }
-            whereClause.ForEach(w => _whereClause.Add(w));
-        }
+        public abstract void AppendWhereColumns(List<WhereClauseColumn> whereClause);
 
-        public bool SqlParameterExists(List<SqlParameter> sqlParameters, string parameterName)
+        public bool SqlParameterExists(List<DbParameter> sqlParameters, string parameterName)
         {
-            foreach (SqlParameter p in sqlParameters)
+            foreach (DbParameter p in sqlParameters)
             {
                 if (p.ParameterName == parameterName)
                 {

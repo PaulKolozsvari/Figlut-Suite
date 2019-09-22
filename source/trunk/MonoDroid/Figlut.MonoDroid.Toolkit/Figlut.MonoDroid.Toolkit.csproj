@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -50,6 +50,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Data\DB\SQLServer\SqliteDatabaseTableBase.cs" />
     <Compile Include="Resources\Resource.designer.cs" />
     <Compile Include="Utilities\Logging\LogError.cs" />
     <Compile Include="Utilities\Logging\Logger.cs" />
@@ -83,12 +84,11 @@
     <Compile Include="Data\DB\SQLQuery\WhereClauseColumn.cs" />
     <Compile Include="Data\DB\SQLQuery\WhereClauseComparisonOperator.cs" />
     <Compile Include="Data\DB\SQLQuery\WhereClauseLogicalOperator.cs" />
-    <Compile Include="Data\DB\SQLServer\SqlDatabase.cs" />
-    <Compile Include="Data\DB\SQLServer\SqlDatabaseTable.cs" />
-    <Compile Include="Data\DB\SQLServer\SqlDatabaseTableBase.cs" />
-    <Compile Include="Data\DB\SQLServer\SqlDatabaseTableColumn.cs" />
-    <Compile Include="Data\DB\SQLServer\SqlTypeConversionInfo.cs" />
-    <Compile Include="Data\DB\SQLServer\SqlTypeConverter.cs" />
+    <Compile Include="Data\DB\SQLServer\SqliteDatabase.cs" />
+    <Compile Include="Data\DB\SQLServer\SqliteDatabaseTable.cs" />
+    <Compile Include="Data\DB\SQLServer\SqliteDatabaseTableColumn.cs" />
+    <Compile Include="Data\DB\SQLServer\SqliteTypeConversionInfo.cs" />
+    <Compile Include="Data\DB\SQLServer\SqliteTypeConverter.cs" />
     <Compile Include="Data\EntityCache.cs" />
     <Compile Include="Data\EntityCacheBase.cs" />
     <Compile Include="Data\EntityCacheUnique.cs" />
@@ -142,7 +142,7 @@
     <Compile Include="Utilities\WaitProcess.cs" />
     <Compile Include="Utilities\Information.cs" />
     <Compile Include="Utilities\Serialization\DataTableConverter.cs" />
-    <Compile Include="Data\DB\SQLServer\SqlDatabaseSchemaFile.cs" />
+    <Compile Include="Data\DB\SQLServer\SqliteDatabaseSchemaFile.cs" />
     <Compile Include="ColorName.cs" />
     <Compile Include="Data\DB\SQLQuery\SqlQuery.cs" />
     <Compile Include="Data\DB\SqliteDataManagerHelper.cs" />
@@ -176,11 +176,5 @@
     <AndroidResource Include="Resources\values\Strings.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
-  <ItemGroup>
-    <Folder Include="Utilities\" />
-    <Folder Include="Data\DB\Sqlite\" />
-    <Folder Include="Utilities\Email\" />
-    <Folder Include="Utilities\FTP\" />
-    <Folder Include="Utilities\SettingsFile\Default\" />
-  </ItemGroup>
+  <ItemGroup />
 </Project>

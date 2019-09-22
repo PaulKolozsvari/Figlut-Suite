@@ -14,15 +14,15 @@
     /// http://msdn.microsoft.com/library/ms254969.aspx
     /// </summary>
     [Serializable]
-    public class SqlDatabaseTableColumn : DatabaseTableColumn
+    public class SqliteDatabaseTableColumn : DatabaseTableColumn
     {
         #region Constructors
 
-        public SqlDatabaseTableColumn()
+        public SqliteDatabaseTableColumn()
         {
         }
 
-        public SqlDatabaseTableColumn(DataRow schemaRow) : base(schemaRow)
+        public SqliteDatabaseTableColumn(DataRow schemaRow) : base(schemaRow)
         {
         }
 
@@ -63,7 +63,7 @@
             _columnDefault = schemaRow[COLUMN_DEFAULT_SCHEMA_ATTRIBUTE].ToString();
             _isNullable = schemaRow[IS_NULLABLE_SCHEMA_ATTRIBUTE].ToString();
             _dataType = schemaRow[DATA_TYPE_SCHEMA_ATTRIBUTE].ToString();
-            _sqlDbType = SqlTypeConverter.Instance.GetSqlDbType(_dataType);
+            _sqlDbType = SqliteTypeConverter.Instance.GetSqlDbType(_dataType);
         }
 
         #endregion //Methods

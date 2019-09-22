@@ -16,6 +16,11 @@
     {
         #region Methods
 
+        public static bool IsTypeIsNullable(Type type)
+        {
+            return type.IsGenericType && type.GetGenericTypeDefinition() == typeof(Nullable<>);
+        }
+
         public static DataTable GetDataTable(bool shapeColumnNames, Type entityType)
         {
             return GetDataTable(shapeColumnNames, entityType, null);
@@ -88,7 +93,12 @@
 
         public static bool PropertyExists(string propertyName, object entity)
         {
-            foreach (PropertyInfo p in entity.GetType().GetProperties())
+            return PropertyExists(propertyName, entity.GetType());
+        }
+
+        public static bool PropertyExists(string propertyName, Type entityType)
+        {
+            foreach (PropertyInfo p in entityType.GetProperties())
             {
                 if (p.Name == propertyName)
                 {

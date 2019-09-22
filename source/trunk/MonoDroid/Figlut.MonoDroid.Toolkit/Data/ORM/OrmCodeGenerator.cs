@@ -53,7 +53,7 @@ namespace Figlut.MonoDroid.Toolkit.Data.ORM
                 string dataTypeName = row[DATA_TYPE_NAME_SCHEMA_ATTRIBUTE].ToString();
                 type.CreateOrmProperty(
                     columnName, 
-                    SqlTypeConverter.Instance.GetDotNetType(dataTypeName, isNullable), 
+                    SqliteTypeConverter.Instance.GetDotNetType(dataTypeName, isNullable), 
                     System.Reflection.PropertyAttributes.HasDefault);
             }
             Type result = type.CreateType();

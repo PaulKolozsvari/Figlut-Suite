@@ -51,7 +51,7 @@
                 string dataTypeName = r[DATA_TYPE_NAME_SCHEMA_ATTRIBUTE].ToString();
                 result.CreateOrmProperty(
                     columnName,
-                    SqlTypeConverter.Instance.GetDotNetType(dataTypeName, isNullable));
+                    SqliteTypeConverter.Instance.GetDotNetType(dataTypeName, isNullable));
             }
             result.CreateType();
             return result;
