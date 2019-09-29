@@ -52,7 +52,11 @@
         /// <summary>
         /// IS NOT
         /// </summary>
-        IS_NOT
+        IS_NOT,
+        /// <summary>
+        /// LIKE
+        /// </summary>
+        LIKE
     }
 
     /// <summary>
@@ -121,6 +125,7 @@
             result.Add(ComparisonOperator.NOT_GREATER_THAN.ToString(), "!>");
             result.Add(ComparisonOperator.IS.ToString(), "IS");
             result.Add(ComparisonOperator.IS_NOT.ToString(), "IS_NOT");
+            result.Add(ComparisonOperator.LIKE.ToString(), "LIKE");
             return result;
         }
 

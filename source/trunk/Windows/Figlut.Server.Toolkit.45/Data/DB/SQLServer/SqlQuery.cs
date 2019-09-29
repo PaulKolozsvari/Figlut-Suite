@@ -53,7 +53,7 @@
                 }
                 else
                 {
-                    string value = whereColumn.WrapValueWithQuotes ? string.Format("''", whereColumn.ColumnValue) : string.Format("{0}", whereColumn.ColumnValue);
+                    string value = whereColumn.WrapValueWithQuotes ? $"'{whereColumn.ColumnValue}'" : $"{whereColumn.ColumnValue}";
                     _sqlQueryString.Append(string.Format("[{0}] {1} {2}", whereColumnName, whereColumn.ComparisonOperator.ToString(), value));
                 }
                 if (whereColumn.LogicalOperatorAgainstNextColumn == null)
