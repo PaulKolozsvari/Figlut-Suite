@@ -218,6 +218,49 @@
             return result;
         }
 
+        public bool TableExistsInDatabase(
+            string tableName,
+            bool disposeConnectionAfterExecute,
+            DbConnection connection,
+            DbTransaction transaction)
+        {
+            bool result = false;
+            try
+            {
+                if (connection == null)
+                {
+                    connection = new SQLiteConnection(_connectionString);
+                }
+                if (connection.State != ConnectionState.Open)
+                {
+                    connection.Open();
+                }
+                string sqlQuery = $"SELECT name FROM sqlite_master WHERE type='table' AND name='{tableName}';";
+                using (SQLiteCommand command = new SQLiteCommand(sqlQuery, (SQLiteConnection)connection))
+                {
+                    if (transaction != null)
+                    {
+                        command.Transaction = (SQLiteTransaction)transaction;
+                    }
+                    command.CommandType = System.Data.CommandType.Text;
+                    using (SQLiteDataReader reader = command.ExecuteReader())
+                    {
+                        result = reader.Read();
+                    }
+                }
+            }
+            finally
+            {
+                if (disposeConnectionAfterExecute &&
+                    connection != null &&
+                    connection.State != ConnectionState.Closed)
+                {
+                    connection.Dispose();
+                }
+            }
+            return result;
+        }
+
         public override List<object> Query(
             Query query, 
             Type entityType, 
