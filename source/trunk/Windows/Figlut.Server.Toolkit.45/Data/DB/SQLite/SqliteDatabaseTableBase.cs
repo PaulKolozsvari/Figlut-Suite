@@ -881,7 +881,8 @@
             foreach (PropertyInfo p in entityType.GetProperties())
             {
                 if (p.PropertyType == typeof(IntPtr) ||
-                    p.PropertyType == typeof(UIntPtr))
+                    p.PropertyType == typeof(UIntPtr) ||
+                    (p.PropertyType.IsGenericType && p.PropertyType.GetGenericTypeDefinition() == typeof(List<>)))
                 {
                     continue;
                 }
