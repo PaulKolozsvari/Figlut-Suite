@@ -910,6 +910,11 @@
             return resultString;
         }
 
+        public override string GetSqlDropTableScript()
+        {
+            return string.Format("DROP TABLE IF EXISTS {0}", _tableName);
+        }
+
         public override string GetSqlCreateCompositeIndexonAllColumns(string indexName)
         {
             StringBuilder result = new StringBuilder();

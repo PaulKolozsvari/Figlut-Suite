@@ -188,6 +188,8 @@
 
         public abstract string GetSqlCreateTableScript();
 
+        public abstract string GetSqlDropTableScript();
+
         public abstract string GetSqlCreateCompositeIndexonAllColumns(string indexName);
 
         public abstract List<string> GetSqlCreateSeparateIndecesOnAllColumns();
