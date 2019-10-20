@@ -34,7 +34,15 @@
 
         public override void AppendWhereColumns(List<WhereClauseColumn> whereClause)
         {
-            _sqlQueryString.AppendLine("WHERE");
+            AppendWhereColumns(whereClause, true);
+        }
+
+        public override void AppendWhereColumns(List<WhereClauseColumn> whereClause, bool appendWhereStatement)
+        {
+            if (appendWhereStatement)
+            {
+                _sqlQueryString.AppendLine("WHERE");
+            }
             foreach (WhereClauseColumn whereColumn in whereClause)
             {
                 string whereColumnName = whereColumn.ColumnName;
@@ -64,6 +72,23 @@
                 _sqlQueryString.AppendLine(string.Format(" {0}", whereColumn.LogicalOperatorAgainstNextColumn.ToString()));
             }
             whereClause.ForEach(w => _whereClause.Add(w));
+        }
+
+        public override void AppendWhereClause(WhereClause whereClause)
+        {
+            _sqlQueryString.AppendLine("WHERE");
+            foreach (WhereClauseParanthesis p in whereClause)
+            {
+                _sqlQueryString.Append("(");
+                AppendWhereColumns(p.WhereClauseColumns, false);
+                _sqlQueryString.Append(")");
+                if (p.LogicalOperatorAgainstNextParanthesis == null)
+                {
+                    _sqlQueryString.Append("");
+                    break;
+                }
+                _sqlQueryString.AppendLine(string.Format(" {0}", p.LogicalOperatorAgainstNextParanthesis.ToString()));
+            }
         }
 
         #endregion //Methods

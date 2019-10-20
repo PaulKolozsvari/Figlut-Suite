@@ -188,6 +188,10 @@
 
         public abstract void AppendWhereColumns(List<WhereClauseColumn> whereClause);
 
+        public abstract void AppendWhereColumns(List<WhereClauseColumn> whereClause, bool appendWhereStatement);
+
+        public abstract void AppendWhereClause(WhereClause whereClause);
+
         public bool SqlParameterExists(List<DbParameter> sqlParameters, string parameterName)
         {
             foreach (DbParameter p in sqlParameters)

@@ -200,6 +200,8 @@
     <Compile Include="Data\DB\SQLite\SqliteQuery.cs" />
     <Compile Include="Data\DB\SQLite\SqliteTypeConversionInfo.cs" />
     <Compile Include="Data\DB\SQLite\SqliteTypeConverter.cs" />
+    <Compile Include="Data\DB\SQLQuery\WhereClause.cs" />
+    <Compile Include="Data\DB\SQLQuery\WhereClauseParanthesis.cs" />
     <Compile Include="Data\DB\SQLServer\SqlDatabaseSchemaFile.cs" />
     <Compile Include="Data\DB\SQLServer\SqlConnectionExtensions.cs" />
     <Compile Include="Data\DB\Dbms.cs" />
