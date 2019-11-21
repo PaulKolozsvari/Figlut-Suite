@@ -329,7 +329,7 @@
             body = body ?? string.Empty;
             if (appendHostNameToEmailBody)
             {
-                string hostname = Information.GetDomainAndMachineName();
+                string hostname = Information.GetWindowsDomainAndMachineName();
                 StringBuilder editedBody = new StringBuilder();
                 editedBody.AppendLine(body);
                 editedBody.AppendLine();

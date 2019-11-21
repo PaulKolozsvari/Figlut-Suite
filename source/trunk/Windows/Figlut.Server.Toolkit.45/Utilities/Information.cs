@@ -13,6 +13,7 @@
     using System.Collections;
     using Microsoft.Win32;
     using System.Threading;
+    using System.Management;
 
     #endregion //Using Directives
 
@@ -55,9 +56,30 @@
             return result;
         }
 
-        public static string GetDomainAndMachineName()
+        public static string GetWindowsDomainAndMachineName()
         {
-            return string.Format("{0}.{1}", Environment.UserDomainName, Environment.MachineName);
+            string machinerDomainName = GetWindowsMachineDomainName(Environment.MachineName);
+            return string.Format(@"{0}\{1}", machinerDomainName, Environment.MachineName);
+        }
+
+        internal static string GetWindowsMachineDomainName(string machineName)
+        {
+            try
+            {
+                ManagementObject cs = null;
+                string key = $"Win32_ComputerSystem.Name='{machineName}'";
+                string result = null;
+                using (cs = new ManagementObject(key))
+                {
+                    cs.Get();
+                    result = cs["domain"].ToString();
+                }
+                return result;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception($"Could not get the domain name to which the machine {machineName} belongs to: {ex.Message}.", ex);
+            }
         }
 
         public string GetWindowsMachineId()
