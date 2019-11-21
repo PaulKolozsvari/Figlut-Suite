@@ -49,6 +49,10 @@
                 if (whereColumn.UseParameter)
                 {
                     string parameterName = string.Format("@{0}", DataShaper.GetUniqueIdentifier());
+                    if (whereColumn.ComparisonOperator.Value == "IN")
+                    {
+                        parameterName = $"({parameterName})";
+                    }
                     if (SqlParameterExists(_sqlParameters, parameterName))
                     {
                         throw new Exception(string.Format("Parameter with name {0} already added for where column {1}.", whereColumnName));
@@ -62,6 +66,10 @@
                 else
                 {
                     string value = whereColumn.WrapValueWithQuotes ? $"'{whereColumn.ColumnValue}'" : $"{whereColumn.ColumnValue}";
+                    if (whereColumn.ComparisonOperator.Value == "IN")
+                    {
+                        value = $"({value})";
+                    }
                     _sqlQueryString.Append(string.Format("[{0}] {1} {2}", whereColumnName, whereColumn.ComparisonOperator.ToString(), value));
                 }
                 if (whereColumn.LogicalOperatorAgainstNextColumn == null)

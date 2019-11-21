@@ -41,33 +41,40 @@
 
         public static bool HandleException(Exception exception)
         {
-            return HandleException(exception, null, null, null, true);
+            return HandleException(exception, out string emailErrorMessage, out string emailLogErrorMessage);
         }
 
-        public static bool HandleException(Exception exception, bool emailException)
+        public static bool HandleException(Exception exception, out string emailErrorMessage, out string emailLogMessageText)
         {
-            return HandleException(exception, null, null, null, emailException);
+            return HandleException(exception, null, null, null, true, out emailErrorMessage, out emailLogMessageText);
         }
 
-        public static bool HandleException(Exception exception, string eventDetailsMessage)
+        public static bool HandleException(Exception exception, bool emailException, out string emailErrorMessage, out string emailLogMessageText)
         {
-            return HandleException(exception, null, null, eventDetailsMessage, true);
+            return HandleException(exception, null, null, null, emailException, out emailErrorMessage, out emailLogMessageText);
         }
 
-        public static bool HandleException(Exception exception, string eventDetailsMessage, bool emailException)
+        public static bool HandleException(Exception exception, string eventDetailsMessage, out string emailErrorMessage, out string emailLogMessageText)
         {
-            return HandleException(exception, null, null, eventDetailsMessage, emailException);
+            return HandleException(exception, null, null, eventDetailsMessage, true, out emailErrorMessage, out emailLogMessageText);
         }
 
-        public static bool HandleException(Exception exception, Form form, KeyEventHandler keyEventHandler, string eventDetailsMessage)
+        public static bool HandleException(Exception exception, string eventDetailsMessage, bool emailException, out string emailErrorMessage, out string emailLogMessageText)
         {
-            return HandleException(exception, form, keyEventHandler, eventDetailsMessage, true);
+            return HandleException(exception, null, null, eventDetailsMessage, emailException, out emailErrorMessage, out emailLogMessageText);
         }
 
-        public static bool HandleException(Exception exception, Form form, KeyEventHandler keyEventHandler, string eventDetailsMessage, bool emailException)
+        public static bool HandleException(Exception exception, Form form, KeyEventHandler keyEventHandler, string eventDetailsMessage, out string emailErrorMessage, out string emailLogMessageText)
+        {
+            return HandleException(exception, form, keyEventHandler, eventDetailsMessage, true, out emailErrorMessage, out emailLogMessageText);
+        }
+
+        public static bool HandleException(Exception exception, Form form, KeyEventHandler keyEventHandler, string eventDetailsMessage, bool emailException, out string emailErrorMessage, out string emailLogMessageText)
         {
             try
             {
+                emailErrorMessage = string.Empty;
+                emailLogMessageText = string.Empty;
                 bool closeApplication = false;
                 if (exception == null)
                 {
@@ -100,7 +107,7 @@
                             EntityReader<GOC>.GetPropertyName(p => p.SendEmailOnException, false),
                             EntityReader<GOC>.GetPropertyName(p => p.EmailClient, false)));
                     }
-                    GOC.Instance.EmailClient.SendExceptionEmailNotification(exception, out string errorMessage, GOC.Instance.AppendHostNameToExceptionEmails);
+                    GOC.Instance.EmailClient.SendExceptionEmailNotification(exception, out emailErrorMessage, out emailLogMessageText, GOC.Instance.AppendHostNameToExceptionEmails);
                 }
                 return closeApplication;
             }
@@ -109,6 +116,8 @@
                 Exception wrappedException = new Exception(ex.Message, exception);
                 Console.WriteLine(LogError.GetErrorMessageFromException(new Exception(ex.Message, exception), eventDetailsMessage));
                 GOC.Instance.Logger.LogMessageToFile(new LogError(wrappedException, eventDetailsMessage, LoggingLevel.Minimum));
+                emailErrorMessage = string.Empty;
+                emailLogMessageText = string.Empty;
                 return true;
             }
         }

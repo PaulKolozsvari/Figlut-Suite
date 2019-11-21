@@ -78,6 +78,13 @@
 
         #endregion //Constructors
 
+        #region Constants
+
+        protected const string STARTED = "Started";
+        protected const string STOPPED = "Stopped";
+
+        #endregion //Constants
+
         #region Events
 
         public event OnDailyJobFeedBack OnDailyJobStarted;
@@ -168,7 +175,7 @@
             {
                 _waitTimeBeforeStart = _nextExecutionDateTime.Subtract(currentDateTime);
             }
-            _nextExecutionDateTime = currentDateTime.Add(_waitTimeBeforeStart); //The sub class till have to update its settings/database with the next execution time.
+            _nextExecutionDateTime = currentDateTime.Add(_waitTimeBeforeStart); //The sub class will have to update its settings/database with the next execution time.
             if (_timer == null)
             {
                 _timer = new System.Threading.Timer(TimerElapsed, null, _waitTimeBeforeStart, new TimeSpan(0, 0, 0, 0, -1)); //Will run once off.

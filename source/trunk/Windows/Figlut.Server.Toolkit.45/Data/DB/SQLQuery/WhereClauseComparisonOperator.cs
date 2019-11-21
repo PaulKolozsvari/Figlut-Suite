@@ -56,7 +56,11 @@
         /// <summary>
         /// LIKE
         /// </summary>
-        LIKE
+        LIKE,
+        /// <summary>
+        /// IN
+        /// </summary>
+        IN
     }
 
     /// <summary>
@@ -126,6 +130,7 @@
             result.Add(ComparisonOperator.IS.ToString(), "IS");
             result.Add(ComparisonOperator.IS_NOT.ToString(), "IS_NOT");
             result.Add(ComparisonOperator.LIKE.ToString(), "LIKE");
+            result.Add(ComparisonOperator.IN.ToString(), "IN");
             return result;
         }
 

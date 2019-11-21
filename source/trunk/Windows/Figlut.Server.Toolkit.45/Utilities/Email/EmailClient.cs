@@ -317,11 +317,13 @@
             List<EmailNotificationRecipient> emailRecipients,
             string logoImageFilePath,
             out string errorMessage,
+            out string emailLogMessageText,
             bool appendHostNameToEmailBody)
         {
             if (!_emailNotificationsEnabled)
             {
                 errorMessage = $"{nameof(EmailNotificationsEnabled)} set to {false.ToString()}.";
+                emailLogMessageText = string.Empty;
                 return false;
             }
             body = body ?? string.Empty;
@@ -357,7 +359,7 @@
                                 AddAttachments(email, attachmentFileNames, attachmentStreams, logoImageFilePath, isHtml, body, out body);
                             }
                             client.Send(email);
-                            LogEmailNotification(email, subject);
+                            LogEmailNotification(email, subject, out emailLogMessageText);
                         }
                         finally
                         {
@@ -379,15 +381,16 @@
                 {
                     throw;
                 }
-                ExceptionHandler.HandleException(ex, false); //If emailing failed, then specify that the ExceptionHandler should not try to send the email exception as it would be futile and would result in overflow stack due to cyclic redundancy between ExceptionHandler and EmailClient.
                 errorMessage = ex.Message;
+                emailLogMessageText = string.Empty;
+                ExceptionHandler.HandleException(ex, false, out errorMessage, out emailLogMessageText); //If emailing failed, then specify that the ExceptionHandler should not try to send the email exception as it would be futile and would result in overflow stack due to cyclic redundancy between ExceptionHandler and EmailClient.
                 return false;
             }
             errorMessage = null;
             return true;
         }
 
-        public bool SendExceptionEmailNotification(Exception exception, out string errorMessage, bool appendHostNameToEmailBody)
+        public bool SendExceptionEmailNotification(Exception exception, out string errorMessage, out string emailLogMessageText, bool appendHostNameToEmailBody)
         {
             StringBuilder message = new StringBuilder();
             message.AppendLine(exception.Message);
@@ -397,14 +400,15 @@
             }
             message.AppendLine(exception.StackTrace);
             string exceptionMessage = message.ToString();
-            return SendEmail(EmailCategory.Error, _exceptionEmailSubject, exceptionMessage, null, false, null, null, out errorMessage, appendHostNameToEmailBody);
+            return SendEmail(EmailCategory.Error, _exceptionEmailSubject, exceptionMessage, null, false, null, null, out errorMessage, out emailLogMessageText, appendHostNameToEmailBody);
         }
 
-        private void LogEmailNotification(MailMessage email, string subject)
+        private bool LogEmailNotification(MailMessage email, string subject, out string logMessageText)
         {
             if (!_emailLoggingEnabled)
             {
-                return;
+                logMessageText = null;
+                return false;
             }
             StringBuilder logMessage = new StringBuilder();
             logMessage.AppendLine("Email notification Sent");
@@ -423,8 +427,9 @@
             logMessage.AppendLine();
             logMessage.AppendLine("BCC:");
             email.Bcc.ToList().ForEach(p => logMessage.AppendLine(p.Address));
-            string logMessageText = logMessage.ToString();
+            logMessageText = logMessage.ToString();
             GOC.Instance.Logger.LogMessage(new LogMessage(logMessageText, LogMessageType.Information, LoggingLevel.Maximum));
+            return true;
         }
 
         private string GetEmailRecipientsCsv(MailMessage email)
@@ -443,12 +448,12 @@
 
         public bool SendTestEmail(out string errorMessage, bool appendHostNameToEmailBody)
         {
-            return SendEmail(EmailCategory.Notification, "Test Email", "This is a test email.", null, false, null, null, out errorMessage, appendHostNameToEmailBody);
+            return SendEmail(EmailCategory.Notification, "Test Email", "This is a test email.", null, false, null, null, out errorMessage, out string emailLogMessageText, appendHostNameToEmailBody);
         }
 
         public bool SendTestEmail(string subject, string body, out string errorMessage, bool appendHostNameToEmailBody)
         {
-            return SendEmail(EmailCategory.Notification, subject, body, null, false, null, null, out errorMessage, appendHostNameToEmailBody);
+            return SendEmail(EmailCategory.Notification, subject, body, null, false, null, null, out errorMessage, out string emailLogMessageText, appendHostNameToEmailBody);
         }
 
         #endregion //Methods

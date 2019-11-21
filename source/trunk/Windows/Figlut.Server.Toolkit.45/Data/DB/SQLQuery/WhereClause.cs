@@ -24,7 +24,7 @@
 
         #region Fields
 
-        public List<WhereClauseParanthesis> _whereClauseParanthesisList;
+        private List<WhereClauseParanthesis> _whereClauseParanthesisList;
 
         #endregion //Fields
 
