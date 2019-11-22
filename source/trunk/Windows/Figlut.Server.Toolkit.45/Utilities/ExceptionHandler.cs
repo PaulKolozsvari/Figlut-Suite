@@ -107,7 +107,7 @@
                             EntityReader<GOC>.GetPropertyName(p => p.SendEmailOnException, false),
                             EntityReader<GOC>.GetPropertyName(p => p.EmailClient, false)));
                     }
-                    GOC.Instance.EmailClient.SendExceptionEmailNotification(exception, out emailErrorMessage, out emailLogMessageText, GOC.Instance.AppendHostNameToExceptionEmails);
+                    GOC.Instance.EmailClient.SendExceptionEmailNotification(exception, out emailErrorMessage, out emailLogMessageText, GOC.Instance.AppendHostNameToExceptionEmails, eventDetailsMessage);
                 }
                 return closeApplication;
             }

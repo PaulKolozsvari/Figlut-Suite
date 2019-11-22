@@ -390,7 +390,21 @@
             return true;
         }
 
-        public bool SendExceptionEmailNotification(Exception exception, out string errorMessage, out string emailLogMessageText, bool appendHostNameToEmailBody)
+        public bool SendExceptionEmailNotification(
+            Exception exception,
+            out string errorMessage,
+            out string emailLogMessageText,
+            bool appendHostNameToEmailBody)
+        {
+            return SendExceptionEmailNotification(exception, out errorMessage, out emailLogMessageText, appendHostNameToEmailBody, null);
+        }
+
+        public bool SendExceptionEmailNotification(
+            Exception exception, 
+            out string errorMessage, 
+            out string emailLogMessageText,
+            bool appendHostNameToEmailBody,
+            string eventDetailsMessage)
         {
             StringBuilder message = new StringBuilder();
             message.AppendLine(exception.Message);
@@ -399,6 +413,13 @@
                 message.AppendLine(string.Format("Inner Exception : {0}", exception.InnerException.ToString()));
             }
             message.AppendLine(exception.StackTrace);
+            if (!string.IsNullOrEmpty(eventDetailsMessage))
+            {
+                message.AppendLine();
+                message.AppendLine("*** Event Details ***");
+                message.AppendLine();
+                message.AppendLine(eventDetailsMessage);
+            }
             string exceptionMessage = message.ToString();
             return SendEmail(EmailCategory.Error, _exceptionEmailSubject, exceptionMessage, null, false, null, null, out errorMessage, out emailLogMessageText, appendHostNameToEmailBody);
         }
