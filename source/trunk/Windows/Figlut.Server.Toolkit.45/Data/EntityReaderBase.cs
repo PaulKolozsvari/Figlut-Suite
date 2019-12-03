@@ -229,6 +229,10 @@
                 {
                     //do nothing, leave value as null.
                 }
+                else if (p.PropertyType == typeof(string))
+                {
+                    value = row[c.ColumnName].ToString();
+                }
                 else if (p.PropertyType == typeof(Guid))
                 {
                     value = new Guid(row[c.ColumnName].ToString());
