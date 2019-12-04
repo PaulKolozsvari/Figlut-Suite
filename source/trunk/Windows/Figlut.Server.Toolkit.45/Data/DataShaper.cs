@@ -285,6 +285,79 @@
         }
 
         /// <summary>
+        /// Gets a list of strings from the start string to the end string by incrementing the numeric part of the start string until the end string
+        /// e.g. if the startString is B009 and end string is B012, the result list will contain strings B009, B010, B011 and B012. It will not increment
+        /// the letters in the string if the numeric part rolls over, but instead it will expand the length of the numeric part e.g. If the startString is
+        /// B9 and the endString is B12, the result list will contain the strings B9, B10, B11 and B12.
+        /// </summary>
+        /// <param name="startString"></param>
+        /// <param name="endString"></param>
+        /// <returns></returns>
+        public static List<string> GetNumericStringRange(string startString, string endString)
+        {
+            if (IsUnicodeStringGreaterThan(startString, endString))
+            {
+                throw new Exception(string.Format("Start string '{0}' may not be greater than End string '{1}' when specifying a string range.",
+                    startString,
+                    endString));
+            }
+            string numericPartStart = GetNumericPartOfString(startString, out int startInt);
+            string numericPartEnd = GetNumericPartOfString(endString, out int endInt);
+            List<string> result = new List<string>() { startString };
+            string nextString = startString;
+            int nextInt = startInt;
+            while (nextInt < endInt) //i.e. while the next string is smaller than the endString, keep incrementing and adding nextString to the result.
+            {
+                nextString = IncrementNumericPartOfString(nextString, out nextInt);
+                result.Add(nextString);
+            }
+            return result;
+        }
+
+        public const string ALPHA_REGEX_PATTERN = @"^[a-zA-Z]+";
+        /// <summary>
+        /// Increments the numeric part of a string e.g. if the input is B009, the incremented output will be B010.
+        /// </summary>
+        /// <param name="input"></param>
+        /// <param name="nextNumber"></param>
+        /// <returns></returns>
+        public static string IncrementNumericPartOfString(string input, out int nextNumber)
+        {
+            string alphaPart = Regex.Match(input, ALPHA_REGEX_PATTERN).Value;
+            string numberPart = Regex.Replace(input, ALPHA_REGEX_PATTERN, string.Empty);
+            int number = int.Parse(numberPart);
+            nextNumber = number + 1;
+            int length = numberPart.Length;
+            length = nextNumber / (Math.Pow(10, length)) == 1 ? length + 1 : length;
+            string result = alphaPart + nextNumber.ToString("D" + length);
+            return result;
+        }
+
+        /// <summary>
+        /// Gets the alphabetic part of string i.e. all the letters without the numbers.
+        /// </summary>
+        /// <param name="input"></param>
+        /// <returns></returns>
+        public static string GetAplhaPartOfString(string input)
+        {
+            return Regex.Match(input, ALPHA_REGEX_PATTERN).Value;
+        }
+
+        /// <summary>
+        /// Gets the numeric (integer) part of a string i.e. all the numbers without the letters.
+        /// </summary>
+        /// <param name="input"></param>
+        /// <param name="number"></param>
+        /// <returns></returns>
+        public static string GetNumericPartOfString(string input, out int number)
+        {
+            string pattern = ALPHA_REGEX_PATTERN;
+            string result = Regex.Replace(input, ALPHA_REGEX_PATTERN, "");
+            number = int.Parse(result);
+            return result;
+        }
+
+        /// <summary>
         /// Compares two strings, by treating them like numbers as per the UTF/ASCII table i.e. ABC is smaller than ABD.
         /// Default .NET encoding for a char is UTF-16 (2 byte/16 bit)
         /// FYI: http://csharpindepth.com/Articles/General/Unicode.aspx
@@ -345,6 +418,114 @@
         }
 
         /// <summary>
+        /// Gets a list of all the characters from lower case a - z and then 0 - 9.
+        /// </summary>
+        /// <returns>Returns a list of all the characters from lower case a - z and then 0 - 9.</returns>
+        public static List<char> GetValidAlphaNumericRangeCharacters()
+        {
+            List<char> result = new List<char>()
+            {
+                'a',
+                'b',
+                'c',
+                'd',
+                'e',
+                'f',
+                'g',
+                'g',
+                'i',
+                'j',
+                'k',
+                'l',
+                'm',
+                'n',
+                'o',
+                'p',
+                'q',
+                'r',
+                's',
+                't',
+                'v',
+                'v',
+                'w',
+                'x',
+                'y',
+                'z',
+                '0',
+                '1',
+                '2',
+                '3',
+                '4',
+                '5',
+                '6',
+                '7',
+                '8',
+                '9'
+            };
+            return result;
+        }
+
+        /// <summary>
+        /// Gets a list of all the characters from lower case a - z.
+        /// </summary>
+        /// <returns>Returns a list of all the characters from lower case a - z.</returns>
+        public static List<char> GetValidAlphabetRangeCharacters()
+        {
+            List<char> result = new List<char>()
+            {
+                'a',
+                'b',
+                'c',
+                'd',
+                'e',
+                'f',
+                'g',
+                'g',
+                'i',
+                'j',
+                'k',
+                'l',
+                'm',
+                'n',
+                'o',
+                'p',
+                'q',
+                'r',
+                's',
+                't',
+                'v',
+                'v',
+                'w',
+                'x',
+                'y',
+                'z'
+            };
+            return result;
+        }
+
+        /// <summary>
+        /// Gets a list of all characters from 0 - 9.
+        /// </summary>
+        /// <returns>Returns a list of all characters from 0 - 9.</returns>
+        public static List<char> GetValidNumericRangeCharacters()
+        {
+            List<char> result = new List<char>()
+            {
+                '0',
+                '1',
+                '2',
+                '3',
+                '4',
+                '5',
+                '6',
+                '7',
+                '8',
+                '9'
+            };
+            return result;
+        }
+
+        /// <summary>
         /// Returns a range of unicode strings from the start string to the end string 
         /// For example, setting the start string to 1A and the end string to 2F it will return a range of: 1A, 1B, 1C ... 1Z, 20, 21, 22 ... 29, 2A, 2B, 2C ... 2F.
         /// </summary>
@@ -375,6 +556,7 @@
             }
             List<string> result = new List<string>() { startString };
             string nextString = startString;
+            ValidateInputUnicodeStringForIncrement(nextString, minimumChar, maximumChar, validCharacters);
             while (IsUnicodeStringGreaterThan(endString, nextString)) //i.e. while the next string is smaller than the endString, keep incrementing and adding nextString to the result.
             {
                 nextString = IncrementUnicodeString(nextString, minimumChar, maximumChar, validCharacters); //Increment the string to the next unicode string.
