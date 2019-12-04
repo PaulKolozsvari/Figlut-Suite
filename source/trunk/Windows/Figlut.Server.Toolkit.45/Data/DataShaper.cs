@@ -295,14 +295,18 @@
         /// <returns></returns>
         public static List<string> GetNumericStringRange(string startString, string endString)
         {
-            if (IsUnicodeStringGreaterThan(startString, endString))
-            {
-                throw new Exception(string.Format("Start string '{0}' may not be greater than End string '{1}' when specifying a string range.",
-                    startString,
-                    endString));
-            }
             string numericPartStart = GetNumericPartOfString(startString, out int startInt);
             string numericPartEnd = GetNumericPartOfString(endString, out int endInt);
+            string alphaPartStart = GetAplhaPartOfString(startString);
+            string alphaPartEnd = GetAplhaPartOfString(endString);
+            if (!alphaPartStart.Equals(alphaPartEnd))
+            {
+                throw new Exception("Alpha letters in start string need to match alpha letters in end string when creating numeric string range.");
+            }
+            if (startInt > endInt)
+            {
+                throw new Exception("Numeric part of start string needs to be less than numeric part of end string when creating numeric string range.");
+            }
             List<string> result = new List<string>() { startString };
             string nextString = startString;
             int nextInt = startInt;
