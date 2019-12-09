@@ -586,6 +586,23 @@
             return result;
         }
 
+        /// <summary>
+        /// Checks each character of a string to determine whether all characters are digits.
+        /// </summary>
+        /// <param name="input"></param>
+        /// <returns></returns>
+        public static bool IsStringOnlyDigits(string input)
+        {
+            foreach (char c in input.ToCharArray())
+            {
+                if (!Char.IsDigit(c))
+                {
+                    return false;
+                }
+            }
+            return true;
+        }
+
         #endregion //Methods
     }
 }
