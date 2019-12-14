@@ -130,11 +130,12 @@
         public virtual List<E> Query<E>(
             string columnName,
             object columnValue,
+            string propertyNameFilter,
             bool disposeConnectionAfterExecute,
             DbConnection connection,
             DbTransaction transaction) where E : class
         {
-            List<object> entities = Query(columnName, columnValue, typeof(E), disposeConnectionAfterExecute, connection, transaction);
+            List<object> entities = Query(columnName, columnValue, propertyNameFilter, typeof(E), disposeConnectionAfterExecute, connection, transaction);
             List<E> result = new List<E>();
             foreach (object o in entities)
             {
@@ -146,6 +147,7 @@
         public abstract List<object> Query(
             string columnName,
             object columnValue,
+            string propertyNameFilter,
             Type entityType,
             bool disposeConnectionAfterExecute,
             DbConnection connection,

@@ -185,23 +185,27 @@ using Figlut.Server.Toolkit.Web.Client.REST;
 
         public virtual void Add(K id, E e)
         {
-            if (_entities.ContainsKey(id))
+            if (!_entities.ContainsKey(id))
             {
-                throw new ArgumentException(string.Format(
-                    "An entity with the ID {0} already exists in this collection.",
-                    id));
+                //throw new ArgumentException(string.Format(
+                //    "An entity with the ID {0} already exists in this collection.",
+                //    id));
+                _entities.Add(id, e);
             }
-            _entities.Add(id, e);
-            _addedEntities.Add(id, e);
+            if (!_addedEntities.ContainsKey(id))
+            {
+                _addedEntities.Add(id, e);
+            }
         }
 
         public virtual void Delete(K id)
         {
             if (!_entities.ContainsKey(id))
             {
-                throw new NullReferenceException(string.Format(
-                    "Could not find entity with ID {0} in this collection to be deleted.",
-                    id));
+                //throw new NullReferenceException(string.Format(
+                //    "Could not find entity with ID {0} in this collection to be deleted.",
+                //    id));
+                return;
             }
             E e = _entities[id];
             _entities.Remove(id);
