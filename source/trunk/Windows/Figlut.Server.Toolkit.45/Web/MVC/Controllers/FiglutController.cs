@@ -319,6 +319,84 @@
             }
         }
 
+        protected virtual void GetConfirmationModelFromSearchParametersString(
+            string searchParametersString,
+            out string[] searchParameters,
+            out string searchText,
+            out Nullable<DateTime> startDate,
+            out Nullable<DateTime> endDate,
+            out string parentName,
+            out Nullable<Guid> parentId)
+        {
+            searchText = string.Empty;
+            startDate = null;
+            endDate = null;
+            searchParameters = searchParametersString.Split('|');
+            parentName = null;
+            parentId = null;
+            if (!string.IsNullOrEmpty(searchParametersString) && searchParameters.Length >= 5)
+            {
+                searchText = searchParameters[0];
+                DateTime startDateParsed;
+                DateTime endDateParsed;
+                if (DateTime.TryParse(searchParameters[1], out startDateParsed))
+                {
+                    startDate = startDateParsed;
+                }
+                if (DateTime.TryParse(searchParameters[2], out endDateParsed))
+                {
+                    endDate = endDateParsed;
+                }
+                parentName = searchParameters[3];
+                Guid entityIdGuid;
+                if (Guid.TryParse(searchParameters[4], out entityIdGuid))
+                {
+                    parentId = entityIdGuid;
+                }
+            }
+        }
+
+        protected virtual void GetConfirmationModelFromSearchParametersString(
+            string searchParametersString,
+            out string[] searchParameters,
+            out string searchText,
+            out Nullable<DateTime> startDate,
+            out Nullable<DateTime> endDate,
+            out Nullable<Guid> parentId,
+            out Nullable<Guid> secondParentId)
+        {
+            searchText = string.Empty;
+            startDate = null;
+            endDate = null;
+            searchParameters = searchParametersString.Split('|');
+            parentId = null;
+            secondParentId = null;
+            if (!string.IsNullOrEmpty(searchParametersString) && searchParameters.Length >= 5)
+            {
+                searchText = searchParameters[0];
+                DateTime startDateParsed;
+                DateTime endDateParsed;
+                if (DateTime.TryParse(searchParameters[1], out startDateParsed))
+                {
+                    startDate = startDateParsed;
+                }
+                if (DateTime.TryParse(searchParameters[2], out endDateParsed))
+                {
+                    endDate = endDateParsed;
+                }
+                Guid parentIdGuid;
+                if (Guid.TryParse(searchParameters[3], out parentIdGuid))
+                {
+                    parentId = parentIdGuid;
+                }
+                Guid secondParentIdGuid;
+                if (Guid.TryParse(searchParameters[4], out secondParentIdGuid))
+                {
+                    secondParentId = secondParentIdGuid;
+                }
+            }
+        }
+
         #endregion //Header Methods
 
         #endregion //Methods
