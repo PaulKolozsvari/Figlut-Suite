@@ -14,6 +14,16 @@
         #region Properties
 
         /// <summary>
+        /// A surrogate key which uniquely identifies the entity e.g. a GUID.
+        /// </summary>
+        public object SurrogateKey { get; set; }
+
+        /// <summary>
+        /// A value that uniquely identifies the entity.
+        /// </summary>
+        public object EntityIdentifier { get; set; }
+
+        /// <summary>
         /// The function which was being performed.
         /// </summary>
         public string Function { get; set; }

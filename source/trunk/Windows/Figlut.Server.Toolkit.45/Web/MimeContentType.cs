@@ -23,6 +23,7 @@
         public const string TEXT_PLAIN = "text/plain";
         public const string TEXT_HTML = "text/html";
         public const string BINARY = "application/octet-stream";
+        public const string FORM_DATA = "application/x-www-form-urlencoded";
 
         #region Custom Types
 

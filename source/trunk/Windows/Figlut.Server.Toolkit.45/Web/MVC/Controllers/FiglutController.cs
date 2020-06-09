@@ -325,6 +325,40 @@
             out string searchText,
             out Nullable<DateTime> startDate,
             out Nullable<DateTime> endDate,
+            out Nullable<Guid> parentId)
+        {
+            searchText = string.Empty;
+            startDate = null;
+            endDate = null;
+            searchParameters = searchParametersString.Split('|');
+            parentId = null;
+            if (!string.IsNullOrEmpty(searchParametersString) && searchParameters.Length >= 4)
+            {
+                searchText = searchParameters[0];
+                DateTime startDateParsed;
+                DateTime endDateParsed;
+                if (DateTime.TryParse(searchParameters[1], out startDateParsed))
+                {
+                    startDate = startDateParsed;
+                }
+                if (DateTime.TryParse(searchParameters[2], out endDateParsed))
+                {
+                    endDate = endDateParsed;
+                }
+                Guid entityIdGuid;
+                if (Guid.TryParse(searchParameters[3], out entityIdGuid))
+                {
+                    parentId = entityIdGuid;
+                }
+            }
+        }
+
+        protected virtual void GetConfirmationModelFromSearchParametersString(
+            string searchParametersString,
+            out string[] searchParameters,
+            out string searchText,
+            out Nullable<DateTime> startDate,
+            out Nullable<DateTime> endDate,
             out string parentName,
             out Nullable<Guid> parentId)
         {

@@ -100,7 +100,7 @@
         protected TransactionScopeOption _transactionScopeOption;
         protected TransactionOptions _transactionOptions;
         protected int _transactionDeadlockRetryAttempts;
-        private int _transactionDeadlockRetryWaitPeriod;
+        protected int _transactionDeadlockRetryWaitPeriod;
 
         #endregion //Fields
 
@@ -162,7 +162,7 @@
                     {
                         foreach (E e in entities)
                         {
-                            base.Save<E>(e, saveChildren).ForEach(c => HandleChange(c, userId, userName));
+                            base.Save<E>(e, null, saveChildren).ForEach(c => HandleChange(c, userId, userName));
                         }
                         t.Complete();
                     }
@@ -206,7 +206,7 @@
                     {
                         foreach (object e in entities)
                         {
-                            base.Save(entityType, e, false).ForEach(c => HandleChange(c, userId, userName));
+                            base.Save(entityType, e, null, false).ForEach(c => HandleChange(c, userId, userName));
                         }
                         t.Complete();
                     }
@@ -249,7 +249,7 @@
                     {
                         foreach (E e in entities)
                         {
-                            base.Insert<E>(e, false).ForEach(c => HandleChange(c, userId, userName)); 
+                            base.Insert<E>(e, null, false).ForEach(c => HandleChange(c, userId, userName)); 
                         }
                         t.Complete();
                     }
@@ -293,7 +293,7 @@
                     {
                         foreach (object e in entities)
                         {
-                            base.Insert(entityType, e, false).ForEach(c => HandleChange(c, userId, userName));
+                            base.Insert(entityType, e, null, false).ForEach(c => HandleChange(c, userId, userName));
                         }
                         t.Complete();
                     }
@@ -335,7 +335,7 @@
                     {
                         foreach (E e in entities)
                         {
-                            base.Delete<E>(e).ForEach(c => HandleChange(c, userId, userName));
+                            base.Delete<E>(e, null).ForEach(c => HandleChange(c, userId, userName));
                         }
                         t.Complete();
                     }
@@ -378,7 +378,7 @@
                     {
                         foreach (object e in entities)
                         {
-                            base.Delete(e).ForEach(c => HandleChange(c, userId, userName));
+                            base.Delete(e, null).ForEach(c => HandleChange(c, userId, userName));
                         }
                         t.Complete();
                     }
@@ -420,7 +420,7 @@
                     {
                         foreach (object keyValue in surrogateKeys)
                         {
-                            base.DeleteBySurrogateKey<E>(keyValue).ForEach(c => HandleChange(c, userId, userName));
+                            base.DeleteBySurrogateKey<E>(keyValue, null).ForEach(c => HandleChange(c, userId, userName));
                         }
                         t.Complete();
                     }
@@ -463,7 +463,7 @@
                     {
                         foreach (object key in surrogateKeys)
                         {
-                            base.DeleteBySurrogateKey(key, entityType).ForEach(c => HandleChange(c, userId, userName));
+                            base.DeleteBySurrogateKey(key, null, entityType).ForEach(c => HandleChange(c, userId, userName));
                         }
                         t.Complete();
                     }
