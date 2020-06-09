@@ -350,8 +350,8 @@
             {
                 using (HttpWebResponse response = (HttpWebResponse)request.GetResponse())
                 {
-                    
-                    if (response.StatusCode != HttpStatusCode.OK && 
+
+                    if (response.StatusCode != HttpStatusCode.OK &&
                         response.StatusCode != HttpStatusCode.Created &&
                         response.StatusCode != HttpStatusCode.Accepted)
                     {
@@ -394,12 +394,12 @@
                 {
                     throw wex;
                 }
-                throw new UserThrownException(
-                    string.Format("{0} {1} : {2}",
-                        response.StatusCode.ToString(),
-                        (int)response.StatusCode,
-                        response.StatusDescription),
-                    LoggingLevel.Normal);
+                string message = $"{response.StatusCode.ToString()}, {(int)response.StatusCode} : {response.StatusDescription}";
+                if (!string.IsNullOrEmpty(result))
+                {
+                    message += $" : {result}";
+                }
+                throw new UserThrownException(message, LoggingLevel.Normal);
             }
             return result;
         }
