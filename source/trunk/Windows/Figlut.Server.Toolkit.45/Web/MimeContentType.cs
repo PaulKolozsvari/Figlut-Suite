@@ -24,6 +24,7 @@
         public const string TEXT_HTML = "text/html";
         public const string BINARY = "application/octet-stream";
         public const string FORM_DATA = "application/x-www-form-urlencoded";
+        public const string ANY = "*/*";
 
         #region Custom Types
 
