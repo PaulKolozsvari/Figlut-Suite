@@ -1,5 +1,6 @@
 ﻿namespace Figlut.Server.Toolkit.Web.MVC.Models
 {
+    using Figlut.Server.Toolkit.Data.DB.SQLQuery;
     #region Using Directives
 
     using System;
@@ -33,15 +34,32 @@ using System.Web;
         public int PageSize { get; set; }
 
         /// <summary>
-        /// Total Records
+        /// When using paging this is used to tell the query how many records to skip to query only for the current page.
         /// </summary>
-        public long TotalCount
+        public int NumberOfRecordsToSkipForCurrentPage
         {
-            get { return DataModel.LongCount(); }
+            get
+            {
+                Page = Page <= 0 ? 1 : Page;
+                return (Page - 1) * PageSize;
+            }
         }
 
         /// <summary>
-        /// 
+        /// Total Records returned in this model to the browser i.e. based on current page the user is on, in other words the subset records from the full databaset.
+        /// </summary>
+        public int TotalCount
+        {
+            get { return DataModel.Count; }
+        }
+
+        /// <summary>
+        /// Total Records that would be returned from the query, where TotalCount is the number of records actually returned.
+        /// </summary>
+        public int TotalFullDatasetRecordCount { get; set; }
+
+        /// <summary>
+        /// Total number of records available in the database.
         /// </summary>
         public long TotalTableCount { get; set; }
 
@@ -52,6 +70,11 @@ using System.Web;
         public string Sort { get; set; }
 
         public string Sortdir { get; set; }
+
+        public SortDirectionType SortDirectionType
+        {
+            get { return SortDirection.GetSortDirectionType(Sortdir); }
+        }
 
         [DataType(DataType.Date)]
         [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]

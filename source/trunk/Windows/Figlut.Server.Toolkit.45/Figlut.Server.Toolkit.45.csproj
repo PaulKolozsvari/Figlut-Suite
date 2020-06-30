@@ -127,6 +127,9 @@
     <Reference Include="System.IO.Pipelines, Version=4.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>..\..\..\..\..\Excel-Insight\source\trunk\packages\System.IO.Pipelines.4.5.1\lib\netstandard2.0\System.IO.Pipelines.dll</HintPath>
     </Reference>
+    <Reference Include="System.Linq.Dynamic, Version=1.0.6132.35681, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\..\..\..\Pigeon-Voice\source\trunk\Pigeon.Voice\packages\System.Linq.Dynamic.1.0.7\lib\net40\System.Linq.Dynamic.dll</HintPath>
+    </Reference>
     <Reference Include="System.Management" />
     <Reference Include="System.Memory, Version=4.0.1.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>..\..\..\..\..\Excel-Insight\source\trunk\packages\System.Memory.4.5.1\lib\netstandard2.0\System.Memory.dll</HintPath>
@@ -187,6 +190,7 @@
     <Compile Include="Data\DB\DatabaseTableColumn.cs" />
     <Compile Include="Data\DB\DatabaseTableForeignKeyColumns.cs" />
     <Compile Include="Data\DB\DatabaseTableKeyColumns.cs" />
+    <Compile Include="Data\DB\IQuerableExtensions.cs" />
     <Compile Include="Data\DB\LINQ\EntityContext.cs" />
     <Compile Include="Data\DB\LINQ\Logging\ServerAction.cs" />
     <Compile Include="Data\DB\LINQ\Logging\ServerError.cs" />
@@ -201,6 +205,8 @@
     <Compile Include="Data\DB\SQLite\SqliteQuery.cs" />
     <Compile Include="Data\DB\SQLite\SqliteTypeConversionInfo.cs" />
     <Compile Include="Data\DB\SQLite\SqliteTypeConverter.cs" />
+    <Compile Include="Data\DB\SQLQuery\SortDirection.cs" />
+    <Compile Include="Data\DB\SQLQuery\SortDirectionType.cs" />
     <Compile Include="Data\DB\SQLQuery\WhereClause.cs" />
     <Compile Include="Data\DB\SQLQuery\WhereClauseParanthesis.cs" />
     <Compile Include="Data\DB\SQLServer\SqlDatabaseSchemaFile.cs" />
