@@ -3,6 +3,7 @@
     #region Using Directives
 
     using Figlut.Server.Toolkit.Data;
+    using Figlut.Server.Toolkit.Data.DB.LINQ;
     using Figlut.Server.Toolkit.Utilities;
     using Figlut.Server.Toolkit.Utilities.Logging;
     using Figlut.Server.Toolkit.Web;
@@ -432,6 +433,18 @@
         }
 
         #endregion //Header Methods
+
+        #region Data Methods
+
+        public void DisposeEntityContext(EntityContext context)
+        {
+            if (context != null)
+            {
+                context.Dispose();
+            }
+        }
+
+        #endregion //Data Methods
 
         #endregion //Methods
     }
