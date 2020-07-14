@@ -1,13 +1,13 @@
 ﻿namespace Figlut.Server.Toolkit.Web.MVC.Models
 {
-    using Figlut.Server.Toolkit.Data.DB.SQLQuery;
     #region Using Directives
 
     using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Web;
+    using System.Collections.Generic;
+    using System.ComponentModel.DataAnnotations;
+    using System.Linq;
+    using System.Web;
+    using Figlut.Server.Toolkit.Data.DB.SQLQuery;
 
     #endregion //Using Directives
 
@@ -42,6 +42,40 @@ using System.Web;
             {
                 Page = Page <= 0 ? 1 : Page;
                 return (Page - 1) * PageSize;
+            }
+        }
+
+        /// <summary>
+        /// The 1 based index of the first record on the page that can be displayed to the user on the view.
+        /// </summary>
+        public int FirstRecordOnPageDisplayIndex
+        {
+            get
+            {
+                int recordsToSkip = NumberOfRecordsToSkipForCurrentPage;
+                int result = recordsToSkip;
+                if ((recordsToSkip != 0) || (DataModel.Count > 0)) //We are not on the first page or there's at least one record in the DataModel.
+                {
+                    result++;
+                }
+                return result;
+            }
+        }
+
+        /// <summary>
+        /// The 1 based index of the last record on the page that can be displayed to the user on the view.
+        /// </summary>
+        public int LastRecordOnPageDisplayIndex
+        {
+            get
+            {
+                int firstRecordIndex = FirstRecordOnPageDisplayIndex;
+                int result = (firstRecordIndex + DataModel.Count);
+                if (result != 0) //If the last index is not 0, meaning we have some records on the page, then subtract 1 e.g. if the first record on the page is 10 and there are 10 records to be displayed on the page then the last record index should 19 i.e. records 10 to 19 will be displayed which is 10 records in total.
+                {
+                    result--;
+                }
+                return result;
             }
         }
 
