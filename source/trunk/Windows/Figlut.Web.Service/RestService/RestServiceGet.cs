@@ -244,7 +244,7 @@
             {
                 query.AppendWhereColumns(ParseFilterToWhereClauseColumns(filters));
             }
-            List<object> queryResult = db.Query(query, table.MappedType);
+            List<object> queryResult = db.Query(query, null, table.MappedType);
             Stream result = null;
 
             #region Interceptor After Event

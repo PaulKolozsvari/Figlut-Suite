@@ -40,7 +40,7 @@
                             if (!string.IsNullOrEmpty(input.OrmTypeName)) //The caller is expecting a list of entities back i.e. a SQL SELECT query was sent.
                             {
                                 dotNetType = OrmCodeGenerator.GenerateType(input.OrmAssemblyName, input.OrmTypeName, reader, true);
-                                entities = DataHelper.ParseReaderToEntities(reader, dotNetType);
+                                entities = DataHelper.ParseReaderToEntities(reader, dotNetType, null);
                             }
                             else //The caller is not expecting a list of entities back i.e. a SQL Insert, Update or Delete was sent.
                             {

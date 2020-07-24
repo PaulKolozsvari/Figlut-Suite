@@ -100,7 +100,7 @@
                 GOC.Instance.ExecutableName,
                 GOC.Instance.Version,
                 Environment.OSVersion.ToString(),
-                Information.GetDomainAndMachineName()).GetHash();
+                Information.GetWindowsDomainAndMachineName()).GetHash();
         }
 
         private void SetupPreferenceSettings()
