@@ -46,6 +46,16 @@
         }
 
         /// <summary>
+        /// When using paging this is used to tell the query how many records to skip to query only for the current page.
+        /// </summary>
+        /// <returns></returns>
+        public static int GetNumberOfRecordsToSkipForCurrentPage(int page, int pageSize)
+        {
+            page = page <= 0 ? 1 : page;
+            return (page - 1) * pageSize;
+        }
+
+        /// <summary>
         /// The 1 based index of the first record on the page that can be displayed to the user on the view.
         /// </summary>
         public int FirstRecordOnPageDisplayIndex
