@@ -603,6 +603,26 @@
             return true;
         }
 
+        /// <summary>
+        /// Checks if the the given searchFilter text is null and sets it to an empty string, otherwise converts it to lowercase.
+        /// </summary>
+        public static string GetSearchFilterLowered(string searchFilter)
+        {
+            return searchFilter == null ? string.Empty : searchFilter.ToLower();
+        }
+
+        /// <summary>
+        /// Checks if the given guid is set has the value of an empty Guid and if so, returns null, otherwise returns the passed in Guid unchanged.
+        /// </summary>
+        public static Nullable<Guid> ConvertEmptyGuidToNull(Nullable<Guid> guid)
+        {
+            if (guid.HasValue && guid == Guid.Empty)
+            {
+                guid = null;
+            }
+            return guid;
+        }
+
         #endregion //Methods
     }
 }
