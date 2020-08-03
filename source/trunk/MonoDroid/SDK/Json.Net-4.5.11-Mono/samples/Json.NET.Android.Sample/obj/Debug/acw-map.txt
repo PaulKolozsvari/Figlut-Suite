@@ -1,1 +1,0 @@
-Json.NET.Android.Sample.MainActivity;json.net.android.sample.MainActivity
