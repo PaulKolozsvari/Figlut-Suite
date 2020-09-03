@@ -156,12 +156,17 @@
         {
             try
             {
+                string userName = ServiceSecurityContext.Current != null && !string.IsNullOrEmpty(ServiceSecurityContext.Current.WindowsIdentity.Name) ?
+                    ServiceSecurityContext.Current.WindowsIdentity.Name :
+                    string.Empty;
                 string requestName = $"{nameof(AllURIs)}";
                 AuditRequest(requestName, null);
                 string allHeadersFullString = GetAllHeadersFullString();
                 StringBuilder message = new StringBuilder();
                 string applicationName = string.IsNullOrEmpty(GOC.Instance.ApplicationName) ? "REST Web Service" : GOC.Instance.ApplicationName;
                 message.AppendLine(applicationName);
+                message.AppendLine();
+                message.AppendLine($"Current Windows User: {userName}");
                 message.AppendLine();
                 message.AppendLine("HTTP Headers:");
                 message.AppendLine();

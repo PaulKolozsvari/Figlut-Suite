@@ -140,6 +140,19 @@
             file.Delete();
         }
 
+        /// <summary>
+        /// Determines if the given filepath is an absolute file path and if not it returns the absolute path relative to the current executing directory.
+        /// If it is an absolute file path it it returns the file path unchanged.
+        /// </summary>
+        public static string GetAbsoluteFilePath(string filePath)
+        {
+            if (Path.IsPathRooted(filePath))
+            {
+                return filePath;
+            }
+            return Path.Combine(Information.GetExecutingDirectory(), filePath);
+        }
+
         #endregion //Methods
     }
 }
