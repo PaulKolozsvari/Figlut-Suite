@@ -40,6 +40,11 @@
             return result.ToString();
         }
 
+        public static bool HandleException(Exception exception)
+        {
+            return HandleException(exception, out string emailErrorMessage, out string emailLogErrorMessage, null);
+        }
+
         public static bool HandleException(Exception exception, List<EmailNotificationRecipient> emailNotificationRecipients)
         {
             return HandleException(exception, out string emailErrorMessage, out string emailLogErrorMessage, emailNotificationRecipients);
