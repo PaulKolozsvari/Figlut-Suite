@@ -383,7 +383,7 @@
                 }
                 errorMessage = ex.Message;
                 emailLogMessageText = string.Empty;
-                ExceptionHandler.HandleException(ex, false, out errorMessage, out emailLogMessageText); //If emailing failed, then specify that the ExceptionHandler should not try to send the email exception as it would be futile and would result in overflow stack due to cyclic redundancy between ExceptionHandler and EmailClient.
+                ExceptionHandler.HandleException(ex, false, out errorMessage, out emailLogMessageText, null); //If emailing failed, then specify that the ExceptionHandler should not try to send the email exception as it would be futile and would result in overflow stack due to cyclic redundancy between ExceptionHandler and EmailClient.
                 return false;
             }
             errorMessage = null;
@@ -394,9 +394,10 @@
             Exception exception,
             out string errorMessage,
             out string emailLogMessageText,
-            bool appendHostNameToEmailBody)
+            bool appendHostNameToEmailBody,
+            List<EmailNotificationRecipient> emailNotificationRecipients)
         {
-            return SendExceptionEmailNotification(exception, out errorMessage, out emailLogMessageText, appendHostNameToEmailBody, null);
+            return SendExceptionEmailNotification(exception, out errorMessage, out emailLogMessageText, appendHostNameToEmailBody, null, emailNotificationRecipients);
         }
 
         public bool SendExceptionEmailNotification(
@@ -404,7 +405,8 @@
             out string errorMessage, 
             out string emailLogMessageText,
             bool appendHostNameToEmailBody,
-            string eventDetailsMessage)
+            string eventDetailsMessage,
+            List<EmailNotificationRecipient> emailNotificationRecipients)
         {
             StringBuilder message = new StringBuilder();
             message.AppendLine(exception.Message);
@@ -421,7 +423,7 @@
                 message.AppendLine(eventDetailsMessage);
             }
             string exceptionMessage = message.ToString();
-            return SendEmail(EmailCategory.Error, _exceptionEmailSubject, exceptionMessage, null, false, null, null, out errorMessage, out emailLogMessageText, appendHostNameToEmailBody);
+            return SendEmail(EmailCategory.Error, _exceptionEmailSubject, exceptionMessage, null, false, emailNotificationRecipients, null, out errorMessage, out emailLogMessageText, appendHostNameToEmailBody);
         }
 
         private bool LogEmailNotification(MailMessage email, string subject, out string logMessageText)

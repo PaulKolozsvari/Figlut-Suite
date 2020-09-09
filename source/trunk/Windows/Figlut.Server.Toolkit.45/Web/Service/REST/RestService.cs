@@ -179,7 +179,7 @@
             }
             catch (Exception ex)
             {
-                ExceptionHandler.HandleException(ex);
+                ExceptionHandler.HandleException(ex, null);
                 UpdateHttpStatusOnException(ex);
                 throw ex;
             }
@@ -221,7 +221,7 @@
             }
             catch (Exception ex)
             {
-                ExceptionHandler.HandleException(ex);
+                ExceptionHandler.HandleException(ex, null);
                 UpdateHttpStatusOnException(ex);
                 throw ex;
             }
@@ -266,7 +266,7 @@
             }
             catch (Exception ex)
             {
-                ExceptionHandler.HandleException(ex);
+                ExceptionHandler.HandleException(ex, null);
                 UpdateHttpStatusOnException(ex);
                 throw ex;
             }
@@ -312,7 +312,7 @@
             }
             catch (Exception ex)
             {
-                ExceptionHandler.HandleException(ex);
+                ExceptionHandler.HandleException(ex, null);
                 UpdateHttpStatusOnException(ex);
                 throw ex;
             }
@@ -359,7 +359,7 @@
             }
             catch (Exception ex)
             {
-                ExceptionHandler.HandleException(ex);
+                ExceptionHandler.HandleException(ex, null);
                 UpdateHttpStatusOnException(ex);
                 throw ex;
             }
@@ -406,7 +406,7 @@
             }
             catch (Exception ex)
             {
-                ExceptionHandler.HandleException(ex);
+                ExceptionHandler.HandleException(ex, null);
                 UpdateHttpStatusOnException(ex);
                 throw ex;
             }
@@ -451,7 +451,7 @@
             }
             catch (Exception ex)
             {
-                ExceptionHandler.HandleException(ex);
+                ExceptionHandler.HandleException(ex, null);
                 UpdateHttpStatusOnException(ex);
                 throw ex;
             }
@@ -492,7 +492,7 @@
             catch (Exception ex)
             {
                 FileUploadCompleted(fileName);
-                ExceptionHandler.HandleException(ex);
+                ExceptionHandler.HandleException(ex, null);
                 UpdateHttpStatusOnException(ex);
                 throw ex;
             }
@@ -524,7 +524,7 @@
             }
             catch (Exception ex)
             {
-                ExceptionHandler.HandleException(ex);
+                ExceptionHandler.HandleException(ex, null);
                 UpdateHttpStatusOnException(ex);
                 throw;
             }
@@ -543,7 +543,7 @@
             }
             catch (Exception ex)
             {
-                ExceptionHandler.HandleException(ex);
+                ExceptionHandler.HandleException(ex, null);
                 UpdateHttpStatusOnException(ex);
                 throw;
             }

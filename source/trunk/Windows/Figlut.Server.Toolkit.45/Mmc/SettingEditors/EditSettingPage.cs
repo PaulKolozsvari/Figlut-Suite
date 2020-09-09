@@ -66,7 +66,7 @@
             }
             catch (Exception ex)
             {
-                ExceptionHandler.HandleException(ex);
+                ExceptionHandler.HandleException(ex, null);
             }
         }
 
@@ -86,7 +86,7 @@
             }
             catch (Exception ex)
             {
-                ExceptionHandler.HandleException(ex);
+                ExceptionHandler.HandleException(ex, null);
             }
             return false; //Something invalid was entered.
         }
@@ -103,7 +103,7 @@
             }
             catch (Exception ex)
             {
-                ExceptionHandler.HandleException(ex);
+                ExceptionHandler.HandleException(ex, null);
             }
             return false;
         }
@@ -120,7 +120,7 @@
             }
             catch (Exception ex)
             {
-                ExceptionHandler.HandleException(ex);
+                ExceptionHandler.HandleException(ex, null);
             }
         }
 

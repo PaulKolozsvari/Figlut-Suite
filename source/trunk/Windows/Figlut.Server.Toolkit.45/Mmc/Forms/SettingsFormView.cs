@@ -65,7 +65,7 @@ namespace Figlut.Server.Toolkit.Mmc.Forms
             }
             catch (Exception ex)
             {
-                ExceptionHandler.HandleException(ex);
+                ExceptionHandler.HandleException(ex, null);
             }
         }
 
@@ -86,7 +86,7 @@ namespace Figlut.Server.Toolkit.Mmc.Forms
             }
             catch (Exception ex)
             {
-                ExceptionHandler.HandleException(ex);
+                ExceptionHandler.HandleException(ex, null);
             }
         }
 

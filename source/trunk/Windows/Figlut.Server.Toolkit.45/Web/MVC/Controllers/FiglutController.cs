@@ -53,7 +53,7 @@
             }
             catch (Exception ex)
             {
-                ExceptionHandler.HandleException(ex);
+                ExceptionHandler.HandleException(ex, null);
                 return GetJsonResult(false, ex.Message);
             }
         }
@@ -72,7 +72,7 @@
             }
             catch (Exception ex)
             {
-                ExceptionHandler.HandleException(ex);
+                ExceptionHandler.HandleException(ex, null);
                 return GetJsonResult(false, ex.Message);
             }
         }

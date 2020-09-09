@@ -215,7 +215,7 @@
             }
             catch (Exception ex)
             {
-                ExceptionHandler.HandleException(ex);
+                ExceptionHandler.HandleException(ex, null);
             }
             finally
             {

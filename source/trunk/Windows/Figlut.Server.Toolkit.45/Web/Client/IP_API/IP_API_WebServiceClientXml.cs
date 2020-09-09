@@ -58,7 +58,7 @@
                 {
                     throw ex;
                 }
-                ExceptionHandler.HandleException(ex);
+                ExceptionHandler.HandleException(ex, null);
             }
             return result;
         }

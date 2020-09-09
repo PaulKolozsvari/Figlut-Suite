@@ -73,7 +73,7 @@
             HttpClientCredentialType httpClientCredentialType,
             UserNamePasswordValidator userNamePasswordValidator,
             out string restWebServiceUrl,
-            out string restWebServiceStartedLogMessage) 
+            out string restWebServiceStartedLogMessage)
             where R : RestService  
             where I : IRestService
         {
