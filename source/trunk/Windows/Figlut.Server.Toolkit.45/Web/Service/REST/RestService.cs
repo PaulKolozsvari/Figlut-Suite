@@ -24,13 +24,14 @@
     {
         #region Constructors
 
-        public RestService() : this(false)
+        public RestService() : this(false, true)
         {
         }
 
-        public RestService(bool auditServiceCalls)
+        public RestService(bool auditServiceCalls, bool handleExceptions)
         {
             _auditServiceCalls = auditServiceCalls;
+            _handleExceptions = handleExceptions;
             if (!_serviceInstanceId.HasValue)
             {
                 _serviceInstanceId = Guid.NewGuid();
@@ -61,6 +62,8 @@
 
         protected bool _auditServiceCalls;
         protected Nullable<Guid> _serviceInstanceId;
+
+        protected bool _handleExceptions;
 
         #endregion //Events
 
@@ -179,7 +182,10 @@
             }
             catch (Exception ex)
             {
-                ExceptionHandler.HandleException(ex, null);
+                if (_handleExceptions)
+                {
+                    ExceptionHandler.HandleException(ex, null);
+                }
                 UpdateHttpStatusOnException(ex);
                 throw ex;
             }
@@ -221,7 +227,10 @@
             }
             catch (Exception ex)
             {
-                ExceptionHandler.HandleException(ex, null);
+                if (_handleExceptions)
+                {
+                    ExceptionHandler.HandleException(ex, null);
+                }
                 UpdateHttpStatusOnException(ex);
                 throw ex;
             }
@@ -266,7 +275,10 @@
             }
             catch (Exception ex)
             {
-                ExceptionHandler.HandleException(ex, null);
+                if (_handleExceptions)
+                {
+                    ExceptionHandler.HandleException(ex, null);
+                }
                 UpdateHttpStatusOnException(ex);
                 throw ex;
             }
@@ -312,7 +324,10 @@
             }
             catch (Exception ex)
             {
-                ExceptionHandler.HandleException(ex, null);
+                if (_handleExceptions)
+                {
+                    ExceptionHandler.HandleException(ex, null);
+                }
                 UpdateHttpStatusOnException(ex);
                 throw ex;
             }
@@ -359,7 +374,10 @@
             }
             catch (Exception ex)
             {
-                ExceptionHandler.HandleException(ex, null);
+                if (_handleExceptions)
+                {
+                    ExceptionHandler.HandleException(ex, null);
+                }
                 UpdateHttpStatusOnException(ex);
                 throw ex;
             }
@@ -406,7 +424,10 @@
             }
             catch (Exception ex)
             {
-                ExceptionHandler.HandleException(ex, null);
+                if (_handleExceptions)
+                {
+                    ExceptionHandler.HandleException(ex, null);
+                }
                 UpdateHttpStatusOnException(ex);
                 throw ex;
             }
@@ -451,7 +472,10 @@
             }
             catch (Exception ex)
             {
-                ExceptionHandler.HandleException(ex, null);
+                if (_handleExceptions)
+                {
+                    ExceptionHandler.HandleException(ex, null);
+                }
                 UpdateHttpStatusOnException(ex);
                 throw ex;
             }
@@ -462,7 +486,7 @@
         }
 
         //http://blogs.msdn.com/b/webapps/archive/2012/09/06/wcf-chunking.aspx
-        public Stream FileUpload(string fileName, Stream inputStream)
+        public virtual Stream FileUpload(string fileName, Stream inputStream)
         {
             try
             {
@@ -492,13 +516,16 @@
             catch (Exception ex)
             {
                 FileUploadCompleted(fileName);
-                ExceptionHandler.HandleException(ex, null);
+                if (_handleExceptions)
+                {
+                    ExceptionHandler.HandleException(ex, null);
+                }
                 UpdateHttpStatusOnException(ex);
                 throw ex;
             }
         }
 
-        public Stream FileUploadCompleted(string fileName)
+        public virtual Stream FileUploadCompleted(string fileName)
         {
             try
             {
@@ -525,12 +552,15 @@
             catch (Exception ex)
             {
                 ExceptionHandler.HandleException(ex, null);
-                UpdateHttpStatusOnException(ex);
+                if (_handleExceptions)
+                {
+                    ExceptionHandler.HandleException(ex, null);
+                }
                 throw;
             }
         }
 
-        public Stream FileDownload(string fileName)
+        public virtual Stream FileDownload(string fileName)
         {
             try
             {
@@ -543,7 +573,10 @@
             }
             catch (Exception ex)
             {
-                ExceptionHandler.HandleException(ex, null);
+                if (_handleExceptions)
+                {
+                    ExceptionHandler.HandleException(ex, null);
+                }
                 UpdateHttpStatusOnException(ex);
                 throw;
             }

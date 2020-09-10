@@ -284,13 +284,9 @@
 
         private void AddRecipientToEmail(string emailAddress, string displayName, MailMessage email, EmailRecipientType recipientType)
         {
-            string emailAddressLower = emailAddress.Trim().ToLower();
-            foreach (MailAddress a in email.To.ToList())
+            if (EmailRecipientExistsInEmail(emailAddress, email))
             {
-                if (a.Address.Trim().ToLower() == emailAddressLower)
-                {
-                    return; //Email address already exists in the recipient's list of the email.
-                }
+                return;
             }
             switch (recipientType)
             {
@@ -306,6 +302,33 @@
                 default:
                     break;
             }
+        }
+
+        private bool EmailRecipientExistsInEmail(string emailAddress, MailMessage email)
+        {
+            string emailAddressLower = emailAddress.Trim().ToLower();
+            foreach (MailAddress a in email.To.ToList())
+            {
+                if (a.Address.Trim().ToLower() == emailAddressLower)
+                {
+                    return true;
+                }
+            }
+            foreach (MailAddress a in email.CC.ToList())
+            {
+                if (a.Address.Trim().ToLower() == emailAddressLower)
+                {
+                    return true;
+                }
+            }
+            foreach (MailAddress a in email.Bcc.ToList())
+            {
+                if (a.Address.Trim().ToLower() == emailAddressLower)
+                {
+                    return true; 
+                }
+            }
+            return false;
         }
 
         public bool SendEmail(
