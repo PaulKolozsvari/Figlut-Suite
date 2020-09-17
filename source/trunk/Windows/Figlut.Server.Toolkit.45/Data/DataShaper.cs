@@ -77,9 +77,31 @@
             return (new EmailAddressAttribute().IsValid(emailAddress));
         }
 
-        public static string GeneratePassword(int passwordLength, int numberOfNonAlphanumericCharacters)
+        /// <summary>
+        /// Generates password with special characters.
+        /// </summary>
+        public static string GeneratePassword(int passwordLength, int numberOfSpecialCharacters)
         {
-            return System.Web.Security.Membership.GeneratePassword(passwordLength, numberOfNonAlphanumericCharacters);
+            return System.Web.Security.Membership.GeneratePassword(passwordLength, numberOfSpecialCharacters);
+        }
+
+        /// <summary>
+        /// Generates password without special characters.
+        /// </summary>
+        public static string GenerateSimplePassword(int passwordLength, int numberOfExtraSpecialCharacters)
+        {
+            string result = GeneratePassword(passwordLength, 1);
+            result = Regex.Replace(result, @"[^a-zA-Z0-9]", m => "9");
+            string specialCharacters = GeneratePassword(numberOfExtraSpecialCharacters, numberOfExtraSpecialCharacters);
+            return string.Concat(result, specialCharacters);
+        }
+
+        //Generates a password from a Guid removing all the dashes and appends the specified number of special characters.
+        public static string GenerateGuidPassword(int numberOfExtraSpecialCharacters)
+        {
+            string result = Guid.NewGuid().ToString().Replace("-", string.Empty);
+            string specialCharacters = GeneratePassword(numberOfExtraSpecialCharacters, numberOfExtraSpecialCharacters);
+            return string.Concat(result, specialCharacters);
         }
 
         private static string DomainMapper(Match match)

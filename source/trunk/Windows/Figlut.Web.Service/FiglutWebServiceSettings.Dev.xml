@@ -10,7 +10,7 @@
   <EventLogName>Figlut.Web.Service.Log</EventLogName>
   <LoggingLevel>Normal</LoggingLevel><!--None/Minimum/Normal/Maximum-->
   <DBMS>MsSqlServer</DBMS><!--MS SQL Server is currently the only supported DBMS.-->
-  <DatabaseConnectionString>Data Source=CUCKOO\MSSQLSERVER2008;Initial Catalog=StockTaker;Persist Security Info=True;User ID=sa;Password=27830529</DatabaseConnectionString>
+  <DatabaseConnectionString>Data Source=PAULKOLOZSV78C6\MSSQLSERVER2008;Initial Catalog=SageTracker;Persist Security Info=True;User ID=sa;Password=27830529</DatabaseConnectionString>
   <DatabaseServerName></DatabaseServerName>
   <DatabaseName></DatabaseName>
   <DatabaseUserName></DatabaseUserName>
@@ -31,7 +31,7 @@
   <DeleteClientDataWhenServiceStops>true</DeleteClientDataWhenServiceStops>
   <EnableClientTrace>true</EnableClientTrace>
   <UseExtensions>false</UseExtensions>
-  <ExtensionAssemblyName></ExtensionAssemblyName>
-  <CrudInterceptorFullTypeName></CrudInterceptorFullTypeName>
-  <ExtensionFullTypeName></ExtensionFullTypeName>
+  <ExtensionAssemblyName>OneStopShop.FiglutExtensions.dll</ExtensionAssemblyName>
+  <CrudInterceptorFullTypeName>OneStopShop.FiglutExtensions.WebService.OssWebServiceCrudInterceptor</CrudInterceptorFullTypeName>
+  <ExtensionFullTypeName>OneStopShop.FiglutExtensions.WebService.OssWebServiceExtension</ExtensionFullTypeName>
 </FiglutWebServiceSettings>

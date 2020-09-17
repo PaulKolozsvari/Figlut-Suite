@@ -206,17 +206,17 @@
 
         protected virtual JsonResult GetJsonResult(bool success)
         {
-            return Json(new { Success = success, ErrorMsg = string.Empty });
+            return Json(new { Success = success, ErrorMsg = string.Empty }, JsonRequestBehavior.AllowGet);
         }
 
         protected virtual JsonResult GetJsonResult(bool success, string errorMessage)
         {
-            return Json(new { Success = success, ErrorMsg = errorMessage });
+            return Json(new { Success = success, ErrorMsg = errorMessage }, JsonRequestBehavior.AllowGet);
         }
 
         protected virtual JsonResult GetJsonFileResult(bool success, string fileName)
         {
-            return Json(new { Success = success, FileName = fileName });
+            return Json(new { Success = success, FileName = fileName }, JsonRequestBehavior.AllowGet);
         }
 
         protected virtual RedirectToRouteResult RedirectToHome()

@@ -1,5 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <FiglutWebServiceSettings xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <ApplicationName>Figlut Web Service</ApplicationName>
   <ShowMessageBoxOnException>true</ShowMessageBoxOnException>
   <LogToFile>false</LogToFile>
   <LogToWindowsEventLog>true</LogToWindowsEventLog>
@@ -9,17 +10,17 @@
   <EventLogName>Figlut.Web.Service.Log</EventLogName>
   <LoggingLevel>Normal</LoggingLevel><!--None/Minimum/Normal/Maximum-->
   <DBMS>MsSqlServer</DBMS><!--MS SQL Server is currently the only supported DBMS.-->
-  <DatabaseConnectionString>Data Source=PAULKOLOZSV78C6\MSSQLSERVER2008;Initial Catalog=SageTracker;Persist Security Info=True;User ID=sa;Password=27830529</DatabaseConnectionString>
-  <DatabaseServerName></DatabaseServerName>
-  <DatabaseName></DatabaseName>
-  <DatabaseUserName></DatabaseUserName>
-  <DatabaseUserPassword></DatabaseUserPassword>
+  <DatabaseConnectionString>Data Source=192.168.5.111;Initial Catalog=DatasmithSIP;User ID=sa;Password=Y97b13Asw7Ktx</DatabaseConnectionString>
+  <DatabaseServerName>GLANGPLNQA02</DatabaseServerName>
+  <DatabaseName>DatasmithSIP</DatabaseName>
+  <DatabaseUserName>sa</DatabaseUserName>
+  <DatabaseUserPassword>Y97b13Asw7Ktx</DatabaseUserPassword>
   <SaveOrmAssembly>false</SaveOrmAssembly>
   <OrmAssemblyOutputDirectory></OrmAssemblyOutputDirectory>
   <QueryRunnnerAssemblyName>Figlut.QueryRunner.dll</QueryRunnnerAssemblyName>
   <SqlQueryRunnerFullTypeName>Figlut.QueryRunner.SqlQueryRunner</SqlQueryRunnerFullTypeName>
-  <HostAddressSuffix>Figlut</HostAddressSuffix>
-  <PortNumber>2983</PortNumber>
+  <HostAddressSuffix>DatasmithSIPDataManagerService</HostAddressSuffix>
+  <PortNumber>2980</PortNumber>
   <UseAuthentication>false</UseAuthentication>
   <IncludeExceptionDetailInResponse>true</IncludeExceptionDetailInResponse>
   <TextResponseEncoding>UTF8</TextResponseEncoding><!--UTF8/ASCII/BigEndianUnicode/Default/Unicode/UTF32/UTF7-->
@@ -30,7 +31,7 @@
   <DeleteClientDataWhenServiceStops>true</DeleteClientDataWhenServiceStops>
   <EnableClientTrace>true</EnableClientTrace>
   <UseExtensions>false</UseExtensions>
-  <ExtensionAssemblyName>OneStopShop.FiglutExtensions.dll</ExtensionAssemblyName>
-  <CrudInterceptorFullTypeName>OneStopShop.FiglutExtensions.WebService.OssWebServiceCrudInterceptor</CrudInterceptorFullTypeName>
-  <ExtensionFullTypeName>OneStopShop.FiglutExtensions.WebService.OssWebServiceExtension</ExtensionFullTypeName>
+  <ExtensionAssemblyName></ExtensionAssemblyName>
+  <CrudInterceptorFullTypeName></CrudInterceptorFullTypeName>
+  <ExtensionFullTypeName></ExtensionFullTypeName>
 </FiglutWebServiceSettings>

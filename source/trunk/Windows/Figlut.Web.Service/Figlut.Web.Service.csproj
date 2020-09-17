@@ -116,11 +116,14 @@
       <SubType>Designer</SubType>
     </Content>
     <Content Include="FiglutServer.ico" />
-    <Content Include="FiglutWebServiceSettings.xml">
+    <Content Include="FiglutWebServiceSettings.Dev.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <SubType>Designer</SubType>
     </Content>
     <Content Include="FiglutWebService.ico" />
+    <Content Include="FiglutWebServiceSettings.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="READ ME.txt" />
   </ItemGroup>
   <ItemGroup>
