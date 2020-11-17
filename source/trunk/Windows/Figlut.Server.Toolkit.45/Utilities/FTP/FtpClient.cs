@@ -88,7 +88,7 @@
 
         #region Methods
 
-        public void UploadFile(string sourceFilePath, string ftpDestinationFileUrl)
+        public void UploadFile(string sourceFilePath, string ftpDestinationFileUrl, bool enableSsl)
         {
             if (!File.Exists(sourceFilePath))
             {
@@ -104,6 +104,7 @@
             request.Timeout = _timeout;
             request.ReadWriteTimeout = _readWriteTimeout;
             request.Credentials = _credentials;
+            request.EnableSsl = enableSsl;
             byte[] sourceFileBytes = null;
             using (StreamReader reader = new StreamReader(sourceFilePath))
             {
@@ -117,7 +118,7 @@
             }
         }
 
-        public void DownloadFile(string ftpSourceFileUrl, string localDestinationFilePath)
+        public void DownloadFile(string ftpSourceFileUrl, string localDestinationFilePath, bool enableSsl)
         {
             FtpWebRequest request = WebRequest.Create(ftpSourceFileUrl) as FtpWebRequest;
             if (request == null)
@@ -129,6 +130,7 @@
             request.Timeout = _timeout;
             request.ReadWriteTimeout = _readWriteTimeout;
             request.Credentials = _credentials;
+            request.EnableSsl = enableSsl;
             if (File.Exists(localDestinationFilePath))
             {
                 File.Delete(localDestinationFilePath);

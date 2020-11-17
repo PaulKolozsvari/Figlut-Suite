@@ -10,7 +10,7 @@
   <EventLogName>Figlut.Web.Service.Log</EventLogName>
   <LoggingLevel>Normal</LoggingLevel><!--None/Minimum/Normal/Maximum-->
   <DBMS>MsSqlServer</DBMS><!--MS SQL Server is currently the only supported DBMS.-->
-  <DatabaseConnectionString>Data Source=192.168.5.111;Initial Catalog=DatasmithSIP;User ID=sa;Password=Y97b13Asw7Ktx</DatabaseConnectionString>
+  <DatabaseConnectionString>Data Source=localhost\SQLEXPRESS2012;Initial Catalog=DatasmithSIP;User ID=sa;Password=27830529</DatabaseConnectionString>
   <DatabaseServerName>GLANGPLNQA02</DatabaseServerName>
   <DatabaseName>DatasmithSIP</DatabaseName>
   <DatabaseUserName>sa</DatabaseUserName>
