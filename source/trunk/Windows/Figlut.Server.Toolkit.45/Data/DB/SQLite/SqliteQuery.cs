@@ -77,7 +77,7 @@
                     _sqlQueryString.Append("");
                     break;
                 }
-                _sqlQueryString.AppendLine(string.Format(" {0}", whereColumn.LogicalOperatorAgainstNextColumn.ToString()));
+                _sqlQueryString.Append(string.Format(" {0} ", whereColumn.LogicalOperatorAgainstNextColumn.ToString()));
             }
             whereClause.ForEach(w => _whereClause.Add(w));
         }

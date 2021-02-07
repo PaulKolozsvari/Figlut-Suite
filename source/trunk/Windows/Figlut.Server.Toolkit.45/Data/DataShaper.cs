@@ -317,10 +317,10 @@
         /// <returns></returns>
         public static List<string> GetNumericStringRange(string startString, string endString)
         {
-            string numericPartStart = GetNumericPartOfString(startString, out int startInt);
-            string numericPartEnd = GetNumericPartOfString(endString, out int endInt);
-            string alphaPartStart = GetAplhaPartOfString(startString);
-            string alphaPartEnd = GetAplhaPartOfString(endString);
+            string numericPartStart = GetNumericPartOfString(startString, out int startInt, out int startIndexStart, out int lengthStart);
+            string numericPartEnd = GetNumericPartOfString(endString, out int endInt, out int startIndexEnd, out int lengthEnd);
+            string alphaPartStart = GetAlphaPartOfString(startString);
+            string alphaPartEnd = GetAlphaPartOfString(endString);
             if (!alphaPartStart.Equals(alphaPartEnd))
             {
                 throw new Exception("Alpha letters in start string need to match alpha letters in end string when creating numeric string range.");
@@ -341,6 +341,8 @@
         }
 
         public const string ALPHA_REGEX_PATTERN = @"^[a-zA-Z]+";
+        public const string NUMERIC_REGEX_PATTERN = @"\d+";
+
         /// <summary>
         /// Increments the numeric part of a string e.g. if the input is B009, the incremented output will be B010.
         /// </summary>
@@ -349,13 +351,16 @@
         /// <returns></returns>
         public static string IncrementNumericPartOfString(string input, out int nextNumber)
         {
-            string alphaPart = Regex.Match(input, ALPHA_REGEX_PATTERN).Value;
-            string numberPart = Regex.Replace(input, ALPHA_REGEX_PATTERN, string.Empty);
-            int number = int.Parse(numberPart);
+            string alphaPart = GetNonNumericPartOfString(input);
+            string numberPart = GetNumericPartOfString(input, out int number, out int startIndex, out int length);
+            if (string.IsNullOrEmpty(numberPart))
+            {
+                throw new ArgumentException($"{nameof(input)} of '{input}' on {nameof(IncrementNumericPartOfString)} does not contain anu numeric values.");
+            }
             nextNumber = number + 1;
-            int length = numberPart.Length;
             length = nextNumber / (Math.Pow(10, length)) == 1 ? length + 1 : length;
-            string result = alphaPart + nextNumber.ToString("D" + length);
+            string nextNumberString = nextNumber.ToString("D" + length);
+            string result = alphaPart.Insert(startIndex, nextNumberString);
             return result;
         }
 
@@ -364,23 +369,49 @@
         /// </summary>
         /// <param name="input"></param>
         /// <returns></returns>
-        public static string GetAplhaPartOfString(string input)
+        public static string GetAlphaPartOfString(string input)
         {
             return Regex.Match(input, ALPHA_REGEX_PATTERN).Value;
         }
 
         /// <summary>
+        /// Removes the numeric part of a string i.e. any numeric characters are stripped from the string.
+        /// </summary>
+        /// <param name="input">The string to be processed.</param>
+        /// <returns></returns>
+        public static string GetNonNumericPartOfString(string input)
+        {
+            string numberPart = GetNumericPartOfString(input, out int number, out int startIndex, out int length);
+            return input.Replace(numberPart, string.Empty);
+        }
+
+        /// <summary>
         /// Gets the numeric (integer) part of a string i.e. all the numbers without the letters.
         /// </summary>
-        /// <param name="input"></param>
-        /// <param name="number"></param>
+        /// <param name="input">The string to be processed.</param>
+        /// <param name="number">The resultant numeric number. If there is no numeric characters in the input string, this value will be -1.</param>
+        /// <param name="startIndex">The start index in the input string of the numeric part. If there is no numeric characters in the input string, this value will be -1.</param>
+        /// <param name="length">The length of the numeric part in the input string. If there is no numeric characters in the input string, this value will be -1.</param>
         /// <returns></returns>
-        public static string GetNumericPartOfString(string input, out int number)
+        public static string GetNumericPartOfString(string input, out int number, out int startIndex, out int length)
         {
-            string pattern = ALPHA_REGEX_PATTERN;
-            string result = Regex.Replace(input, ALPHA_REGEX_PATTERN, "");
-            number = int.Parse(result);
-            return result;
+            //string pattern = ALPHA_REGEX_PATTERN;
+            //string result = Regex.Replace(input, ALPHA_REGEX_PATTERN, "");
+            //number = int.Parse(result);
+            //return result;
+            string pattern = NUMERIC_REGEX_PATTERN;
+            Match match = Regex.Match(input, pattern);
+            if (!match.Success)
+            {
+                number = -1;
+                startIndex = -1;
+                length = -1;
+                return string.Empty;
+            }
+            number = int.Parse(match.Value);
+            startIndex = match.Index;
+            length = match.Length;
+            return match.Value;
         }
 
         /// <summary>

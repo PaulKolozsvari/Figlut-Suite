@@ -1,0 +1,2 @@
+﻿Grant permissions to a user to to create the event log without requiring to run as administrator:
+	-	https://blog.sandro-pereira.com/2012/02/16/the-source-was-not-found-but-some-or-all-event-logs-could-not-be-searched-inaccessible-logs-security/

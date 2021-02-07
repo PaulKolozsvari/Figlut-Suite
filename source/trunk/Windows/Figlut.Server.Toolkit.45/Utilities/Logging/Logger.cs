@@ -89,13 +89,13 @@
             //{
             //    EventLog.Delete(_eventLog.Log);
             //}
-            if (!System.Diagnostics.EventLog.SourceExists(_eventLog.Source))
+            if (!EventLog.SourceExists(_eventLog.Source))
             {
                 if (EventLog.Exists(_eventLog.Log))
                 {
                     EventLog.Delete(_eventLog.Log);
                 }
-                System.Diagnostics.EventLog.CreateEventSource(_eventLog.Source, _eventLog.Log);
+                EventLog.CreateEventSource(_eventLog.Source, _eventLog.Log);
             }
         }
 
