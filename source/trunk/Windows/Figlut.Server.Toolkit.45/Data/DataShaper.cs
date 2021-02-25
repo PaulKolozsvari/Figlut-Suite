@@ -72,9 +72,40 @@
             return new PhoneNumberValidator().IsValidPhoneNumber(phoneNumber, out formattedPhoneNumber);
         }
 
+        static Regex ValidEmailRegex = CreateValidEmailRegex();
+
+        /// <summary>
+        /// Taken from http://haacked.com/archive/2007/08/21/i-knew-how-to-validate-an-email-address-until-i.aspx
+        /// </summary>
+        /// <returns></returns>
+        private static Regex CreateValidEmailRegex()
+        {
+            string validEmailPattern = @"^(?!\.)(""([^""\r\\]|\\[""\r\\])*""|"
+                + @"([-a-z0-9!#$%&'*+/=?^_`{|}~]|(?<!\.)\.)*)(?<!\.)"
+                + @"@[a-z0-9][\w\.-]*[a-z0-9]\.[a-z][a-z\.]*[a-z]$";
+
+            return new Regex(validEmailPattern, RegexOptions.IgnoreCase);
+        }
+
         public static bool IsValidEmail(string emailAddress)
         {
-            return (new EmailAddressAttribute().IsValid(emailAddress));
+            if (
+                string.IsNullOrEmpty(emailAddress) || 
+                !(new EmailAddressAttribute().IsValid(emailAddress)) ||
+                !ValidEmailRegex.IsMatch(emailAddress) ||
+                emailAddress.EndsWith("."))
+            {
+                return false;
+            }
+            try
+            {
+                var addr = new System.Net.Mail.MailAddress(emailAddress);
+                return addr.Address == emailAddress;
+            }
+            catch
+            {
+                return false;
+            }
         }
 
         /// <summary>
