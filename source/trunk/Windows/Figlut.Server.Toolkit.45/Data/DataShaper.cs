@@ -413,7 +413,7 @@
         public static string GetNonNumericPartOfString(string input)
         {
             string numberPart = GetNumericPartOfString(input, out int number, out int startIndex, out int length);
-            return input.Replace(numberPart, string.Empty);
+            return !string.IsNullOrEmpty(numberPart) ? input.Replace(numberPart, string.Empty) : input;
         }
 
         /// <summary>

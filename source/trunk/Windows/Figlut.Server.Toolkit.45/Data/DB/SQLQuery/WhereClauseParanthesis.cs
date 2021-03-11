@@ -65,9 +65,14 @@
             }
             StringBuilder result = new StringBuilder();
             result.Append("(");
-            foreach (WhereClauseColumn c in _whereClauseColumns)
+            for (int i = 0; i < _whereClauseColumns.Count; ++i)
             {
+                WhereClauseColumn c = _whereClauseColumns[i];
                 result.Append(c.ToString());
+                if (i < (_whereClauseColumns.Count - 1)) //Not the last where clause column in the where clause paranthesis.
+                {
+                    result.Append("_");
+                }
             }
             result.Append(")");
             if (LogicalOperatorAgainstNextParanthesis != null)

@@ -46,7 +46,11 @@
             foreach (WhereClauseColumn whereColumn in whereClause)
             {
                 string whereColumnName = whereColumn.ColumnName;
-                if (whereColumn.UseParameter)
+                if (whereColumn.IsCustomClause)
+                {
+                    _sqlQueryString.AppendLine(whereColumn.ToString());
+                }
+                else if (whereColumn.UseParameter)
                 {
                     string parameterName = string.Format("@{0}", DataShaper.GetUniqueIdentifier());
                     if (whereColumn.ComparisonOperator.Value == "IN")

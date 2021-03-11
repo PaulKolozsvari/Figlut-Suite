@@ -17,6 +17,13 @@
         {
         }
 
+        public WhereClauseColumn(string customClause, WhereClauseLogicalOperator logicalOperatorAgainstNextColumn)
+        {
+            _customClause = customClause;
+            _isCustomClause = !string.IsNullOrEmpty(_customClause);
+            LogicalOperatorAgainstNextColumn = logicalOperatorAgainstNextColumn;
+        }
+
         public WhereClauseColumn(
             string columnName,
             WhereClauseComparisonOperator comparisonOperator,
@@ -51,6 +58,8 @@
 
         #region Fields
 
+        protected string _customClause;
+        protected bool _isCustomClause;
         protected string _columnName;
         protected WhereClauseComparisonOperator _comparisonOperator;
         protected object _columnValue;
@@ -61,6 +70,16 @@
         #endregion //Fields
 
         #region Properties
+
+        public string CustomClause
+        {
+            get { return _customClause; }
+        }
+
+        public bool IsCustomClause
+        {
+            get { return _isCustomClause; }
+        }
 
         public string ColumnName
         {
@@ -104,6 +123,10 @@
 
         public override string ToString()
         {
+            if (!string.IsNullOrEmpty(_customClause))
+            {
+                return _customClause;
+            }
             StringBuilder result = new StringBuilder();
             result.AppendFormat(
                 "{0}_{1}_{2}",
