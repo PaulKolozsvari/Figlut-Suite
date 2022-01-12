@@ -233,9 +233,17 @@
                 {
                     connection = new SQLiteConnection(_connectionString);
                 }
+                if (connection == null)
+                {
+                    throw new Exception($"Could not create connection to Sqlite: {_connectionString}");
+                }
                 if (connection.State != ConnectionState.Open)
                 {
                     connection.Open();
+                }
+                if (connection.State != ConnectionState.Open)
+                {
+                    throw new Exception($"Could not open connection to Sqlite: {_connectionString}");
                 }
                 string sqlQuery = $"SELECT name FROM sqlite_master WHERE type='table' AND name='{tableName}';";
                 using (SQLiteCommand command = new SQLiteCommand(sqlQuery, (SQLiteConnection)connection))
@@ -279,9 +287,17 @@
                 {
                     connection = new SQLiteConnection(_connectionString);
                 }
+                if (connection == null)
+                {
+                    throw new Exception($"Could not create connection to Sqlite: {_connectionString}");
+                }
                 if (connection.State != ConnectionState.Open)
                 {
                     connection.Open();
+                }
+                if (connection.State != ConnectionState.Open)
+                {
+                    throw new Exception($"Could not open connection to Sqlite: {_connectionString}");
                 }
                 using (SQLiteCommand command = new SQLiteCommand(query.SqlQueryString, (SQLiteConnection)connection))
                 {
@@ -389,9 +405,17 @@
                 {
                     connection = new SQLiteConnection(_connectionString);
                 }
+                if (connection == null)
+                {
+                    throw new Exception($"Could not create connection to Sqlite: {_connectionString}");
+                }
                 if (connection.State != ConnectionState.Open)
                 {
                     connection.Open();
+                }
+                if (connection.State != ConnectionState.Open)
+                {
+                    throw new Exception($"Could not open connection to Sqlite: {_connectionString}");
                 }
                 DataTable schema = connection.GetSchema("Databases");
                 foreach (DataRow row in schema.Rows)
@@ -428,9 +452,17 @@
                 {
                     connection = new SQLiteConnection(_connectionString);
                 }
+                if (connection == null)
+                {
+                    throw new Exception($"Could not create connection to Sqlite: {_connectionString}");
+                }
                 if (connection.State != ConnectionState.Open)
                 {
                     connection.Open();
+                }
+                if (connection.State != ConnectionState.Open)
+                {
+                    throw new Exception($"Could not open connection to Sqlite: {_connectionString}");
                 }
                 return connection.GetSchema("Tables");
             }
@@ -462,9 +494,17 @@
                 {
                     connection = new SQLiteConnection(_connectionString);
                 }
+                if (connection == null)
+                {
+                    throw new Exception($"Could not create connection to Sqlite: {_connectionString}");
+                }
                 if (connection.State != ConnectionState.Open)
                 {
                     connection.Open();
+                }
+                if (connection.State != ConnectionState.Open)
+                {
+                    throw new Exception($"Could not open connection to Sqlite: {_connectionString}");
                 }
                 DataTable schema = connection.GetSchema("Tables");
                 _tables.Clear();
