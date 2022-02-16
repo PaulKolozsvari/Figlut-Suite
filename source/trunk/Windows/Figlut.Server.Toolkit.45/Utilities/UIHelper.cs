@@ -144,9 +144,9 @@
         /// <summary>
         /// Displays a message box that autocloses after a give period of time.
         /// </summary>
-        public static DialogResult DisplayAutoClosingInformation(string infoMessage)
+        public static DialogResult DisplayAutoClosingInformation(string infoMessage, int timeout)
         {
-            DialogResult result = AutoClosingMessageBox.Show(infoMessage, "Information", 10000, MessageBoxButtons.OK, DialogResult.OK);
+            DialogResult result = AutoClosingMessageBox.Show(infoMessage, "Information", timeout, MessageBoxButtons.OK, DialogResult.OK);
             return result;
         }
 
