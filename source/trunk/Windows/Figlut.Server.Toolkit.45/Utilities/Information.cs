@@ -39,6 +39,13 @@
             return Path.GetFileName(Assembly.GetCallingAssembly().GetName().CodeBase).Remove(0, 6);
         }
 
+        //Gets the name of the current executing assembly.
+        public static string GetEntryAssemblyVersion()
+        {
+            Version version = Assembly.GetEntryAssembly().GetName().Version;
+            return $"{version}";
+        }
+
         /// <summary>
         /// Returns a dictionary of all the system colors with their names as the keys
         /// to the dictionary.

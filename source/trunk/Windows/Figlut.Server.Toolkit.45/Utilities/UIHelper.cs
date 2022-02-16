@@ -142,6 +142,15 @@
         }
 
         /// <summary>
+        /// Displays a message box that autocloses after a give period of time.
+        /// </summary>
+        public static DialogResult DisplayAutoClosingInformation(string infoMessage)
+        {
+            DialogResult result = AutoClosingMessageBox.Show(infoMessage, "Information", 10000, MessageBoxButtons.OK, DialogResult.OK);
+            return result;
+        }
+
+        /// <summary>
         /// Displays a warning message box with the given warning message.
         /// </summary>
         /// <param name="warningMessage">The warning message to be displayed.</param>
