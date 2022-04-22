@@ -203,6 +203,10 @@
         public override List<object> Query(Query query, string propertyNameFilter, Type entityType)
         {
             List<DatabaseTable> tablesMentioned = GetTablesMentionedInQuery(query);
+            if(tablesMentioned.Count < 1)
+            {
+                return new List<object>();
+            }
             List<object> result = null;
             using (SQLiteConnection connection = new SQLiteConnection(_connectionString))
             {
@@ -255,7 +259,7 @@
                     command.CommandType = System.Data.CommandType.Text;
                     using (SQLiteDataReader reader = command.ExecuteReader())
                     {
-                        result = reader.Read();
+                        result = reader != null ? reader.Read() : false;
                     }
                 }
             }
@@ -283,6 +287,10 @@
             try
             {
                 List<DatabaseTable> tablesMentioned = GetTablesMentionedInQuery(query);
+                if (tablesMentioned.Count < 1)
+                {
+                    return new List<object>();
+                }
                 if (connection == null)
                 {
                     connection = new SQLiteConnection(_connectionString);

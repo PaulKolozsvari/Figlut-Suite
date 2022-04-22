@@ -203,6 +203,10 @@
         public override List<object> Query(Query query, string propertyNameFilter, Type entityType)
         {
             List<DatabaseTable> tablesMentioned = GetTablesMentionedInQuery(query);
+            if (tablesMentioned.Count < 1)
+            {
+                return new List<object>();
+            }
             List<object> result = null;
             using (SqlConnection connection = new SqlConnection(_connectionString))
             {
@@ -232,6 +236,10 @@
             try
             {
                 List<DatabaseTable> tablesMentioned = GetTablesMentionedInQuery(query);
+                if (tablesMentioned.Count < 1)
+                {
+                    return new List<object>();
+                }
                 if (connection == null)
                 {
                     connection = new SqlConnection(_connectionString);

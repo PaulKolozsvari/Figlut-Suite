@@ -198,15 +198,10 @@
             foreach (string t in query.TableNamesInQuery)
             {
                 DatabaseTable table = _tables[t];
-                if (table == null)
+                if (table != null)
                 {
-                    throw new NullReferenceException(string.Format(
-                        "Could not find table {0} mentioned in {1} inside {2}.",
-                        t,
-                        query.GetType().FullName,
-                        this.GetType().FullName));
+                    result.Add(table);
                 }
-                result.Add(table);
             }
             return result;
         }
