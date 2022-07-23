@@ -109,6 +109,7 @@ using System.Windows.Forms;
         protected string _exceptionEmailSubject;
         protected bool _emailExceptions;
         protected bool _appendHostNameToEmailBody;
+        protected bool _appendWindowsUserNameToEmailBody;
         protected bool _logEmails;
         protected bool _includeDefaultEmailRecipients;
         protected List<EmailNotificationRecipient> _defaultEmailRecipients;
@@ -281,6 +282,12 @@ using System.Windows.Forms;
         {
             get { return _appendHostNameToEmailBody; }
             set { _appendHostNameToEmailBody = value; }
+        }
+
+        public bool AppendWindowsUserNameToEmailBody
+        {
+            get { return _appendWindowsUserNameToEmailBody; }
+            set { _appendWindowsUserNameToEmailBody = value; }
         }
 
         public EmailClient EmailClient

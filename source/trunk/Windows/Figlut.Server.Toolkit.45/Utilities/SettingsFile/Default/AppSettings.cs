@@ -185,21 +185,27 @@
         public bool AppendHostNameToExceptionEmails { get; set; }
 
         /// <summary>
+        /// Whether or not add a line to every exception email sent out that includes the Windows User Name that is currently running the application.
+        /// </summary>
+        [SettingInfo("Email", AutoFormatDisplayName = true, Description = "Whether or not add a line to every exception email sent out that includes the Windows User Name that is currently running the application.", CategorySequenceId = 16)]
+        public bool AppendWindowsUserNameToEmailBody { get; set; }
+
+        /// <summary>
         /// Whether or not activity related to the sending of emails.
         /// </summary>
-        [SettingInfo("Email", AutoFormatDisplayName = true, Description = "Whether or not to log activity related to the sending of emails.", CategorySequenceId = 16)]
+        [SettingInfo("Email", AutoFormatDisplayName = true, Description = "Whether or not to log activity related to the sending of emails.", CategorySequenceId = 17)]
         public bool EmailLoggingEnabled { get; set; }
 
         /// <summary>
         /// Whether or not include the list of default recipients in every email sent out.
         /// </summary>
-        [SettingInfo("Email", AutoFormatDisplayName = true, Description = "Whether or not include the list of default recipients in every email sent out.", CategorySequenceId = 17)]
+        [SettingInfo("Email", AutoFormatDisplayName = true, Description = "Whether or not include the list of default recipients in every email sent out.", CategorySequenceId = 18)]
         public bool IncludeDefaultEmailRecipients { get; set; }
 
         /// <summary>
         /// The default list of recipients that should be included in every email sent out i.e. if default recipients are configured to be included.
         /// </summary>
-        [SettingInfo("Email", AutoFormatDisplayName = true, Description = "The default list of recipients that should be included in every email sent out i.e. if default recipients are configured to be included.", CategorySequenceId = 18)]
+        [SettingInfo("Email", AutoFormatDisplayName = true, Description = "The default list of recipients that should be included in every email sent out i.e. if default recipients are configured to be included.", CategorySequenceId = 19)]
         public EmailNotificationRecipientList DefaultEmailRecipients { get; set; }
 
         #endregion //Email
@@ -209,13 +215,13 @@
         /// <summary>
         /// The Minimum number of threads available in the Worker Thread Pool for each CPU in the machine.
         /// </summary>
-        [SettingInfo("Threading", AutoFormatDisplayName = true, Description = "The Minimum number of threads available in the Worker Thread Pool for each CPU in the machine.", CategorySequenceId = 18)]
+        [SettingInfo("Threading", AutoFormatDisplayName = true, Description = "The Minimum number of threads available in the Worker Thread Pool for each CPU in the machine.", CategorySequenceId = 20)]
         public int MinimumWorkerThreadCount { get; set; }
 
         /// <summary>
         /// The Minimum number of threads available in the IOCP (IO Completion Port) Thread Pool for each CPU in the machine.
         /// </summary>
-        [SettingInfo("Threading", AutoFormatDisplayName = true, Description = "The Minimum number of threads available in the IOCP (IO Completion Port) Thread Pool.", CategorySequenceId = 18)]
+        [SettingInfo("Threading", AutoFormatDisplayName = true, Description = "The Minimum number of threads available in the IOCP (IO Completion Port) Thread Pool.", CategorySequenceId = 21)]
         public int MinimumCompletionPortThreadCount { get; set; }
 
         #endregion //Threading

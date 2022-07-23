@@ -56,7 +56,7 @@
             out string emailLogMessageText, 
             List<EmailNotificationRecipient> emailNotificationRecipients)
         {
-            return HandleException(exception, null, null, null, true, out emailErrorMessage, out emailLogMessageText, emailNotificationRecipients);
+            return HandleException(exception, null, null, null, emailException: true, out emailErrorMessage, out emailLogMessageText, emailNotificationRecipients);
         }
 
         public static bool HandleException(
@@ -148,7 +148,7 @@
                             EntityReader<GOC>.GetPropertyName(p => p.SendEmailOnException, false),
                             EntityReader<GOC>.GetPropertyName(p => p.EmailClient, false)));
                     }
-                    GOC.Instance.EmailClient.SendExceptionEmailNotification(exception, out emailErrorMessage, out emailLogMessageText, GOC.Instance.AppendHostNameToExceptionEmails, eventDetailsMessage, emailNotificationRecipients);
+                    GOC.Instance.EmailClient.SendExceptionEmailNotification(exception, out emailErrorMessage, out emailLogMessageText, GOC.Instance.AppendHostNameToExceptionEmails, GOC.Instance.AppendWindowsUserNameToEmailBody, eventDetailsMessage, emailNotificationRecipients);
                 }
                 return closeApplication;
             }

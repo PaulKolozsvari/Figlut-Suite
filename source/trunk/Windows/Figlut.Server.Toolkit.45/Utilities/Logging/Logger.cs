@@ -81,13 +81,13 @@
                 return;
             }
             _eventLog = eventLog;
-            //if (EventLog.SourceExists(_eventLog.Source))
-            //{
-            //    EventLog.DeleteEventSource(_eventLog.Source);
-            //}
             //if (EventLog.Exists(_eventLog.Log))
             //{
             //    EventLog.Delete(_eventLog.Log);
+            //}
+            //if (EventLog.SourceExists(_eventLog.Source))
+            //{
+            //    EventLog.DeleteEventSource(_eventLog.Source);
             //}
             if (!EventLog.SourceExists(_eventLog.Source))
             {

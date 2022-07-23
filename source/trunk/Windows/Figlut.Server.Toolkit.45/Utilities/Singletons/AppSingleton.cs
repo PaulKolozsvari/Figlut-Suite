@@ -71,6 +71,7 @@
             GOC.Instance.ShowMessageBoxOnException = settings.ShowMessageBoxOnException;
             GOC.Instance.SendEmailOnException = settings.SendEmailOnException;
             GOC.Instance.AppendHostNameToExceptionEmails = settings.AppendHostNameToExceptionEmails;
+            GOC.Instance.AppendWindowsUserNameToEmailBody = settings.AppendWindowsUserNameToEmailBody;
         }
 
         protected virtual void InitializeLogger(AppSettings s)

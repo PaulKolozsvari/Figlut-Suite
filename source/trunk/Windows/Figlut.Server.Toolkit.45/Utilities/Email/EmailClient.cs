@@ -341,7 +341,8 @@
             string logoImageFilePath,
             out string errorMessage,
             out string emailLogMessageText,
-            bool appendHostNameToEmailBody)
+            bool appendHostNameToEmailBody,
+            bool appendWindowsUserNameToEmailBody)
         {
             if (!_emailNotificationsEnabled)
             {
@@ -357,6 +358,15 @@
                 editedBody.AppendLine(body);
                 editedBody.AppendLine();
                 editedBody.AppendLine($"Email originated from host: {hostname}");
+                body = editedBody.ToString();
+            }
+            if (appendWindowsUserNameToEmailBody)
+            {
+                string windowsUserName = WindowsHelper.GetCurrentWindowsUserName(true);
+                StringBuilder editedBody = new StringBuilder();
+                editedBody.AppendLine(body);
+                editedBody.AppendLine();
+                editedBody.AppendLine($"Windows User: {windowsUserName}");
                 body = editedBody.ToString();
             }
             try
@@ -418,9 +428,10 @@
             out string errorMessage,
             out string emailLogMessageText,
             bool appendHostNameToEmailBody,
+            bool appendWindowsUserNameToEmailBody,
             List<EmailNotificationRecipient> emailNotificationRecipients)
         {
-            return SendExceptionEmailNotification(exception, out errorMessage, out emailLogMessageText, appendHostNameToEmailBody, null, emailNotificationRecipients);
+            return SendExceptionEmailNotification(exception, out errorMessage, out emailLogMessageText, appendHostNameToEmailBody, appendWindowsUserNameToEmailBody, null, emailNotificationRecipients);
         }
 
         public bool SendExceptionEmailNotification(
@@ -428,6 +439,7 @@
             out string errorMessage, 
             out string emailLogMessageText,
             bool appendHostNameToEmailBody,
+            bool appendWindowsUserNameToEmailBody,
             string eventDetailsMessage,
             List<EmailNotificationRecipient> emailNotificationRecipients)
         {
@@ -446,7 +458,7 @@
                 message.AppendLine(eventDetailsMessage);
             }
             string exceptionMessage = message.ToString();
-            return SendEmail(EmailCategory.Error, _exceptionEmailSubject, exceptionMessage, null, false, emailNotificationRecipients, null, out errorMessage, out emailLogMessageText, appendHostNameToEmailBody);
+            return SendEmail(EmailCategory.Error, _exceptionEmailSubject, exceptionMessage, null, false, emailNotificationRecipients, null, out errorMessage, out emailLogMessageText, appendHostNameToEmailBody, appendWindowsUserNameToEmailBody);
         }
 
         private bool LogEmailNotification(MailMessage email, string subject, out string logMessageText)
@@ -492,14 +504,14 @@
             return result.ToString();
         }
 
-        public bool SendTestEmail(out string errorMessage, bool appendHostNameToEmailBody)
+        public bool SendTestEmail(out string errorMessage, bool appendHostNameToEmailBody, bool appendWindowsUserNameToEmailBody)
         {
-            return SendEmail(EmailCategory.Notification, "Test Email", "This is a test email.", null, false, null, null, out errorMessage, out string emailLogMessageText, appendHostNameToEmailBody);
+            return SendEmail(EmailCategory.Notification, "Test Email", "This is a test email.", null, false, null, null, out errorMessage, out string emailLogMessageText, appendHostNameToEmailBody, appendWindowsUserNameToEmailBody);
         }
 
-        public bool SendTestEmail(string subject, string body, out string errorMessage, bool appendHostNameToEmailBody)
+        public bool SendTestEmail(string subject, string body, out string errorMessage, bool appendHostNameToEmailBody, bool appendWindowsUserNameToEmailBody)
         {
-            return SendEmail(EmailCategory.Notification, subject, body, null, false, null, null, out errorMessage, out string emailLogMessageText, appendHostNameToEmailBody);
+            return SendEmail(EmailCategory.Notification, subject, body, null, false, null, null, out errorMessage, out string emailLogMessageText, appendHostNameToEmailBody, appendWindowsUserNameToEmailBody);
         }
 
         #endregion //Methods
