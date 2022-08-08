@@ -56,7 +56,7 @@
             out string emailLogMessageText, 
             List<EmailNotificationRecipient> emailNotificationRecipients)
         {
-            return HandleException(exception, null, null, null, emailException: true, out emailErrorMessage, out emailLogMessageText, emailNotificationRecipients);
+            return HandleException(exception, null, null, null, emailException: true, out emailErrorMessage, out emailLogMessageText, emailNotificationRecipients, showMessageBoxOnException: null);
         }
 
         public static bool HandleException(
@@ -66,7 +66,7 @@
             out string emailLogMessageText, 
             List<EmailNotificationRecipient> emailNotificationRecipients)
         {
-            return HandleException(exception, null, null, null, emailException, out emailErrorMessage, out emailLogMessageText, emailNotificationRecipients);
+            return HandleException(exception, form: null, keyEventHandler: null, eventDetailsMessage: null, emailException, out emailErrorMessage, out emailLogMessageText, emailNotificationRecipients, showMessageBoxOnException: null);
         }
 
         public static bool HandleException(
@@ -76,7 +76,7 @@
             out string emailLogMessageText,
             List<EmailNotificationRecipient> emailNotificationRecipients)
         {
-            return HandleException(exception, null, null, eventDetailsMessage, true, out emailErrorMessage, out emailLogMessageText, emailNotificationRecipients);
+            return HandleException(exception, null, null, eventDetailsMessage, true, out emailErrorMessage, out emailLogMessageText, emailNotificationRecipients, showMessageBoxOnException: null);
         }
 
         public static bool HandleException(
@@ -87,7 +87,7 @@
             out string emailLogMessageText, 
             List<EmailNotificationRecipient> emailNotificationRecipients)
         {
-            return HandleException(exception, null, null, eventDetailsMessage, emailException, out emailErrorMessage, out emailLogMessageText, emailNotificationRecipients);
+            return HandleException(exception, null, null, eventDetailsMessage, emailException, out emailErrorMessage, out emailLogMessageText, emailNotificationRecipients, showMessageBoxOnException: null);
         }
 
         public static bool HandleException(
@@ -99,7 +99,7 @@
             out string emailLogMessageText, 
             List<EmailNotificationRecipient> emailNotificationRecipients)
         {
-            return HandleException(exception, form, keyEventHandler, eventDetailsMessage, true, out emailErrorMessage, out emailLogMessageText, emailNotificationRecipients);
+            return HandleException(exception, form, keyEventHandler, eventDetailsMessage, true, out emailErrorMessage, out emailLogMessageText, emailNotificationRecipients, showMessageBoxOnException: null);
         }
 
         public static bool HandleException(
@@ -110,7 +110,8 @@
             bool emailException, 
             out string emailErrorMessage, 
             out string emailLogMessageText,
-            List<EmailNotificationRecipient> emailNotificationRecipients)
+            List<EmailNotificationRecipient> emailNotificationRecipients,
+            Nullable<bool> showMessageBoxOnException)
         {
             try
             {
@@ -121,7 +122,8 @@
                 {
                     throw new NullReferenceException("exception to be handled may not be null.");
                 }
-                if (GOC.Instance.ShowMessageBoxOnException)
+                if ((showMessageBoxOnException.HasValue && showMessageBoxOnException.Value) ||
+                    (!showMessageBoxOnException.HasValue && GOC.Instance.ShowMessageBoxOnException))
                 {
                     UIHelper.DisplayException(exception, form, keyEventHandler, eventDetailsMessage);
                 }
