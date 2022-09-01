@@ -14,7 +14,7 @@
     using Figlut.Server.Toolkit.Utilities;
     using Figlut.Server.Toolkit.Utilities.Serialization;
     using Figlut.Server.Toolkit.Web.Client.DataProgress;
-using Figlut.Server.Toolkit.Web.Client.REST;
+    using Figlut.Server.Toolkit.Web.Client.REST;
     using System.Diagnostics;
 
     #endregion //Using Directives
@@ -130,6 +130,18 @@ using Figlut.Server.Toolkit.Web.Client.REST;
             set
             {
                 _entities[id] = value;
+            }
+        }
+
+        public E this[int index]
+        {
+            get
+            {
+                if (index >= _entities.Values.Count)
+                {
+                    return null;
+                }
+                return _entities.Values.ElementAt(index);
             }
         }
 

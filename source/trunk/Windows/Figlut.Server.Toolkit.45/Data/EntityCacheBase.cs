@@ -85,6 +85,22 @@
 
         #endregion //Properties
 
+        #region Indexers Region
+
+        public object this[int index]
+        {
+            get
+            {
+                if (index >= _entities.Count)
+                {
+                    return null;
+                }
+                return _entities[index];
+            }
+        }
+
+        #endregion //Indexers Region
+
         #region Methods
 
         private void ValidateEntityType(object e)
