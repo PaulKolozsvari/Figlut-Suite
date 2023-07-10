@@ -466,6 +466,10 @@
             List<E> entities = GetEntitiesByProperties(properties, exactMatch, searchType);
             foreach (E e in entities)
             {
+                if (e == null)
+                {
+                    continue;
+                }
                 DataRow row = EntityReader<E>.PopulateDataRow(e, result.NewRow(), shapeColumnNames);
                 result.Rows.Add(row);
             }
