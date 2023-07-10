@@ -295,6 +295,10 @@
             {
                 foreach (E e in _entities.Values)
                 {
+                    if (e == null)
+                    {
+                        continue;
+                    }
                     bool include = searchType == SearchType.AND ? true : false;
                     foreach (PropertyInfo p in propertyList)
                     {
@@ -351,6 +355,10 @@
             {
                 foreach (E e in _entities.Values)
                 {
+                    if (e == null)
+                    {
+                        continue;
+                    }
                     bool include = searchType == SearchType.AND ? true : false;
                     foreach (PropertyInfo p in propertyList)
                     {
