@@ -1,5 +1,6 @@
 ﻿namespace Figlut.Server.Toolkit.Utilities.FTP
 {
+    using Renci.SshNet;
     #region Using Directives
 
     using System;
@@ -87,6 +88,32 @@
         #endregion //Properties
 
         #region Methods
+
+        public void UploadFileSftp(string sourceFilePath, string outputDirectory, string ftpUrl, bool enableSsl)
+        {
+            var port = 22;
+            var fileOutputPath = $"{outputDirectory}{Path.GetFileName(sourceFilePath)}";
+
+            using (var client = new SftpClient(ftpUrl, port, _credentials.UserName, Credentials.Password))
+            {
+                client.Connect();
+                if (client.IsConnected)
+                {
+                    byte[] sourceFileBytes = null;
+                    using (StreamReader reader = new StreamReader(sourceFilePath))
+                    {
+                        sourceFileBytes = Encoding.UTF8.GetBytes(reader.ReadToEnd());
+                        reader.Close();
+                    }
+
+                    using (var ms = new MemoryStream(sourceFileBytes))
+                    {
+                        client.BufferSize = (uint)ms.Length;
+                        client.UploadFile(ms, fileOutputPath);
+                    }
+                }
+            }
+        }
 
         public void UploadFile(string sourceFilePath, string ftpDestinationFileUrl, bool enableSsl)
         {

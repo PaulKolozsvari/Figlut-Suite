@@ -293,7 +293,7 @@
     <Compile Include="Utilities\SettingsFile\Default\WebServiceMobileClientAppSettings.cs" />
     <Compile Include="Utilities\Singletons\DatabaseAppSingleton.cs" />
     <Compile Include="Utilities\Singletons\RestWebServiceAppSingleton.cs" />
-    <Compile Include="Utilities\SSHFtpClient.cs" />
+    <Compile Include="Utilities\FTP\SSHFtpClient.cs" />
     <Compile Include="Utilities\SMS\SmsEventDelegates.cs" />
     <Compile Include="Utilities\SMS\SmsGateway.cs" />
     <Compile Include="Utilities\SMS\SmsInfo.cs" />
